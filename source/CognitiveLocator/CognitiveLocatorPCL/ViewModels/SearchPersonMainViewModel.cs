@@ -16,6 +16,14 @@ namespace CognitiveLocator.ViewModels
             get { return _person; }
             set { SetProperty(ref _person, value); }
         }
+
+        byte[] _photo;
+        public byte[] Photo
+        {
+            get { return _photo; }
+            set { SetProperty(ref _photo, value); }
+        }
+
         public ICommand SearchPersonCommand { get; set; }
         public ICommand TakePhotoCommand { get; set; }
         public ICommand ChoosePhotoCommand { get; set; }
@@ -46,7 +54,7 @@ namespace CognitiveLocator.ViewModels
 
         async Task TakePhoto()
         {
-            throw new NotImplementedException();
+            Photo = await Helpers.MediaHelper.TakePhotoAsync();
         }
 
         async Task ChoosePhoto()
