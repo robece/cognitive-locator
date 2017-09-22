@@ -12,7 +12,7 @@ namespace CognitiveLocator
     public class BaseViewModel : INotifyPropertyChanged
     {
         public IDependencyService DependencyService;
-        protected readonly INavigationService PageService;
+        protected readonly INavigationService NavigationService;
         public IRestServices RestServices;
 
         bool isBusy = false;
@@ -33,6 +33,7 @@ namespace CognitiveLocator
         {
             DependencyService = dependencyService;
             RestServices = DependencyService.Get<IRestServices>();
+            NavigationService = DependencyService.Get<INavigationService>();
         }
 
         protected bool SetProperty<T>(ref T backingStore, T value,

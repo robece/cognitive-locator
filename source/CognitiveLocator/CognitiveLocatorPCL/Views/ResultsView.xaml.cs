@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace CognitiveLocator.Views
 {
-    public partial class ResultsView : ContentPage
+    public partial class ResultsView : BaseView
     {
         public ResultsView()
         {
