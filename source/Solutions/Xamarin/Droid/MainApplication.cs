@@ -1,11 +1,11 @@
-using System;
+﻿using System;
 
 using Android.App;
 using Android.OS;
 using Android.Runtime;
 using Plugin.CurrentActivity;
 
-namespace CognitiveLocator.Droid
+namespace CognitiveLocator.Xamarin.Droid
 {
 	//You can specify additional application information in this attribute
     [Application]
