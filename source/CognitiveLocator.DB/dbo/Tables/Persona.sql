@@ -12,6 +12,11 @@
     [FechaHoraAgregado]      DATETIME          CONSTRAINT [DF_Table_1_FechaHora] DEFAULT (getdate()) NOT NULL,
     [FechaHoraActualizacion] DATETIME          CONSTRAINT [DF_Table_1_UltimaActualizacion] DEFAULT (getdate()) NOT NULL,
     [IdEstatus]              INT               CONSTRAINT [DF_Persona_IdEstatus] DEFAULT ((1)) NOT NULL,
+    [FaceId] INT NULL, 
+    [Altura] FLOAT NULL, 
+    [Anchura] FLOAT NULL, 
+    [MargenIzquierdo] FLOAT NULL, 
+    [MargenDerecho] FLOAT NULL, 
     CONSTRAINT [PK_Persona] PRIMARY KEY CLUSTERED ([IdPersona] ASC),
     CONSTRAINT [FK_Persona_Hospital] FOREIGN KEY ([IdHospital]) REFERENCES [dbo].[Hospital] ([IdHospital])
 );
