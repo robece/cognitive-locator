@@ -13,10 +13,10 @@ namespace CognitiveLocatorDAL.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class CognitiveLocatorDBEntities : DbContext
+    public partial class CognitiveLocatorEntities1 : DbContext
     {
-        public CognitiveLocatorDBEntities()
-            : base("name=CognitiveLocatorDBEntities")
+        public CognitiveLocatorEntities1()
+            : base("name=CognitiveLocatorEntities1")
         {
         }
     
@@ -26,7 +26,7 @@ namespace CognitiveLocatorDAL.Model
         }
     
         public virtual DbSet<Hospital> Hospital { get; set; }
-        public virtual DbSet<Person> Persona { get; set; }
-        public virtual DbSet<PersonFaces> PersonFacesSet { get; set; }
+        public virtual DbSet<Person> Person { get; set; }
+        public virtual DbSet<PersonFaces> PersonFaces { get; set; }
     }
 }

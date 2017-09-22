@@ -33,11 +33,11 @@ namespace CognitiveLocatorDAL.Model
         public System.DateTime CreatedDate { get; set; }
         public System.DateTime ModifiedDate { get; set; }
         public int IsActive { get; set; }
-        public string FaceId { get; set; }
-        public string Width { get; set; }
-        public string Height { get; set; }
-        public string LeftMargin { get; set; }
-        public string RightMargin { get; set; }
+        public Nullable<int> FaceId { get; set; }
+        public Nullable<double> Height { get; set; }
+        public Nullable<double> Width { get; set; }
+        public Nullable<double> LeftMargin { get; set; }
+        public Nullable<double> RightMargin { get; set; }
     
         public virtual Hospital Hospital { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

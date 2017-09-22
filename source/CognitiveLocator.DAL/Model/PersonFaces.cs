@@ -15,14 +15,13 @@ namespace CognitiveLocatorDAL.Model
     public partial class PersonFaces
     {
         public int IdPersonFaces { get; set; }
-        public string IdPerson { get; set; }
+        public int idPerson { get; set; }
         public string URL { get; set; }
-        public string FaceId { get; set; }
-        public string Height { get; set; }
-        public string Width { get; set; }
-        public string LeftMargin { get; set; }
-        public string RightMargin { get; set; }
-        public int PersonIdPerson { get; set; }
+        public Nullable<int> FaceId { get; set; }
+        public Nullable<double> Height { get; set; }
+        public Nullable<double> Width { get; set; }
+        public Nullable<double> LeftMargin { get; set; }
+        public Nullable<double> RightMargin { get; set; }
     
         public virtual Person Person { get; set; }
     }
