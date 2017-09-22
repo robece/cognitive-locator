@@ -1,12 +1,12 @@
 ﻿using System;
 using Xamarin.Forms.Platform.Android;
-using CognitiveLocator.Droid.Effects;
+using CognitiveLocator.Xamarin.Droid.Effects;
 using Xamarin.Forms;
 using Android.Graphics.Drawables;
 
 [assembly: ResolutionGroupName("CognitiveLocator")]
 [assembly: ExportEffect(typeof(NoInteractiveTableViewEffect), "NoInteractiveTableViewEffect")]
-namespace CognitiveLocator.Droid.Effects
+namespace CognitiveLocator.Xamarin.Droid.Effects
 {
 	public class NoInteractiveTableViewEffect : PlatformEffect
 	{
