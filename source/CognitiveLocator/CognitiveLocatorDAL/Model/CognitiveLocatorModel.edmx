@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CognitiveLocatorDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Hospital">
+          <Key>
+            <PropertyRef Name="IdHospital" />
+          </Key>
+          <Property Name="IdHospital" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Hospital" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Dirección" Type="nvarchar" MaxLength="500" />
+          <Property Name="Coordenadas" Type="geography" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="IdPersona" />
+          </Key>
+          <Property Name="IdPersona" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdSituacion" Type="int" Nullable="false" />
+          <Property Name="NombreAlias" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Edad" Type="int" Nullable="false" />
+          <Property Name="Foto" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Ubicacion" Type="nvarchar" MaxLength="500" />
+          <Property Name="Coordenadas" Type="geography" Nullable="false" />
+          <Property Name="IdHospital" Type="int" Nullable="false" />
+          <Property Name="Notas" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Fuente" Type="nvarchar" MaxLength="500" />
+          <Property Name="FechaHoraAgregado" Type="datetime" Nullable="false" />
+          <Property Name="FechaHoraActualizacion" Type="datetime" Nullable="false" />
+          <Property Name="IdEstatus" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Persona_Hospital">
+          <End Role="Hospital" Type="Self.Hospital" Multiplicity="1" />
+          <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hospital">
+              <PropertyRef Name="IdHospital" />
+            </Principal>
+            <Dependent Role="Persona">
+              <PropertyRef Name="IdHospital" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CognitiveLocatorDBModelStoreContainer">
+          <EntitySet Name="Hospital" EntityType="Self.Hospital" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Persona_Hospital" Association="Self.FK_Persona_Hospital">
+            <End Role="Hospital" EntitySet="Hospital" />
+            <End Role="Persona" EntitySet="Persona" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CognitiveLocatorDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Hospital">
+          <Key>
+            <PropertyRef Name="IdHospital" />
+          </Key>
+          <Property Name="IdHospital" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Hospital1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Dirección" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Coordenadas" Type="Geography" />
+          <NavigationProperty Name="Persona" Relationship="Self.FK_Persona_Hospital" FromRole="Hospital" ToRole="Persona" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="IdPersona" />
+          </Key>
+          <Property Name="IdPersona" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdSituacion" Type="Int32" Nullable="false" />
+          <Property Name="NombreAlias" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Edad" Type="Int32" Nullable="false" />
+          <Property Name="Foto" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ubicacion" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Coordenadas" Type="Geography" Nullable="false" />
+          <Property Name="IdHospital" Type="Int32" Nullable="false" />
+          <Property Name="Notas" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Fuente" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FechaHoraAgregado" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaHoraActualizacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdEstatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Hospital" Relationship="Self.FK_Persona_Hospital" FromRole="Persona" ToRole="Hospital" />
+        </EntityType>
+        <Association Name="FK_Persona_Hospital">
+          <End Role="Hospital" Type="Self.Hospital" Multiplicity="1" />
+          <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hospital">
+              <PropertyRef Name="IdHospital" />
+            </Principal>
+            <Dependent Role="Persona">
+              <PropertyRef Name="IdHospital" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CognitiveLocatorDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Hospital" EntityType="Self.Hospital" />
+          <EntitySet Name="Persona" EntityType="Self.Persona" />
+          <AssociationSet Name="FK_Persona_Hospital" Association="Self.FK_Persona_Hospital">
+            <End Role="Hospital" EntitySet="Hospital" />
+            <End Role="Persona" EntitySet="Persona" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CognitiveLocatorDBModelStoreContainer" CdmEntityContainer="CognitiveLocatorDBEntities">
+          <EntitySetMapping Name="Hospital">
+            <EntityTypeMapping TypeName="CognitiveLocatorDBModel.Hospital">
+              <MappingFragment StoreEntitySet="Hospital">
+                <ScalarProperty Name="IdHospital" ColumnName="IdHospital" />
+                <ScalarProperty Name="Hospital1" ColumnName="Hospital" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Dirección" ColumnName="Dirección" />
+                <ScalarProperty Name="Coordenadas" ColumnName="Coordenadas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Persona">
+            <EntityTypeMapping TypeName="CognitiveLocatorDBModel.Persona">
+              <MappingFragment StoreEntitySet="Persona">
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="IdSituacion" ColumnName="IdSituacion" />
+                <ScalarProperty Name="NombreAlias" ColumnName="NombreAlias" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+                <ScalarProperty Name="Coordenadas" ColumnName="Coordenadas" />
+                <ScalarProperty Name="IdHospital" ColumnName="IdHospital" />
+                <ScalarProperty Name="Notas" ColumnName="Notas" />
+                <ScalarProperty Name="Fuente" ColumnName="Fuente" />
+                <ScalarProperty Name="FechaHoraAgregado" ColumnName="FechaHoraAgregado" />
+                <ScalarProperty Name="FechaHoraActualizacion" ColumnName="FechaHoraActualizacion" />
+                <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
