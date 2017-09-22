@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CognitiveLocator.iOS", "iOS\CognitiveLocator.iOS.csproj", "{AC959F85-079D-437E-A09E-8C74931EB0D5}"
 EndProject
@@ -9,10 +9,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CognitiveLocator.WebAPI", "CognitiveLocator.WebAPI\CognitiveLocator.WebAPI.csproj", "{45C86EFA-3920-45E3-B30B-A92D8E133512}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CognitiveLocatorPCL", "CognitiveLocatorPCL\CognitiveLocatorPCL.csproj", "{55B3A95E-A4F7-4C0E-B251-A2B2830D66DE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CognitiveLocatorDAL", "C:\Users\BBY\Documents\Cognitve DaniPanda\CognitiveLocatorDAL\CognitiveLocatorDAL.csproj", "{0D0E64DB-426E-4ACA-AF43-AF82346B059B}"
-EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "CognitiveLocatorDB", "C:\Users\BBY\Documents\Cognitve DaniPanda\CognitiveLocatorDB\CognitiveLocatorDB.sqlproj", "{92FCAE60-6288-4443-A5DF-DF84C3BD8B74}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,36 +69,6 @@ Global
 		{55B3A95E-A4F7-4C0E-B251-A2B2830D66DE}.Release|iPhone.Build.0 = Release|Any CPU
 		{55B3A95E-A4F7-4C0E-B251-A2B2830D66DE}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{55B3A95E-A4F7-4C0E-B251-A2B2830D66DE}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
-		{0D0E64DB-426E-4ACA-AF43-AF82346B059B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0D0E64DB-426E-4ACA-AF43-AF82346B059B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0D0E64DB-426E-4ACA-AF43-AF82346B059B}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{0D0E64DB-426E-4ACA-AF43-AF82346B059B}.Debug|iPhone.Build.0 = Debug|Any CPU
-		{0D0E64DB-426E-4ACA-AF43-AF82346B059B}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{0D0E64DB-426E-4ACA-AF43-AF82346B059B}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{0D0E64DB-426E-4ACA-AF43-AF82346B059B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0D0E64DB-426E-4ACA-AF43-AF82346B059B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0D0E64DB-426E-4ACA-AF43-AF82346B059B}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{0D0E64DB-426E-4ACA-AF43-AF82346B059B}.Release|iPhone.Build.0 = Release|Any CPU
-		{0D0E64DB-426E-4ACA-AF43-AF82346B059B}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{0D0E64DB-426E-4ACA-AF43-AF82346B059B}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
-		{92FCAE60-6288-4443-A5DF-DF84C3BD8B74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{92FCAE60-6288-4443-A5DF-DF84C3BD8B74}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{92FCAE60-6288-4443-A5DF-DF84C3BD8B74}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{92FCAE60-6288-4443-A5DF-DF84C3BD8B74}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{92FCAE60-6288-4443-A5DF-DF84C3BD8B74}.Debug|iPhone.Build.0 = Debug|Any CPU
-		{92FCAE60-6288-4443-A5DF-DF84C3BD8B74}.Debug|iPhone.Deploy.0 = Debug|Any CPU
-		{92FCAE60-6288-4443-A5DF-DF84C3BD8B74}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{92FCAE60-6288-4443-A5DF-DF84C3BD8B74}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{92FCAE60-6288-4443-A5DF-DF84C3BD8B74}.Debug|iPhoneSimulator.Deploy.0 = Debug|Any CPU
-		{92FCAE60-6288-4443-A5DF-DF84C3BD8B74}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{92FCAE60-6288-4443-A5DF-DF84C3BD8B74}.Release|Any CPU.Build.0 = Release|Any CPU
-		{92FCAE60-6288-4443-A5DF-DF84C3BD8B74}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{92FCAE60-6288-4443-A5DF-DF84C3BD8B74}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{92FCAE60-6288-4443-A5DF-DF84C3BD8B74}.Release|iPhone.Build.0 = Release|Any CPU
-		{92FCAE60-6288-4443-A5DF-DF84C3BD8B74}.Release|iPhone.Deploy.0 = Release|Any CPU
-		{92FCAE60-6288-4443-A5DF-DF84C3BD8B74}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{92FCAE60-6288-4443-A5DF-DF84C3BD8B74}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
-		{92FCAE60-6288-4443-A5DF-DF84C3BD8B74}.Release|iPhoneSimulator.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
