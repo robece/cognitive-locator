@@ -6,9 +6,27 @@
     xmlns:views="clr-namespace:CognitiveLocator.Views;assembly=CognitiveLocatorPCL"
     x:Class="CognitiveLocator.Views.SearchPersonPage"
     Title="{Binding Title}">
-    <views:BaseView.BindingContext>
-        <vm:SearchPersonViewModel />
-    </views:BaseView.BindingContext>
 	<ContentPage.Content>
+        <StackLayout>
+            <Grid BackgroundColor="Blue" Padding="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="100" />
+                </Grid.RowDefinitions>
+
+                <Button Grid.Row="0" Text="Subir Imagen" BackgroundColor="{StaticResource DarkBackgroundColor}" TextColor="{StaticResource MediumGrayTextColor}" />
+                <Image Grid.Row="1" Source="http://via.placeholder.com/350x150" HorizontalOptions="FillAndExpand"  />
+            </Grid>
+            <ListView
+                ItemsSource="{Binding Results}"
+                RowHeight="80"
+                >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ImageCell Text="Nombre" Detail="Lugar" ImageSource="{Binding PhotoURL}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
 	</ContentPage.Content>
 </views:BaseView >
