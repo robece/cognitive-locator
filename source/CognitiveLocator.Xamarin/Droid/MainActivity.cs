@@ -9,6 +9,8 @@ using Android.Widget;
 using Android.OS;
 using Plugin.Permissions;
 using CognitiveLocator.Droid;
+using Microsoft.Azure.Mobile;
+using Microsoft.Azure.Mobile.Analytics;
 
 namespace CognitiveLocator.Xamarin.Droid
 {
@@ -22,10 +24,12 @@ namespace CognitiveLocator.Xamarin.Droid
 
             base.OnCreate(bundle);
 
+            //Telemetry on Mobile Center.
+            MobileCenter.Start("f8963ef0-4239-46ea-b69c-621fafe09d0c", typeof(Analytics));
+
             global::Xamarin.Forms.Forms.Init(this, bundle);
 
             LoadApplication(new App());
-            //Test
         }
 
 		public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
