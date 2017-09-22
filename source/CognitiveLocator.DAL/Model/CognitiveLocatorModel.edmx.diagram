@@ -6,7 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="0a81c865369f45228c8e358f441efbc9" Name="Diagram1">
         <EntityTypeShape EntityType="CognitiveLocatorDBModel.Hospital" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CognitiveLocatorDBModel.Persona" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CognitiveLocatorDBModel.Persona" Width="1.5" PointX="3.5" PointY="1.625" IsExpanded="true" />
         <AssociationConnector Association="CognitiveLocatorDBModel.FK_Persona_Hospital" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
