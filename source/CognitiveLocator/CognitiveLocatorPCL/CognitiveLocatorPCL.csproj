@@ -60,6 +60,11 @@
     <Compile Include="Views\NewItemPage.xaml.cs">
       <DependentUpon>NewItemPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\SearchPersonPage.xaml.cs">
+      <DependentUpon>SearchPersonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\SearchPersonViewModel.cs" />
+    <Compile Include="Models\Person.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -88,6 +93,9 @@
     <EmbeddedResource Include="App.xaml">
       <SubType>
       </SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SearchPersonPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
