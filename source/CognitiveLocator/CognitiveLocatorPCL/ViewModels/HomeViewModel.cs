@@ -12,4 +12,3 @@ namespace CognitiveLocator.ViewModels
 		}
     }
 }
-

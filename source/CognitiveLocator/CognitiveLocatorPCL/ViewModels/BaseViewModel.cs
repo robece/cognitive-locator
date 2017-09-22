@@ -11,7 +11,7 @@ namespace CognitiveLocator
     public class BaseViewModel : INotifyPropertyChanged
     {
         public IDependencyService DependencyService;
-        protected readonly IPageService PageService;
+        protected readonly INavigationService PageService;
         public IRestServices RestServices;
 
         bool isBusy = false;
