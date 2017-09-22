@@ -1,5 +1,5 @@
 ﻿using System;
-
+using CognitiveLocator.Views;
 using Xamarin.Forms;
 
 namespace CognitiveLocator
@@ -13,15 +13,17 @@ namespace CognitiveLocator
         {
             InitializeComponent();
 
-            if (UseMockDataStore)
-                DependencyService.Register<MockDataStore>();
-            else
-                DependencyService.Register<CloudDataStore>();
+            //if (UseMockDataStore)
+            //    DependencyService.Register<MockDataStore>();
+            //else
+            //    DependencyService.Register<CloudDataStore>();
 
-            if (Device.RuntimePlatform == Device.iOS)
-                MainPage = new MainPage();
-            else
-                MainPage = new NavigationPage(new MainPage());
+            //if (Device.RuntimePlatform == Device.iOS)
+            //    MainPage = new MainPage();
+            //else
+            //MainPage = new NavigationPage(new MainPage());
+
+            MainPage = new NavigationPage(new SearchPersonPage());
         }
     }
 }
