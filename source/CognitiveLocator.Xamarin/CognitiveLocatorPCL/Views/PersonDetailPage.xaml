@@ -17,11 +17,11 @@
                 </TableSection>
                 <TableSection Title="Ubicación">
                   <ViewCell>
-                    <!--<maps:Map HeightRequest="200"
-                        x:Name="MyMap"
+                    <maps:Map HeightRequest="200"
+                        x:Name="Ubicacion"
                         IsShowingUser="true"
                         MapType="Hybrid"
-                    />-->
+                    />
                   </ViewCell>
                 </TableSection>
             </TableView>
