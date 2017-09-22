@@ -26,6 +26,7 @@ namespace CognitiveLocatorDAL.Model
         }
     
         public virtual DbSet<Hospital> Hospital { get; set; }
-        public virtual DbSet<Persona> Persona { get; set; }
+        public virtual DbSet<Person> Persona { get; set; }
+        public virtual DbSet<PersonFaces> PersonFacesSet { get; set; }
     }
 }
