@@ -10,10 +10,12 @@ namespace CognitiveLocator
         {
             InitializeComponent();
 
-            if (Device.RuntimePlatform == Device.iOS)
-                MainPage = new HomeView();
-            else
-                MainPage = new NavigationPage(new HomeView());
+            //if (Device.RuntimePlatform == Device.iOS)
+            //    MainPage = new HomeView();
+            //else
+                //MainPage = new NavigationPage(new HomeView());
+
+            MainPage = new NavigationPage(new SearchPersonPage());
         }
     }
 }

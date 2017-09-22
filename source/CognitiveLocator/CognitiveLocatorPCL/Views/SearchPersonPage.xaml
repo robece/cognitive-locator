@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage 
+<views:BaseView 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     xmlns:vm="clr-namespace:CognitiveLocator.ViewModels"
+    xmlns:views="clr-namespace:CognitiveLocator.Views;assembly=CognitiveLocatorPCL"
     x:Class="CognitiveLocator.Views.SearchPersonPage"
     Title="{Binding Title}">
-    <ContentPage.BindingContext>
+    <views:BaseView.BindingContext>
         <vm:SearchPersonViewModel />
-    </ContentPage.BindingContext>
+    </views:BaseView.BindingContext>
 	<ContentPage.Content>
 	</ContentPage.Content>
-</ContentPage>
+</views:BaseView >

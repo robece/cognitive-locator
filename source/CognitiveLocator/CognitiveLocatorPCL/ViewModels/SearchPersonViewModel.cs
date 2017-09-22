@@ -13,7 +13,7 @@ namespace CognitiveLocator.ViewModels
             set { SetProperty(ref _person, value); }
         }
         #endregion
-        public SearchPersonViewModel()
+        public SearchPersonViewModel() : base(new DependencyServiceBase())
         {
             Title = "Buscar";
         }
