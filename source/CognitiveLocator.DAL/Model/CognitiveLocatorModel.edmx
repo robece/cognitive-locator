@@ -87,6 +87,12 @@
           <Property Name="FechaHoraActualizacion" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IdEstatus" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Hospital" Relationship="Self.FK_Persona_Hospital" FromRole="Persona" ToRole="Hospital" />
+          <Property Name="FaceId" Type="String" Nullable="false" />
+          <NavigationProperty Name="Faces" Relationship="CognitiveLocatorDBModel.PersonaPersonaFaces" FromRole="Persona" ToRole="PersonaFaces" />
+          <Property Name="Anchura" Type="String" Nullable="false" />
+          <Property Name="Altura" Type="String" Nullable="false" />
+          <Property Name="MargenIzquierdo" Type="String" Nullable="false" />
+          <Property Name="MargenDerecho" Type="String" Nullable="false" />
         </EntityType>
         <Association Name="FK_Persona_Hospital">
           <End Role="Hospital" Type="Self.Hospital" Multiplicity="1" />
@@ -107,7 +113,39 @@
             <End Role="Hospital" EntitySet="Hospital" />
             <End Role="Persona" EntitySet="Persona" />
           </AssociationSet>
+          <EntitySet Name="PersonaFacesSet" EntityType="CognitiveLocatorDBModel.PersonaFaces" />
+          <AssociationSet Name="PersonaPersonaFaces" Association="CognitiveLocatorDBModel.PersonaPersonaFaces">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="PersonaFaces" EntitySet="PersonaFacesSet" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="PersonaFaces">
+          <Key>
+            <PropertyRef Name="IdPersonaFaces" />
+          </Key>
+          <Property Name="IdPersonaFaces" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPersona" Type="String" Nullable="false" />
+          <Property Name="URL" Type="String" Nullable="false" />
+          <Property Name="FaceId" Type="String" Nullable="false" />
+          <NavigationProperty Name="Persona" Relationship="CognitiveLocatorDBModel.PersonaPersonaFaces" FromRole="PersonaFaces" ToRole="Persona" />
+          <Property Name="PersonaIdPersona" Type="Int32" Nullable="false" />
+          <Property Name="Altura" Type="String" Nullable="false" />
+          <Property Name="Anchura" Type="String" Nullable="false" />
+          <Property Name="MargenIzquierdo" Type="String" Nullable="false" />
+          <Property Name="MargenDerecho" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="PersonaPersonaFaces">
+          <End Type="CognitiveLocatorDBModel.Persona" Role="Persona" Multiplicity="1" />
+          <End Type="CognitiveLocatorDBModel.PersonaFaces" Role="PersonaFaces" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="PersonaFaces">
+              <PropertyRef Name="PersonaIdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
