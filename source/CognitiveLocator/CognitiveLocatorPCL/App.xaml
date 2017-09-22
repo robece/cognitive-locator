@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CognitiveLocator.App">
 	<Application.Resources>
 		<ResourceDictionary>
@@ -13,6 +13,14 @@
 				<Setter Property="BarBackgroundColor" Value="{StaticResource Primary}" />
 				<Setter Property="BarTextColor" Value="White" />
 			</Style>
+
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="DarkBlue" />
+                <Setter Property="BorderColor" Value="White" />
+                <Setter Property="BorderRadius" Value="5" />
+                <Setter Property="BorderWidth" Value="2" />
+                <Setter Property="TextColor" Value="White" />
+            </Style>
 		</ResourceDictionary>
 	</Application.Resources>
 </Application>

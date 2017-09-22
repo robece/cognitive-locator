@@ -33,26 +33,29 @@ namespace CognitiveLocator.Helpers
                     }
             }
 
-            return photo;
+            return await AdjustImageSize(photo);
         }
 
 
         public static async Task<byte[]> AdjustImageSize(byte[] photo)
         {
-            var imageDetails = await CrossImageData.Current.GetImageDetails(photo);
-
-            if (imageDetails.Heigth > 512 || imageDetails.Width > 512)
+            if (photo != null)
             {
-                int bigSide = imageDetails.Heigth > 512 ?
-                                          imageDetails.Heigth :
-                                          imageDetails.Width;
-                
-                float extra = bigSide - 512;
-                float extraPercentage = (extra / bigSide) * 100;
-                int newImagePercentage = (int)(100 - extraPercentage);
+                var imageDetails = await CrossImageData.Current.GetImageDetails(photo);
 
-                photo = await CrossImageResizer.Current.ScaleImageAsync(photo, newImagePercentage, DevKit.Xamarin.ImageKit.Abstractions.ImageFormat.JPG);
-                var newDetails = await CrossImageData.Current.GetImageDetails(photo);
+                if (imageDetails.Heigth > 512 || imageDetails.Width > 512)
+                {
+                    int bigSide = imageDetails.Heigth > 512 ?
+                                              imageDetails.Heigth :
+                                              imageDetails.Width;
+
+                    float extra = bigSide - 512;
+                    float extraPercentage = (extra / bigSide) * 100;
+                    int newImagePercentage = (int)(100 - extraPercentage);
+
+                    photo = await CrossImageResizer.Current.ScaleImageAsync(photo, newImagePercentage, DevKit.Xamarin.ImageKit.Abstractions.ImageFormat.JPG);
+                    var newDetails = await CrossImageData.Current.GetImageDetails(photo);
+                }
             }
             return photo;
         }

@@ -37,9 +37,9 @@ namespace CognitiveLocator.ViewModels
             OnSelectedItemCommand = new Command<Person>(async (obj) =>
             {
                 var page = new PersonDetailPage(obj);
-                var nav = new NavigationService();
+              
 
-                await nav.PushAsync(page);
+                await NavigationService.PushAsync(page);
             });
         }
 
