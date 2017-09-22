@@ -1,6 +1,8 @@
-﻿using System;
+﻿using CognitiveLocator.WebAPI.Class;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -17,33 +19,33 @@ namespace CognitiveLocator.WebAPI.Controllers
         [Route("Post")]
         public async Task<HttpResponseMessage> PostFormData()
         {
+            byte[] fileBytes = null;
+            String FileName = string.Empty;
             // Check if the request contains multipart/form-data.
             if (!Request.Content.IsMimeMultipartContent())
             {
                 throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
             }
-
             string root = HttpContext.Current.Server.MapPath("~/App_Data");
             var provider = new MultipartFormDataStreamProvider(root);
-
             try
             {
-                // Read the form data.
-                await Request.Content.ReadAsMultipartAsync(provider);
-
-                // This illustrates how to get the file names.
+                var filesReadToProvider = await Request.Content.ReadAsMultipartAsync(provider);
+                fileBytes = File.ReadAllBytes(provider.FileData.First().LocalFileName);
                 foreach (MultipartFileData file in provider.FileData)
                 {
-                    Trace.WriteLine(file.Headers.ContentDisposition.FileName);
-                    Trace.WriteLine("Server file path: " + file.LocalFileName);
+                    FileName = file.Headers.ContentDisposition.FileName;
                 }
+
+                ClassStg storage = new ClassStg();
+                string uri = await storage.UploadPhoto(new MemoryStream(fileBytes), FileName);
+                File.Delete(provider.FileData.First().LocalFileName);
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
-
     }
 }

@@ -1,11 +1,8 @@
 ﻿using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
-using System;
-using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 
 namespace CognitiveLocator.WebAPI.Class
 {
@@ -17,13 +14,14 @@ namespace CognitiveLocator.WebAPI.Class
         private CloudBlobContainer CloudBlobContainer;
         private CloudBlockBlob CloudBlockBlob;
 
-        public async Task<string> UploadFile(Stream fileStream, string fileName, string container, string storageAccount, string fileExtension = ".jpg")
+        public async Task<string> UploadFile(Stream fileStream, string fileName, string container, string connectionString, string fileExtension = ".jpg")
         {
+            fileName = fileName.Replace("\"", "");
             fileStream.Seek(0, SeekOrigin.Begin);
-            this.CloudStorageAccount = this.GetCloudStorageAccount(storageAccount);
+            this.CloudStorageAccount = this.GetCloudStorageAccount(connectionString);
             this.CloudBlobClient = GetCloudBlobClient(CloudStorageAccount);
             this.CloudBlobContainer = GetCloudBlobContainer(CloudBlobClient, container);
-            this.CloudBlockBlob = CloudBlobContainer.GetBlockBlobReference(fileName + fileExtension);
+            this.CloudBlockBlob = CloudBlobContainer.GetBlockBlobReference(fileName);
             this.CloudBlockBlob.UploadFromStream(fileStream);
             string uri = this.CloudBlockBlob.Uri.ToString();
             return uri;
@@ -45,7 +43,12 @@ namespace CognitiveLocator.WebAPI.Class
             return blob.GetContainerReference(container);
         }
 
-
-
+        public async Task<string> UploadPhoto(Stream fileStream, string fileName)
+        {
+            string container = ConfigurationManager.AppSettings["StgContainer"].ToString();
+            string connectionString = ConfigurationManager.AppSettings["StgConnectionString"].ToString();
+            var blobUri = await UploadFile(fileStream, fileName, container, connectionString);
+            return blobUri;
+        }
     }
 }
