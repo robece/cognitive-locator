@@ -46,5 +46,7 @@
 	<string>UIStatusBarStyleLightContent</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSCameraUsageDescription</key>
+	<string>Es necesario el acceso a la cámara para el funcionamiento óptimo de la aplicación</string>
 </dict>
 </plist>
