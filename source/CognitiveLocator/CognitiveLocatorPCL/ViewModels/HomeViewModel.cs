@@ -15,5 +15,11 @@ namespace CognitiveLocator.ViewModels
         {
 			DependencyService = dependencyService;
 		}
+
+        public override System.Threading.Tasks.Task OnViewAppear()
+        {
+            this.Title = "Hola a todos!";
+            return base.OnViewAppear();
+        }
     }
 }

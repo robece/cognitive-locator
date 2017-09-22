@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using CognitiveLocator.Services;
 using CognitiveLocator.ViewModels;
 using Xamarin.Forms;
@@ -46,6 +47,15 @@ namespace CognitiveLocator
             OnPropertyChanged(propertyName);
             return true;
         }
+
+		public virtual async Task OnViewAppear()
+		{
+		}
+
+		public virtual async Task OnViewDissapear()
+		{
+            
+		}
 
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
