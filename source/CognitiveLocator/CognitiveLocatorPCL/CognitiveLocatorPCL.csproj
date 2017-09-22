@@ -81,6 +81,10 @@
     <Compile Include="Views\ReportConfirmationPage.xaml.cs">
       <DependentUpon>ReportConfirmationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\SearchPersonMainPage.xaml.cs">
+      <DependentUpon>SearchPersonMainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\SearchPersonMainViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -141,6 +145,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ReportConfirmationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SearchPersonMainPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
