@@ -14,6 +14,7 @@ namespace CognitiveLocator
                 MainPage = new HomeView();
             else
                 MainPage = new NavigationPage(new HomeView());
+
         }
     }
 }
