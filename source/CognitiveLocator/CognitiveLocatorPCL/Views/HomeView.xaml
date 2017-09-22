@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<views:BaseView x:Class="CognitiveLocator.Views.HomeView"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:views="clr-namespace:CognitiveLocator.Views;assembly=CognitiveLocatorPCL"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Grid>
+        <Label Text="{Binding Title}" VerticalOptions="Center" TextColor="Black" HorizontalOptions="Center"/>
+    </Grid>
+</views:BaseView>
