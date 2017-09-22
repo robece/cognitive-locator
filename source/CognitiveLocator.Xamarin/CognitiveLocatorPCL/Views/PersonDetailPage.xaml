@@ -11,9 +11,8 @@
             <Image Source="http://via.placeholder.com/250x250" HeightRequest="150" />
             <TableView Intent="Form" HasUnevenRows="true">
                 <TableSection>
-                    <EntryCell Label="Nombre" Text="{Binding CurrentPerson.Nombre}" IsEnabled="false"/>
-                    <EntryCell Label="Apellidos" Text="{Binding CurrentPerson.Apellidos}" IsEnabled="false"/>
-                    <EntryCell Label="Ubicación" Text="{Binding CurrentPerson.Ubicacion}" IsEnabled="false"/>
+                    <EntryCell Label="Nombre" Text="{Binding CurrentPerson.NameAlias}" IsEnabled="false"/>
+                    <EntryCell Label="Ubicación" Text="{Binding CurrentPerson.Location}" IsEnabled="false"/>
                 </TableSection>
                 <TableSection Title="Ubicación">
                   <ViewCell>

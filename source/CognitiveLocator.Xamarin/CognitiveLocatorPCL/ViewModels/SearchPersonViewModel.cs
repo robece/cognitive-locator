@@ -54,10 +54,9 @@ namespace CognitiveLocator.ViewModels
             {
                 res.Add(new Person
                 {
-                    Nombre = "nombre",
-                    Apellidos = "apellidos",
-                    PhotoURL = "http://via.placeholder.com/150x150",
-                    Ubicacion = "Hospital Angeles"
+                    NameAlias = "nombre",
+                    Picture = "http://via.placeholder.com/150x150",
+                    Location = "Hospital Angeles"
                 });
             }
 
