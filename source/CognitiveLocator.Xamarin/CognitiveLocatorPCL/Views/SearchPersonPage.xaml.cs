@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using CognitiveLocator.Models;
 using CognitiveLocator.ViewModels;
+using Microsoft.Azure.Mobile.Analytics;
 using Xamarin.Forms;
 
 namespace CognitiveLocator.Views
@@ -15,6 +16,7 @@ namespace CognitiveLocator.Views
         {
             InitializeComponent();
             BindingContext = new SearchPersonViewModel();
+            Analytics.TrackEvent("View: Search Person Results");
         }
 
         void Handle_ItemSelected(object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
