@@ -2,13 +2,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CognitiveLocator.iOS", "iOS\CognitiveLocator.iOS.csproj", "{AC959F85-079D-437E-A09E-8C74931EB0D5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CognitiveLocator.Xamarin.iOS", "iOS\CognitiveLocator.Xamarin.iOS.csproj", "{AC959F85-079D-437E-A09E-8C74931EB0D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CognitiveLocator.Droid", "Droid\CognitiveLocator.Droid.csproj", "{7B685DBC-D11C-4415-8FA5-668ECF70843B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CognitiveLocator.Xamarin.Droid", "Droid\CognitiveLocator.Xamarin.Droid.csproj", "{7B685DBC-D11C-4415-8FA5-668ECF70843B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CognitiveLocator.WebAPI", "CognitiveLocator.WebAPI\CognitiveLocator.WebAPI.csproj", "{45C86EFA-3920-45E3-B30B-A92D8E133512}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CognitiveLocatorPCL", "CognitiveLocatorPCL\CognitiveLocatorPCL.csproj", "{55B3A95E-A4F7-4C0E-B251-A2B2830D66DE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CognitiveLocator.Xamarin.PCL", "CognitiveLocatorPCL\CognitiveLocator.Xamarin.PCL.csproj", "{55B3A95E-A4F7-4C0E-B251-A2B2830D66DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -10,7 +10,6 @@ namespace CognitiveLocator
         {
             InitializeComponent();
 
-
             MainPage = new NavigationPage(new HomeView());
 
         }

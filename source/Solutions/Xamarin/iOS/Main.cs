@@ -5,7 +5,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
-namespace CognitiveLocator.iOS
+namespace CognitiveLocator.Xamarin.iOS
 {
     public class Application
     {
