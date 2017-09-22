@@ -4,6 +4,8 @@
 
 **iOS** - [![iOS Build status](https://build.mobile.azure.com/v0.1/apps/9689eff3-57ee-43b4-ba8f-20badf04ed4a/branches/master/badge)](https://mobile.azure.com)
 
+**Bitrise** - [![Build Status](https://www.bitrise.io/app/ad3a233b6499b86a/status.svg?token=qvZPWPygSHD1g3Blr6fj4g&branch=master)](https://www.bitrise.io/app/ad3a233b6499b86a)
+
 ## Credits
 
 Team Face API:
@@ -22,6 +24,7 @@ Team DevOps:
 
 Team Xamarin:
 
+- Cristian González (@DarryStonem)
 - Fernando Arreguin (@FerArreguin92)
 - Gustavo Barrientos (@tavobarrientos)
 - Humberto Jaimes (@humbertojaimes)
