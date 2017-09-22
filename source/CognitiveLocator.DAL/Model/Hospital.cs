@@ -17,16 +17,16 @@ namespace CognitiveLocatorDAL.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Hospital()
         {
-            this.Persona = new HashSet<Persona>();
+            this.Person = new HashSet<Person>();
         }
     
         public int IdHospital { get; set; }
-        public string Hospital1 { get; set; }
-        public string Estado { get; set; }
-        public string Dirección { get; set; }
-        public System.Data.Entity.Spatial.DbGeography Coordenadas { get; set; }
+        public string HospitalName { get; set; }
+        public string State { get; set; }
+        public string Address { get; set; }
+        public System.Data.Entity.Spatial.DbGeography GeoLocation { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Persona> Persona { get; set; }
+        public virtual ICollection<Person> Person { get; set; }
     }
 }
