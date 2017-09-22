@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <views:BaseView 
     xmlns="http://xamarin.com/schemas/2014/forms" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    xmlns:vm="clr-namespace:CognitiveLocator.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:CognitiveLocator.Views;assembly=CognitiveLocatorPCL"
     x:Class="CognitiveLocator.Views.SearchPersonPage"
     Title="{Binding Title}">
@@ -20,10 +19,11 @@
             <ListView
                 ItemsSource="{Binding Results}"
                 RowHeight="80"
+                ItemSelected="Handle_ItemSelected"
                 >
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ImageCell Text="Nombre" Detail="Lugar" ImageSource="{Binding PhotoURL}" />
+                        <ImageCell Text="{Binding Nombre}" Detail="{Binding Ubicacion, StringFormat='Ubicación: {0}'}" ImageSource="{Binding PhotoURL}" />
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

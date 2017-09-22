@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 using CognitiveLocator.Models;
+using CognitiveLocator.Views;
+using Xamarin.Forms;
 
 namespace CognitiveLocator.ViewModels
 {
@@ -20,10 +23,24 @@ namespace CognitiveLocator.ViewModels
             get { return _results; }
             set { SetProperty(ref _results, value); }
         }
+
+        public ICommand OnSelectedItemCommand
+        {
+            get;
+            set;
+        }
         #endregion
         public SearchPersonViewModel() : base(new DependencyServiceBase())
         {
             Title = "Buscar";
+
+            OnSelectedItemCommand = new Command<Person>(async (obj) =>
+            {
+                var page = new PersonDetailPage(obj);
+                var nav = new NavigationService();
+
+                await nav.PushAsync(page);
+            });
         }
 
         #region Overrided Methods
@@ -39,7 +56,8 @@ namespace CognitiveLocator.ViewModels
                 {
                     Nombre = "nombre",
                     Apellidos = "apellidos",
-                    PhotoURL = "http://via.placeholder.com/150x150"
+                    PhotoURL = "http://via.placeholder.com/150x150",
+                    Ubicacion = "Hospital Angeles"
                 });
             }
 
