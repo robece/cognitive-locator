@@ -56,9 +56,18 @@
     <Compile Include="Views\ResultDetailView.xaml.cs">
       <DependentUpon>ResultDetailView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\SearchPersonPage.xaml.cs">
+      <DependentUpon>SearchPersonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\SearchPersonViewModel.cs" />
+    <Compile Include="Models\Person.cs" />
     <Compile Include="ViewModels\ResultDetailViewModel.cs" />
     <Compile Include="ViewModels\ResultsViewModel.cs" />
     <Compile Include="Views\BaseView.cs" />
+    <Compile Include="Views\PersonDetailPage.xaml.cs">
+      <DependentUpon>PersonDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\PersonDetailViewModel.cs" />
     <Compile Include="Helpers\MediaHelper.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -107,6 +116,14 @@
       <SubType>
       </SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\SearchPersonPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\PersonDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Include="Views\HomeView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

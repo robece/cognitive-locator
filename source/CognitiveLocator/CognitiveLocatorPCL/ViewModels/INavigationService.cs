@@ -11,5 +11,7 @@ namespace CognitiveLocator
 		Task PushModalAsync(Page page);
 
 		Task PopToRootAsync();
+
+        Task PushAsync(Page page);
     }
 }
