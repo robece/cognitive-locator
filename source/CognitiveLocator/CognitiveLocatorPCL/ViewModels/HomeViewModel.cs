@@ -34,7 +34,7 @@ namespace CognitiveLocator.ViewModels
 
         private async Task CreateReport()
         {
-            await NavigationService.PushAsync(new SearchPersonPage());
+            await NavigationService.PushAsync(new SearchPersonMainPage());
         }
 
         private async Task SearchPerson()
