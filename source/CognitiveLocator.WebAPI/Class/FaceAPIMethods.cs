@@ -26,7 +26,7 @@ namespace CognitiveLocator.WebAPI.Class
             bool saved = false;
             var client = new HttpClient();
             // Request headers
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", FaceAPIKey);
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key",FaceAPIKey);
             var uri = "https://westus.api.cognitive.microsoft.com/face/v1.0/persongroups/"+PersonGroupId+"/persons";
             HttpResponseMessage response;
             // Request body
@@ -52,7 +52,7 @@ namespace CognitiveLocator.WebAPI.Class
             // Request headers
             client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", FaceAPIKey);
             // Request parameters
-            var uri = "https://westus.api.cognitive.microsoft.com/face/v1.0/persongroups/"+PersonGroupId+"/persons/"+personId+"/persistedFaces?";
+            var uri = "https://westus.api.cognitive.microsoft.com/face/v1.0/persongroups/"+PersonGroupId+"/persons/"+personId+"/persistedFaces";
             HttpResponseMessage response;
             // Request body
             byte[] byteData = Encoding.UTF8.GetBytes("{'url':'"+stgUrl+"'}");
@@ -74,6 +74,19 @@ namespace CognitiveLocator.WebAPI.Class
         public async Task<bool> AddPersonFace(String urlStg, String personId)
         {
             bool saved = false;
+            var client = new HttpClient();
+            // Request headers
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", FaceAPIKey);
+            // Request parameters
+            var uri = "https://westus.api.cognitive.microsoft.com/face/v1.0/persongroups/"+PersonGroupId+"/persons/"+personId+"/persistedFaces";
+            HttpResponseMessage response;
+            // Request body
+            byte[] byteData = Encoding.UTF8.GetBytes("{'url':'http://example.com/1.jpg'}");
+            using (var content = new ByteArrayContent(byteData))
+            {
+                content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                response = await client.PostAsync(uri, content);
+            }
             return saved;
         }
 
@@ -85,6 +98,19 @@ namespace CognitiveLocator.WebAPI.Class
         public async Task<bool> AddFaceToList(String stgUrl)
         {
             bool saved = false;
+            var client = new HttpClient();
+            var queryString = HttpUtility.ParseQueryString(string.Empty);
+            // Request headers
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", FaceAPIKey);
+            var uri = "https://westus.api.cognitive.microsoft.com/face/v1.0/facelists/"+FaceListId+"/persistedFaces";
+            HttpResponseMessage response;
+            // Request body
+            byte[] byteData = Encoding.UTF8.GetBytes("{'url':'http://example.com/1.jpg'}");
+            using (var content = new ByteArrayContent(byteData))
+            {
+                content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                response = await client.PostAsync(uri, content);
+            }
             return saved;
         }
 
@@ -96,6 +122,22 @@ namespace CognitiveLocator.WebAPI.Class
         public async Task<bool> DetectFace(String url)
         {
             bool saved = false;
+            var client = new HttpClient();
+            var queryString = HttpUtility.ParseQueryString(string.Empty);
+            // Request headers
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", FaceAPIKey);
+
+            // Request parameters
+            var uri = "https://westus.api.cognitive.microsoft.com/face/v1.0/detect";
+            HttpResponseMessage response;
+            // Request body
+            byte[] byteData = Encoding.UTF8.GetBytes("{'url':'http://example.com/1.jpg'}");
+
+            using (var content = new ByteArrayContent(byteData))
+            {
+                content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                response = await client.PostAsync(uri, content);
+            }
             return saved;
         }
 
@@ -107,6 +149,19 @@ namespace CognitiveLocator.WebAPI.Class
         public async Task<bool> FindSimilarFace(String faceId)
         {
             bool saved = false;
+            var client = new HttpClient();
+            var queryString = HttpUtility.ParseQueryString(string.Empty);
+            // Request headers
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", FaceAPIKey);
+            var uri = "https://westus.api.cognitive.microsoft.com/face/v1.0/findsimilars";
+            HttpResponseMessage response;
+            // Request body
+            byte[] byteData = Encoding.UTF8.GetBytes("{'faceId':'"+faceId+"','faceListId':'"+ FaceListId+"','maxNumOfCandidatesReturned':1,'mode':'matchPerson'}");
+            using (var content = new ByteArrayContent(byteData))
+            {
+                content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                response = await client.PostAsync(uri, content);
+            }
             return saved;
         }
     }
