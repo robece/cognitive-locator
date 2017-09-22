@@ -4,12 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0a81c865369f45228c8e358f441efbc9" Name="Diagram1">
-        <EntityTypeShape EntityType="CognitiveLocatorDBModel.Hospital" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CognitiveLocatorDBModel.Person" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="CognitiveLocatorDBModel.FK_Persona_Hospital" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="CognitiveLocatorDBModel.PersonFaces" Width="1.5" PointX="5.375" PointY="1" />
-        <AssociationConnector Association="CognitiveLocatorDBModel.PersonPersonFaces" />
+      <Diagram DiagramId="ac75a0b670e4480ca00c84f842230b6f" Name="Diagram1">
+        <EntityTypeShape EntityType="CognitiveLocatorModel.Hospital" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CognitiveLocatorModel.Person" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CognitiveLocatorModel.PersonFaces" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
+        <AssociationConnector Association="CognitiveLocatorModel.FK_Persona_Hospital" ManuallyRouted="false" />
+        <AssociationConnector Association="CognitiveLocatorModel.FK_PersonFaces_Person" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
