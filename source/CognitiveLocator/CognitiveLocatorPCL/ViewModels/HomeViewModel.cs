@@ -8,14 +8,19 @@ namespace CognitiveLocator.ViewModels
     public class HomeViewModel : BaseViewModel
     {
         public Command NavigateToResultsCommand { get; set; }
+		public Command SearchPersonCommand { get; set; }
+		public Command CreateReportCommand { get; set; }
 
-        public HomeViewModel() : this(new DependencyServiceBase())
+
+
+		public HomeViewModel() : this(new DependencyServiceBase())
 		{
             
 		}
 
         public HomeViewModel(IDependencyService dependencyService) : base(dependencyService)
         {
+            Title = "Bienvenido";
 			DependencyService = dependencyService;
             InitializeViewModel();
 		}
@@ -23,16 +28,29 @@ namespace CognitiveLocator.ViewModels
         private void InitializeViewModel()
         {
             NavigateToResultsCommand = new Command(async () => await NavigateToResults());
+            SearchPersonCommand = new Command(async () => await SearchPerson());
+            CreateReportCommand = new Command(async () => await CreateReport());
+        }
+
+        private async Task CreateReport()
+        {
+            await NavigationService.PushAsync(new SearchPersonPage());
+        }
+
+        private async Task SearchPerson()
+        {
+            await NavigationService.PushAsync(new CreateReportPage());
         }
 
         private async Task NavigateToResults()
         {
-            await NavigationService.PushModalAsync(new ResultsView());
+            var photo = await Helpers.MediaHelper.TakePhotoAsync();
+            photo = await Helpers.MediaHelper.AdjustImageSize(photo);
+
         }
 
         public override Task OnViewAppear()
         {
-            this.Title = "Hola a todos!";
             return base.OnViewAppear();
         }
     }
