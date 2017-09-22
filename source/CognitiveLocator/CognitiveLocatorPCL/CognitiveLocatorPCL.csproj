@@ -60,6 +60,12 @@
     <Compile Include="Views\NewItemPage.xaml.cs">
       <DependentUpon>NewItemPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="ViewModels\IDependencyService.cs" />
+    <Compile Include="Services\IRestServices.cs" />
+    <Compile Include="Services\RestServices.cs" />
+    <Compile Include="ViewModels\INavigationService.cs" />
+    <Compile Include="ViewModels\NavigationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
