@@ -59,6 +59,7 @@
     <Compile Include="ViewModels\ResultDetailViewModel.cs" />
     <Compile Include="ViewModels\ResultsViewModel.cs" />
     <Compile Include="Views\BaseView.cs" />
+    <Compile Include="Helpers\MediaHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -79,9 +80,27 @@
     <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xamarin.Forms.2.3.4.247\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
+    <Reference Include="Plugin.Media.Abstractions">
+      <HintPath>..\packages\Xam.Plugin.Media.3.0.1\lib\netstandard1.0\Plugin.Media.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Media">
+      <HintPath>..\packages\Xam.Plugin.Media.3.0.1\lib\netstandard1.0\Plugin.Media.dll</HintPath>
+    </Reference>
+    <Reference Include="DevKit.Xamarin.ImageKit.Abstractions">
+      <HintPath>BinExternal\libs\DevKit.Xamarin.ImageKit\DevKit.Xamarin.ImageKit.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="DevKit.Xamarin.ImageKit">
+      <HintPath>BinExternal\libs\DevKit.Xamarin.ImageKit\DevKit.Xamarin.ImageKit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="BinExternal\libs\DevKit.Xamarin.ImageKit\DevKit.Xamarin.ImageKit.Abstractions.dll" />
+    <None Include="BinExternal\libs\DevKit.Xamarin.ImageKit\DevKit.Xamarin.ImageKit.dll" />
+    <None Include="BinExternal\libs\DevKit.Xamarin.ImageKit.Droid\DevKit.Xamarin.ImageKit.Abstractions.dll" />
+    <None Include="BinExternal\libs\DevKit.Xamarin.ImageKit.Droid\DevKit.Xamarin.ImageKit.dll" />
+    <None Include="BinExternal\libs\DevKit.Xamarin.ImageKit.iOS\DevKit.Xamarin.ImageKit.Abstractions.dll" />
+    <None Include="BinExternal\libs\DevKit.Xamarin.ImageKit.iOS\DevKit.Xamarin.ImageKit.dll" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">
@@ -100,6 +119,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="BinExternal\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
