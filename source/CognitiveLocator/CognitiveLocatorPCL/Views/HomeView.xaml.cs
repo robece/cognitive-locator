@@ -10,6 +10,7 @@ namespace CognitiveLocator.Views
         public HomeView()
         {
             InitializeComponent();
+            BindingContext = new HomeViewModel();
         }
     }
 }
