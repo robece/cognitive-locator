@@ -63,40 +63,40 @@
             <PropertyRef Name="IdHospital" />
           </Key>
           <Property Name="IdHospital" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Hospital1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Dirección" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Coordenadas" Type="Geography" />
-          <NavigationProperty Name="Persona" Relationship="Self.FK_Persona_Hospital" FromRole="Hospital" ToRole="Persona" />
+          <Property Name="HospitalName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="GeoLocation" Type="Geography" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_Persona_Hospital" FromRole="Hospital" ToRole="Persona" />
         </EntityType>
-        <EntityType Name="Persona">
+        <EntityType Name="Person">
           <Key>
-            <PropertyRef Name="IdPersona" />
+            <PropertyRef Name="IdPerson" />
           </Key>
-          <Property Name="IdPersona" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdSituacion" Type="Int32" Nullable="false" />
-          <Property Name="NombreAlias" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Edad" Type="Int32" Nullable="false" />
-          <Property Name="Foto" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Ubicacion" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Coordenadas" Type="Geography" Nullable="false" />
+          <Property Name="IdPerson" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IsFound" Type="Int32" Nullable="false" />
+          <Property Name="NameAlias" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Age" Type="Int32" Nullable="false" />
+          <Property Name="Picture" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Location" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="GeoLocation" Type="Geography" Nullable="false" />
           <Property Name="IdHospital" Type="Int32" Nullable="false" />
-          <Property Name="Notas" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Fuente" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="FechaHoraAgregado" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="FechaHoraActualizacion" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="IdEstatus" Type="Int32" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Source" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Hospital" Relationship="Self.FK_Persona_Hospital" FromRole="Persona" ToRole="Hospital" />
           <Property Name="FaceId" Type="String" Nullable="false" />
-          <NavigationProperty Name="Faces" Relationship="CognitiveLocatorDBModel.PersonaPersonaFaces" FromRole="Persona" ToRole="PersonaFaces" />
-          <Property Name="Anchura" Type="String" Nullable="false" />
-          <Property Name="Altura" Type="String" Nullable="false" />
-          <Property Name="MargenIzquierdo" Type="String" Nullable="false" />
-          <Property Name="MargenDerecho" Type="String" Nullable="false" />
+          <Property Name="Width" Type="String" Nullable="false" />
+          <Property Name="Height" Type="String" Nullable="false" />
+          <Property Name="LeftMargin" Type="String" Nullable="false" />
+          <Property Name="RightMargin" Type="String" Nullable="false" />
+          <NavigationProperty Name="PersonFaces" Relationship="CognitiveLocatorDBModel.PersonPersonFaces" FromRole="Person" ToRole="PersonFaces" />
         </EntityType>
         <Association Name="FK_Persona_Hospital">
           <End Role="Hospital" Type="Self.Hospital" Multiplicity="1" />
-          <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
+          <End Role="Persona" Type="CognitiveLocatorDBModel.Person" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Hospital">
               <PropertyRef Name="IdHospital" />
@@ -108,41 +108,41 @@
         </Association>
         <EntityContainer Name="CognitiveLocatorDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Hospital" EntityType="Self.Hospital" />
-          <EntitySet Name="Persona" EntityType="Self.Persona" />
+          <EntitySet Name="Persona" EntityType="CognitiveLocatorDBModel.Person" />
           <AssociationSet Name="FK_Persona_Hospital" Association="Self.FK_Persona_Hospital">
             <End Role="Hospital" EntitySet="Hospital" />
             <End Role="Persona" EntitySet="Persona" />
           </AssociationSet>
-          <EntitySet Name="PersonaFacesSet" EntityType="CognitiveLocatorDBModel.PersonaFaces" />
-          <AssociationSet Name="PersonaPersonaFaces" Association="CognitiveLocatorDBModel.PersonaPersonaFaces">
-            <End Role="Persona" EntitySet="Persona" />
-            <End Role="PersonaFaces" EntitySet="PersonaFacesSet" />
+          <EntitySet Name="PersonFacesSet" EntityType="CognitiveLocatorDBModel.PersonFaces" />
+          <AssociationSet Name="PersonPersonFaces" Association="CognitiveLocatorDBModel.PersonPersonFaces">
+            <End Role="Person" EntitySet="Persona" />
+            <End Role="PersonFaces" EntitySet="PersonFacesSet" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="PersonaFaces">
+        <EntityType Name="PersonFaces">
           <Key>
-            <PropertyRef Name="IdPersonaFaces" />
+            <PropertyRef Name="IdPersonFaces" />
           </Key>
-          <Property Name="IdPersonaFaces" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdPersona" Type="String" Nullable="false" />
+          <Property Name="IdPersonFaces" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPerson" Type="String" Nullable="false" />
           <Property Name="URL" Type="String" Nullable="false" />
           <Property Name="FaceId" Type="String" Nullable="false" />
-          <NavigationProperty Name="Persona" Relationship="CognitiveLocatorDBModel.PersonaPersonaFaces" FromRole="PersonaFaces" ToRole="Persona" />
-          <Property Name="PersonaIdPersona" Type="Int32" Nullable="false" />
-          <Property Name="Altura" Type="String" Nullable="false" />
-          <Property Name="Anchura" Type="String" Nullable="false" />
-          <Property Name="MargenIzquierdo" Type="String" Nullable="false" />
-          <Property Name="MargenDerecho" Type="String" Nullable="false" />
+          <Property Name="Height" Type="String" Nullable="false" />
+          <Property Name="Width" Type="String" Nullable="false" />
+          <Property Name="LeftMargin" Type="String" Nullable="false" />
+          <Property Name="RightMargin" Type="String" Nullable="false" />
+          <NavigationProperty Name="Person" Relationship="CognitiveLocatorDBModel.PersonPersonFaces" FromRole="PersonFaces" ToRole="Person" />
+          <Property Name="PersonIdPerson" Type="Int32" Nullable="false" />
         </EntityType>
-        <Association Name="PersonaPersonaFaces">
-          <End Type="CognitiveLocatorDBModel.Persona" Role="Persona" Multiplicity="1" />
-          <End Type="CognitiveLocatorDBModel.PersonaFaces" Role="PersonaFaces" Multiplicity="*" />
+        <Association Name="PersonPersonFaces">
+          <End Type="CognitiveLocatorDBModel.Person" Role="Person" Multiplicity="1" />
+          <End Type="CognitiveLocatorDBModel.PersonFaces" Role="PersonFaces" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Persona">
-              <PropertyRef Name="IdPersona" />
+            <Principal Role="Person">
+              <PropertyRef Name="IdPerson" />
             </Principal>
-            <Dependent Role="PersonaFaces">
-              <PropertyRef Name="PersonaIdPersona" />
+            <Dependent Role="PersonFaces">
+              <PropertyRef Name="PersonIdPerson" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -156,29 +156,29 @@
             <EntityTypeMapping TypeName="CognitiveLocatorDBModel.Hospital">
               <MappingFragment StoreEntitySet="Hospital">
                 <ScalarProperty Name="IdHospital" ColumnName="IdHospital" />
-                <ScalarProperty Name="Hospital1" ColumnName="Hospital" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Dirección" ColumnName="Dirección" />
-                <ScalarProperty Name="Coordenadas" ColumnName="Coordenadas" />
+                <ScalarProperty Name="HospitalName" ColumnName="Hospital" />
+                <ScalarProperty Name="State" ColumnName="Estado" />
+                <ScalarProperty Name="Address" ColumnName="Dirección" />
+                <ScalarProperty Name="GeoLocation" ColumnName="Coordenadas" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Persona">
-            <EntityTypeMapping TypeName="CognitiveLocatorDBModel.Persona">
+            <EntityTypeMapping TypeName="CognitiveLocatorDBModel.Person">
               <MappingFragment StoreEntitySet="Persona">
-                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
-                <ScalarProperty Name="IdSituacion" ColumnName="IdSituacion" />
-                <ScalarProperty Name="NombreAlias" ColumnName="NombreAlias" />
-                <ScalarProperty Name="Edad" ColumnName="Edad" />
-                <ScalarProperty Name="Foto" ColumnName="Foto" />
-                <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
-                <ScalarProperty Name="Coordenadas" ColumnName="Coordenadas" />
+                <ScalarProperty Name="IdPerson" ColumnName="IdPersona" />
+                <ScalarProperty Name="IsFound" ColumnName="IdSituacion" />
+                <ScalarProperty Name="NameAlias" ColumnName="NombreAlias" />
+                <ScalarProperty Name="Age" ColumnName="Edad" />
+                <ScalarProperty Name="Picture" ColumnName="Foto" />
+                <ScalarProperty Name="Location" ColumnName="Ubicacion" />
+                <ScalarProperty Name="GeoLocation" ColumnName="Coordenadas" />
                 <ScalarProperty Name="IdHospital" ColumnName="IdHospital" />
-                <ScalarProperty Name="Notas" ColumnName="Notas" />
-                <ScalarProperty Name="Fuente" ColumnName="Fuente" />
-                <ScalarProperty Name="FechaHoraAgregado" ColumnName="FechaHoraAgregado" />
-                <ScalarProperty Name="FechaHoraActualizacion" ColumnName="FechaHoraActualizacion" />
-                <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
+                <ScalarProperty Name="Notes" ColumnName="Notas" />
+                <ScalarProperty Name="Source" ColumnName="Fuente" />
+                <ScalarProperty Name="CreatedDate" ColumnName="FechaHoraAgregado" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="FechaHoraActualizacion" />
+                <ScalarProperty Name="IsActive" ColumnName="IdEstatus" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
