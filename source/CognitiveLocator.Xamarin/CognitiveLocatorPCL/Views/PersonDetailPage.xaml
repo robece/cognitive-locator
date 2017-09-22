@@ -3,16 +3,26 @@
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     xmlns:views="clr-namespace:CognitiveLocator.Views;assembly=CognitiveLocatorPCL"
+    xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
     x:Class="CognitiveLocator.Views.PersonDetailPage"
     Title="{Binding Title}">
 	<views:BaseView.Content>
         <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-            <Image Source="http://via.placeholder.com/250x250" HeightRequest="200" />
-            <TableView>
+            <Image Source="http://via.placeholder.com/250x250" HeightRequest="150" />
+            <TableView Intent="Form" HasUnevenRows="true">
                 <TableSection>
                     <EntryCell Label="Nombre" Text="{Binding CurrentPerson.Nombre}" IsEnabled="false"/>
                     <EntryCell Label="Apellidos" Text="{Binding CurrentPerson.Apellidos}" IsEnabled="false"/>
                     <EntryCell Label="Ubicación" Text="{Binding CurrentPerson.Ubicacion}" IsEnabled="false"/>
+                </TableSection>
+                <TableSection Title="Ubicación">
+                  <ViewCell>
+                    <!--<maps:Map HeightRequest="200"
+                        x:Name="MyMap"
+                        IsShowingUser="true"
+                        MapType="Hybrid"
+                    />-->
+                  </ViewCell>
                 </TableSection>
             </TableView>
         </StackLayout>
