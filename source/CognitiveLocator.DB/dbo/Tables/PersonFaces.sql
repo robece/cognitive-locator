@@ -9,6 +9,6 @@
     [LeftMargin] FLOAT NULL, 
     [RightMargin] FLOAT NULL, 
     CONSTRAINT [PK_PersonaFaces] PRIMARY KEY ([IdPersonFaces] ASC), 
-    CONSTRAINT [FK_PersonFaces_Person] FOREIGN KEY ([idPerson]) REFERENCES [dbo].[Persona]([IdPerson]),
+    CONSTRAINT [FK_PersonFaces_Person] FOREIGN KEY ([idPerson]) REFERENCES [dbo].[Person]([IdPerson]),
 
 )
