@@ -137,12 +137,16 @@
     <AndroidResource Include="Resources\layout\Tabbar.axml" />
     <AndroidResource Include="Resources\layout\Toolbar.axml" />
     <AndroidResource Include="Resources\values\styles.xml" />
+    <AndroidResource Include="Resources\values-v24\styles.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CognitiveLocatorPCL\CognitiveLocatorPCL.csproj">
       <Project>{55b3a95e-a4f7-4c0e-b251-a2b2830d66de}</Project>
       <Name>CognitiveLocatorPCL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\values-v24\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Build.Download.0.4.6\build\Xamarin.Build.Download.targets" Condition="Exists('..\packages\Xamarin.Build.Download.0.4.6\build\Xamarin.Build.Download.targets')" />
