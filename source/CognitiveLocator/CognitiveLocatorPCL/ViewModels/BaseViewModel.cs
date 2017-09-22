@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-
+using System.Threading.Tasks;
+using CognitiveLocator.Services;
+using CognitiveLocator.ViewModels;
 using Xamarin.Forms;
 
 namespace CognitiveLocator
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>() ?? new MockDataStore();
+        public IDependencyService DependencyService;
+        protected readonly INavigationService PageService;
+        public IRestServices RestServices;
 
         bool isBusy = false;
         public bool IsBusy
@@ -25,6 +29,17 @@ namespace CognitiveLocator
             set { SetProperty(ref title, value); }
         }
 
+        public BaseViewModel(IDependencyService dependencyService)
+        {
+            DependencyService = dependencyService;
+            RestServices = DependencyService.Get<IRestServices>();
+        }
+
+        public BaseViewModel()
+        {
+            RestServices = DependencyService.Get<IRestServices>();
+        }
+
         protected bool SetProperty<T>(ref T backingStore, T value,
             [CallerMemberName]string propertyName = "",
             Action onChanged = null)
@@ -37,6 +52,15 @@ namespace CognitiveLocator
             OnPropertyChanged(propertyName);
             return true;
         }
+
+		public virtual async Task OnViewAppear()
+		{
+		}
+
+		public virtual async Task OnViewDissapear()
+		{
+            
+		}
 
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
