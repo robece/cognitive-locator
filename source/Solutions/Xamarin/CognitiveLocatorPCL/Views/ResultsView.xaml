@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<views:BaseView x:Class="CognitiveLocator.Views.ResultsView"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:views="clr-namespace:CognitiveLocator.Views;assembly=CognitiveLocatorPCL"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <StackLayout>
+        <Label HorizontalOptions="Center"
+               VerticalOptions="Center"
+               Text="{Binding Title}"
+               TextColor="Black" />
+        <Button />
+    </StackLayout>
+</views:BaseView>
