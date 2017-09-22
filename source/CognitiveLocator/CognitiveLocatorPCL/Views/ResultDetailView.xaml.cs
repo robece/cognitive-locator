@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using CognitiveLocator.ViewModels;
 using Xamarin.Forms;
 
 namespace CognitiveLocator.Views
@@ -10,6 +10,7 @@ namespace CognitiveLocator.Views
         public ResultDetailView()
         {
             InitializeComponent();
+            BindingContext = new ResultDetailViewModel();
         }
     }
 }
