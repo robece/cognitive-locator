@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CognitiveLocator.iOS", "iOS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CognitiveLocator.Droid", "Droid\CognitiveLocator.Droid.csproj", "{7B685DBC-D11C-4415-8FA5-668ECF70843B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CognitiveLocator.MobileAppService", "MobileAppService\CognitiveLocator.MobileAppService.csproj", "{A3E3F8DA-3957-43A4-AB94-85B17A10E79A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator
@@ -43,17 +41,5 @@ Global
 		{7B685DBC-D11C-4415-8FA5-668ECF70843B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B685DBC-D11C-4415-8FA5-668ECF70843B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B685DBC-D11C-4415-8FA5-668ECF70843B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A3E3F8DA-3957-43A4-AB94-85B17A10E79A}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{A3E3F8DA-3957-43A4-AB94-85B17A10E79A}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{A3E3F8DA-3957-43A4-AB94-85B17A10E79A}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{A3E3F8DA-3957-43A4-AB94-85B17A10E79A}.Release|iPhone.Build.0 = Release|Any CPU
-		{A3E3F8DA-3957-43A4-AB94-85B17A10E79A}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{A3E3F8DA-3957-43A4-AB94-85B17A10E79A}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
-		{A3E3F8DA-3957-43A4-AB94-85B17A10E79A}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{A3E3F8DA-3957-43A4-AB94-85B17A10E79A}.Debug|iPhone.Build.0 = Debug|Any CPU
-		{A3E3F8DA-3957-43A4-AB94-85B17A10E79A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A3E3F8DA-3957-43A4-AB94-85B17A10E79A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A3E3F8DA-3957-43A4-AB94-85B17A10E79A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A3E3F8DA-3957-43A4-AB94-85B17A10E79A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
