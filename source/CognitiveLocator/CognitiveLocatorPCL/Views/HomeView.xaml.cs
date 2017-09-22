@@ -12,10 +12,5 @@ namespace CognitiveLocator.Views
             InitializeComponent();
             BindingContext = new HomeViewModel();
         }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-        }
     }
 }
