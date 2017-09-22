@@ -4,4 +4,30 @@
 
 **iOS** - [![iOS Build status](https://build.mobile.azure.com/v0.1/apps/9689eff3-57ee-43b4-ba8f-20badf04ed4a/branches/master/badge)](https://mobile.azure.com)
 
-Xamarin Application and web services for the app
+## Credits
+
+Team Face API:
+
+- Lucia Vázquez (@analuciavazquez) 
+- Victor Manuel Islas (@OnlyD)
+
+Team Azure SQL:
+
+- Daniel Courtois (@dhcourtois)
+- Cristian Levi (@Baneforce)
+
+Team DevOps: 
+
+- Cristian González (@DarryStonem)
+
+Team Xamarin:
+
+- Fernando Arreguin (@FerArreguin92)
+- Gustavo Barrientos (@tavobarrientos)
+- Humberto Jaimes (@humbertojaimes)
+- Leonardo Romero (@Micnick)
+- Vicente Guzman (@LucioMSP)
+
+Team Lead:
+
+- Roberto Cervantes (@rcervantes)
