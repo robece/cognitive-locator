@@ -1,5 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<views:BaseView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CognitiveLocator.Views.CreateReportPage" xmlns:views="clr-namespace:CognitiveLocator.Views" xmlns:viewmodels="clr-namespace:CognitiveLocator.ViewModels" xmlns:converters="clr-namespace:CognitiveLocator.Views.Converters" xmlns:effects="clr-namespace:CognitiveLocator.Views.Effects" Title="{Binding Title}" IsBusy="{Binding IsBusy}" xmlns:behaviors="clr-namespace:CognitiveLocator.Views.Behaviors">
+<?xml version="1.0" encoding="UTF-8" ?>
+<views:BaseView x:Class="CognitiveLocator.Views.CreateReportPage"
+                xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:behaviors="clr-namespace:CognitiveLocator.Views.Behaviors"
+                xmlns:converters="clr-namespace:CognitiveLocator.Views.Converters"
+                xmlns:effects="clr-namespace:CognitiveLocator.Views.Effects"
+                xmlns:viewmodels="clr-namespace:CognitiveLocator.ViewModels"
+                xmlns:views="clr-namespace:CognitiveLocator.Views"
+                Title="{Binding Title}"
+                IsBusy="{Binding IsBusy}">
     <views:BaseView.BindingContext>
         <viewmodels:CreateReportViewModel />
     </views:BaseView.BindingContext>
@@ -9,28 +18,53 @@
         </ResourceDictionary>
     </views:BaseView.Resources>
     <ContentPage.Content>
-        <TableView Intent="Form" HasUnevenRows="true" BackgroundColor="White">
+        <TableView BackgroundColor="White"
+                   HasUnevenRows="true"
+                   Intent="Form">
             <TableView.Effects>
                 <effects:NoInteractiveTableViewEffect />
             </TableView.Effects>
             <TableSection Title="Foto">
                 <ViewCell>
                     <StackLayout>
-                        <Frame Margin="0,5,0,0" HeightRequest="154" WidthRequest="154" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Black" OutlineColor="Black" Padding="2">
-                            <Image HeightRequest="150" WidthRequest="150" HorizontalOptions="Center" VerticalOptions="Center" Source="{Binding Photo, Converter={StaticResource photoCvt}}" Aspect="AspectFill" />
+                        <Frame Margin="0,5,0,0"
+                               WidthRequest="154"
+                               HeightRequest="154"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               BackgroundColor="Black"
+                               OutlineColor="Black"
+                               Padding="2">
+                            <Image WidthRequest="150"
+                                   HeightRequest="150"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   Aspect="AspectFill"
+                                   Source="{Binding Photo,
+                                                    Converter={StaticResource photoCvt}}" />
                         </Frame>
-                        <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" HorizontalOptions="Center" />
-                        <StackLayout VerticalOptions="Center" Orientation="Horizontal" Margin="20,0,20,0">
-                            <Button HorizontalOptions="FillAndExpand" Text="Cámara" Command="{Binding TakePhotoCommand}" />
-                            <Button HorizontalOptions="FillAndExpand" Text="Galería" Command="{Binding ChoosePhotoCommand}" />
+                        <ActivityIndicator HorizontalOptions="Center"
+                                           IsRunning="{Binding IsBusy}"
+                                           IsVisible="{Binding IsBusy}" />
+                        <StackLayout Margin="20,0,20,0"
+                                     VerticalOptions="Center"
+                                     Orientation="Horizontal">
+                            <Button HorizontalOptions="FillAndExpand"
+                                    Command="{Binding TakePhotoCommand}"
+                                    Text="Cámara" />
+                            <Button HorizontalOptions="FillAndExpand"
+                                    Command="{Binding ChoosePhotoCommand}"
+                                    Text="Galería" />
                         </StackLayout>
                     </StackLayout>
                 </ViewCell>
             </TableSection>
             <TableSection Title="Datos de la persona">
                 <ViewCell>
-                    <StackLayout Orientation="Horizontal" Margin="10,3">
-                        <Label VerticalOptions="Center" Text="Nombre" WidthRequest="80" />
+                    <StackLayout Margin="10,3" Orientation="Horizontal">
+                        <Label WidthRequest="80"
+                               VerticalOptions="Center"
+                               Text="Nombre" />
                         <Entry HorizontalOptions="FillAndExpand" Text="{Binding Name}">
                             <Entry.Effects>
                                 <effects:KeyboardReturnEffect />
@@ -42,9 +76,13 @@
                     </StackLayout>
                 </ViewCell>
                 <ViewCell>
-                    <StackLayout Orientation="Horizontal" Margin="10,3">
-                        <Label VerticalOptions="Center" Text="Apellido" WidthRequest="80" />
-                        <Entry x:Name="entryLastName" HorizontalOptions="FillAndExpand" Text="{Binding LastName}">
+                    <StackLayout Margin="10,3" Orientation="Horizontal">
+                        <Label WidthRequest="80"
+                               VerticalOptions="Center"
+                               Text="Apellido" />
+                        <Entry x:Name="entryLastName"
+                               HorizontalOptions="FillAndExpand"
+                               Text="{Binding LastName}">
                             <Entry.Effects>
                                 <effects:KeyboardReturnEffect />
                             </Entry.Effects>
@@ -55,9 +93,13 @@
                     </StackLayout>
                 </ViewCell>
                 <ViewCell>
-                    <StackLayout Orientation="Horizontal" Margin="10,3">
-                        <Label VerticalOptions="Center" Text="Edad" WidthRequest="80" />
-                        <Entry x:Name="entryAge" HorizontalOptions="FillAndExpand" Text="{Binding Age}">
+                    <StackLayout Margin="10,3" Orientation="Horizontal">
+                        <Label WidthRequest="80"
+                               VerticalOptions="Center"
+                               Text="Edad" />
+                        <Entry x:Name="entryAge"
+                               HorizontalOptions="FillAndExpand"
+                               Text="{Binding Age}">
                             <Entry.Effects>
                                 <effects:KeyboardReturnEffect />
                             </Entry.Effects>
@@ -68,13 +110,17 @@
                     </StackLayout>
                 </ViewCell>
                 <ViewCell>
-                    <StackLayout Orientation="Horizontal" Margin="10,3">
-                        <Label VerticalOptions="Center" Text="Ubicación" WidthRequest="80" />
-                        <Entry x:Name="entryLocation" HorizontalOptions="FillAndExpand" Text="{Binding Location}" />
+                    <StackLayout Margin="10,3" Orientation="Horizontal">
+                        <Label WidthRequest="80"
+                               VerticalOptions="Center"
+                               Text="Ubicación" />
+                        <Entry x:Name="entryLocation"
+                               HorizontalOptions="FillAndExpand"
+                               Text="{Binding Location}" />
                     </StackLayout>
                 </ViewCell>
                 <ViewCell>
-                    <Button  Text="Continuar" Command="{Binding PreviewReportCommand}" />
+                    <Button Command="{Binding PreviewReportCommand}" Text="Continuar" />
                 </ViewCell>
             </TableSection>
         </TableView>
