@@ -182,4 +182,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="HospitalName" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="e362fb3e-bcd8-42c0-80c0-20fff027d37c" ChangeDateTime="09/23/2017 00:51:43">
+    <Property Name="ElementName" Value="[dbo].[Person].[NameAlias]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Person]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Nam" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="7d3443c4-b590-42ad-ac2c-f20ac826ab8c" ChangeDateTime="09/23/2017 00:51:46">
+    <Property Name="ElementName" Value="[dbo].[Person].[Nam]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Person]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Name" />
+  </Operation>
 </Operations>

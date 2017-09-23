@@ -14,6 +14,8 @@ namespace CognitiveLocatorDAL.Model
     
     public partial class Hospital
     {
+
+        //Se va
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Hospital()
         {
