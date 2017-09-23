@@ -46,31 +46,6 @@ namespace CognitiveLocator.WebAPI.Class
         /// <summary>
         /// https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b
         /// </summary>
-        /// <param name="stgUrl"></param>
-        /// <param name="personId"></param>
-        /// <returns>Este metodo retorna un FaceId para guardar en la base de datos</returns>
-        //public async Task<HttpResponseMessage> AddFaceToMissingPeopleAsync(String stgUrl, String personId)
-        //{
-        //    var client = new HttpClient();
-        //    // Request headers
-        //    client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", FaceAPIKey);
-        //    // Request parameters
-        //    var uri = "https://westus.api.cognitive.microsoft.com/face/v1.0/persongroups/"+PersonGroupId+"/persons/"+personId+"/persistedFaces";
-        //    HttpResponseMessage response;
-        //    // Request body
-        //    byte[] byteData = Encoding.UTF8.GetBytes("{'url':'"+stgUrl+"'}");
-        //    using (var content = new ByteArrayContent(byteData))
-        //    {
-        //        content.Headers.ContentType = new MediaTypeHeaderValue("application/json >");
-        //        response = await client.PostAsync(uri, content);
-        //    }
-
-        //    return response;
-        //}
-
-        /// <summary>
-        /// https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b
-        /// </summary>
         /// <param name="urlStg"></param>
         /// <param name="personId"></param>
         /// <returns>Regresa un persistedFaceId</returns>
