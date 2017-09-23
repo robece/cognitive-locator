@@ -8,20 +8,17 @@
     xmlns:effects="clr-namespace:CognitiveLocator.Views.Effects"
     x:Class="CognitiveLocator.Views.SearchPersonMainPage"
     Title="{Binding Title}">
-    <views:BaseView.BindingContext>
-        <viewmodels:SearchPersonMainViewModel />
-    </views:BaseView.BindingContext>
     <views:BaseView.Resources>
         <ResourceDictionary>
             <converters:ByteArrayToImageConverter x:Key="photoCvt" />
         </ResourceDictionary>
     </views:BaseView.Resources>
 	<views:BaseView.Content>
-        <TableView Intent="Form" HasUnevenRows="true" BackgroundColor="White">
+        <TableView Intent="Form" HasUnevenRows="true" x:Name="table" BackgroundColor="White">
             <TableView.Effects>
                 <effects:NoInteractiveTableViewEffect />
             </TableView.Effects>
-            <TableSection Title="Foto">
+            <TableSection x:Name="SectionByPicture" Title="Foto">
                 <ViewCell>
                     <StackLayout>
                         <Frame Margin="0,5,0,0" HeightRequest="154" WidthRequest="154" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Black" OutlineColor="Black" Padding="2">
@@ -35,7 +32,7 @@
                     </StackLayout>
                 </ViewCell>
             </TableSection>
-            <TableSection Title="Datos de la persona">
+            <TableSection x:Name="SectionByName" Title="Datos de la persona">
                 <ViewCell>
                     <StackLayout Orientation="Horizontal" Margin="10,3">
                         <Label VerticalOptions="Center" Text="Nombre" WidthRequest="70" />
