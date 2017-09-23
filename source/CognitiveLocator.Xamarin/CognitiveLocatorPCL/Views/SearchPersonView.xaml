@@ -1,58 +1,105 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<views:BaseView 
-    xmlns="http://xamarin.com/schemas/2014/forms" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    xmlns:views="clr-namespace:CognitiveLocator.Views" 
-    xmlns:viewmodels="clr-namespace:CognitiveLocator.ViewModels" 
-    xmlns:converters="clr-namespace:CognitiveLocator.Views.Converters" 
-    xmlns:effects="clr-namespace:CognitiveLocator.Views.Effects"
-    x:Class="CognitiveLocator.Views.SearchPersonView"
-    Title="{Binding Title}">
+<?xml version="1.0" encoding="UTF-8" ?>
+<views:BaseView x:Class="CognitiveLocator.Views.SearchPersonView"
+                xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:converters="clr-namespace:CognitiveLocator.Views.Converters"
+                xmlns:effects="clr-namespace:CognitiveLocator.Views.Effects"
+                xmlns:viewmodels="clr-namespace:CognitiveLocator.ViewModels"
+                xmlns:views="clr-namespace:CognitiveLocator.Views"
+                Title="{Binding Title}">
     <views:BaseView.Resources>
         <ResourceDictionary>
             <converters:ByteArrayToImageConverter x:Key="photoCvt" />
         </ResourceDictionary>
     </views:BaseView.Resources>
     <views:BaseView.Content>
-        <TableView Intent="Form" HasUnevenRows="true" x:Name="table" BackgroundColor="White">
+        <TableView x:Name="table"
+                   BackgroundColor="White"
+                   HasUnevenRows="true"
+                   Intent="Form">
             <TableView.Effects>
                 <effects:NoInteractiveTableViewEffect />
             </TableView.Effects>
             <TableSection x:Name="SectionByPicture" Title="Fotografía">
                 <ViewCell>
                     <StackLayout Margin="40,0,40,0">
-                        <Frame Margin="0,5,0,0" HeightRequest="154" WidthRequest="154" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Black" OutlineColor="Black" Padding="2">
-                            <Image HeightRequest="150" WidthRequest="150" HorizontalOptions="Center" VerticalOptions="Center" Source="{Binding Photo, Converter={StaticResource photoCvt}}" Aspect="AspectFill" />
+                        <Frame Margin="0,5,0,0"
+                               WidthRequest="154"
+                               HeightRequest="154"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               BackgroundColor="Black"
+                               OutlineColor="Black"
+                               Padding="2">
+                            <Image WidthRequest="150"
+                                   HeightRequest="150"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   Aspect="AspectFill"
+                                   Source="{Binding Photo,
+                                                    Converter={StaticResource photoCvt}}" />
                         </Frame>
-                        <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" HorizontalOptions="Center" />
-                        <StackLayout VerticalOptions="Center" Orientation="Horizontal" Margin="20,0,20,0">
-                            <Button HorizontalOptions="FillAndExpand" Text="Cámara" Command="{Binding TakePhotoCommand}" 
-                                FontSize="18" BackgroundColor="#048CD6" HeightRequest="50" BorderRadius="15" BorderColor="White" BorderWidth="2" />
-                            <Button HorizontalOptions="FillAndExpand" Text="Galería" Command="{Binding ChoosePhotoCommand}" 
-                                FontSize="18" BackgroundColor="#048CD6" HeightRequest="50" BorderRadius="15" BorderColor="White" BorderWidth="2" />
+                        <ActivityIndicator HorizontalOptions="Center"
+                                           IsRunning="{Binding IsBusy}"
+                                           IsVisible="{Binding IsBusy}" />
+                        <StackLayout Margin="20,0,20,0"
+                                     VerticalOptions="Center"
+                                     Orientation="Horizontal">
+                            <Button HeightRequest="50"
+                                    HorizontalOptions="FillAndExpand"
+                                    BackgroundColor="#048CD6"
+                                    BorderColor="White"
+                                    BorderRadius="15"
+                                    BorderWidth="2"
+                                    Command="{Binding TakePhotoCommand}"
+                                    FontSize="18"
+                                    Text="Cámara" />
+                            <Button HeightRequest="50"
+                                    HorizontalOptions="FillAndExpand"
+                                    BackgroundColor="#048CD6"
+                                    BorderColor="White"
+                                    BorderRadius="15"
+                                    BorderWidth="2"
+                                    Command="{Binding ChoosePhotoCommand}"
+                                    FontSize="18"
+                                    Text="Galería" />
                         </StackLayout>
                         <StackLayout Margin="20,0,20,0">
-                            <Button Command="{Binding SearchPersonByPictureCommand}" 
-                                Text="Buscar" FontSize="18" BackgroundColor="#048CD6" HeightRequest="50" BorderRadius="15" BorderColor="White" BorderWidth="2" />
+                            <Button HeightRequest="50"
+                                    BackgroundColor="#048CD6"
+                                    BorderColor="White"
+                                    BorderRadius="15"
+                                    BorderWidth="2"
+                                    Command="{Binding SearchPersonByPictureCommand}"
+                                    FontSize="18"
+                                    Text="Buscar" />
                         </StackLayout>
                     </StackLayout>
                 </ViewCell>
             </TableSection>
             <TableSection x:Name="SectionByName" Title="Datos de la persona">
-                <ViewCell Height="60">
-                    <StackLayout Orientation="Horizontal" Margin="40,10,40,10">
-                        <Entry HorizontalOptions="FillAndExpand" Placeholder="Nombre" Text="{Binding Person.Name}" />
-                    </StackLayout>
-                </ViewCell>
-                <ViewCell Height="60">
-                    <StackLayout Orientation="Horizontal" Margin="40,10,40,10">
-                        <Entry HorizontalOptions="FillAndExpand" Placeholder="Apellido" Text="{Binding Person.LastName}" />
-                    </StackLayout>
-                </ViewCell>
-                <ViewCell Height="60">
-                    <StackLayout Margin="40,20,40,20">
-                        <Button Command="{Binding SearchPersonByTextCommand}" 
-                            Text="Buscar" FontSize="18" BackgroundColor="#048CD6" HeightRequest="50" BorderRadius="15" BorderColor="White" BorderWidth="2" />
+                <ViewCell>
+                    <StackLayout Margin="40,10,40,10">
+                        <StackLayout HeightRequest="50" Orientation="Horizontal">
+                            <Entry HorizontalOptions="FillAndExpand"
+                                   Placeholder="Nombre"
+                                   Text="{Binding Person.Name}" />
+                        </StackLayout>
+                        <StackLayout HeightRequest="50" Orientation="Horizontal">
+                            <Entry HorizontalOptions="FillAndExpand"
+                                   Placeholder="Apellido"
+                                   Text="{Binding Person.LastName}" />
+                        </StackLayout>
+                        <StackLayout HeightRequest="50">
+                            <Button HeightRequest="50"
+                                    BackgroundColor="#048CD6"
+                                    BorderColor="White"
+                                    BorderRadius="15"
+                                    BorderWidth="2"
+                                    Command="{Binding SearchPersonByNameCommand}"
+                                    FontSize="18"
+                                    Text="Buscar" />
+                        </StackLayout>
                     </StackLayout>
                 </ViewCell>
             </TableSection>
