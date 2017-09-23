@@ -60,16 +60,27 @@ namespace CognitiveLocator.ViewModels
         }
 
         #region Tasks
-        async Task SearchPerson(bool IsByPicture) {
+        async Task SearchPerson(bool IsByPicture) 
+        {
             if(!IsBusy)
             {
                 IsBusy = true;
 				await Task.Delay(3000);
 
-                if(IsByPicture){
+                var page = new SearchPersonResultView();
+
+                if(IsByPicture)
+                {
                     //TO DO...
+                    page.ViewModel.IsByPhoto = true;
+                    page.ViewModel.Photo = Photo;
                 }
-                await NavigationService.PushAsync(new SearchPersonResultView());
+                else
+                {
+                    page.ViewModel.Person = Person;
+                }
+
+                await NavigationService.PushAsync(page);
             
 				IsBusy = false;
             }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using CognitiveLocator.Models;
@@ -15,6 +16,20 @@ namespace CognitiveLocator.ViewModels
         {
             get { return _person; }
             set { SetProperty(ref _person, value); }
+        }
+
+        byte[] _photo;
+        public byte[] Photo
+        {
+            get { return _photo; }
+            set { SetProperty(ref _photo, value); }
+        }
+
+        bool _IsByPhoto;
+        public bool IsByPhoto
+        {
+            get { return _IsByPhoto; }
+            set { SetProperty(ref _IsByPhoto, value); }
         }
 
         ObservableCollection<Person> _results;
@@ -44,28 +59,29 @@ namespace CognitiveLocator.ViewModels
         }
 
         #region Overrided Methods
-        public override System.Threading.Tasks.Task OnViewAppear()
+        public async override System.Threading.Tasks.Task OnViewAppear()
         {
-            // TODO: Load Results From WebAPI
+            var res = new List<Person>();
 
-            var res = new ObservableCollection<Person>();
-
-            for (int i = 0; i < 5; i++)
+            if (!IsByPhoto)
             {
-                res.Add(new Person
+                if (!string.IsNullOrEmpty(Person.Name))
                 {
-                    Name = "Nombre",
-                    LastName = "Apellido",
-                    Age = new Random().Next(4, 40),
-                    IsFound = 0,                    
-                    Picture = "http://via.placeholder.com/150x150",
-                    Location = "Hospital Angeles"
-                });
+                    res = await RestServices.SearchPersonByNameAsync(Person);
+                }
+                else
+                {
+                    res = await RestServices.SearchPersonByLastNameAsync(Person);
+                }
+            }
+            else
+            {
+                res = await RestServices.SearchPersonByPhotoAsync(Photo);
             }
 
-            Results = res;
+            Results = new ObservableCollection<Person>(res);
 
-            return base.OnViewAppear();
+            return;
         }
         #endregion
     }
