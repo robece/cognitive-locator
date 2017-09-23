@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using CognitiveLocator.Models;
 using CognitiveLocator.Models.ApiModels;
 using CognitiveLocator.Views;
 using Xamarin.Forms;

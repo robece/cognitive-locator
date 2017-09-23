@@ -7,10 +7,10 @@
     Title="{Binding Title}">
 	<ContentPage.Content>
             <ListView
+                Margin="20,0"
                 ItemsSource="{Binding Results}"
                 RowHeight="80"
-                ItemSelected="Handle_ItemSelected"
-                >
+                ItemSelected="Handle_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ImageCell Text="{Binding Name}" Detail="{Binding Location, StringFormat='Ubicación: {0}'}" ImageSource="{Binding Picture}" />

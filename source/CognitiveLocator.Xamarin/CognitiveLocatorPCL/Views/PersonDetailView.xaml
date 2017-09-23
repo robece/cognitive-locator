@@ -7,13 +7,13 @@
     Title="{Binding Title}">
 	<views:BaseView.Content>
         <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-            <Image Source="http://via.placeholder.com/250x250" HeightRequest="150" />
+            <Image Source="http://via.placeholder.com/250x250" HeightRequest="150" Margin="0,10,0,0" />
             <TableView Intent="Form" HasUnevenRows="true">
                 <TableSection>
-                    <EntryCell Label="Nombre" Text="{Binding CurrentPerson.Name}" IsEnabled="false"/>
-                    <EntryCell Label="Apellidos" Text="{Binding CurrentPerson.LastName}" IsEnabled="false"/>
-                    <EntryCell Label="Edad" Text="{Binding CurrentPerson.Age, StringFormat='{0} años'}" IsEnabled="false"/>
-                    <EntryCell Label="Ubicación" Text="{Binding CurrentPerson.Location}" IsEnabled="false"/>
+                    <EntryCell Label="Nombre:" Text="{Binding CurrentPerson.Name}" IsEnabled="false"/>
+                    <EntryCell Label="Apellidos:" Text="{Binding CurrentPerson.LastName}" IsEnabled="false"/>
+                    <EntryCell Label="Edad:" Text="{Binding CurrentPerson.Age, StringFormat='{0} años'}" IsEnabled="false"/>
+                    <EntryCell Label="Ubicación:" Text="{Binding CurrentPerson.Location}" IsEnabled="false"/>
                 </TableSection>
             </TableView>
         </StackLayout>
