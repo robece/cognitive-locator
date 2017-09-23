@@ -8,7 +8,8 @@ namespace CognitiveLocator.ViewModels
     public class HomeViewModel : BaseViewModel
     {
         public Command NavigateToResultsCommand { get; set; }
-		public Command SearchPersonCommand { get; set; }
+        public Command SearchPersonNameCommand { get; set; }
+		public Command SearchPersonPictureCommand { get; set; }
 		public Command CreateReportCommand { get; set; }
 
 
@@ -28,7 +29,8 @@ namespace CognitiveLocator.ViewModels
         private void InitializeViewModel()
         {
             NavigateToResultsCommand = new Command(async () => await NavigateToResults());
-            SearchPersonCommand = new Command(async () => await SearchPerson());
+            SearchPersonNameCommand = new Command(async () => await SearchPersonByName());
+            SearchPersonPictureCommand= new Command(async () => await SearchPersonByPicture());
             CreateReportCommand = new Command(async () => await CreateReport());
         }
 
@@ -37,16 +39,20 @@ namespace CognitiveLocator.ViewModels
             await NavigationService.PushAsync(new SearchPersonMainPage());
         }
 
-        private async Task SearchPerson()
+        private async Task SearchPersonByName()
         {
             await NavigationService.PushAsync(new CreateReportPage());
         }
+
+		private async Task SearchPersonByPicture()
+		{
+			await NavigationService.PushAsync(new CreateReportPage());
+		}
 
         private async Task NavigateToResults()
         {
             var photo = await Helpers.MediaHelper.TakePhotoAsync();
             photo = await Helpers.MediaHelper.AdjustImageSize(photo);
-
         }
 
         public override Task OnViewAppear()
