@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using CognitiveLocator.Models;
+using CognitiveLocator.Models.ApiModels;
 using CognitiveLocator.Views;
 using Xamarin.Forms;
 
@@ -35,6 +36,13 @@ namespace CognitiveLocator.ViewModels
 			set { SetProperty(ref lastName, value); }
 		}
 
+		string alias;
+		public string Alias
+		{
+			get { return alias; }
+			set { SetProperty(ref alias, value); }
+		}
+
 		string age;
 		public string Age
 		{
@@ -48,6 +56,14 @@ namespace CognitiveLocator.ViewModels
 			get { return location; }
 			set { SetProperty(ref location, value); }
 		}
+
+		string notes;
+		public string Notes
+		{
+			get { return notes; }
+			set { SetProperty(ref notes, value); }
+		}
+
 
 		public CreateReportViewModel() : this(new DependencyServiceBase())
         {
@@ -82,16 +98,20 @@ namespace CognitiveLocator.ViewModels
 
         private async Task SendReport()
         {
+            var model = ValidateInformation();
+            if (model == null)
+                return;
+            
             if(!IsBusy)
             {
                 IsBusy = true;
-                await Task.Delay(3000);
+                await RestServices.CreateReportAsync(model, Photo);
                 await NavigationService.PushAsync(new ReportConfirmationView());
                 IsBusy = false;
             }
         }
 
-		private async Task PreviewReport()
+        private async Task PreviewReport()
 		{
 			if (!IsBusy)
 			{
@@ -100,6 +120,40 @@ namespace CognitiveLocator.ViewModels
 				await NavigationService.PushAsync(new PreviewView(this));
 				IsBusy = false;
 			}
+		}
+
+		private CreateReportModel ValidateInformation()
+		{
+            var model = new CreateReportModel()
+            {
+                Nombre = this.Name,
+                Apellido = this.LastName,
+                Alias = this.Alias,
+                Edad = this.Age, 
+                Ubicacion = this.Location,
+                Notas = this.Notes, 
+                Encontrado = 0
+            };
+
+            if (String.IsNullOrEmpty(model.Nombre))
+                return null;
+
+            if (String.IsNullOrEmpty(model.Apellido))
+				return null;
+
+            if (String.IsNullOrEmpty(model.Alias))
+				return null;
+
+            if (String.IsNullOrEmpty(model.Edad))
+				return null;
+
+            if (String.IsNullOrEmpty(model.Ubicacion))
+				return null;
+
+            if (String.IsNullOrEmpty(model.Notas))
+				return null;
+
+            return model;
 		}
     }
 }
