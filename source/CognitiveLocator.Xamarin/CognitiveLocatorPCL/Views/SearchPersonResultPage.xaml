@@ -3,7 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:CognitiveLocator.Views;assembly=CognitiveLocatorPCL"
-    x:Class="CognitiveLocator.Views.SearchPersonPage"
+    x:Class="CognitiveLocator.Views.SearchPersonResultPage"
     Title="{Binding Title}">
 	<ContentPage.Content>
             <ListView
@@ -13,7 +13,7 @@
                 >
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ImageCell Text="{Binding NameAlias}" Detail="{Binding Location, StringFormat='Ubicación: {0}'}" ImageSource="{Binding Picture}" />
+                        <ImageCell Text="{Binding Name}" Detail="{Binding Location, StringFormat='Ubicación: {0}'}" ImageSource="{Binding Picture}" />
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

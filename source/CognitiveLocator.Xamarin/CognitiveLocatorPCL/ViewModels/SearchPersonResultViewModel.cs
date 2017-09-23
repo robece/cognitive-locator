@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace CognitiveLocator.ViewModels
 {
-    public class SearchPersonViewModel : BaseViewModel
+    public class SearchPersonResultViewModel : BaseViewModel
     {
         #region Properties
         Person _person;
@@ -30,7 +30,7 @@ namespace CognitiveLocator.ViewModels
             set;
         }
         #endregion
-        public SearchPersonViewModel() : base(new DependencyServiceBase())
+        public SearchPersonResultViewModel() : base(new DependencyServiceBase())
         {
             Title = "Buscar";
 
@@ -54,7 +54,10 @@ namespace CognitiveLocator.ViewModels
             {
                 res.Add(new Person
                 {
-                    NameAlias = "nombre",
+                    Name = "Nombre",
+                    LastName = "Apellido",
+                    Age = new Random().Next(4, 40),
+                    IsFound = 0,                    
                     Picture = "http://via.placeholder.com/150x150",
                     Location = "Hospital Angeles"
                 });

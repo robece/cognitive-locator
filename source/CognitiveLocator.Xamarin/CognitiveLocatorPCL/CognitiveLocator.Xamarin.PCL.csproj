@@ -55,10 +55,10 @@
     <Compile Include="Views\ResultDetailView.xaml.cs">
       <DependentUpon>ResultDetailView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SearchPersonPage.xaml.cs">
-      <DependentUpon>SearchPersonPage.xaml</DependentUpon>
+    <Compile Include="Views\SearchPersonResultPage.xaml.cs">
+      <DependentUpon>SearchPersonResultPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\SearchPersonViewModel.cs" />
+    <Compile Include="ViewModels\SearchPersonResultViewModel.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="ViewModels\ResultDetailViewModel.cs" />
     <Compile Include="ViewModels\ResultsViewModel.cs" />
@@ -151,7 +151,7 @@
       <SubType>
       </SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\SearchPersonPage.xaml">
+    <EmbeddedResource Include="Views\SearchPersonResultPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\PersonDetailPage.xaml">
