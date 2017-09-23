@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using CognitiveLocator.Models;
 using CognitiveLocator.Views;
@@ -49,17 +50,19 @@ namespace CognitiveLocator.ViewModels
         {
             Title = "Buscar";
 
-            OnSelectedItemCommand = new Command<Person>(async (obj) =>
-            {
-                var page = new PersonDetailView(obj);
-              
+            OnSelectedItemCommand = new Command<Person>(async (obj) => await OnItemSelected(obj));
+        }
 
-                await NavigationService.PushAsync(page);
-            });
+        private async Task OnItemSelected(Person obj)
+        {
+            var page = new PersonDetailView(obj);
+
+            await NavigationService.PushAsync(page);
         }
 
         #region Overrided Methods
-        public async override System.Threading.Tasks.Task OnViewAppear()
+
+        public async override Task OnViewAppear()
         {
             var res = new List<Person>();
 
@@ -83,6 +86,7 @@ namespace CognitiveLocator.ViewModels
 
             return;
         }
+
         #endregion
     }
 }
