@@ -1,9 +1,9 @@
 ﻿CREATE TABLE [dbo].[Hospital] (
     [IdHospital]  INT               IDENTITY (1, 1) NOT NULL,
-    [Hospital]    NVARCHAR (500)    NOT NULL,
-    [Estado]      NVARCHAR (50)     NOT NULL,
-    [Dirección]   NVARCHAR (500)    NULL,
-    [Coordenadas] [sys].[geography] NULL,
+    [HospitalName]    NVARCHAR (500)    NOT NULL,
+    [State]      NVARCHAR (50)     NOT NULL,
+    [Address]   NVARCHAR (500)    NULL,
+    [GeoLocation] [sys].[geography] NULL,
     CONSTRAINT [PK_Hospital] PRIMARY KEY CLUSTERED ([IdHospital] ASC)
 );
 

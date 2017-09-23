@@ -179,6 +179,7 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="MainApplication.cs" />
     <Compile Include="Effects\NoInteractiveTableViewEffect.cs" />
+    <Compile Include="Effects\KeyboardReturnEffect.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.png" />

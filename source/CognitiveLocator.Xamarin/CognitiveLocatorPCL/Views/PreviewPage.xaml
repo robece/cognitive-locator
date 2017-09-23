@@ -24,30 +24,30 @@
             <TableSection Title="Datos de la persona">
                 <ViewCell>
                     <StackLayout Orientation="Horizontal" Margin="10,3">
-                        <Label VerticalOptions="Center" Text="Nombre" WidthRequest="70" />
+                        <Label VerticalOptions="Center" Text="Nombre" WidthRequest="80" />
                         <Label FontSize="18" HorizontalOptions="FillAndExpand" Text="{Binding Name}" />
                     </StackLayout>
                 </ViewCell>
                 <ViewCell>
                     <StackLayout Orientation="Horizontal" Margin="10,3">
-                        <Label VerticalOptions="Center" Text="Apellido" WidthRequest="70" />
+                        <Label VerticalOptions="Center" Text="Apellido" WidthRequest="80" />
                         <Label FontSize="18" HorizontalOptions="FillAndExpand" Text="{Binding LastName}" />
                     </StackLayout>
                 </ViewCell>
                 <ViewCell>
                     <StackLayout Orientation="Horizontal" Margin="10,3">
-                        <Label VerticalOptions="Center" Text="Edad" WidthRequest="70" />
+                        <Label VerticalOptions="Center" Text="Edad" WidthRequest="80" />
                         <Label FontSize="18" HorizontalOptions="FillAndExpand" Text="{Binding Age}" />
                     </StackLayout>
                 </ViewCell>
                 <ViewCell>
                     <StackLayout Orientation="Horizontal" Margin="10,3">
-                        <Label VerticalOptions="Center" Text="Ubicación" WidthRequest="70" />
+                        <Label VerticalOptions="Center" Text="Ubicación" WidthRequest="80" />
                         <Label FontSize="18" HorizontalOptions="FillAndExpand" Text="{Binding Location}" />
                     </StackLayout>
                 </ViewCell>
                 <ViewCell>
-                    <Button Margin="10" Text="Enviar Reporte" Command="{Binding SendReportCommand}" />
+                    <Button Text="Enviar Reporte" Command="{Binding SendReportCommand}" />
                 </ViewCell>
             </TableSection>
         </TableView>

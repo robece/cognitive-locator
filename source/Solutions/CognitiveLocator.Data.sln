@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CognitiveLocatorDAL", "..\CognitiveLocator.DAL\CognitiveLocatorDAL.csproj", "{0D0E64DB-426E-4ACA-AF43-AF82346B059B}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "CognitiveLocatorDB", "..\CognitiveLocator.DB\CognitiveLocatorDB.sqlproj", "{92FCAE60-6288-4443-A5DF-DF84C3BD8B74}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,12 @@ Global
 		{0D0E64DB-426E-4ACA-AF43-AF82346B059B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D0E64DB-426E-4ACA-AF43-AF82346B059B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D0E64DB-426E-4ACA-AF43-AF82346B059B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92FCAE60-6288-4443-A5DF-DF84C3BD8B74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92FCAE60-6288-4443-A5DF-DF84C3BD8B74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92FCAE60-6288-4443-A5DF-DF84C3BD8B74}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{92FCAE60-6288-4443-A5DF-DF84C3BD8B74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92FCAE60-6288-4443-A5DF-DF84C3BD8B74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92FCAE60-6288-4443-A5DF-DF84C3BD8B74}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
