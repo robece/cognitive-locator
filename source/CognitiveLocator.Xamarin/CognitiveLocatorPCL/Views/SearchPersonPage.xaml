@@ -13,7 +13,7 @@
                 >
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ImageCell Text="{Binding NameAlias}" Detail="{Binding Location, StringFormat='Ubicación: {0}'}" ImageSource="{Binding Picture}" />
+                        <ImageCell Text="{Binding Name}" Detail="{Binding Location, StringFormat='Ubicación: {0}'}" ImageSource="{Binding Picture}" />
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

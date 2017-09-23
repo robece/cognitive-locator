@@ -3,10 +3,9 @@ namespace CognitiveLocator.Models
 {
     public class Person
     {
-
 		public int IdPerson { get; set; }
-		public int IsFound { get; set; }
-		public string NameAlias { get; set; }/// Alias
+        public string Name { get; set; }
+		public string LastName { get; set; }
 		public int Age { get; set; }
 		public string Picture { get; set; }
 		public string Location { get; set; }
@@ -14,15 +13,11 @@ namespace CognitiveLocator.Models
         public double Longitude { get; set; }
 		public string Notes { get; set; }
 		public string Source { get; set; }
-		public System.DateTime CreatedDate { get; set; }
-		public System.DateTime ModifiedDate { get; set; }
+		public DateTime CreatedDate { get; set; }
+		public DateTime ModifiedDate { get; set; }
+        public int IsFound { get; set; }
 		public int IsActive { get; set; }
-
-        // TODO: Blob Storage
-        public string PhotoURL
-        {
-            get;
-            set;
-        }
+        public int PersonID { get; set; }
+        public string FaceID { get; set; }
 	}
 }

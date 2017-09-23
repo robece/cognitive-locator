@@ -54,7 +54,10 @@ namespace CognitiveLocator.ViewModels
             {
                 res.Add(new Person
                 {
-                    NameAlias = "nombre",
+                    Name = "Nombre",
+                    LastName = "Apellido",
+                    Age = new Random().Next(4, 40),
+                    IsFound = 0,                    
                     Picture = "http://via.placeholder.com/150x150",
                     Location = "Hospital Angeles"
                 });
