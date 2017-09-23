@@ -78,30 +78,28 @@
                 </ViewCell>
             </TableSection>
             <TableSection x:Name="SectionByName" Title="Datos de la persona">
-                <ViewCell Height="60">
-                    <StackLayout Margin="40,10,40,10" Orientation="Horizontal">
-                        <Entry HorizontalOptions="FillAndExpand"
-                               Placeholder="Nombre"
-                               Text="{Binding Person.Name}" />
-                    </StackLayout>
-                </ViewCell>
-                <ViewCell Height="60">
-                    <StackLayout Margin="40,10,40,10" Orientation="Horizontal">
-                        <Entry HorizontalOptions="FillAndExpand"
-                               Placeholder="Apellido"
-                               Text="{Binding Person.LastName}" />
-                    </StackLayout>
-                </ViewCell>
-                <ViewCell Height="60">
-                    <StackLayout Margin="40,20,40,20">
-                        <Button HeightRequest="50"
-                                BackgroundColor="#048CD6"
-                                BorderColor="White"
-                                BorderRadius="15"
-                                BorderWidth="2"
-                                Command="{Binding SearchPersonByNameCommand}"
-                                FontSize="18"
-                                Text="Buscar" />
+                <ViewCell>
+                    <StackLayout Margin="40,10,40,10">
+                        <StackLayout HeightRequest="50" Orientation="Horizontal">
+                            <Entry HorizontalOptions="FillAndExpand"
+                                   Placeholder="Nombre"
+                                   Text="{Binding Person.Name}" />
+                        </StackLayout>
+                        <StackLayout HeightRequest="50" Orientation="Horizontal">
+                            <Entry HorizontalOptions="FillAndExpand"
+                                   Placeholder="Apellido"
+                                   Text="{Binding Person.LastName}" />
+                        </StackLayout>
+                        <StackLayout HeightRequest="50">
+                            <Button HeightRequest="50"
+                                    BackgroundColor="#048CD6"
+                                    BorderColor="White"
+                                    BorderRadius="15"
+                                    BorderWidth="2"
+                                    Command="{Binding SearchPersonByNameCommand}"
+                                    FontSize="18"
+                                    Text="Buscar" />
+                        </StackLayout>
                     </StackLayout>
                 </ViewCell>
             </TableSection>
