@@ -2,6 +2,7 @@
 using CognitiveLocatorDAL.Comunes;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -12,7 +13,9 @@ namespace CognitiveLocator.WebAPI.Class
     {
         public async Task<IEnumerable<dynamic>> AddPersonNotFound(Person p)
         {
-            return Sql.RunStoredProcParams("conn", "AddPersonNotFound",
+            string connectionString = ConfigurationManager.AppSettings["DBConnectionString"].ToString();
+
+            return await Sql.RunAsyncStoredProcParams(connectionString, "AddPersonNotFound",
                 new System.Data.SqlClient.SqlParameter[]
                 {
                     new System.Data.SqlClient.SqlParameter("IdPerson", p.IdPerson),
