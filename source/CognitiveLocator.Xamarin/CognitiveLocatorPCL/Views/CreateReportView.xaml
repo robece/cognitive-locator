@@ -46,14 +46,14 @@
                         <ActivityIndicator HorizontalOptions="Center"
                                            IsRunning="{Binding IsBusy}"
                                            IsVisible="{Binding IsBusy}" />
-                        <StackLayout Margin="20,0,20,0"
+                        <StackLayout Margin="40,0,40,0"
                                      VerticalOptions="Center"
                                      Orientation="Horizontal">
                             <Button HorizontalOptions="FillAndExpand"
-                                    Command="{Binding TakePhotoCommand}"
+                                    Command="{Binding TakePhotoCommand}" FontSize="18" BackgroundColor="#048CD6" HeightRequest="50"
                                     Text="Cámara" />
                             <Button HorizontalOptions="FillAndExpand"
-                                    Command="{Binding ChoosePhotoCommand}"
+                                    Command="{Binding ChoosePhotoCommand}" FontSize="18" BackgroundColor="#048CD6" HeightRequest="50"
                                     Text="Galería" />
                         </StackLayout>
                     </StackLayout>
@@ -61,7 +61,7 @@
             </TableSection>
             <TableSection Title="Datos de la persona">
                 <ViewCell>
-                    <StackLayout Margin="10,3" Orientation="Horizontal">
+                    <StackLayout Margin="40,0,40,0" Orientation="Horizontal">
                         <Label WidthRequest="80"
                                VerticalOptions="Center"
                                Text="Nombre" />
@@ -76,7 +76,7 @@
                     </StackLayout>
                 </ViewCell>
                 <ViewCell>
-                    <StackLayout Margin="10,3" Orientation="Horizontal">
+                    <StackLayout Margin="40,0,40,0" Orientation="Horizontal">
                         <Label WidthRequest="80"
                                VerticalOptions="Center"
                                Text="Apellido" />
@@ -93,7 +93,7 @@
                     </StackLayout>
                 </ViewCell>
                 <ViewCell>
-                    <StackLayout Margin="10,3" Orientation="Horizontal">
+                    <StackLayout Margin="40,0,40,0" Orientation="Horizontal">
                         <Label WidthRequest="80"
                                VerticalOptions="Center"
                                Text="Edad" />
@@ -110,7 +110,7 @@
                     </StackLayout>
                 </ViewCell>
                 <ViewCell>
-                    <StackLayout Margin="10,3" Orientation="Horizontal">
+                    <StackLayout Margin="40,0,40,0" Orientation="Horizontal">
                         <Label WidthRequest="80"
                                VerticalOptions="Center"
                                Text="Ubicación" />
@@ -127,7 +127,7 @@
                     </StackLayout>
                 </ViewCell>
                 <ViewCell>
-                    <StackLayout Margin="10,3" Orientation="Horizontal">
+                    <StackLayout Margin="40,0,40,0" Orientation="Horizontal">
                         <Label WidthRequest="80"
                                VerticalOptions="Center"
                                Text="Notas" />
@@ -144,7 +144,7 @@
                     </StackLayout>
                 </ViewCell>
                 <ViewCell>
-                    <StackLayout Margin="10,3" Orientation="Horizontal">
+                    <StackLayout Margin="40,0,40,0" Orientation="Horizontal">
                         <Label WidthRequest="80"
                                VerticalOptions="Center"
                                Text="Alias" />
@@ -154,7 +154,10 @@
                     </StackLayout>
                 </ViewCell>
                 <ViewCell>
-                    <Button Command="{Binding PreviewReportCommand}" Text="Continuar" />
+                    <StackLayout Margin="40,20,40,20">
+                        <Button Command="{Binding PreviewReportCommand}" 
+                            Text="Continuar" FontSize="18" BackgroundColor="#048CD6" HeightRequest="50"/>
+                    </StackLayout>
                 </ViewCell>
             </TableSection>
         </TableView>

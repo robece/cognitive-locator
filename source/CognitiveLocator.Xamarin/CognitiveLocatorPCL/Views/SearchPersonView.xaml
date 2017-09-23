@@ -26,27 +26,38 @@
                         </Frame>
                         <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" HorizontalOptions="Center" />
                         <StackLayout VerticalOptions="Center" Orientation="Horizontal" Margin="20,0,20,0">
-                            <Button HorizontalOptions="FillAndExpand" Text="Cámara" Command="{Binding TakePhotoCommand}" />
-                            <Button HorizontalOptions="FillAndExpand" Text="Galería" Command="{Binding ChoosePhotoCommand}" />
+                            <Button HorizontalOptions="FillAndExpand" Text="Cámara" Command="{Binding TakePhotoCommand}" 
+                                FontSize="18" BackgroundColor="#048CD6" HeightRequest="50"/>
+                            <Button HorizontalOptions="FillAndExpand" Text="Galería" Command="{Binding ChoosePhotoCommand}" 
+                                FontSize="18" BackgroundColor="#048CD6" HeightRequest="50"/>
                         </StackLayout>
+                    </StackLayout>
+                </ViewCell>
+                <ViewCell>
+                    <StackLayout Margin="40,20,40,20">
+                        <Button Command="{Binding SearchPersonByPictureCommand}" 
+                            Text="Buscar" FontSize="18" BackgroundColor="#048CD6" HeightRequest="50"/>
                     </StackLayout>
                 </ViewCell>
             </TableSection>
             <TableSection x:Name="SectionByName" Title="Datos de la persona">
                 <ViewCell>
-                    <StackLayout Orientation="Horizontal" Margin="10,3">
+                    <StackLayout Orientation="Horizontal" Margin="40,20,40,20">
                         <Label VerticalOptions="Center" Text="Nombre" WidthRequest="70" />
                         <Entry HorizontalOptions="FillAndExpand" Text="{Binding Person.Name}" />
                     </StackLayout>
                 </ViewCell>
                 <ViewCell>
-                    <StackLayout Orientation="Horizontal" Margin="10,3">
+                    <StackLayout Orientation="Horizontal" Margin="40,20,40,20">
                         <Label VerticalOptions="Center" Text="Edad" WidthRequest="70" />
                         <Entry HorizontalOptions="FillAndExpand" Text="{Binding Person.Age}" />
                     </StackLayout>
                 </ViewCell>
                 <ViewCell>
-                    <Button Margin="10" Text="Buscar" Command="{Binding SearchPersonCommand}" />
+                    <StackLayout Margin="40,20,40,20">
+                        <Button Command="{Binding SearchPersonByTextCommand}" 
+                            Text="Buscar" FontSize="18" BackgroundColor="#048CD6" HeightRequest="50"/>
+                    </StackLayout>
                 </ViewCell>
             </TableSection>
         </TableView>

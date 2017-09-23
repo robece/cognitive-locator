@@ -32,7 +32,8 @@ namespace CognitiveLocator.ViewModels
 			set { SetProperty(ref _searchType, value); }
 		}
 
-        public ICommand SearchPersonCommand { get; set; }
+        public ICommand SearchPersonByPictureCommand { get; set; }
+        public ICommand SearchPersonByTextCommand { get; set; }
         public ICommand TakePhotoCommand { get; set; }
         public ICommand ChoosePhotoCommand { get; set; }
         #endregion
@@ -52,18 +53,24 @@ namespace CognitiveLocator.ViewModels
         void InitializeViewModel()
         {
             Title = "Buscar Persona";
-            SearchPersonCommand = new Command(async () => await SearchPerson());
+            SearchPersonByPictureCommand = new Command(async () => await SearchPerson(true));
+            SearchPersonByTextCommand = new Command(async () => await SearchPerson(false));
             TakePhotoCommand = new Command(async () => await TakePhoto());
             ChoosePhotoCommand = new Command(async () => await ChoosePhoto());
         }
 
         #region Tasks
-        async Task SearchPerson() {
+        async Task SearchPerson(bool IsByPicture) {
             if(!IsBusy)
             {
                 IsBusy = true;
 				await Task.Delay(3000);
+
+                if(IsByPicture){
+                    //TO DO...
+                }
                 await NavigationService.PushAsync(new SearchPersonResultView());
+            
 				IsBusy = false;
             }
         }

@@ -51,7 +51,7 @@
             </TableSection>
             <TableSection Title="Datos de la persona">
                 <ViewCell>
-                    <StackLayout Margin="10,3" Orientation="Horizontal">
+                    <StackLayout Margin="40,0,40,0" Orientation="Horizontal">
                         <Label WidthRequest="80"
                                VerticalOptions="Center"
                                Text="Nombre" />
@@ -61,7 +61,7 @@
                     </StackLayout>
                 </ViewCell>
                 <ViewCell>
-                    <StackLayout Margin="10,3" Orientation="Horizontal">
+                    <StackLayout Margin="40,0,40,0" Orientation="Horizontal">
                         <Label WidthRequest="80"
                                VerticalOptions="Center"
                                Text="Apellido" />
@@ -71,7 +71,7 @@
                     </StackLayout>
                 </ViewCell>
                 <ViewCell>
-                    <StackLayout Margin="10,3" Orientation="Horizontal">
+                    <StackLayout Margin="40,0,40,0" Orientation="Horizontal">
                         <Label WidthRequest="80"
                                VerticalOptions="Center"
                                Text="Edad" />
@@ -81,7 +81,7 @@
                     </StackLayout>
                 </ViewCell>
                 <ViewCell>
-                    <StackLayout Margin="10,3" Orientation="Horizontal">
+                    <StackLayout Margin="40,0,40,0" Orientation="Horizontal">
                         <Label WidthRequest="80"
                                VerticalOptions="Center"
                                Text="Ubicación" />
@@ -91,7 +91,10 @@
                     </StackLayout>
                 </ViewCell>
                 <ViewCell>
-                    <Button Command="{Binding SendReportCommand}" Text="Enviar Reporte" />
+                    <StackLayout Margin="40,20,40,20">
+                        <Button Command="{Binding SendReportCommand}" Text="Enviar Reporte" 
+                            FontSize="18" BackgroundColor="#048CD6" HeightRequest="50" />
+                    </StackLayout>
                 </ViewCell>
             </TableSection>
         </TableView>
