@@ -26,14 +26,16 @@ namespace CognitiveLocator.ViewModels
         }
 
         string _searchType;
-		public string SearchType
-		{
-			get { return _searchType; }
-			set { SetProperty(ref _searchType, value); }
-		}
+        public string SearchType
+        {
+            get { return _searchType; }
+            set { SetProperty(ref _searchType, value); }
+        }
+
+        public bool IsByPicture => (SearchType == "picture") ? true : false;
 
         public ICommand SearchPersonByPictureCommand { get; set; }
-        public ICommand SearchPersonByTextCommand { get; set; }
+        public ICommand SearchPersonByNameCommand { get; set; }
         public ICommand TakePhotoCommand { get; set; }
         public ICommand ChoosePhotoCommand { get; set; }
         #endregion
@@ -45,7 +47,6 @@ namespace CognitiveLocator.ViewModels
 
 		public SearchPersonViewModel(IDependencyService dependencyService) : base(dependencyService)
         {
-			Title = "Bienvenido";
 			DependencyService = dependencyService;
 			InitializeViewModel();
 		}
@@ -53,25 +54,29 @@ namespace CognitiveLocator.ViewModels
         void InitializeViewModel()
         {
             Title = "Buscar Persona";
-            SearchPersonByPictureCommand = new Command(async () => await SearchPerson(true));
-            SearchPersonByTextCommand = new Command(async () => await SearchPerson(false));
+            SearchPersonByPictureCommand = new Command(async () => await SearchPerson());
+            SearchPersonByNameCommand = new Command(async () => await SearchPerson());
             TakePhotoCommand = new Command(async () => await TakePhoto());
             ChoosePhotoCommand = new Command(async () => await ChoosePhoto());
         }
 
         #region Tasks
-        async Task SearchPerson(bool IsByPicture) 
+        async Task SearchPerson() 
         {
             if(!IsBusy)
             {
                 IsBusy = true;
-				await Task.Delay(3000);
 
                 var page = new SearchPersonResultView();
 
                 if(IsByPicture)
                 {
-                    //TO DO...
+                    if (Photo == null)
+                    {
+                        IsBusy = false;
+                        return;
+                    }
+
                     page.ViewModel.IsByPhoto = true;
                     page.ViewModel.Photo = Photo;
                 }
