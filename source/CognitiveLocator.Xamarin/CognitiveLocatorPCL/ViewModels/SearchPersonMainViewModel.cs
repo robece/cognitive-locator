@@ -10,6 +10,7 @@ namespace CognitiveLocator.ViewModels
     public class SearchPersonMainViewModel : BaseViewModel
     {
         #region Properties
+
         Person _person;
         public Person Person
         {
@@ -24,10 +25,18 @@ namespace CognitiveLocator.ViewModels
             set { SetProperty(ref _photo, value); }
         }
 
+        string _searchType;
+		public string SearchType
+		{
+			get { return _searchType; }
+			set { SetProperty(ref _searchType, value); }
+		}
+
         public ICommand SearchPersonCommand { get; set; }
         public ICommand TakePhotoCommand { get; set; }
         public ICommand ChoosePhotoCommand { get; set; }
         #endregion
+
         public SearchPersonMainViewModel() : base(new DependencyServiceBase())
         {
             InitializeViewModel();
