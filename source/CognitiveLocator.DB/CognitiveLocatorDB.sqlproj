@@ -64,7 +64,6 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Person.sql" />
-    <Build Include="dbo\Tables\Hospital.sql" />
     <Build Include="dbo\Tables\PersonFaces.sql" />
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CognitiveLocator.WebAPI.Models.FaceApiModel;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -21,22 +24,23 @@ namespace CognitiveLocator.WebAPI.Class
         /// </summary>
         /// <param name="personName"></param>
         /// <returns>Este metodo retorna un personId el cual debera ser almacenado en la base de datos</returns>
-        public async Task<bool> AddNewMissingPeopleAsync(String personName)
+        public async Task<CreatePerson> AddPersonToGroup(String personName)
         {
-            bool saved = false;
             var client = new HttpClient();
             // Request headers
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key",FaceAPIKey);
-            var uri = "https://westus.api.cognitive.microsoft.com/face/v1.0/persongroups/"+PersonGroupId+"/persons";
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", FaceAPIKey);
+            var uri = "https://westus.api.cognitive.microsoft.com/face/v1.0/persongroups/" + PersonGroupId + "/persons";
             HttpResponseMessage response;
             // Request body
-            byte[] byteData = Encoding.UTF8.GetBytes("{'name':'"+personName+"','userData':'Descripcion Ejemplo'}");
+            byte[] byteData = Encoding.UTF8.GetBytes("{'name':'" + personName + "','userData':'Descripcion Ejemplo'}");
             using (var content = new ByteArrayContent(byteData))
             {
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                 response = await client.PostAsync(uri, content);
             }
-            return saved;
+            CreatePerson modelPerson = new CreatePerson();
+            modelPerson = JsonConvert.DeserializeObject<CreatePerson>(await response.Content.ReadAsStringAsync());
+            return modelPerson;
         }
 
         /// <summary>
@@ -45,25 +49,24 @@ namespace CognitiveLocator.WebAPI.Class
         /// <param name="stgUrl"></param>
         /// <param name="personId"></param>
         /// <returns>Este metodo retorna un FaceId para guardar en la base de datos</returns>
-        public async Task<bool> AddFaceToMissingPeopleAsync(String stgUrl, String personId)
-        {
-            bool saved = false;
-            var client = new HttpClient();
-            // Request headers
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", FaceAPIKey);
-            // Request parameters
-            var uri = "https://westus.api.cognitive.microsoft.com/face/v1.0/persongroups/"+PersonGroupId+"/persons/"+personId+"/persistedFaces";
-            HttpResponseMessage response;
-            // Request body
-            byte[] byteData = Encoding.UTF8.GetBytes("{'url':'"+stgUrl+"'}");
-            using (var content = new ByteArrayContent(byteData))
-            {
-                content.Headers.ContentType = new MediaTypeHeaderValue("application/json >");
-                response = await client.PostAsync(uri, content);
-            }
+        //public async Task<HttpResponseMessage> AddFaceToMissingPeopleAsync(String stgUrl, String personId)
+        //{
+        //    var client = new HttpClient();
+        //    // Request headers
+        //    client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", FaceAPIKey);
+        //    // Request parameters
+        //    var uri = "https://westus.api.cognitive.microsoft.com/face/v1.0/persongroups/"+PersonGroupId+"/persons/"+personId+"/persistedFaces";
+        //    HttpResponseMessage response;
+        //    // Request body
+        //    byte[] byteData = Encoding.UTF8.GetBytes("{'url':'"+stgUrl+"'}");
+        //    using (var content = new ByteArrayContent(byteData))
+        //    {
+        //        content.Headers.ContentType = new MediaTypeHeaderValue("application/json >");
+        //        response = await client.PostAsync(uri, content);
+        //    }
 
-            return saved;
-        }
+        //    return response;
+        //}
 
         /// <summary>
         /// https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b
@@ -71,9 +74,8 @@ namespace CognitiveLocator.WebAPI.Class
         /// <param name="urlStg"></param>
         /// <param name="personId"></param>
         /// <returns>Regresa un persistedFaceId</returns>
-        public async Task<bool> AddPersonFace(String urlStg, String personId)
+        public async Task<AddPersonFace> AddPersonFace(String urlStg, String personId)
         {
-            bool saved = false;
             var client = new HttpClient();
             // Request headers
             client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", FaceAPIKey);
@@ -81,13 +83,15 @@ namespace CognitiveLocator.WebAPI.Class
             var uri = "https://westus.api.cognitive.microsoft.com/face/v1.0/persongroups/"+PersonGroupId+"/persons/"+personId+"/persistedFaces";
             HttpResponseMessage response;
             // Request body
-            byte[] byteData = Encoding.UTF8.GetBytes("{'url':'http://example.com/1.jpg'}");
+            byte[] byteData = Encoding.UTF8.GetBytes("{'url':'"+urlStg+"'}");
             using (var content = new ByteArrayContent(byteData))
             {
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                 response = await client.PostAsync(uri, content);
             }
-            return saved;
+            AddPersonFace ObjPersonFace = new AddPersonFace();
+            ObjPersonFace = JsonConvert.DeserializeObject<AddPersonFace>(await response.Content.ReadAsStringAsync());
+            return ObjPersonFace;
         }
 
         /// <summary>
@@ -95,9 +99,8 @@ namespace CognitiveLocator.WebAPI.Class
         /// </summary>
         /// <param name="stgUrl"></param>
         /// <returns>Regresa un persisted FaceId</returns>
-        public async Task<bool> AddFaceToList(String stgUrl)
+        public async Task<AddFaceToList> AddFaceToList(String stgUrl)
         {
-            bool saved = false;
             var client = new HttpClient();
             var queryString = HttpUtility.ParseQueryString(string.Empty);
             // Request headers
@@ -105,13 +108,16 @@ namespace CognitiveLocator.WebAPI.Class
             var uri = "https://westus.api.cognitive.microsoft.com/face/v1.0/facelists/"+FaceListId+"/persistedFaces";
             HttpResponseMessage response;
             // Request body
-            byte[] byteData = Encoding.UTF8.GetBytes("{'url':'http://example.com/1.jpg'}");
+            byte[] byteData = Encoding.UTF8.GetBytes("{'url':'"+uri+"'}");
             using (var content = new ByteArrayContent(byteData))
             {
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                 response = await client.PostAsync(uri, content);
             }
-            return saved;
+            AddFaceToList ObjFaceToList = new AddFaceToList();
+            ObjFaceToList = JsonConvert.DeserializeObject<AddFaceToList>(await response.Content.ReadAsStringAsync());
+
+            return ObjFaceToList;
         }
 
         /// <summary>
@@ -119,9 +125,8 @@ namespace CognitiveLocator.WebAPI.Class
         /// </summary>
         /// <param name="url"></param>
         /// <returns>Regresa un faceId</returns>
-        public async Task<bool> DetectFace(String url)
+        public async Task<JObject> DetectFace(String url)
         {
-            bool saved = false;
             var client = new HttpClient();
             var queryString = HttpUtility.ParseQueryString(string.Empty);
             // Request headers
@@ -131,14 +136,15 @@ namespace CognitiveLocator.WebAPI.Class
             var uri = "https://westus.api.cognitive.microsoft.com/face/v1.0/detect";
             HttpResponseMessage response;
             // Request body
-            byte[] byteData = Encoding.UTF8.GetBytes("{'url':'http://example.com/1.jpg'}");
+            byte[] byteData = Encoding.UTF8.GetBytes("{'url':'"+uri+"'}");
 
             using (var content = new ByteArrayContent(byteData))
             {
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                 response = await client.PostAsync(uri, content);
             }
-            return saved;
+            JObject ObjResult = JsonConvert.DeserializeObject<JObject>(await response.Content.ReadAsStringAsync());
+            return ObjResult;
         }
 
         /// <summary>
@@ -146,9 +152,8 @@ namespace CognitiveLocator.WebAPI.Class
         /// </summary>
         /// <param name="faceId"></param>
         /// <returns>Regresa si ubo coincidencias</returns>
-        public async Task<bool> FindSimilarFace(String faceId)
+        public async Task<FindSimilar> FindSimilarFace(String faceId)
         {
-            bool saved = false;
             var client = new HttpClient();
             var queryString = HttpUtility.ParseQueryString(string.Empty);
             // Request headers
@@ -162,7 +167,9 @@ namespace CognitiveLocator.WebAPI.Class
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                 response = await client.PostAsync(uri, content);
             }
-            return saved;
+            FindSimilar ObjFindSimilar = new FindSimilar();
+            ObjFindSimilar = JsonConvert.DeserializeObject<FindSimilar>(await response.Content.ReadAsStringAsync());
+            return ObjFindSimilar;
         }
     }
 }

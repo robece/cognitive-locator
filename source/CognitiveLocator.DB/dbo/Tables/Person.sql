@@ -1,24 +1,22 @@
 ﻿CREATE TABLE [dbo].[Person] (
-    [IdPerson]              INT               IDENTITY (1, 1) NOT NULL,
+    [IdPerson]              UNIQUEIDENTIFIER NOT NULL,
     [IsFound]            INT               CONSTRAINT [DF_Persona_IdSituacion] DEFAULT ((1)) NOT NULL,
-    [NameAlias]            NVARCHAR (500)    NOT NULL,
+    [Name]            NVARCHAR (500)    NOT NULL,
     [Age]                   INT               CONSTRAINT [DF_Persona_Edad] DEFAULT ((0)) NOT NULL,
     [Picture]                   NVARCHAR (1000)   NOT NULL,
     [Location]              NVARCHAR (500)    NULL,
-    [GeoLocation]            [sys].[geography] NOT NULL,
-    [IdHospital]             INT               NOT NULL,
     [Notes]                  NVARCHAR (1000)   NULL,
-    [Source]                 NVARCHAR (500)    NULL,
     [CreatedDate]      DATETIME          CONSTRAINT [DF_Table_1_FechaHora] DEFAULT (getdate()) NOT NULL,
     [ModifiedDate] DATETIME          CONSTRAINT [DF_Table_1_UltimaActualizacion] DEFAULT (getdate()) NOT NULL,
     [IsActive]              INT               CONSTRAINT [DF_Persona_IdEstatus] DEFAULT ((1)) NOT NULL,
-    [FaceId] INT NULL, 
+    [FaceId] UNIQUEIDENTIFIER NULL, 
     [Height] FLOAT NULL, 
     [Width] FLOAT NULL, 
     [LeftMargin] FLOAT NULL, 
     [RightMargin] FLOAT NULL, 
-    CONSTRAINT [PK_Persona] PRIMARY KEY CLUSTERED ([IdPerson] ASC),
-    CONSTRAINT [FK_Persona_Hospital] FOREIGN KEY ([IdHospital]) REFERENCES [dbo].[Hospital] ([IdHospital])
+    [LastName] NVARCHAR(500) NULL, 
+    [Alias] NVARCHAR(50) NULL, 
+    CONSTRAINT [PK_Person] PRIMARY KEY ([IdPerson]) 
 );
 
 
@@ -27,7 +25,7 @@ EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'Indica la s
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'Nombre Completo en caso de conocerse, Alias si se desconoce', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'Person', @level2type = N'COLUMN', @level2name = 'NameAlias';
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'Nombre Completo en caso de conocerse, Alias si se desconoce', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'Person', @level2type = N'COLUMN', @level2name = 'Name';
 
 
 GO
@@ -43,11 +41,11 @@ EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'Descripcion
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'coordenadas geograficas de la ubicacion', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'Person', @level2type = N'COLUMN', @level2name = 'GeoLocation';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'Hospital donde se encuentra', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'Person', @level2type = N'COLUMN', @level2name = N'IdHospital';
+
 
 
 GO
@@ -55,7 +53,7 @@ EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'Notas adici
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'fuente de donde se obtuvo el registro', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'Person', @level2type = N'COLUMN', @level2name = 'Source';
+
 
 
 GO
