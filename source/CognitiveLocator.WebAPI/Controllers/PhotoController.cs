@@ -28,8 +28,8 @@ namespace CognitiveLocator.WebAPI.Controllers
             {
                 throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
             }
-            //in case of dealing in local change  D/local/Temp by App-Dara
-            string root = "D/local/Temp"; // HttpContext.Current.Server.MapPath("~/App_Data");
+            //in case of dealing in local change  D/local/Temp by App-Data
+            string root = "D:/local/Temp/"; // HttpContext.Current.Server.MapPath("~/App_Data");
             var provider = new MultipartFormDataStreamProvider(root);
             try
             {
