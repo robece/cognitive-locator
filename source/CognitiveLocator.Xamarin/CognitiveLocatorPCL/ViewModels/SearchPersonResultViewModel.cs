@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace CognitiveLocator.ViewModels
 {
-    public class SearchPersonViewModel : BaseViewModel
+    public class SearchPersonResultViewModel : BaseViewModel
     {
         #region Properties
         Person _person;
@@ -30,7 +30,7 @@ namespace CognitiveLocator.ViewModels
             set;
         }
         #endregion
-        public SearchPersonViewModel() : base(new DependencyServiceBase())
+        public SearchPersonResultViewModel() : base(new DependencyServiceBase())
         {
             Title = "Buscar";
 
