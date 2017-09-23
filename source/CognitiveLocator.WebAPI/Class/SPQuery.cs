@@ -6,15 +6,16 @@ using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using System.Data;
 
 namespace CognitiveLocator.WebAPI.Class
 {
     public class SPQuery
     {
+        static string connectionString = ConfigurationManager.AppSettings["DBConnectionString"].ToString();
+
         public async Task<IEnumerable<dynamic>> AddPersonNotFound(Person p)
         {
-            string connectionString = ConfigurationManager.AppSettings["DBConnectionString"].ToString();
-
             return await Sql.RunAsyncStoredProcParams(connectionString, "AddPersonNotFound",
                 new System.Data.SqlClient.SqlParameter[]
                 {
@@ -35,5 +36,110 @@ namespace CognitiveLocator.WebAPI.Class
                     new System.Data.SqlClient.SqlParameter("RightMargin", p.RightMargin),
                 });
         }
+
+        public async Task<IEnumerable<dynamic>> UpdateFoundPerson(string idPerson, int isFound, string location)
+        {
+            return await Sql.RunAsyncStoredProcParams(connectionString, "UpdateFoundPerson",
+                new System.Data.SqlClient.SqlParameter[] 
+                {
+                    new System.Data.SqlClient.SqlParameter("IdPerson", idPerson),
+                    new System.Data.SqlClient.SqlParameter("IsFound", isFound),
+                    new System.Data.SqlClient.SqlParameter("Location", location),
+                });
+        }
+
+        public async Task<IEnumerable<dynamic>> DisablePerson(string idPerson)
+        {
+            return await Sql.RunAsyncStoredProcParams(connectionString, "DisablePerson",
+                new System.Data.SqlClient.SqlParameter[] { new System.Data.SqlClient.SqlParameter("IdPerson", idPerson) });
+        }
+
+        public async Task<IEnumerable<dynamic>> EnablePerson(string idPerson)
+        {
+            return await Sql.RunAsyncStoredProcParams(connectionString, "EnablePerson",
+                new System.Data.SqlClient.SqlParameter[] { new System.Data.SqlClient.SqlParameter("IdPerson", idPerson) });
+        }
+
+        public async Task<List<Person>> SelectPersonByName(string name)
+        {
+            return BuildPersons(await Sql.RunAsyncStoredProcParams(connectionString, "SelectPersonByName",
+                new System.Data.SqlClient.SqlParameter[] { new System.Data.SqlClient.SqlParameter("Name", name) }));
+        }
+
+        public async Task<List<Person>> SelectPersonByLastName(string lastName)
+        {
+            return BuildPersons(await Sql.RunAsyncStoredProcParams(connectionString, "SelectPersonByLastName",
+                new System.Data.SqlClient.SqlParameter[] { new System.Data.SqlClient.SqlParameter("LastName", lastName) }));
+        }
+
+        public async Task<List<Person>> SelectPersonByFaceId(string faceId)
+        {
+            return BuildPersons(await Sql.RunAsyncStoredProcParams(connectionString, "SelectPersonByFaceId",
+                new System.Data.SqlClient.SqlParameter[] { new System.Data.SqlClient.SqlParameter("FaceId", faceId) }));
+        }
+
+        List<Person> BuildPersons(IEnumerable<dynamic> results)
+        {
+            List<Person> persons = new List<Person>();
+
+            try
+            {
+                foreach (dynamic r in results)
+                {
+                    var person = BuildPersonData(r as IDataRecord);
+
+                    if (person != null)
+                    {
+                        persons.Add(person);
+                    }
+                }
+
+                return persons;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        Person BuildPersonData(IDataRecord data)
+        {
+            if (data == null)
+                return null;
+
+            return new Person()
+            {
+                IdPerson = data.GetValueOrDefault<Guid>("IdPerson").ToString(),
+                IsFound = data.GetValueOrDefault<int>("IsFound"),
+                Name = data.GetValueOrDefault<string>("Name"),
+                LastName = data.GetValueOrDefault<string>("LastName"),
+                Alias = data.GetValueOrDefault<string>("Alias"),
+                Age = data.GetValueOrDefault<int>("Age"),
+                Picture = data.GetValueOrDefault<string>("Picture"),
+                Location = data.GetValueOrDefault<string>("Location"),
+                Notes = data.GetValueOrDefault<string>("Notes"),
+                IsActive = data.GetValueOrDefault<int>("IsActive"),
+                FaceId = data.GetValueOrDefault<Guid>("FaceId").ToString(),
+                Height = (float)data.GetValueOrDefault<double>("Height"),
+                Width = (float)data.GetValueOrDefault<double>("Width"),
+                LeftMargin = (float)data.GetValueOrDefault<double>("LeftMargin"),
+                RightMargin = (float)data.GetValueOrDefault<double>("RightMargin"),
+            };
+        }
+    }
+
+    public static class NullSafeGetter
+    {
+        public static T GetValueOrDefault<T>(this IDataRecord row, string fieldName)
+        {
+            int ordinal = row.GetOrdinal(fieldName);
+            return row.GetValueOrDefault<T>(ordinal);
+        }
+
+        public static T GetValueOrDefault<T>(this IDataRecord row, int ordinal)
+        {
+            return (T)(row.IsDBNull(ordinal) ? default(T) : row.GetValue(ordinal));
+        }
     }
 }
+
