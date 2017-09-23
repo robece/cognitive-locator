@@ -49,27 +49,19 @@
     <Compile Include="Views\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ResultsView.xaml.cs">
-      <DependentUpon>ResultsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ResultDetailView.xaml.cs">
-      <DependentUpon>ResultDetailView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\SearchPersonResultPage.xaml.cs">
       <DependentUpon>SearchPersonResultPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\SearchPersonResultViewModel.cs" />
     <Compile Include="Models\Person.cs" />
-    <Compile Include="ViewModels\ResultDetailViewModel.cs" />
-    <Compile Include="ViewModels\ResultsViewModel.cs" />
     <Compile Include="Views\BaseView.cs" />
     <Compile Include="Views\PersonDetailPage.xaml.cs">
       <DependentUpon>PersonDetailPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\PersonDetailViewModel.cs" />
     <Compile Include="Helpers\MediaHelper.cs" />
-    <Compile Include="Views\CreateReportPage.xaml.cs">
-      <DependentUpon>CreateReportPage.xaml</DependentUpon>
+    <Compile Include="Views\CreateReportView.xaml.cs">
+      <DependentUpon>CreateReportView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\CreateReportViewModel.cs" />
     <Compile Include="Views\Converters\ByteArrayToImageConverter.cs" />
@@ -80,17 +72,13 @@
     <Compile Include="Views\ReportConfirmationPage.xaml.cs">
       <DependentUpon>ReportConfirmationPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SearchPersonMainPage.xaml.cs">
-      <DependentUpon>SearchPersonMainPage.xaml</DependentUpon>
+    <Compile Include="Views\SearchPersonView.xaml.cs">
+      <DependentUpon>SearchPersonView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\SearchPersonMainViewModel.cs" />
     <Compile Include="Views\Behaviors\NextEntryFocusBehavior.cs" />
     <Compile Include="Views\Effects\KeyboardReturnEffect.cs" />
     <Compile Include="ViewModels\ReportConfirmationViewModel.cs" />
-    <Compile Include="ViewModels\SearchPersonByPictureViewModel.cs" />
-    <Compile Include="Views\SearchPersonByPictureView.xaml.cs">
-      <DependentUpon>SearchPersonByPictureView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="Views\AboutView.xaml.cs">
       <DependentUpon>AboutView.xaml</DependentUpon>
@@ -157,7 +145,7 @@
     <EmbeddedResource Include="Views\PersonDetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\CreateReportPage.xaml">
+    <EmbeddedResource Include="Views\CreateReportView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\PreviewPage.xaml">
@@ -166,10 +154,7 @@
     <EmbeddedResource Include="Views\ReportConfirmationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\SearchPersonMainPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\SearchPersonByPictureView.xaml">
+    <EmbeddedResource Include="Views\SearchPersonView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AboutView.xaml">
@@ -178,12 +163,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\HomeView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\ResultsView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\ResultDetailView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

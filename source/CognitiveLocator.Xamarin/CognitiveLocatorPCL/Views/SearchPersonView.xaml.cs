@@ -6,12 +6,12 @@ using Xamarin.Forms;
 
 namespace CognitiveLocator.Views
 {
-    public partial class SearchPersonMainPage : BaseView
+    public partial class SearchPersonView : BaseView
     {
-        public SearchPersonMainPage(string type)
+        public SearchPersonView(string type)
         {
             InitializeComponent();
-            BindingContext = new SearchPersonMainViewModel(){ SearchType = type };
+            BindingContext = new SearchPersonViewModel(){ SearchType = type };
             ChangeType(type);
             Analytics.TrackEvent("View: Search Person");
         }

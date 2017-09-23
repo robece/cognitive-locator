@@ -5,9 +5,9 @@ using Xamarin.Forms;
 
 namespace CognitiveLocator.Views
 {
-    public partial class CreateReportPage : BaseView
+    public partial class CreateReportView : BaseView
     {
-        public CreateReportPage()
+        public CreateReportView()
         {
             InitializeComponent();
             Analytics.TrackEvent("View: Create Report");

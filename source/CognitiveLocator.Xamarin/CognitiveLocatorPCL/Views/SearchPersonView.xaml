@@ -6,7 +6,7 @@
     xmlns:viewmodels="clr-namespace:CognitiveLocator.ViewModels" 
     xmlns:converters="clr-namespace:CognitiveLocator.Views.Converters" 
     xmlns:effects="clr-namespace:CognitiveLocator.Views.Effects"
-    x:Class="CognitiveLocator.Views.SearchPersonMainPage"
+    x:Class="CognitiveLocator.Views.SearchPersonView"
     Title="{Binding Title}">
     <views:BaseView.Resources>
         <ResourceDictionary>
