@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using Microsoft.Azure.Mobile.Analytics;
 using Xamarin.Forms;
 
 namespace CognitiveLocator.Views
@@ -11,6 +11,7 @@ namespace CognitiveLocator.Views
         {
             InitializeComponent();
             this.BindingContext = reportContext;
+            Analytics.TrackEvent("View: Preview Page");
         }
     }
 }

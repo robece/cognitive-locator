@@ -18,7 +18,6 @@ namespace CognitiveLocator.Models
 		public System.DateTime ModifiedDate { get; set; }
 		public int IsActive { get; set; }
 
-
         // TODO: Blob Storage
         public string PhotoURL
         {

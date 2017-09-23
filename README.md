@@ -12,6 +12,7 @@ Team Face API:
 
 - Lucia Vázquez (@analuciavazquez) 
 - Victor Manuel Islas (@OnlyD)
+- Héctor Arriaga (@HectorMap)
 
 Team Azure SQL:
 

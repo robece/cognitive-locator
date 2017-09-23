@@ -6,13 +6,13 @@ using Xamarin.Forms;
 
 namespace CognitiveLocator.Views
 {
-    public partial class HomeView : BaseView
+    public partial class SearchPersonByPictureView : BaseView
     {
-        public HomeView()
+        public SearchPersonByPictureView()
         {
             InitializeComponent();
-            BindingContext = new HomeViewModel();
-            Analytics.TrackEvent("View: Home");
+            BindingContext = new SearchPersonByPictureViewModel();
+            Analytics.TrackEvent("View: Search By Picture");
         }
     }
 }
