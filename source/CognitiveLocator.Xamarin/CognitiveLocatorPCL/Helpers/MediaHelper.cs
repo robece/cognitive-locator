@@ -37,6 +37,30 @@ namespace CognitiveLocator.Helpers
         }
 
 
+        public static async Task<byte[]> PickPhotoAsync()
+        {
+            byte[] photo = null;
+
+            if (Plugin.Media.CrossMedia.Current.IsCameraAvailable
+               && Plugin.Media.CrossMedia.Current.IsTakePhotoSupported)
+            {
+                var file = await CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
+                {
+                    PhotoSize = Plugin.Media.Abstractions.PhotoSize.Full,
+                    MaxWidthHeight = 512,
+                });
+
+
+                if (file != null)
+                    using (var photoStream = file.GetStream())
+                    {
+                        photo = new byte[photoStream.Length];
+                        await photoStream.ReadAsync(photo, 0, (int)photoStream.Length);
+                    }
+            }
+            return await AdjustImageSize(photo);
+        }
+
         public static async Task<byte[]> AdjustImageSize(byte[] photo)
         {
             if (photo != null)
