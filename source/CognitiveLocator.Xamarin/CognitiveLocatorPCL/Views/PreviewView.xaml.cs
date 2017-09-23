@@ -5,12 +5,13 @@ using Xamarin.Forms;
 
 namespace CognitiveLocator.Views
 {
-    public partial class ReportConfirmationPage : ContentPage
+    public partial class PreviewView : BaseView
     {
-        public ReportConfirmationPage()
+        public PreviewView(BaseViewModel reportContext)
         {
             InitializeComponent();
-            Analytics.TrackEvent("View: Report Confirmation");
+            this.BindingContext = reportContext;
+            Analytics.TrackEvent("View: Preview Page");
         }
     }
 }

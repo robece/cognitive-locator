@@ -63,7 +63,7 @@ namespace CognitiveLocator.ViewModels
             {
                 IsBusy = true;
 				await Task.Delay(3000);
-                await NavigationService.PushAsync(new SearchPersonResultPage());
+                await NavigationService.PushAsync(new SearchPersonResultView());
 				IsBusy = false;
             }
         }
