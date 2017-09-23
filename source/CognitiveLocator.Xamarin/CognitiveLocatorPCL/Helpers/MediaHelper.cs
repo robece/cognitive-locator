@@ -47,16 +47,20 @@ namespace CognitiveLocator.Helpers
                 var file = await CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
                 {
                     PhotoSize = Plugin.Media.Abstractions.PhotoSize.Full,
-                    MaxWidthHeight = 512,
                 });
 
 
                 if (file != null)
+                {
                     using (var photoStream = file.GetStream())
                     {
                         photo = new byte[photoStream.Length];
                         await photoStream.ReadAsync(photo, 0, (int)photoStream.Length);
                     }
+
+                    if (!file.Path.EndsWith("jpg", StringComparison.OrdinalIgnoreCase))
+                        photo = await CrossImageConverter.Current.ConvertPngToJpgAsync(photo, 100);
+                }
             }
             return await AdjustImageSize(photo);
         }
@@ -69,7 +73,9 @@ namespace CognitiveLocator.Helpers
 
                 if (imageDetails.Heigth > 512 || imageDetails.Width > 512)
                 {
-                    int bigSide = imageDetails.Heigth > 512 ?
+
+                    bool isTaller = imageDetails.Heigth > imageDetails.Width;
+                    int bigSide = isTaller ?
                                               imageDetails.Heigth :
                                               imageDetails.Width;
 
@@ -83,5 +89,8 @@ namespace CognitiveLocator.Helpers
             }
             return photo;
         }
+
+
+
     }
 }
