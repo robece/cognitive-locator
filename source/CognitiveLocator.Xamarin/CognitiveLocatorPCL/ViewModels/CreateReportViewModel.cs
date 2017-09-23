@@ -86,7 +86,7 @@ namespace CognitiveLocator.ViewModels
             {
                 IsBusy = true;
                 await Task.Delay(3000);
-                await NavigationService.PushAsync(new ReportConfirmationPage());
+                await NavigationService.PushAsync(new ReportConfirmationView());
                 IsBusy = false;
             }
         }
@@ -97,7 +97,7 @@ namespace CognitiveLocator.ViewModels
 			{
 				IsBusy = true;
 				await Task.Delay(3000);
-				await NavigationService.PushAsync(new PreviewPage(this));
+				await NavigationService.PushAsync(new PreviewView(this));
 				IsBusy = false;
 			}
 		}

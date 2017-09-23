@@ -46,14 +46,14 @@
     <Compile Include="Views\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SearchPersonResultPage.xaml.cs">
-      <DependentUpon>SearchPersonResultPage.xaml</DependentUpon>
+    <Compile Include="Views\SearchPersonResultView.xaml.cs">
+      <DependentUpon>SearchPersonResultView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\SearchPersonResultViewModel.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Views\BaseView.cs" />
-    <Compile Include="Views\PersonDetailPage.xaml.cs">
-      <DependentUpon>PersonDetailPage.xaml</DependentUpon>
+    <Compile Include="Views\PersonDetailView.xaml.cs">
+      <DependentUpon>PersonDetailView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\PersonDetailViewModel.cs" />
     <Compile Include="Helpers\MediaHelper.cs" />
@@ -63,16 +63,16 @@
     <Compile Include="ViewModels\CreateReportViewModel.cs" />
     <Compile Include="Views\Converters\ByteArrayToImageConverter.cs" />
     <Compile Include="Views\Effects\NoInteractiveTableViewEffect.cs" />
-    <Compile Include="Views\PreviewPage.xaml.cs">
-      <DependentUpon>PreviewPage.xaml</DependentUpon>
+    <Compile Include="Views\PreviewView.xaml.cs">
+      <DependentUpon>PreviewView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ReportConfirmationPage.xaml.cs">
-      <DependentUpon>ReportConfirmationPage.xaml</DependentUpon>
+    <Compile Include="Views\ReportConfirmationView.xaml.cs">
+      <DependentUpon>ReportConfirmationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SearchPersonView.xaml.cs">
       <DependentUpon>SearchPersonView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\SearchPersonMainViewModel.cs" />
+    <Compile Include="ViewModels\SearchPersonViewModel.cs" />
     <Compile Include="Views\Behaviors\NextEntryFocusBehavior.cs" />
     <Compile Include="Views\Effects\KeyboardReturnEffect.cs" />
     <Compile Include="ViewModels\ReportConfirmationViewModel.cs" />
@@ -139,19 +139,19 @@
       <SubType>
       </SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\SearchPersonResultPage.xaml">
+    <EmbeddedResource Include="Views\SearchPersonResultView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\PersonDetailPage.xaml">
+    <EmbeddedResource Include="Views\PersonDetailView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CreateReportView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\PreviewPage.xaml">
+    <EmbeddedResource Include="Views\PreviewView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ReportConfirmationPage.xaml">
+    <EmbeddedResource Include="Views\ReportConfirmationView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\SearchPersonView.xaml">

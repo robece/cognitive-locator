@@ -7,12 +7,12 @@ using Xamarin.Forms;
 
 namespace CognitiveLocator.Views
 {
-    public partial class SearchPersonResultPage:BaseView
+    public partial class SearchPersonResultView : BaseView
     {
         SearchPersonResultViewModel _vm;
         public SearchPersonResultViewModel ViewModel => _vm ?? (_vm = BindingContext as SearchPersonResultViewModel); 
 
-        public SearchPersonResultPage()
+        public SearchPersonResultView()
         {
             InitializeComponent();
             BindingContext = new SearchPersonResultViewModel();

@@ -36,7 +36,7 @@ namespace CognitiveLocator.ViewModels
 
             OnSelectedItemCommand = new Command<Person>(async (obj) =>
             {
-                var page = new PersonDetailPage(obj);
+                var page = new PersonDetailView(obj);
               
 
                 await NavigationService.PushAsync(page);
