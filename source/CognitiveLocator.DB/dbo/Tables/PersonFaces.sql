@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[PersonFaces]
 (
-	[IdPersonFaces] INT NOT NULL , 
-    [idPerson] INT NOT NULL, 
+	[IdPersonFaces] UNIQUEIDENTIFIER NOT NULL , 
+    [idPerson] UNIQUEIDENTIFIER NOT NULL, 
     [URL] NVARCHAR(500) NOT NULL, 
     [FaceId] INT NULL, 
 	[Height] FLOAT NULL, 
