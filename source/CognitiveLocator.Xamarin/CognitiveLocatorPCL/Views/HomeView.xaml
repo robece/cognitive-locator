@@ -4,7 +4,7 @@
         <Label HorizontalOptions="Center" VerticalOptions="End" FontSize="22" Text="¿Necesitas ayuda?" />
         <Button Command="{Binding CreateReportCommand}" FontSize="18" BackgroundColor="#048CD6" HeightRequest="50" Text="Reportar persona" BorderRadius="15" BorderColor="White" BorderWidth="2" />
         <Button Command="{Binding SearchPersonNameCommand}" FontSize="18" BackgroundColor="#048CD6" HeightRequest="50" Text="Buscar por nombre" BorderRadius="15" BorderColor="White" BorderWidth="2" />
-        <Button Command="{Binding SearchPersonPictureCommand}" FontSize="18" BackgroundColor="#048CD6" HeightRequest="50" Text="Buscar por rostro" BorderRadius="15" BorderColor="White" BorderWidth="2" />
+        <Button Command="{Binding SearchPersonPictureCommand}" FontSize="18" BackgroundColor="#048CD6" HeightRequest="50" Text="Buscar por fotografía" BorderRadius="15" BorderColor="White" BorderWidth="2" />
         <Button Command="{Binding AboutCommand}" FontSize="18" BackgroundColor="#FF9940" HeightRequest="50" Text="Acerca de..." BorderRadius="15" BorderColor="White" BorderWidth="2" />
     </StackLayout>
 </views:BaseView>
