@@ -77,7 +77,7 @@ namespace CognitiveLocator.ViewModels
 
 		private void InitializeViewModel()
 		{
-            Title = "Crear Reporte";
+            Title = "Reportar persona";
             PreviewReportCommand = new Command(async () => await PreviewReport());
 			SendReportCommand = new Command(async () => await SendReport());
             TakePhotoCommand = new Command(async () => await TakePhoto());

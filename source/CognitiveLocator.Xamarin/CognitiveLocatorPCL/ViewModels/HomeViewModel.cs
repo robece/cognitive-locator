@@ -21,7 +21,7 @@ namespace CognitiveLocator.ViewModels
 
         public HomeViewModel(IDependencyService dependencyService) : base(dependencyService)
         {
-            Title = "Bienvenido";
+            Title = "Inicio";
 			DependencyService = dependencyService;
             InitializeViewModel();
 		}

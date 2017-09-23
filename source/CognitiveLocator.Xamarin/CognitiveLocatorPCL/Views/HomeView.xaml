@@ -1,33 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<views:BaseView x:Class="CognitiveLocator.Views.HomeView"
-                xmlns="http://xamarin.com/schemas/2014/forms"
-                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                xmlns:views="clr-namespace:CognitiveLocator.Views;assembly=CognitiveLocatorPCL"
-                Title="{Binding Title}">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        <StackLayout Margin="40,0,40,0"
-                     VerticalOptions="Center"
-                     Spacing="40">
-            <Label HorizontalOptions="Center"
-                   VerticalOptions="End"
-                   FontSize="22"
-                   Text="¿Podemos ayudarte?" />
-            <Button Command="{Binding CreateReportCommand}" 
-                    FontSize="18" BackgroundColor="#048CD6" HeightRequest="50"
-                    Text="Reportar una persona" />
-            <Button Command="{Binding SearchPersonNameCommand}"
-                    FontSize="18" BackgroundColor="#048CD6" HeightRequest="50"
-                    Text="Búsqueda por nombre" />
-            <Button Command="{Binding SearchPersonPictureCommand}" 
-                    FontSize="18" BackgroundColor="#048CD6" HeightRequest="50" 
-                    Text="Búsqueda por rostro" />
-            <Button Command="{Binding AboutCommand}" 
-                    FontSize="18" BackgroundColor="#FF9940" HeightRequest="50"
-                    Text="Acerca de..." />
-        </StackLayout>
-    </Grid>
+<?xml version="1.0" encoding="UTF-8"?>
+<views:BaseView x:Class="CognitiveLocator.Views.HomeView" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:views="clr-namespace:CognitiveLocator.Views;assembly=CognitiveLocatorPCL" Title="{Binding Title}">
+    <StackLayout Margin="40,-70,40,0" VerticalOptions="Center" Spacing="40">
+        <Label HorizontalOptions="Center" VerticalOptions="End" FontSize="22" Text="¿Necesitas ayuda?" />
+        <Button Command="{Binding CreateReportCommand}" FontSize="18" BackgroundColor="#048CD6" HeightRequest="50" Text="Reportar persona" BorderRadius="15" BorderColor="White" BorderWidth="2" />
+        <Button Command="{Binding SearchPersonNameCommand}" FontSize="18" BackgroundColor="#048CD6" HeightRequest="50" Text="Buscar por nombre" BorderRadius="15" BorderColor="White" BorderWidth="2" />
+        <Button Command="{Binding SearchPersonPictureCommand}" FontSize="18" BackgroundColor="#048CD6" HeightRequest="50" Text="Buscar por rostro" BorderRadius="15" BorderColor="White" BorderWidth="2" />
+        <Button Command="{Binding AboutCommand}" FontSize="18" BackgroundColor="#FF9940" HeightRequest="50" Text="Acerca de..." BorderRadius="15" BorderColor="White" BorderWidth="2" />
+    </StackLayout>
 </views:BaseView>

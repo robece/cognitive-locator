@@ -11,6 +11,7 @@ namespace CognitiveLocator.Views
         {
             InitializeComponent();
             Analytics.TrackEvent("View: Report Confirmation");
+            NavigationPage.SetHasNavigationBar(this, false);
         }
     }
 }
