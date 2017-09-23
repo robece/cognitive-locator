@@ -34,7 +34,8 @@ namespace ConsoleDALTest
             personas.Width = 0.0f;
 
 
-            var res = aux.RunStoredProcParams(conn, "AddPersonNotFound",personas);
+
+            var res = aux.RunStoredProcParams(conn, "AddPersonNotFound");
         }
     }
 }
