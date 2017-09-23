@@ -72,7 +72,7 @@ namespace CognitiveLocator.ViewModels
 
         private async Task ChoosePhoto()
         {
-            throw new NotImplementedException();
+            Photo = await Helpers.MediaHelper.PickPhotoAsync();
         }
 
         private async Task TakePhoto()
