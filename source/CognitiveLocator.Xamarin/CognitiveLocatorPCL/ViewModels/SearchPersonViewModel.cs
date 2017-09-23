@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using CognitiveLocator.Models;
 using CognitiveLocator.Views;
@@ -10,6 +10,7 @@ namespace CognitiveLocator.ViewModels
     public class SearchPersonViewModel : BaseViewModel
     {
         #region Properties
+
         Person _person;
         public Person Person
         {
@@ -17,53 +18,66 @@ namespace CognitiveLocator.ViewModels
             set { SetProperty(ref _person, value); }
         }
 
-        ObservableCollection<Person> _results;
-        public ObservableCollection<Person> Results
+        byte[] _photo;
+        public byte[] Photo
         {
-            get { return _results; }
-            set { SetProperty(ref _results, value); }
+            get { return _photo; }
+            set { SetProperty(ref _photo, value); }
         }
 
-        public ICommand OnSelectedItemCommand
-        {
-            get;
-            set;
-        }
+        string _searchType;
+		public string SearchType
+		{
+			get { return _searchType; }
+			set { SetProperty(ref _searchType, value); }
+		}
+
+        public ICommand SearchPersonCommand { get; set; }
+        public ICommand TakePhotoCommand { get; set; }
+        public ICommand ChoosePhotoCommand { get; set; }
         #endregion
+
         public SearchPersonViewModel() : base(new DependencyServiceBase())
         {
-            Title = "Buscar";
-
-            OnSelectedItemCommand = new Command<Person>(async (obj) =>
-            {
-                var page = new PersonDetailPage(obj);
-              
-
-                await NavigationService.PushAsync(page);
-            });
+            InitializeViewModel();
         }
 
-        #region Overrided Methods
-        public override System.Threading.Tasks.Task OnViewAppear()
+		public SearchPersonViewModel(IDependencyService dependencyService) : base(dependencyService)
         {
-            // TODO: Load Results From WebAPI
+			Title = "Bienvenido";
+			DependencyService = dependencyService;
+			InitializeViewModel();
+		}
 
-            var res = new ObservableCollection<Person>();
+        void InitializeViewModel()
+        {
+            Title = "Buscar Persona";
+            SearchPersonCommand = new Command(async () => await SearchPerson());
+            TakePhotoCommand = new Command(async () => await TakePhoto());
+            ChoosePhotoCommand = new Command(async () => await ChoosePhoto());
+        }
 
-            for (int i = 0; i < 5; i++)
+        #region Tasks
+        async Task SearchPerson() {
+            if(!IsBusy)
             {
-                res.Add(new Person
-                {
-                    NameAlias = "nombre",
-                    Picture = "http://via.placeholder.com/150x150",
-                    Location = "Hospital Angeles"
-                });
+                IsBusy = true;
+				await Task.Delay(3000);
+                await NavigationService.PushAsync(new SearchPersonResultView());
+				IsBusy = false;
             }
+        }
 
-            Results = res;
+        async Task TakePhoto()
+        {
+            Photo = await Helpers.MediaHelper.TakePhotoAsync();
+        }
 
-            return base.OnViewAppear();
+        async Task ChoosePhoto()
+        {
+            Photo = await Helpers.MediaHelper.PickPhotoAsync();
         }
         #endregion
     }
 }
+

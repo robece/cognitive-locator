@@ -41,56 +41,48 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
-    <Compile Include="ViewModels\IDependencyService.cs" />
     <Compile Include="Services\IRestServices.cs" />
     <Compile Include="Services\RestServices.cs" />
-    <Compile Include="ViewModels\INavigationService.cs" />
-    <Compile Include="ViewModels\NavigationService.cs" />
     <Compile Include="Views\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ResultsView.xaml.cs">
-      <DependentUpon>ResultsView.xaml</DependentUpon>
+    <Compile Include="Views\SearchPersonResultView.xaml.cs">
+      <DependentUpon>SearchPersonResultView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ResultDetailView.xaml.cs">
-      <DependentUpon>ResultDetailView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\SearchPersonPage.xaml.cs">
-      <DependentUpon>SearchPersonPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModels\SearchPersonViewModel.cs" />
+    <Compile Include="ViewModels\SearchPersonResultViewModel.cs" />
     <Compile Include="Models\Person.cs" />
-    <Compile Include="ViewModels\ResultDetailViewModel.cs" />
-    <Compile Include="ViewModels\ResultsViewModel.cs" />
     <Compile Include="Views\BaseView.cs" />
-    <Compile Include="Views\PersonDetailPage.xaml.cs">
-      <DependentUpon>PersonDetailPage.xaml</DependentUpon>
+    <Compile Include="Views\PersonDetailView.xaml.cs">
+      <DependentUpon>PersonDetailView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\PersonDetailViewModel.cs" />
     <Compile Include="Helpers\MediaHelper.cs" />
-    <Compile Include="Views\CreateReportPage.xaml.cs">
-      <DependentUpon>CreateReportPage.xaml</DependentUpon>
+    <Compile Include="Views\CreateReportView.xaml.cs">
+      <DependentUpon>CreateReportView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\CreateReportViewModel.cs" />
     <Compile Include="Views\Converters\ByteArrayToImageConverter.cs" />
     <Compile Include="Views\Effects\NoInteractiveTableViewEffect.cs" />
-    <Compile Include="Views\PreviewPage.xaml.cs">
-      <DependentUpon>PreviewPage.xaml</DependentUpon>
+    <Compile Include="Views\PreviewView.xaml.cs">
+      <DependentUpon>PreviewView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ReportConfirmationPage.xaml.cs">
-      <DependentUpon>ReportConfirmationPage.xaml</DependentUpon>
+    <Compile Include="Views\ReportConfirmationView.xaml.cs">
+      <DependentUpon>ReportConfirmationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SearchPersonMainPage.xaml.cs">
-      <DependentUpon>SearchPersonMainPage.xaml</DependentUpon>
+    <Compile Include="Views\SearchPersonView.xaml.cs">
+      <DependentUpon>SearchPersonView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\SearchPersonMainViewModel.cs" />
+    <Compile Include="ViewModels\SearchPersonViewModel.cs" />
     <Compile Include="Views\Behaviors\NextEntryFocusBehavior.cs" />
     <Compile Include="Views\Effects\KeyboardReturnEffect.cs" />
     <Compile Include="ViewModels\ReportConfirmationViewModel.cs" />
-    <Compile Include="ViewModels\SearchPersonByPictureViewModel.cs" />
-    <Compile Include="Views\SearchPersonByPictureView.xaml.cs">
-      <DependentUpon>SearchPersonByPictureView.xaml</DependentUpon>
+    <Compile Include="ViewModels\AboutViewModel.cs" />
+    <Compile Include="Views\AboutView.xaml.cs">
+      <DependentUpon>AboutView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Services\IDependencyService.cs" />
+    <Compile Include="Services\INavigationService.cs" />
+    <Compile Include="Services\NavigationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -147,36 +139,30 @@
       <SubType>
       </SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\SearchPersonPage.xaml">
+    <EmbeddedResource Include="Views\SearchPersonResultView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\PersonDetailPage.xaml">
+    <EmbeddedResource Include="Views\PersonDetailView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\CreateReportPage.xaml">
+    <EmbeddedResource Include="Views\CreateReportView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\PreviewPage.xaml">
+    <EmbeddedResource Include="Views\PreviewView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ReportConfirmationPage.xaml">
+    <EmbeddedResource Include="Views\ReportConfirmationView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\SearchPersonMainPage.xaml">
+    <EmbeddedResource Include="Views\SearchPersonView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\SearchPersonByPictureView.xaml">
+    <EmbeddedResource Include="Views\AboutView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\HomeView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\ResultsView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\ResultDetailView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

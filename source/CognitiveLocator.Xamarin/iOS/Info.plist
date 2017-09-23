@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBundleDisplayName</key>
-	<string>CognitiveLocator</string>
-	<key>CFBundleName</key>
-	<string>CognitiveLocator</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.cognitivelocator.app</string>
 	<key>CFBundleShortVersionString</key>
@@ -52,5 +48,9 @@
 	<string>Estamos usando tu Ubicación</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Estamos usando tu Ubicación</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>New Es necesario el acceso a la galería de fotos para el funcionamiento óptimo de la aplicación</string>
+	<key>CFBundleName</key>
+	<string>Buscame</string>
 </dict>
 </plist>
