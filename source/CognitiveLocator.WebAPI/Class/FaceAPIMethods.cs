@@ -125,7 +125,7 @@ namespace CognitiveLocator.WebAPI.Class
         /// </summary>
         /// <param name="url"></param>
         /// <returns>Regresa un faceId</returns>
-        public async Task<JObject> DetectFace(String url)
+        public async Task<List<JObject>> DetectFace(String url)
         {
             var client = new HttpClient();
             var queryString = HttpUtility.ParseQueryString(string.Empty);
@@ -136,14 +136,14 @@ namespace CognitiveLocator.WebAPI.Class
             var uri = "https://westus.api.cognitive.microsoft.com/face/v1.0/detect";
             HttpResponseMessage response;
             // Request body
-            byte[] byteData = Encoding.UTF8.GetBytes("{'url':'"+uri+"'}");
+            byte[] byteData = Encoding.UTF8.GetBytes("{'url':'"+url+"'}");
 
             using (var content = new ByteArrayContent(byteData))
             {
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                 response = await client.PostAsync(uri, content);
             }
-            JObject ObjResult = JsonConvert.DeserializeObject<JObject>(await response.Content.ReadAsStringAsync());
+            List<JObject> ObjResult = JsonConvert.DeserializeObject<List<JObject>>(await response.Content.ReadAsStringAsync());
             return ObjResult;
         }
 

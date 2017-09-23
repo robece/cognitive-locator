@@ -32,7 +32,7 @@ namespace CognitiveLocator.WebAPI.Class
                     new System.Data.SqlClient.SqlParameter("Height", p.Height),
                     new System.Data.SqlClient.SqlParameter("Width", p.Width),
                     new System.Data.SqlClient.SqlParameter("LeftMargin", p.LeftMargin),
-                    new System.Data.SqlClient.SqlParameter("RighMargin", p.RightMargin),
+                    new System.Data.SqlClient.SqlParameter("RightMargin", p.RightMargin),
                 });
         }
     }
