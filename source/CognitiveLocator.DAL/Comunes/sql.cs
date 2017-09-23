@@ -10,7 +10,7 @@ namespace CognitiveLocatorDAL.Comunes
 {
     public class Sql
     {
-        public IEnumerable<dynamic> RunStoredProcParams(string cnn, string sql, params SqlParameter[] parameters)
+        public IEnumerable<dynamic> RunStoredProcParams(string cnn, string sql, SqlParameter[] parameters = null)
         {
             SqlConnection conn = null;
             SqlDataReader rdr = null;
@@ -29,10 +29,12 @@ namespace CognitiveLocatorDAL.Comunes
 
                 cmd.CommandType = CommandType.StoredProcedure;
 
-
-                foreach (var param in parameters)
+                if (parameters != null)
                 {
-                    cmd.Parameters.Add(param);
+                    foreach (var param in parameters)
+                    {
+                        cmd.Parameters.Add(param);
+                    }
                 }
 
                 rdr = cmd.ExecuteReader();
