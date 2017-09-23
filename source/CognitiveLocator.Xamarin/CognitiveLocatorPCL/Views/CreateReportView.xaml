@@ -116,7 +116,41 @@
                                Text="Ubicación" />
                         <Entry x:Name="entryLocation"
                                HorizontalOptions="FillAndExpand"
-                               Text="{Binding Location}" />
+                               Text="{Binding Location}">
+                            <Entry.Effects>
+                                <effects:KeyboardReturnEffect />
+                            </Entry.Effects>
+                            <Entry.Behaviors>
+                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference entryNotas}" />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </StackLayout>
+                </ViewCell>
+                <ViewCell>
+                    <StackLayout Margin="10,3" Orientation="Horizontal">
+                        <Label WidthRequest="80"
+                               VerticalOptions="Center"
+                               Text="Notas" />
+                        <Entry x:Name="entryNotas"
+                               HorizontalOptions="FillAndExpand"
+                               Text="{Binding Notes}">
+                            <Entry.Effects>
+                                <effects:KeyboardReturnEffect />
+                            </Entry.Effects>
+                            <Entry.Behaviors>
+                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference entryAlias}" />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </StackLayout>
+                </ViewCell>
+                <ViewCell>
+                    <StackLayout Margin="10,3" Orientation="Horizontal">
+                        <Label WidthRequest="80"
+                               VerticalOptions="Center"
+                               Text="Alias" />
+                        <Entry x:Name="entryAlias"
+                               HorizontalOptions="FillAndExpand"
+                               Text="{Binding Alias}" />
                     </StackLayout>
                 </ViewCell>
                 <ViewCell>
