@@ -4,19 +4,30 @@
                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                 xmlns:views="clr-namespace:CognitiveLocator.Views;assembly=CognitiveLocatorPCL"
                 Title="{Binding Title}">
-    <StackLayout Margin="20,0" Spacing="40" VerticalOptions="Center">
-        <Label HorizontalOptions="Center"
-               VerticalOptions="End"
-               FontSize="30"
-               Text="¿Podemos ayudarte?" />
-        <Button Command="{Binding SearchPersonNameCommand}"
-                FontSize="20"
-                Text="Deseo reportar a alguien" />
-        <Button Command="{Binding CreateReportCommand}"
-                FontSize="20"
-                Text="Deseo buscar a alguien por nombre" />
-        <Button Command="{Binding SearchPersonPictureCommand}"
-                FontSize="20"
-                Text="Deseo buscar a alguien por foto" />
-    </StackLayout>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <StackLayout Margin="20,0"
+                     VerticalOptions="Center"
+                     Spacing="40">
+            <Label HorizontalOptions="Center"
+                   VerticalOptions="End"
+                   FontSize="30"
+                   Text="¿Podemos ayudarte?" />
+            <Button Command="{Binding SearchPersonNameCommand}"
+                    FontSize="20"
+                    Text="Deseo reportar a alguien" />
+            <Button Command="{Binding CreateReportCommand}"
+                    FontSize="20"
+                    Text="Deseo buscar a alguien por nombre" />
+            <Button Command="{Binding SearchPersonPictureCommand}"
+                    FontSize="20"
+                    Text="Deseo buscar a alguien por foto" />
+        </StackLayout>
+        <StackLayout Grid.Row="1">
+            <Button Text="Acerca de la app" Command="{Binding AboutCommand}" BackgroundColor="#303F9F" TextColor="White"/>
+        </StackLayout>
+    </Grid>
 </views:BaseView>
