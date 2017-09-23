@@ -3,7 +3,6 @@
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     xmlns:views="clr-namespace:CognitiveLocator.Views;assembly=CognitiveLocatorPCL"
-    xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
     x:Class="CognitiveLocator.Views.PersonDetailPage"
     Title="{Binding Title}">
 	<views:BaseView.Content>
@@ -11,17 +10,10 @@
             <Image Source="http://via.placeholder.com/250x250" HeightRequest="150" />
             <TableView Intent="Form" HasUnevenRows="true">
                 <TableSection>
-                    <EntryCell Label="Nombre" Text="{Binding CurrentPerson.NameAlias}" IsEnabled="false"/>
+                    <EntryCell Label="Nombre" Text="{Binding CurrentPerson.Name}" IsEnabled="false"/>
+                    <EntryCell Label="Apellidos" Text="{Binding CurrentPerson.LastName}" IsEnabled="false"/>
+                    <EntryCell Label="Edad" Text="{Binding CurrentPerson.Age, StringFormat='{0} años'}" IsEnabled="false"/>
                     <EntryCell Label="Ubicación" Text="{Binding CurrentPerson.Location}" IsEnabled="false"/>
-                </TableSection>
-                <TableSection Title="Ubicación">
-                  <ViewCell>
-                    <maps:Map HeightRequest="200"
-                        x:Name="Ubicacion"
-                        IsShowingUser="true"
-                        MapType="Hybrid"
-                    />
-                  </ViewCell>
                 </TableSection>
             </TableView>
         </StackLayout>

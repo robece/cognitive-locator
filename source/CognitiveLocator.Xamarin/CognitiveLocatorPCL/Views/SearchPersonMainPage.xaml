@@ -39,7 +39,7 @@
                 <ViewCell>
                     <StackLayout Orientation="Horizontal" Margin="10,3">
                         <Label VerticalOptions="Center" Text="Nombre" WidthRequest="70" />
-                        <Entry HorizontalOptions="FillAndExpand" Text="{Binding Person.NameAlias}" />
+                        <Entry HorizontalOptions="FillAndExpand" Text="{Binding Person.Name}" />
                     </StackLayout>
                 </ViewCell>
                 <ViewCell>

@@ -28,7 +28,6 @@ namespace CognitiveLocator.Xamarin.Droid
             MobileCenter.Start("f8963ef0-4239-46ea-b69c-621fafe09d0c", typeof(Analytics));
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
-            global::Xamarin.FormsMaps.Init(this, bundle);
 
             LoadApplication(new App());
         }
