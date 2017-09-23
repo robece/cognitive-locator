@@ -33,6 +33,13 @@ namespace CognitiveLocator.ViewModels
             InitializeViewModel();
         }
 
+		public SearchPersonMainViewModel(IDependencyService dependencyService) : base(dependencyService)
+        {
+			Title = "Bienvenido";
+			DependencyService = dependencyService;
+			InitializeViewModel();
+		}
+
         void InitializeViewModel()
         {
             Title = "Buscar Persona";

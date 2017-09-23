@@ -9,11 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>CognitiveLocator.Droid</RootNamespace>
     <AssemblyName>CognitiveLocator.Droid</AssemblyName>
-<<<<<<< HEAD
     <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
-=======
-    <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
->>>>>>> c23563eddf579c150295a7dc40005f5a20891c74
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
