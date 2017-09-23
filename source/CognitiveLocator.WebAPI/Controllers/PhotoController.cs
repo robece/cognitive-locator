@@ -1,4 +1,5 @@
 ﻿using CognitiveLocator.WebAPI.Class;
+using CognitiveLocator.WebAPI.Models.FaceApiModel;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -38,7 +39,18 @@ namespace CognitiveLocator.WebAPI.Controllers
                 }
 
                 ClassStg storage = new ClassStg();
+                //ModelPerson ObjPerson = new ModelPerson();
                 string uri = await storage.UploadPhoto(new MemoryStream(fileBytes), FileName);
+                //AddPersonToGroup
+                FaceAPIMethods ObjFaceApiPerson = new FaceAPIMethods();
+                //AddPersonId
+                CreatePerson resultCreatePerson = await ObjFaceApiPerson.AddPersonToGroup("addModelField");
+                //AddFace
+                AddPersonFace resultPesonFace = await ObjFaceApiPerson.AddPersonFace(uri, resultCreatePerson.personId);
+                //SaveDB
+
+              
+
                 File.Delete(provider.FileData.First().LocalFileName);
                 return Request.CreateResponse(HttpStatusCode.OK);
             }

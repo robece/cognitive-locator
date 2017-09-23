@@ -201,10 +201,15 @@
     <Compile Include="Class\FaceAPIMethods.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PhotoController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\FaceApiModel\AddFaceToList.cs" />
+    <Compile Include="Models\FaceApiModel\AddPersonFace.cs" />
+    <Compile Include="Models\FaceApiModel\CreatePerson.cs" />
+    <Compile Include="Models\FaceApiModel\FindSimilar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -261,7 +266,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
