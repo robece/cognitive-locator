@@ -18,7 +18,6 @@ namespace CognitiveLocator.Xamarin.iOS
             MobileCenter.Start("0da75977-ccf2-43fd-ba88-ae712f9a3568", typeof(Analytics));
 
             global::Xamarin.Forms.Forms.Init();
-            global::Xamarin.FormsMaps.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

@@ -11,7 +11,7 @@ namespace CognitiveLocator.ViewModels
         public Command SearchPersonNameCommand { get; set; }
 		public Command SearchPersonPictureCommand { get; set; }
 		public Command CreateReportCommand { get; set; }
-
+		public Command AboutCommand { get; set; }
 
 
 		public HomeViewModel() : this(new DependencyServiceBase())
@@ -32,21 +32,27 @@ namespace CognitiveLocator.ViewModels
             SearchPersonNameCommand = new Command(async () => await SearchPersonByName());
             SearchPersonPictureCommand= new Command(async () => await SearchPersonByPicture());
             CreateReportCommand = new Command(async () => await CreateReport());
+            AboutCommand = new Command(async () => await GoToAbout());
+        }
+
+        private async Task GoToAbout()
+        {
+            await NavigationService.PushAsync(new AboutView());
         }
 
         private async Task CreateReport()
         {
-            await NavigationService.PushAsync(new SearchPersonMainPage());
+            await NavigationService.PushAsync(new CreateReportView());
         }
 
         private async Task SearchPersonByName()
         {
-            await NavigationService.PushAsync(new CreateReportPage());
+            await NavigationService.PushAsync(new SearchPersonView("name"));
         }
 
 		private async Task SearchPersonByPicture()
 		{
-			await NavigationService.PushAsync(new CreateReportPage());
+            await NavigationService.PushAsync(new SearchPersonView("picture"));
 		}
 
         private async Task NavigateToResults()
