@@ -15,10 +15,6 @@
                 <Label Margin="0,15"
                        FontSize="Small"
                        Text="Es una aplicación sin fines de lucro y únicamente con la finalidad de encontrar personas desaparecidas. " />
-                <Label Margin="0,15"
-                       FontSize="Small"
-                       Text="Hace el uso de Cognitive Services de Microsoft para reconocimiento facial y la aplicación es Open Source." />
-                <Button Text="Puedes ver el proyecto aqui" />
             </StackLayout>
             <StackLayout Grid.Row="1" Margin="0,10,0,5">
                 <Label Margin="0,10"

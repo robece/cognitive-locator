@@ -9,25 +9,25 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <StackLayout Margin="20,0"
+        <StackLayout Margin="40,0,40,0"
                      VerticalOptions="Center"
                      Spacing="40">
             <Label HorizontalOptions="Center"
                    VerticalOptions="End"
-                   FontSize="30"
+                   FontSize="22"
                    Text="¿Podemos ayudarte?" />
-            <Button Command="{Binding CreateReportCommand}"
-                    FontSize="20"
-                    Text="Deseo reportar a alguien" />
+            <Button Command="{Binding CreateReportCommand}" 
+                    FontSize="18" BackgroundColor="#048CD6" HeightRequest="50"
+                    Text="Reportar una persona" />
             <Button Command="{Binding SearchPersonNameCommand}"
-                    FontSize="20"
-                    Text="Deseo buscar a alguien por nombre" />
-            <Button Command="{Binding SearchPersonPictureCommand}"
-                    FontSize="20"
-                    Text="Deseo buscar a alguien por foto" />
-        </StackLayout>
-        <StackLayout Grid.Row="1">
-            <Button Text="Acerca de la app" Command="{Binding AboutCommand}" BackgroundColor="#303F9F" TextColor="White"/>
+                    FontSize="18" BackgroundColor="#048CD6" HeightRequest="50"
+                    Text="Búsqueda por nombre" />
+            <Button Command="{Binding SearchPersonPictureCommand}" 
+                    FontSize="18" BackgroundColor="#048CD6" HeightRequest="50" 
+                    Text="Búsqueda por rostro" />
+            <Button Command="{Binding AboutCommand}" 
+                    FontSize="18" BackgroundColor="#FF9940" HeightRequest="50"
+                    Text="Acerca de..." />
         </StackLayout>
     </Grid>
 </views:BaseView>

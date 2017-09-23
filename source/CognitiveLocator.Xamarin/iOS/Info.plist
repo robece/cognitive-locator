@@ -51,6 +51,6 @@
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>New Es necesario el acceso a la galería de fotos para el funcionamiento óptimo de la aplicación</string>
 	<key>CFBundleName</key>
-	<string>Buscame</string>
+	<string>Busca.me</string>
 </dict>
 </plist>

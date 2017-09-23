@@ -8,6 +8,11 @@ namespace CognitiveLocator.Views
 {
     public partial class SearchPersonView : BaseView
     {
+        public SearchPersonView()
+        {
+            InitializeComponent();
+        }
+
         public SearchPersonView(string type)
         {
             InitializeComponent();
