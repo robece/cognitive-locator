@@ -8,30 +8,31 @@
         <viewmodels:ReportConfirmationViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <Grid Margin="20,0">
+        <Grid Margin="40,0,40,0">
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition Height="50" />
-                <RowDefinition Height="100" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="30" />
                 <RowDefinition Height="50" />
                 <RowDefinition Height="2*" />
             </Grid.RowDefinitions>
             <Label Grid.Row="1"
                    HorizontalOptions="Center"
                    VerticalOptions="End"
-                   FontSize="30"
+                   FontSize="18"
                    HorizontalTextAlignment="Center"
-                   Text="Gracias por tu apoyo" />
+                   Text="Gracias por tu apoyo!!" />
             <Label Grid.Row="2"
                    HorizontalOptions="Center"
                    VerticalOptions="End"
-                   FontSize="30"
+                   FontSize="18"
                    HorizontalTextAlignment="Center"
-                   Text="Puedes estar cambiando la vida de una familia" />
-            <Button Grid.Row="3"
+                   Text="Puedes estar cambiando la vida de una familia!!" />
+            <Button Grid.Row="4"
                     Command="{Binding HomeCommand}"
-                    FontSize="20"
-                    Text="Inicio" />
+                    FontSize="18" BackgroundColor="#048CD6" HeightRequest="50" BorderRadius="15" BorderColor="White" BorderWidth="2"
+                    Text="Inicio" />  
         </Grid>
     </ContentPage.Content>
 </ContentPage>
