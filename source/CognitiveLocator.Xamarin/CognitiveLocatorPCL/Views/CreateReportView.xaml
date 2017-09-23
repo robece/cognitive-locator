@@ -155,7 +155,7 @@
                 </ViewCell>
                 <ViewCell>
                     <StackLayout Margin="40,20,40,20">
-                        <Button Command="{Binding PreviewReportCommand}" 
+                        <Button x:Name="btnContinuar" Command="{Binding PreviewReportCommand}" 
                             Text="Continuar" FontSize="18" BackgroundColor="#048CD6" HeightRequest="50"/>
                     </StackLayout>
                 </ViewCell>

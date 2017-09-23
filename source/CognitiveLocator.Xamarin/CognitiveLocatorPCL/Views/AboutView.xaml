@@ -50,6 +50,7 @@
                     <Label FontSize="Small" Text="Gustavo Barrientos (@tavobarrientos)" />
                     <Label FontSize="Small" Text="Humberto Jaimes (@humbertojaimes)" />
                     <Label FontSize="Small" Text="Leonardo Romero (@Micnick)" />
+                    <Label FontSize="Small" Text="Vicente Guzmán (@LucioMSP)" />
                 </StackLayout>
                 <StackLayout Margin="0,10">
                     <Label FontAttributes="Bold"
