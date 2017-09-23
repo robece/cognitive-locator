@@ -88,6 +88,10 @@
     <Compile Include="Views\Behaviors\NextEntryFocusBehavior.cs" />
     <Compile Include="Views\Effects\KeyboardReturnEffect.cs" />
     <Compile Include="ViewModels\ReportConfirmationViewModel.cs" />
+    <Compile Include="ViewModels\SearchPersonByPictureViewModel.cs" />
+    <Compile Include="Views\SearchPersonByPictureView.xaml.cs">
+      <DependentUpon>SearchPersonByPictureView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -157,6 +161,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\SearchPersonMainPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SearchPersonByPictureView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
