@@ -80,10 +80,10 @@ namespace CognitiveLocator.WebAPI.Class
             // Request headers
             client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", FaceAPIKey);
             // Request parameters
-            var uri = "https://westus.api.cognitive.microsoft.com/face/v1.0/persongroups/"+PersonGroupId+"/persons/"+personId+"/persistedFaces";
+            var uri = "https://westus.api.cognitive.microsoft.com/face/v1.0/persongroups/" + PersonGroupId + "/persons/" + personId + "/persistedFaces";
             HttpResponseMessage response;
             // Request body
-            byte[] byteData = Encoding.UTF8.GetBytes("{'url':'"+urlStg+"'}");
+            byte[] byteData = Encoding.UTF8.GetBytes("{'url':'" + urlStg + "'}");
             using (var content = new ByteArrayContent(byteData))
             {
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
@@ -105,10 +105,10 @@ namespace CognitiveLocator.WebAPI.Class
             var queryString = HttpUtility.ParseQueryString(string.Empty);
             // Request headers
             client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", FaceAPIKey);
-            var uri = "https://westus.api.cognitive.microsoft.com/face/v1.0/facelists/"+FaceListId+"/persistedFaces";
+            var uri = "https://westus.api.cognitive.microsoft.com/face/v1.0/facelists/" + FaceListId + "/persistedFaces";
             HttpResponseMessage response;
             // Request body
-            byte[] byteData = Encoding.UTF8.GetBytes("{'url':'"+uri+"'}");
+            byte[] byteData = Encoding.UTF8.GetBytes("{'url':'" + stgUrl + "'}");
             using (var content = new ByteArrayContent(byteData))
             {
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
@@ -125,7 +125,7 @@ namespace CognitiveLocator.WebAPI.Class
         /// </summary>
         /// <param name="url"></param>
         /// <returns>Regresa un faceId</returns>
-        public async Task<JObject> DetectFace(String url)
+        public async Task<List<JObject>> DetectFace(String url)
         {
             var client = new HttpClient();
             var queryString = HttpUtility.ParseQueryString(string.Empty);
@@ -136,14 +136,14 @@ namespace CognitiveLocator.WebAPI.Class
             var uri = "https://westus.api.cognitive.microsoft.com/face/v1.0/detect";
             HttpResponseMessage response;
             // Request body
-            byte[] byteData = Encoding.UTF8.GetBytes("{'url':'"+uri+"'}");
+            byte[] byteData = Encoding.UTF8.GetBytes("{'url':'" + url + "'}");
 
             using (var content = new ByteArrayContent(byteData))
             {
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                 response = await client.PostAsync(uri, content);
             }
-            JObject ObjResult = JsonConvert.DeserializeObject<JObject>(await response.Content.ReadAsStringAsync());
+            List<JObject> ObjResult = JsonConvert.DeserializeObject<List<JObject>>(await response.Content.ReadAsStringAsync());
             return ObjResult;
         }
 
@@ -152,7 +152,7 @@ namespace CognitiveLocator.WebAPI.Class
         /// </summary>
         /// <param name="faceId"></param>
         /// <returns>Regresa si ubo coincidencias</returns>
-        public async Task<FindSimilar> FindSimilarFace(String faceId)
+        public async Task<List<FindSimilar>> FindSimilarFace(String faceId)
         {
             var client = new HttpClient();
             var queryString = HttpUtility.ParseQueryString(string.Empty);
@@ -161,14 +161,14 @@ namespace CognitiveLocator.WebAPI.Class
             var uri = "https://westus.api.cognitive.microsoft.com/face/v1.0/findsimilars";
             HttpResponseMessage response;
             // Request body
-            byte[] byteData = Encoding.UTF8.GetBytes("{'faceId':'"+faceId+"','faceListId':'"+ FaceListId+"','maxNumOfCandidatesReturned':1,'mode':'matchPerson'}");
+            byte[] byteData = Encoding.UTF8.GetBytes("{'faceId':'" + faceId + "','faceListId':'" + FaceListId + "','maxNumOfCandidatesReturned':1,'mode':'matchPerson'}");
             using (var content = new ByteArrayContent(byteData))
             {
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                 response = await client.PostAsync(uri, content);
             }
-            FindSimilar ObjFindSimilar = new FindSimilar();
-            ObjFindSimilar = JsonConvert.DeserializeObject<FindSimilar>(await response.Content.ReadAsStringAsync());
+            List<FindSimilar> ObjFindSimilar = new List<FindSimilar>();
+            ObjFindSimilar = JsonConvert.DeserializeObject<List<FindSimilar>>(await response.Content.ReadAsStringAsync());
             return ObjFindSimilar;
         }
     }

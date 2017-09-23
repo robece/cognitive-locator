@@ -7,7 +7,7 @@ namespace CognitiveLocator.WebAPI.Models.FaceApiModel
 {
     public class FindSimilar
     {
-        public string persisteFaceId{get;set;}
+        public string persistedFaceId { get;set;}
         public float confidence {get; set;}
 
     }
