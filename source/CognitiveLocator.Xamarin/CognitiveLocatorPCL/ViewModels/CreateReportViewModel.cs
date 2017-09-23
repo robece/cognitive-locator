@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Threading.Tasks;
+using CognitiveLocator.Models;
 using CognitiveLocator.Models.ApiModels;
 using CognitiveLocator.Views;
 using Xamarin.Forms;
 
 namespace CognitiveLocator.ViewModels
 {
-    public class CreateReportViewModel:BaseViewModel
+    public class CreateReportViewModel : BaseViewModel
     {
 
         public Command SendReportCommand { get; set; }
@@ -14,75 +15,75 @@ namespace CognitiveLocator.ViewModels
         public Command ChoosePhotoCommand { get; set; }
         public Command PreviewReportCommand { get; set; }
 
-		byte[] photo;
-		public byte[] Photo
-		{
+        byte[] photo;
+        public byte[] Photo
+        {
             get { return photo; }
             set { SetProperty(ref photo, value); }
-		}
+        }
 
-		string name;
-		public string Name
-		{
-			get { return name; }
-			set { SetProperty(ref name, value); }
-		}
+        string name;
+        public string Name
+        {
+            get { return name; }
+            set { SetProperty(ref name, value); }
+        }
 
-		string lastName;
-		public string LastName
-		{
-			get { return lastName; }
-			set { SetProperty(ref lastName, value); }
-		}
+        string lastName;
+        public string LastName
+        {
+            get { return lastName; }
+            set { SetProperty(ref lastName, value); }
+        }
 
-		string alias;
-		public string Alias
-		{
-			get { return alias; }
-			set { SetProperty(ref alias, value); }
-		}
+        string alias;
+        public string Alias
+        {
+            get { return alias; }
+            set { SetProperty(ref alias, value); }
+        }
 
-		string age;
-		public string Age
-		{
-			get { return age; }
-			set { SetProperty(ref age, value); }
-		}
+        string age;
+        public string Age
+        {
+            get { return age; }
+            set { SetProperty(ref age, value); }
+        }
 
-		string location;
-		public string Location
-		{
-			get { return location; }
-			set { SetProperty(ref location, value); }
-		}
+        string location;
+        public string Location
+        {
+            get { return location; }
+            set { SetProperty(ref location, value); }
+        }
 
-		string notes;
-		public string Notes
-		{
-			get { return notes; }
-			set { SetProperty(ref notes, value); }
-		}
+        string notes;
+        public string Notes
+        {
+            get { return notes; }
+            set { SetProperty(ref notes, value); }
+        }
 
 
-		public CreateReportViewModel() : this(new DependencyServiceBase())
+        public CreateReportViewModel() : this(new DependencyServiceBase())
         {
 
-		}
+        }
 
-		public CreateReportViewModel(IDependencyService dependencyService) : base(dependencyService)
+        public CreateReportViewModel(IDependencyService dependencyService) : base(dependencyService)
         {
-			DependencyService = dependencyService;
-			InitializeViewModel();
-		}
+            DependencyService = dependencyService;
+            InitializeViewModel();
+        }
 
-		private void InitializeViewModel()
-		{
+        private void InitializeViewModel()
+        {
             Title = "Reportar persona";
             PreviewReportCommand = new Command(async () => await PreviewReport());
-			SendReportCommand = new Command(async () => await SendReport());
+            SendReportCommand = new Command(async () => await SendReport());
             TakePhotoCommand = new Command(async () => await TakePhoto());
             ChoosePhotoCommand = new Command(async () => await ChoosePhoto());
-		}
+        }
 
 
         private async Task ChoosePhoto()
@@ -100,8 +101,8 @@ namespace CognitiveLocator.ViewModels
             var model = ValidateInformation();
             if (model == null)
                 return;
-            
-            if(!IsBusy)
+
+            if (!IsBusy)
             {
                 IsBusy = true;
                 await RestServices.CreateReportAsync(model, Photo);
@@ -111,26 +112,26 @@ namespace CognitiveLocator.ViewModels
         }
 
         private async Task PreviewReport()
-		{
-			if (!IsBusy)
-			{
-				IsBusy = true;
-				await Task.Delay(3000);
-				await NavigationService.PushAsync(new PreviewView(this));
-				IsBusy = false;
-			}
-		}
+        {
+            if (!IsBusy)
+            {
+                IsBusy = true;
+                await Task.Delay(3000);
+                await NavigationService.PushAsync(new PreviewView(this));
+                IsBusy = false;
+            }
+        }
 
-		private CreateReportModel ValidateInformation()
-		{
+        private CreateReportModel ValidateInformation()
+        {
             var model = new CreateReportModel()
             {
                 Nombre = this.Name,
                 Apellido = this.LastName,
                 Alias = this.Alias,
-                Edad = this.Age, 
+                Edad = this.Age,
                 Ubicacion = this.Location,
-                Notas = this.Notes, 
+                Notas = this.Notes,
                 Encontrado = 0
             };
 
@@ -138,21 +139,21 @@ namespace CognitiveLocator.ViewModels
                 return null;
 
             if (String.IsNullOrEmpty(model.Apellido))
-				return null;
+                return null;
 
             if (String.IsNullOrEmpty(model.Alias))
-				return null;
+                return null;
 
             if (String.IsNullOrEmpty(model.Edad))
-				return null;
+                return null;
 
             if (String.IsNullOrEmpty(model.Ubicacion))
-				return null;
+                return null;
 
             if (String.IsNullOrEmpty(model.Notas))
-				return null;
+                return null;
 
             return model;
-		}
+        }
     }
 }
