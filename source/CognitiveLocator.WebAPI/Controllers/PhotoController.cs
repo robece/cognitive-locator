@@ -1,4 +1,5 @@
 ﻿using CognitiveLocator.WebAPI.Class;
+using CognitiveLocator.WebAPI.Models;
 using CognitiveLocator.WebAPI.Models.FaceApiModel;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace CognitiveLocator.WebAPI.Controllers
     {
         [HttpPost]
         [Route("Post")]
-        public async Task<HttpResponseMessage> PostFormData()
+        public async Task<IHttpActionResult> PostFormData([FromUri] int IsFound, string Name, string LastName, string Alias, int Age, string Location, string Notes)
         {
             byte[] fileBytes = null;
             String FileName = string.Empty;
@@ -44,19 +45,33 @@ namespace CognitiveLocator.WebAPI.Controllers
                 //AddPersonToGroup
                 FaceAPIMethods ObjFaceApiPerson = new FaceAPIMethods();
                 //AddPersonId
-                CreatePerson resultCreatePerson = await ObjFaceApiPerson.AddPersonToGroup("addModelField");
+                CreatePerson resultCreatePerson = await ObjFaceApiPerson.AddPersonToGroup(Name + " " + LastName);
                 //AddFace
-                AddPersonFace resultPesonFace = await ObjFaceApiPerson.AddPersonFace(uri, resultCreatePerson.personId);
+                AddPersonFace resultPersonFace = await ObjFaceApiPerson.AddPersonFace(uri, resultCreatePerson.personId);
                 //SaveDB
-
-              
+                AddFaceToList resultFaceToList = await ObjFaceApiPerson.AddFaceToList(uri);
+                Person person = new Person()
+                {
+                    Age = Age,
+                    Alias = Alias,
+                    FaceId = resultFaceToList.persistedFaceId,
+                    IdPerson = resultCreatePerson.personId,
+                    Picture = uri,
+                    IsActive = 1,
+                    IsFound = IsFound,
+                    LastName = LastName,
+                    Name = Name,
+                    Location = Location,
+                    Notes = Notes
+                };
+                await new SPQuery().AddPersonNotFound(person);
 
                 File.Delete(provider.FileData.First().LocalFileName);
-                return Request.CreateResponse(HttpStatusCode.OK);
+                return Ok();
             }
             catch (Exception e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+                return InternalServerError();
             }
         }
     }
