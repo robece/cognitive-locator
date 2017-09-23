@@ -52,7 +52,6 @@ namespace CognitiveLocator.Models
             set;
         }
 
-
         // TODO: Blob Storage
         public string PhotoURL
         {
