@@ -30,67 +30,67 @@
             <TableSection Title="Datos de la persona">
                 <ViewCell Height="60">
                     <StackLayout Margin="40,10,40,10" Orientation="Horizontal">
-                        <Entry HorizontalOptions="FillAndExpand" Placeholder="Nombre" Text="{Binding Name}">
+                        <Entry x:Name="name" HorizontalOptions="FillAndExpand" Placeholder="Nombre" Text="{Binding Name}">
                             <Entry.Effects>
                                 <effects:KeyboardReturnEffect />
                             </Entry.Effects>
                             <Entry.Behaviors>
-                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference entryLastName}" />
+                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference lastname}" />
                             </Entry.Behaviors>
                         </Entry>
                     </StackLayout>
                 </ViewCell>
                 <ViewCell Height="60">
                     <StackLayout Margin="40,10,40,10" Orientation="Horizontal">
-                        <Entry x:Name="entryLastName" HorizontalOptions="FillAndExpand" Placeholder="Apellido" Text="{Binding LastName}">
+                        <Entry x:Name="lastname" HorizontalOptions="FillAndExpand" Placeholder="Apellido" Text="{Binding LastName}">
                             <Entry.Effects>
                                 <effects:KeyboardReturnEffect />
                             </Entry.Effects>
                             <Entry.Behaviors>
-                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference entryAge}" />
+                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference age}" />
                             </Entry.Behaviors>
                         </Entry>
                     </StackLayout>
                 </ViewCell>
                 <ViewCell Height="60">
                     <StackLayout Margin="40,10,40,10" Orientation="Horizontal">
-                        <Entry x:Name="entryAge" HorizontalOptions="FillAndExpand" Placeholder="Edad" Text="{Binding Age}">
+                        <Entry x:Name="age" HorizontalOptions="FillAndExpand" Keyboard="Numeric" Placeholder="Edad" Text="{Binding Age}">
                             <Entry.Effects>
                                 <effects:KeyboardReturnEffect />
                             </Entry.Effects>
                             <Entry.Behaviors>
-                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference entryLocation}" />
+                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference location}" />
                             </Entry.Behaviors>
                         </Entry>
                     </StackLayout>
                 </ViewCell>
                 <ViewCell Height="60">
                     <StackLayout Margin="40,10,40,10" Orientation="Horizontal">
-                        <Entry x:Name="entryLocation" HorizontalOptions="FillAndExpand" Placeholder="Ubicación" Text="{Binding Location}">
+                        <Entry x:Name="location" HorizontalOptions="FillAndExpand" Placeholder="Ubicación" Text="{Binding Location}">
                             <Entry.Effects>
                                 <effects:KeyboardReturnEffect />
                             </Entry.Effects>
                             <Entry.Behaviors>
-                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference entryNotas}" />
+                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference notes}" />
                             </Entry.Behaviors>
                         </Entry>
                     </StackLayout>
                 </ViewCell>
                 <ViewCell Height="60">
                     <StackLayout Margin="40,10,40,10" Orientation="Horizontal">
-                        <Entry x:Name="entryNotas" HorizontalOptions="FillAndExpand" Placeholder="Notas" Text="{Binding Notes}">
+                        <Entry x:Name="notes" HorizontalOptions="FillAndExpand" Placeholder="Notas" Text="{Binding Notes}">
                             <Entry.Effects>
                                 <effects:KeyboardReturnEffect />
                             </Entry.Effects>
                             <Entry.Behaviors>
-                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference entryAlias}" />
+                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference alias}" />
                             </Entry.Behaviors>
                         </Entry>
                     </StackLayout>
                 </ViewCell>
                 <ViewCell Height="60">
                     <StackLayout Margin="40,10,40,10" Orientation="Horizontal">
-                        <Entry x:Name="entryAlias" HorizontalOptions="FillAndExpand" Placeholder="Alias" Text="{Binding Alias}" />
+                        <Entry x:Name="alias" HorizontalOptions="FillAndExpand" Placeholder="Alias" Text="{Binding Alias}" />
                     </StackLayout>
                 </ViewCell>
                 <ViewCell Height="60">
