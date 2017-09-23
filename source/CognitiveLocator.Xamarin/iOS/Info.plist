@@ -48,5 +48,11 @@
 	<false/>
 	<key>NSCameraUsageDescription</key>
 	<string>Es necesario el acceso a la cámara para el funcionamiento óptimo de la aplicación</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Estamos usando tu Ubicación</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Estamos usando tu Ubicación</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>New Es necesario el acceso a la galería de fotos para el funcionamiento óptimo de la aplicación</string>
 </dict>
 </plist>
