@@ -24,7 +24,7 @@
             <TableView.Effects>
                 <effects:NoInteractiveTableViewEffect />
             </TableView.Effects>
-            <TableSection Title="Foto">
+            <TableSection Title="Fotografía">
                 <ViewCell>
                     <StackLayout>
                         <Frame Margin="0,5,0,0"
@@ -51,21 +51,19 @@
                                      Orientation="Horizontal">
                             <Button HorizontalOptions="FillAndExpand"
                                     Command="{Binding TakePhotoCommand}" FontSize="18" BackgroundColor="#048CD6" HeightRequest="50"
-                                    Text="Cámara" />
+                                    Text="Cámara" BorderRadius="15" BorderColor="White" BorderWidth="2" />
                             <Button HorizontalOptions="FillAndExpand"
                                     Command="{Binding ChoosePhotoCommand}" FontSize="18" BackgroundColor="#048CD6" HeightRequest="50"
-                                    Text="Galería" />
+                                    Text="Galería" BorderRadius="15" BorderColor="White" BorderWidth="2" />
                         </StackLayout>
                     </StackLayout>
                 </ViewCell>
             </TableSection>
             <TableSection Title="Datos de la persona">
-                <ViewCell>
-                    <StackLayout Margin="40,0,40,0" Orientation="Horizontal">
-                        <Label WidthRequest="80"
-                               VerticalOptions="Center"
-                               Text="Nombre" />
-                        <Entry HorizontalOptions="FillAndExpand" Text="{Binding Name}">
+                <ViewCell Height="60">
+                    <StackLayout Margin="40,10,40,10" Orientation="Horizontal">
+                        <Entry HorizontalOptions="FillAndExpand" Placeholder="Nombre"
+                            Text="{Binding Name}">
                             <Entry.Effects>
                                 <effects:KeyboardReturnEffect />
                             </Entry.Effects>
@@ -75,13 +73,10 @@
                         </Entry>
                     </StackLayout>
                 </ViewCell>
-                <ViewCell>
-                    <StackLayout Margin="40,0,40,0" Orientation="Horizontal">
-                        <Label WidthRequest="80"
-                               VerticalOptions="Center"
-                               Text="Apellido" />
+                <ViewCell Height="60">
+                    <StackLayout Margin="40,10,40,10" Orientation="Horizontal">
                         <Entry x:Name="entryLastName"
-                               HorizontalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand" Placeholder="Apellido"
                                Text="{Binding LastName}">
                             <Entry.Effects>
                                 <effects:KeyboardReturnEffect />
@@ -92,13 +87,10 @@
                         </Entry>
                     </StackLayout>
                 </ViewCell>
-                <ViewCell>
-                    <StackLayout Margin="40,0,40,0" Orientation="Horizontal">
-                        <Label WidthRequest="80"
-                               VerticalOptions="Center"
-                               Text="Edad" />
+                <ViewCell Height="60">
+                    <StackLayout Margin="40,10,40,10" Orientation="Horizontal">
                         <Entry x:Name="entryAge"
-                               HorizontalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand" Placeholder="Edad"
                                Text="{Binding Age}">
                             <Entry.Effects>
                                 <effects:KeyboardReturnEffect />
@@ -109,13 +101,10 @@
                         </Entry>
                     </StackLayout>
                 </ViewCell>
-                <ViewCell>
-                    <StackLayout Margin="40,0,40,0" Orientation="Horizontal">
-                        <Label WidthRequest="80"
-                               VerticalOptions="Center"
-                               Text="Ubicación" />
+                <ViewCell Height="60">
+                    <StackLayout Margin="40,10,40,10" Orientation="Horizontal">
                         <Entry x:Name="entryLocation"
-                               HorizontalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand" Placeholder="Ubicación"
                                Text="{Binding Location}">
                             <Entry.Effects>
                                 <effects:KeyboardReturnEffect />
@@ -126,13 +115,10 @@
                         </Entry>
                     </StackLayout>
                 </ViewCell>
-                <ViewCell>
-                    <StackLayout Margin="40,0,40,0" Orientation="Horizontal">
-                        <Label WidthRequest="80"
-                               VerticalOptions="Center"
-                               Text="Notas" />
+                <ViewCell Height="60">
+                    <StackLayout Margin="40,10,40,10" Orientation="Horizontal">    
                         <Entry x:Name="entryNotas"
-                               HorizontalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand" Placeholder="Notas"
                                Text="{Binding Notes}">
                             <Entry.Effects>
                                 <effects:KeyboardReturnEffect />
@@ -143,20 +129,17 @@
                         </Entry>
                     </StackLayout>
                 </ViewCell>
-                <ViewCell>
-                    <StackLayout Margin="40,0,40,0" Orientation="Horizontal">
-                        <Label WidthRequest="80"
-                               VerticalOptions="Center"
-                               Text="Alias" />
+                <ViewCell Height="60">
+                    <StackLayout Margin="40,10,40,10" Orientation="Horizontal">
                         <Entry x:Name="entryAlias"
-                               HorizontalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand" Placeholder="Alias"
                                Text="{Binding Alias}" />
                     </StackLayout>
                 </ViewCell>
                 <ViewCell>
                     <StackLayout Margin="40,20,40,20">
                         <Button Command="{Binding PreviewReportCommand}" 
-                            Text="Continuar" FontSize="18" BackgroundColor="#048CD6" HeightRequest="50"/>
+                            Text="Continuar" FontSize="18" BackgroundColor="#048CD6" HeightRequest="50" BorderRadius="15" BorderColor="White" BorderWidth="2" />
                     </StackLayout>
                 </ViewCell>
             </TableSection>
