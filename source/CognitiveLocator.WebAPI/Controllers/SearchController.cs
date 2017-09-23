@@ -44,7 +44,7 @@ namespace CognitiveLocator.WebAPI.Controllers
                 FaceAPIMethods ObjFaceApiPerson = new FaceAPIMethods();
                 List<JObject> detectResult = await ObjFaceApiPerson.DetectFace(uri);
                 string detectFaceId = detectResult.First()["faceId"].ToString();
-                FindSimilar similarFace = await ObjFaceApiPerson.FindSimilarFace(detectFaceId);
+                List<FindSimilar> similarFace = await ObjFaceApiPerson.FindSimilarFace(detectFaceId);
                 File.Delete(provider.FileData.First().LocalFileName);
                 return Ok();
             }

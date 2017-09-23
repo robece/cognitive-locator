@@ -49,11 +49,12 @@ namespace CognitiveLocator.WebAPI.Controllers
                 //AddFace
                 AddPersonFace resultPersonFace = await ObjFaceApiPerson.AddPersonFace(uri, resultCreatePerson.personId);
                 //SaveDB
+                AddFaceToList resultFaceToList = await ObjFaceApiPerson.AddFaceToList(uri);
                 Person person = new Person()
                 {
                     Age = Age,
                     Alias = Alias,
-                    FaceId = resultPersonFace.persistedFaceId,
+                    FaceId = resultFaceToList.persistedFaceId,
                     IdPerson = resultCreatePerson.personId,
                     Picture = uri,
                     IsActive = 1,
