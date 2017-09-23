@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace CognitiveLocator.ViewModels
 {
-    public class SearchPersonMainViewModel : BaseViewModel
+    public class SearchPersonViewModel : BaseViewModel
     {
         #region Properties
 
@@ -37,12 +37,12 @@ namespace CognitiveLocator.ViewModels
         public ICommand ChoosePhotoCommand { get; set; }
         #endregion
 
-        public SearchPersonMainViewModel() : base(new DependencyServiceBase())
+        public SearchPersonViewModel() : base(new DependencyServiceBase())
         {
             InitializeViewModel();
         }
 
-		public SearchPersonMainViewModel(IDependencyService dependencyService) : base(dependencyService)
+		public SearchPersonViewModel(IDependencyService dependencyService) : base(dependencyService)
         {
 			Title = "Bienvenido";
 			DependencyService = dependencyService;
@@ -75,7 +75,7 @@ namespace CognitiveLocator.ViewModels
 
         async Task ChoosePhoto()
         {
-            throw new NotImplementedException();
+            Photo = await Helpers.MediaHelper.PickPhotoAsync();
         }
         #endregion
     }
