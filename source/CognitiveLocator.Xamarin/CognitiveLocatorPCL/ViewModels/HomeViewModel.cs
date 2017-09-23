@@ -42,17 +42,17 @@ namespace CognitiveLocator.ViewModels
 
         private async Task CreateReport()
         {
-            await NavigationService.PushAsync(new SearchPersonMainPage());
+            await NavigationService.PushAsync(new CreateReportPage());
         }
 
         private async Task SearchPersonByName()
         {
-            await NavigationService.PushAsync(new CreateReportPage());
+            await NavigationService.PushAsync(new SearchPersonMainPage());
         }
 
 		private async Task SearchPersonByPicture()
 		{
-			await NavigationService.PushAsync(new CreateReportPage());
+            await NavigationService.PushAsync(new SearchPersonMainPage());
 		}
 
         private async Task NavigateToResults()

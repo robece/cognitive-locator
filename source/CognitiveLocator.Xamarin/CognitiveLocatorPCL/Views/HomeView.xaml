@@ -16,10 +16,10 @@
                    VerticalOptions="End"
                    FontSize="30"
                    Text="¿Podemos ayudarte?" />
-            <Button Command="{Binding SearchPersonNameCommand}"
+            <Button Command="{Binding CreateReportCommand}"
                     FontSize="20"
                     Text="Deseo reportar a alguien" />
-            <Button Command="{Binding CreateReportCommand}"
+            <Button Command="{Binding SearchPersonNameCommand}"
                     FontSize="20"
                     Text="Deseo buscar a alguien por nombre" />
             <Button Command="{Binding SearchPersonPictureCommand}"
