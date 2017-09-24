@@ -38,6 +38,10 @@ namespace CognitiveLocator.ViewModels
         public ICommand SearchPersonByNameCommand { get; set; }
         public ICommand TakePhotoCommand { get; set; }
         public ICommand ChoosePhotoCommand { get; set; }
+
+        public static bool NameValidation = false;
+        public static bool LastNameValidation = false;
+
         #endregion
 
         public SearchPersonViewModel() : base(new DependencyServiceBase())
@@ -45,7 +49,7 @@ namespace CognitiveLocator.ViewModels
             InitializeViewModel();
         }
 
-		public SearchPersonViewModel(IDependencyService dependencyService) : base(dependencyService)
+        public SearchPersonViewModel(IDependencyService dependencyService) : base(dependencyService)
         {
 			DependencyService = dependencyService;
 			InitializeViewModel();
@@ -61,33 +65,41 @@ namespace CognitiveLocator.ViewModels
         }
 
         #region Tasks
+
         async Task SearchPerson() 
         {
-            if(!IsBusy)
+            if (NameValidation == false || LastNameValidation == false)
             {
-                IsBusy = true;
-
-                var page = new SearchPersonResultView();
-
-                if(IsByPicture)
+                await Application.Current.MainPage.DisplayAlert("Notificación", "Por favor asegúrate de llenar todos los campos.", "Aceptar");
+            }
+            else
+            {
+                if (!IsBusy)
                 {
-                    if (Photo == null)
+                    IsBusy = true;
+
+                    var page = new SearchPersonResultView();
+
+                    if (IsByPicture)
                     {
-                        IsBusy = false;
-                        return;
+                        if (Photo == null)
+                        {
+                            IsBusy = false;
+                            return;
+                        }
+
+                        page.ViewModel.IsByPhoto = true;
+                        page.ViewModel.Photo = Photo;
+                    }
+                    else
+                    {
+                        page.ViewModel.Person = Person;
                     }
 
-                    page.ViewModel.IsByPhoto = true;
-                    page.ViewModel.Photo = Photo;
-                }
-                else
-                {
-                    page.ViewModel.Person = Person;
-                }
+                    await NavigationService.PushAsync(page);
 
-                await NavigationService.PushAsync(page);
-            
-				IsBusy = false;
+                    IsBusy = false;
+                }
             }
         }
 

@@ -6,5 +6,6 @@
         <Button Command="{Binding SearchPersonNameCommand}" FontSize="18" BackgroundColor="#048CD6" HeightRequest="50" Text="Buscar por nombre" BorderRadius="15" BorderColor="White" BorderWidth="2" />
         <Button Command="{Binding SearchPersonPictureCommand}" FontSize="18" BackgroundColor="#048CD6" HeightRequest="50" Text="Buscar por fotografía" BorderRadius="15" BorderColor="White" BorderWidth="2" />
         <Button Command="{Binding AboutCommand}" FontSize="18" BackgroundColor="#FF9940" HeightRequest="50" Text="Acerca de..." BorderRadius="15" BorderColor="White" BorderWidth="2" />
+        <Label FontSize="12" Text="Responsiva: El uso de imagenes y datos personales es sin fines de lucro, usados para el apoyo de las personas extraviadas, la aplicación Busca.me no compartirá dicha información con terceros o particulares."></Label>
     </StackLayout>
 </views:BaseView>
