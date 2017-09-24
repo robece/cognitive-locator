@@ -19,5 +19,7 @@ namespace CognitiveLocator.Models
 		public int IsActive { get; set; }
         public int PersonID { get; set; }
         public string FaceID { get; set; }
+        public DateTime BirthDate { get; set; }
+        public string ReportedBy { get; set; }
 	}
 }

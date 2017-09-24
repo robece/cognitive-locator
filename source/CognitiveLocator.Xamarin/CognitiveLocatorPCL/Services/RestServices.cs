@@ -17,9 +17,14 @@ namespace CognitiveLocator.Services
 {
     public class RestServices : IRestServices
     {
-        protected const string BaseURL = "http://apisave.azurewebsites.net/";
 
-        public async Task<bool> CreateReportAsync(CreateReportModel model, byte[] photo)
+#if DEBUG
+        protected const string BaseURL = "http://cognitivelocatordev.azurewebsites.net/";
+#else
+        protected const string BaseURL = "http://cognitivelocator.azurewebsites.net/";
+#endif
+
+		public async Task<bool> CreateReportAsync(CreateReportModel model, byte[] photo)
         {
             try
             {

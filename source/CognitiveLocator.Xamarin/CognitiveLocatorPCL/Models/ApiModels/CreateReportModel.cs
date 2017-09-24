@@ -39,6 +39,18 @@ namespace CognitiveLocator.Models.ApiModels
             set;
         }
 
+        public DateTime BirthDate
+        {
+            get;
+            set;
+        }
+
+        public string ReportedBy
+        {
+            get;
+            set;
+        }
+
         public string UrlFormat()
         {
             string result = string.Empty;
@@ -62,6 +74,12 @@ namespace CognitiveLocator.Models.ApiModels
 
             if (!string.IsNullOrEmpty(Notes))
                 result += string.Format("&Notes={0}", Notes);
+
+            if (BirthDate != null)
+                result += string.Format("&BirthDate={0}", BirthDate);
+
+            if (!string.IsNullOrEmpty(ReportedBy))
+                result += string.Format("&ReportedBy={0}", ReportedBy);
 
             return result;
         }
