@@ -57,7 +57,7 @@ namespace CognitiveLocator.ViewModels
 
         void InitializeViewModel()
         {
-            Title = "Buscar Persona";
+            Title = "Buscar persona";
             Person = new Person();
             SearchPersonByPictureCommand = new Command(async () => await SearchPerson());
             SearchPersonByNameCommand = new Command(async () => await SearchPerson());
