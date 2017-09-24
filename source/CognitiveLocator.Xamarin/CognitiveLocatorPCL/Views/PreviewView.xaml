@@ -51,69 +51,62 @@
             </TableSection>
             <TableSection Title="Datos de la persona">
                 <ViewCell>
-                    <StackLayout Margin="40,0,40,0" Orientation="Horizontal">
-                        <Label WidthRequest="80"
-                               VerticalOptions="Center"
-                               Text="Nombre" />
-                        <Label HorizontalOptions="FillAndExpand"
-                               FontSize="18"
-                               Text="{Binding Name}" />
-                    </StackLayout>
-                </ViewCell>
-                <ViewCell>
-                    <StackLayout Margin="40,0,40,0" Orientation="Horizontal">
-                        <Label WidthRequest="80"
-                               VerticalOptions="Center"
-                               Text="Apellido" />
-                        <Label HorizontalOptions="FillAndExpand"
-                               FontSize="18"
-                               Text="{Binding LastName}" />
-                    </StackLayout>
-                </ViewCell>
-                <ViewCell>
-                    <StackLayout Margin="40,0,40,0" Orientation="Horizontal">
-                        <Label WidthRequest="80"
-                               VerticalOptions="Center"
-                               Text="Edad" />
-                        <Label HorizontalOptions="FillAndExpand"
-                               FontSize="18"
-                               Text="{Binding Age}" />
-                    </StackLayout>
-                </ViewCell>
-                <ViewCell>
-                    <StackLayout Margin="40,0,40,0" Orientation="Horizontal">
-                        <Label WidthRequest="80"
-                               VerticalOptions="Center"
-                               Text="Ubicación" />
-                        <Label HorizontalOptions="FillAndExpand"
-                               FontSize="18"
-                               Text="{Binding Location}" />
-                    </StackLayout>
-                </ViewCell>
-                <ViewCell>
-                    <StackLayout Margin="40,0,40,0" Orientation="Horizontal">
-                        <Label WidthRequest="80"
-                               VerticalOptions="Center"
-                               Text="Notas" />
-                        <Label HorizontalOptions="FillAndExpand"
-                               FontSize="18"
-                               Text="{Binding Notes}" />
-                    </StackLayout>
-                </ViewCell>
-                <ViewCell>
-                    <StackLayout Margin="40,0,40,0" Orientation="Horizontal">
-                        <Label WidthRequest="80"
-                               VerticalOptions="Center"
-                               Text="Alias" />
-                        <Label HorizontalOptions="FillAndExpand"
-                               FontSize="18"
-                               Text="{Binding Alias}" />
-                    </StackLayout>
-                </ViewCell>
-                <ViewCell>
-                    <StackLayout Margin="40,20,40,20">
-                        <Button Command="{Binding SendReportCommand}" Text="Enviar Reporte" 
-                            FontSize="18" BackgroundColor="#048CD6" HeightRequest="50" />
+                    <StackLayout Margin="40,0,40,0">
+                        <StackLayout Orientation="Horizontal">
+                            <Label WidthRequest="80"
+                                   VerticalOptions="Center"
+                                   Text="Nombre" />
+                            <Label HorizontalOptions="FillAndExpand"
+                                   FontSize="18"
+                                   Text="{Binding Name}" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label WidthRequest="80"
+                                   VerticalOptions="Center"
+                                   Text="Apellido" />
+                            <Label HorizontalOptions="FillAndExpand"
+                                   FontSize="18"
+                                   Text="{Binding LastName}" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label WidthRequest="80"
+                                   VerticalOptions="Center"
+                                   Text="Edad" />
+                            <Label HorizontalOptions="FillAndExpand"
+                                   FontSize="18"
+                                   Text="{Binding Age}" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label WidthRequest="80"
+                                   VerticalOptions="Center"
+                                   Text="Ubicación" />
+                            <Label HorizontalOptions="FillAndExpand"
+                                   FontSize="18"
+                                   Text="{Binding Location}" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label WidthRequest="80"
+                                   VerticalOptions="Center"
+                                   Text="Notas" />
+                            <Label HorizontalOptions="FillAndExpand"
+                                   FontSize="18"
+                                   Text="{Binding Notes}" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label WidthRequest="80"
+                                   VerticalOptions="Center"
+                                   Text="Alias" />
+                            <Label HorizontalOptions="FillAndExpand"
+                                   FontSize="18"
+                                   Text="{Binding Alias}" />
+                        </StackLayout>
+                        <StackLayout Margin="0,20">
+                            <Button HeightRequest="50"
+                                    BackgroundColor="#048CD6"
+                                    Command="{Binding SendReportCommand}"
+                                    FontSize="18"
+                                    Text="Enviar Reporte" />
+                        </StackLayout>
                     </StackLayout>
                 </ViewCell>
             </TableSection>
