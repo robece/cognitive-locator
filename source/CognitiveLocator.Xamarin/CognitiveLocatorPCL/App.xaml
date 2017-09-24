@@ -13,14 +13,15 @@
 				<Setter Property="BarBackgroundColor" Value="{StaticResource Primary}" />
 				<Setter Property="BarTextColor" Value="White" />
 			</Style>
-
-            <Color x:Key="UIMainColor">DarkBlue</Color>
+            
+            <Color x:Key="UIMainColor">#048CD6</Color>
             <Style TargetType="Button">
                 <Setter Property="BackgroundColor" Value="{StaticResource UIMainColor}" />
                 <Setter Property="BorderColor" Value="White" />
-                <Setter Property="BorderRadius" Value="5" />
+                <Setter Property="BorderRadius" Value="15" />
                 <Setter Property="BorderWidth" Value="2" />
                 <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="18" />
             </Style>
 		</ResourceDictionary>
 	</Application.Resources>

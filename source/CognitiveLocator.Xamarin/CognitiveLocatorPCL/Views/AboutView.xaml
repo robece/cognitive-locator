@@ -48,7 +48,7 @@
                                Text="Team Xamarin" />
                         <Label FontSize="Small" Text="Cristian González (@DarryStonem)" />
                         <Label FontSize="Small" Text="Gustavo Barrientos (@tavobarrientos)" />
-                        <Label FontSize="Small" Text="Humberto Jaimes (@humbertojaimes)" />
+                        <Label FontSize="Small" Text="Humberto Jaimes (@HJaimesDev)" />
                         <Label FontSize="Small" Text="Leonardo Romero (@Micnick)" />
                         <Label FontSize="Small" Text="Vicente Guzmán (@LucioMSP)" />
                     </StackLayout>
