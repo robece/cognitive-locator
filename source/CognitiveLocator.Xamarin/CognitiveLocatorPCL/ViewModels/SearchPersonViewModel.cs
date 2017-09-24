@@ -69,12 +69,6 @@ namespace CognitiveLocator.ViewModels
 
         async Task SearchPerson() 
         {
-            if(IsByPicture && Photo == null)
-            {
-                await Application.Current.MainPage.DisplayAlert("Error", "Por favor, aségurate de seleccionar o tomar una foto.", "Aceptar");
-                return;
-
-            }
             if ((NameValidation == false || LastNameValidation == false) && (!IsByPicture))
             {
                 await Application.Current.MainPage.DisplayAlert("Error", "Por favor asegúrate de llenar todos los campos.", "Aceptar");
