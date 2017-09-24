@@ -5,6 +5,8 @@
 	[LastName] NVARCHAR(500) NOT NULL, 
     [Alias] NVARCHAR(50) NULL, 
     [Age]                   INT               CONSTRAINT [DF_Persona_Edad] DEFAULT ((0)) NULL,
+	[BirthDate] DATETIME NULL, 
+    [ReportedBy] NVARCHAR(100) NOT NULL, 
     [Picture]                   NVARCHAR (1000)   NOT NULL,
     [Location]              NVARCHAR (500)    NULL,
     [Notes]                  NVARCHAR (1000)   NULL,
@@ -12,7 +14,6 @@
     [ModifiedDate] DATETIME          CONSTRAINT [DF_Table_1_UltimaActualizacion] DEFAULT (getdate()) NOT NULL,
     [IsActive]              INT               CONSTRAINT [DF_Persona_IdEstatus] DEFAULT ((1)) NOT NULL,
     [FaceId] UNIQUEIDENTIFIER NULL, 
-    
     CONSTRAINT [PK_Person] PRIMARY KEY ([IdPerson]) 
 );
 

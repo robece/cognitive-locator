@@ -3,7 +3,6 @@
 AS
 BEGIN
 	SET NOCOUNT ON;
-	SELECT Name,LastName,Alias,Age,Picture,Location,Notes FROM Person WHERE IsActive = 1
+	SELECT Name,LastName,Alias,Age,BirthDate,ReportedBy,Picture,Location,Notes,FaceId FROM Person WHERE IsActive = 1
 END
-
 GO
