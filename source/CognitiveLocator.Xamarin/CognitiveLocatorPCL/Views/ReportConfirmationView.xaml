@@ -22,13 +22,13 @@
                    VerticalOptions="End"
                    FontSize="18"
                    HorizontalTextAlignment="Center"
-                   Text="Gracias por tu apoyo!!" />
+                   Text="¡Gracias por tu apoyo!" />
             <Label Grid.Row="2"
                    HorizontalOptions="Center"
                    VerticalOptions="End"
                    FontSize="18"
                    HorizontalTextAlignment="Center"
-                   Text="Puedes estar cambiando la vida de una familia!!" />
+                   Text="¡Puedes estar cambiando la vida de una familia!" />
             <Button Grid.Row="4"
                     Command="{Binding HomeCommand}"
                     FontSize="18" BackgroundColor="#048CD6" HeightRequest="50" BorderRadius="15" BorderColor="White" BorderWidth="2"
