@@ -79,23 +79,40 @@ namespace CognitiveLocator.Services
             return await SearchPersonByAsync($"ByNameAndLastName?name={person.Name}&lastName={person.LastName}");
         }
 
-        public async Task<List<Person>> SearchPersonByPhotoAsync(byte[] photo)
+        public async Task<Person> SearchPersonByPhotoAsync(byte[] photo)
         {
-            var result = new List<Person>();
+            var result = new Person();
 			try
 			{
 				using (var client = new HttpClient())
 				{
-					using (var content = new MultipartFormDataContent())
+					using (var form = new MultipartFormDataContent())
 					{
-						content.Add(new StreamContent(new MemoryStream(photo)));
+                        var request = new HttpRequestMessage();
+						request.Headers.TryAddWithoutValidation("content-type", "multipart/form-data");
+						var imageContent = new ByteArrayContent(photo);
+						imageContent.Headers.TryAddWithoutValidation("content-type", "image/jpeg"); 
+						request.Method = HttpMethod.Post;
+						request.RequestUri = new Uri(BaseURL + "api/Find/ByFace");
 
-                        using (var response = await client.PostAsync($"{BaseURL}api/Find/ByFace", content))
+						HttpContent content = null;
+
+						content = new ByteArrayContent(photo);
+						content.Headers.TryAddWithoutValidation("content-type", "image/jpeg");
+						content.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+						{
+							Name = "photo",
+							FileName = $"{Guid.NewGuid().ToString()}.jpg"
+						};
+						form.Add(content);
+
+						request.Content = form;
+                        using (var response = await client.SendAsync(request))
 						{
 							response.EnsureSuccessStatusCode();
 
                             var json = await response.Content.ReadAsStringAsync();
-                            result = JsonConvert.DeserializeObject<List<Person>>(json);
+                            result = JsonConvert.DeserializeObject<Person>(json);
 						}
 					}
 				}

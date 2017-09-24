@@ -14,6 +14,6 @@ namespace CognitiveLocator.Services
         Task<List<Person>> SearchPersonByNameAsync(Person person);
         Task<List<Person>> SearchPersonByLastNameAsync(Person person);
         Task<List<Person>> SearchByNameAndLastNameAsync(Person person);
-        Task<List<Person>> SearchPersonByPhotoAsync(byte[] photo);
+        Task<Person> SearchPersonByPhotoAsync(byte[] photo);
     }
 }
