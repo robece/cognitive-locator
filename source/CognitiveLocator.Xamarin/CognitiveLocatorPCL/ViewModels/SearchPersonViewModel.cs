@@ -68,8 +68,8 @@ namespace CognitiveLocator.ViewModels
         #region Tasks
 
         async Task SearchPerson() 
-        {
-            if (NameValidation == false || LastNameValidation == false)
+        {          
+            if ((NameValidation == false || LastNameValidation == false) && (!IsByPicture))
             {
                 await Application.Current.MainPage.DisplayAlert("Notificación", "Por favor asegúrate de llenar todos los campos.", "Aceptar");
             }
