@@ -68,23 +68,23 @@ namespace CognitiveLocator.ViewModels
         #region Tasks
 
         async Task SearchPerson() 
-        {          
-            if ((NameValidation == false || LastNameValidation == false) && (!IsByPicture))
+        {
+            if(IsByPicture && Photo == null)
             {
-                await Application.Current.MainPage.DisplayAlert("Notificación", "Por favor asegúrate de llenar todos los campos.", "Aceptar");
-            }
-            else
-            {
-                if (!IsBusy)
-                {
-                    IsBusy = true;
+                await Application.Current.MainPage.DisplayAlert("Notificación", "Por favor, aségurate de seleccionar o tomar una foto.", "Aceptar");
+                return;
 
-                    var page = new SearchPersonResultView(IsByPicture, Photo, Person);
-                    await NavigationService.PushAsync(page);
-
-                    IsBusy = false;
-                }
             }
+
+			if (!IsBusy)
+			{
+				IsBusy = true;
+
+				var page = new SearchPersonResultView(IsByPicture, Photo, Person);
+				await NavigationService.PushAsync(page);
+
+				IsBusy = false;
+			}
         }
 
         async Task TakePhoto()

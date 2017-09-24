@@ -56,7 +56,32 @@ namespace CognitiveLocator.Services
 
         public async Task<List<Person>> SearchPersonByPhotoAsync(byte[] photo)
         {
-            throw new NotImplementedException();
+            var result = new List<Person>();
+			try
+			{
+				using (var client = new HttpClient())
+				{
+					using (var content = new MultipartFormDataContent())
+					{
+						content.Add(new StreamContent(new MemoryStream(photo)));
+
+                        using (var response = await client.PostAsync($"{BaseURL}api/Find/ByFace", content))
+						{
+							response.EnsureSuccessStatusCode();
+
+                            var json = await response.Content.ReadAsStringAsync();
+                            result = JsonConvert.DeserializeObject<List<Person>>(json);
+						}
+					}
+				}
+
+                return result;
+			}
+			catch (Exception ex)
+			{
+				Debug.WriteLine(ex.InnerException?.ToString());
+                return null;
+			}
         }
 
         async Task<List<Person>> SearchPersonByAsync(string endpoint)
@@ -67,7 +92,7 @@ namespace CognitiveLocator.Services
                 using(var client = new HttpClient())
                 {
                     var uri = $"{BaseURL}api/Find/{endpoint}";
-                    using(var response = await client.PostAsync(uri, null))
+                    using(var response = await client.GetAsync(uri))
                     {
                         response.EnsureSuccessStatusCode();
 
