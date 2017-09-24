@@ -8,30 +8,39 @@
 
 ## Credits
 
-Team Face API:
+Team Face Recognition:
 
 - Lucia Vázquez (@analuciavazquez) 
 - Victor Manuel Islas (@OnlyD)
-- Héctor Arriaga (@HectorMap)
 
-Team Azure SQL:
+Team Data Storage:
 
 - Daniel Courtois (@dhcourtois)
 - Cristian Levi (@Baneforce)
+- Héctor Arriaga (@HectorMap)
 
 Team DevOps: 
 
 - Cristian González (@DarryStonem)
+- Roberto Cervantes (@rcervantes)
 
-Team Xamarin:
+Team Mobile:
 
 - Cristian González (@DarryStonem)
-- Fernando Arreguin (@FerArreguin92)
 - Gustavo Barrientos (@tavobarrientos)
 - Humberto Jaimes (@humbertojaimes)
 - Leonardo Romero (@Micnick)
 - Vicente Guzman (@LucioMSP)
+- Roberto Cervantes (@rcervantes)
 
-Team Lead:
+Team UI Testing:
+
+- Fernando Arreguin (@FerArreguin92)
+
+Team Design:
+
+- Narciso Reyes (@ngreyes10)
+
+Team Leadership:
 
 - Roberto Cervantes (@rcervantes)
