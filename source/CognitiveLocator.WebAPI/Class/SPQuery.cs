@@ -30,10 +30,6 @@ namespace CognitiveLocator.WebAPI.Class
                     new System.Data.SqlClient.SqlParameter("Notes", p.Notes),
                     new System.Data.SqlClient.SqlParameter("IsActive", p.IsActive),
                     new System.Data.SqlClient.SqlParameter("FaceId", p.FaceId),
-                    //new System.Data.SqlClient.SqlParameter("Height", p.Height),
-                    //new System.Data.SqlClient.SqlParameter("Width", p.Width),
-                    //new System.Data.SqlClient.SqlParameter("LeftMargin", p.LeftMargin),
-                    //new System.Data.SqlClient.SqlParameter("RightMargin", p.RightMargin),
                 });
         }
 
@@ -126,10 +122,6 @@ namespace CognitiveLocator.WebAPI.Class
                 Notes = data.GetValueOrDefault<string>("Notes"),
                 IsActive = data.GetValueOrDefault<int>("IsActive"),
                 FaceId = data.GetValueOrDefault<Guid>("FaceId").ToString(),
-                //Height = (float)data.GetValueOrDefault<double>("Height"),
-                //Width = (float)data.GetValueOrDefault<double>("Width"),
-                //LeftMargin = (float)data.GetValueOrDefault<double>("LeftMargin"),
-                //RightMargin = (float)data.GetValueOrDefault<double>("RightMargin"),
             };
         }
     }
