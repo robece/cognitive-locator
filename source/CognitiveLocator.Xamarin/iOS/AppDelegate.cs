@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using Foundation;
+﻿using Foundation;
 using Microsoft.Azure.Mobile;
 using Microsoft.Azure.Mobile.Analytics;
+using System;
 using UIKit;
 
 namespace CognitiveLocator.Xamarin.iOS
@@ -16,11 +13,11 @@ namespace CognitiveLocator.Xamarin.iOS
         {
             //Telemetry on Mobile Center.
             MobileCenter.Start("0da75977-ccf2-43fd-ba88-ae712f9a3568", typeof(Analytics));
-
+            
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
-        }
+        }       
     }
 }
