@@ -10,6 +10,7 @@ using System.Diagnostics;
 using System.Collections.Generic;
 using CognitiveLocator.Models;
 using Newtonsoft.Json;
+using System.Net.Http.Headers;
 
 [assembly: Dependency(typeof(RestServices))]
 namespace CognitiveLocator.Services
@@ -20,28 +21,47 @@ namespace CognitiveLocator.Services
 
         public async Task<bool> CreateReportAsync(CreateReportModel model, byte[] photo)
         {
-            try
-            {
-                using (var client = new HttpClient())
-                {
-                    using (var content = new MultipartFormDataContent())
-                    {
-                        content.Add(new StreamContent(new MemoryStream(photo)));
+			try
+			{
+				using (var client = new HttpClient())
+				{
+					using (var form = new MultipartFormDataContent())
+					{
+						var request = new HttpRequestMessage();
+						request.Headers.TryAddWithoutValidation("content-type", "multipart/form-data");
+						var imageContent = new ByteArrayContent(photo);
+						imageContent.Headers.TryAddWithoutValidation("content-type", "image/jpeg"); //= new System.Net.Http.Headers.MediaTypeHeaderValue("image/jpeg");
+																									//content1.Add(imageContent,"photo",$"{Guid.NewGuid().ToString()}.jpg");
+																									//request.Content = imageContent;
+						request.Method = HttpMethod.Post;
+						request.RequestUri = new Uri(BaseURL + model.UrlFormat);
 
-                        using (var response = await client.PostAsync(BaseURL + model.UrlFormat, content))
-                        {
-                            response.EnsureSuccessStatusCode();
-                        }
-                    }
-                }
+						HttpContent content = null;
 
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.InnerException?.ToString());
-                return false;
-            }
+						content = new ByteArrayContent(photo);
+						content.Headers.TryAddWithoutValidation("content-type", "image/jpeg");
+						content.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+						{
+							Name = "photo",
+							FileName = $"{Guid.NewGuid().ToString()}.jpg"
+						};
+						form.Add(content);
+
+						request.Content = form;
+						using (var response = await client.SendAsync(request))
+						{
+							response.EnsureSuccessStatusCode();
+						}
+					}
+				}
+
+				return true;
+			}
+			catch (Exception ex)
+			{
+				Debug.WriteLine(ex.InnerException?.ToString());
+				return false;
+			}
         }
 
         public async Task<List<Person>> SearchPersonByNameAsync(Person person)
