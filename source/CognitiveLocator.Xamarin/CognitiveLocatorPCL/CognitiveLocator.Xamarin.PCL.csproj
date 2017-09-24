@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -38,53 +38,56 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\Item.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
-    <Compile Include="ViewModels\IDependencyService.cs" />
     <Compile Include="Services\IRestServices.cs" />
     <Compile Include="Services\RestServices.cs" />
-    <Compile Include="ViewModels\INavigationService.cs" />
-    <Compile Include="ViewModels\NavigationService.cs" />
     <Compile Include="Views\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ResultsView.xaml.cs">
-      <DependentUpon>ResultsView.xaml</DependentUpon>
+    <Compile Include="Views\SearchPersonResultView.xaml.cs">
+      <DependentUpon>SearchPersonResultView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ResultDetailView.xaml.cs">
-      <DependentUpon>ResultDetailView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\SearchPersonPage.xaml.cs">
-      <DependentUpon>SearchPersonPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModels\SearchPersonViewModel.cs" />
+    <Compile Include="ViewModels\SearchPersonResultViewModel.cs" />
     <Compile Include="Models\Person.cs" />
-    <Compile Include="ViewModels\ResultDetailViewModel.cs" />
-    <Compile Include="ViewModels\ResultsViewModel.cs" />
     <Compile Include="Views\BaseView.cs" />
-    <Compile Include="Views\PersonDetailPage.xaml.cs">
-      <DependentUpon>PersonDetailPage.xaml</DependentUpon>
+    <Compile Include="Views\PersonDetailView.xaml.cs">
+      <DependentUpon>PersonDetailView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\PersonDetailViewModel.cs" />
     <Compile Include="Helpers\MediaHelper.cs" />
-    <Compile Include="Views\CreateReportPage.xaml.cs">
-      <DependentUpon>CreateReportPage.xaml</DependentUpon>
+    <Compile Include="Views\CreateReportView.xaml.cs">
+      <DependentUpon>CreateReportView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\CreateReportViewModel.cs" />
     <Compile Include="Views\Converters\ByteArrayToImageConverter.cs" />
     <Compile Include="Views\Effects\NoInteractiveTableViewEffect.cs" />
-    <Compile Include="Views\PreviewPage.xaml.cs">
-      <DependentUpon>PreviewPage.xaml</DependentUpon>
+    <Compile Include="Views\PreviewView.xaml.cs">
+      <DependentUpon>PreviewView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ReportConfirmationPage.xaml.cs">
-      <DependentUpon>ReportConfirmationPage.xaml</DependentUpon>
+    <Compile Include="Views\ReportConfirmationView.xaml.cs">
+      <DependentUpon>ReportConfirmationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SearchPersonMainPage.xaml.cs">
-      <DependentUpon>SearchPersonMainPage.xaml</DependentUpon>
+    <Compile Include="Views\SearchPersonView.xaml.cs">
+      <DependentUpon>SearchPersonView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\SearchPersonMainViewModel.cs" />
+    <Compile Include="ViewModels\SearchPersonViewModel.cs" />
+    <Compile Include="Views\Behaviors\NextEntryFocusBehavior.cs" />
+    <Compile Include="Views\Effects\KeyboardReturnEffect.cs" />
+    <Compile Include="ViewModels\ReportConfirmationViewModel.cs" />
+    <Compile Include="ViewModels\AboutViewModel.cs" />
+    <Compile Include="Views\AboutView.xaml.cs">
+      <DependentUpon>AboutView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Services\IDependencyService.cs" />
+    <Compile Include="Services\INavigationService.cs" />
+    <Compile Include="Services\NavigationService.cs" />
+    <Compile Include="Models\ApiModels\CreateReportModel.cs" />
+    <Compile Include="Views\Behaviors\EmptyValidatorBaseBehavior.cs" />
+    <Compile Include="Views\Behaviors\EmptyValidatorBehaviorName.cs" />
+    <Compile Include="Views\Behaviors\EmptyValidatorBehaviorLastName.cs" />
+    <Compile Include="Services\IEmailService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -111,11 +114,26 @@
     <Reference Include="Xamarin.Forms.Core">
       <HintPath>..\..\Solutions\packages\Xamarin.Forms.2.3.4.270\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Forms.Maps, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\Solutions\packages\Xamarin.Forms.Maps.2.3.4.270\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10\Xamarin.Forms.Maps.dll</HintPath>
+    </Reference>
     <Reference Include="Xamarin.Forms.Platform">
       <HintPath>..\..\Solutions\packages\Xamarin.Forms.2.3.4.270\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Platform.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\..\Solutions\packages\Xamarin.Forms.2.3.4.270\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Mobile">
+      <HintPath>..\..\Solutions\packages\Microsoft.Azure.Mobile.0.15.0\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Microsoft.Azure.Mobile.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Mobile.Analytics">
+      <HintPath>..\..\Solutions\packages\Microsoft.Azure.Mobile.Analytics.0.15.0\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Microsoft.Azure.Mobile.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\..\Solutions\packages\Microsoft.Net.Http.2.2.29\lib\portable-net45+win8+wpa81\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\..\Solutions\packages\Microsoft.Net.Http.2.2.29\lib\portable-net45+win8+wpa81\System.Net.Http.Primitives.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -132,33 +150,30 @@
       <SubType>
       </SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\SearchPersonPage.xaml">
+    <EmbeddedResource Include="Views\SearchPersonResultView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\PersonDetailPage.xaml">
+    <EmbeddedResource Include="Views\PersonDetailView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\CreateReportPage.xaml">
+    <EmbeddedResource Include="Views\CreateReportView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\PreviewPage.xaml">
+    <EmbeddedResource Include="Views\PreviewView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ReportConfirmationPage.xaml">
+    <EmbeddedResource Include="Views\ReportConfirmationView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\SearchPersonMainPage.xaml">
+    <EmbeddedResource Include="Views\SearchPersonView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AboutView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\HomeView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\ResultsView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\ResultDetailView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -168,6 +183,8 @@
     <Folder Include="BinExternal\" />
     <Folder Include="Views\Converters\" />
     <Folder Include="Views\Effects\" />
+    <Folder Include="Views\Behaviors\" />
+    <Folder Include="Models\ApiModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\Solutions\packages\Xamarin.Forms.2.3.4.270\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\Solutions\packages\Xamarin.Forms.2.3.4.270\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

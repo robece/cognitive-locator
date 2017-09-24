@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<views:BaseView x:Class="CognitiveLocator.Views.PreviewView"
+                xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:converters="clr-namespace:CognitiveLocator.Views.Converters"
+                xmlns:effects="clr-namespace:CognitiveLocator.Views.Effects"
+                xmlns:views="clr-namespace:CognitiveLocator.Views"
+                Title="{Binding Title}">
+    <views:BaseView.Resources>
+        <ResourceDictionary>
+            <converters:ByteArrayToImageConverter x:Key="photoCvt" />
+        </ResourceDictionary>
+    </views:BaseView.Resources>
+    <ContentPage.Content>
+        <TableView BackgroundColor="White"
+                   HasUnevenRows="true"
+                   Intent="Form">
+            <TableView.Effects>
+                <effects:NoInteractiveTableViewEffect />
+            </TableView.Effects>
+            <TableSection Title="Foto">
+                <ViewCell>
+                    <StackLayout>
+                        <Label HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               FontAttributes="Bold"
+                               FontSize="14"
+                               HorizontalTextAlignment="Center"
+                               Text="Es importante que revises la información antes de enviar el reporte." />
+                        <Frame Margin="0,5,0,0"
+                               WidthRequest="154"
+                               HeightRequest="154"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               BackgroundColor="Black"
+                               OutlineColor="Black"
+                               Padding="2">
+                            <Image WidthRequest="150"
+                                   HeightRequest="150"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   Aspect="AspectFill"
+                                   Source="{Binding Photo,
+                                                    Converter={StaticResource photoCvt}}" />
+                        </Frame>
+                        <ActivityIndicator HorizontalOptions="Center"
+                                           IsRunning="{Binding IsBusy}"
+                                           IsVisible="{Binding IsBusy}" />
+                    </StackLayout>
+                </ViewCell>
+            </TableSection>
+            <TableSection Title="Datos de la persona">
+                <ViewCell>
+                    <StackLayout Margin="40,0,40,0" Orientation="Horizontal">
+                        <Label WidthRequest="80"
+                               VerticalOptions="Center"
+                               Text="Nombre" />
+                        <Label HorizontalOptions="FillAndExpand"
+                               FontSize="18"
+                               Text="{Binding Name}" />
+                    </StackLayout>
+                </ViewCell>
+                <ViewCell>
+                    <StackLayout Margin="40,0,40,0" Orientation="Horizontal">
+                        <Label WidthRequest="80"
+                               VerticalOptions="Center"
+                               Text="Apellido" />
+                        <Label HorizontalOptions="FillAndExpand"
+                               FontSize="18"
+                               Text="{Binding LastName}" />
+                    </StackLayout>
+                </ViewCell>
+                <ViewCell>
+                    <StackLayout Margin="40,0,40,0" Orientation="Horizontal">
+                        <Label WidthRequest="80"
+                               VerticalOptions="Center"
+                               Text="Edad" />
+                        <Label HorizontalOptions="FillAndExpand"
+                               FontSize="18"
+                               Text="{Binding Age}" />
+                    </StackLayout>
+                </ViewCell>
+                <ViewCell>
+                    <StackLayout Margin="40,0,40,0" Orientation="Horizontal">
+                        <Label WidthRequest="80"
+                               VerticalOptions="Center"
+                               Text="Ubicación" />
+                        <Label HorizontalOptions="FillAndExpand"
+                               FontSize="18"
+                               Text="{Binding Location}" />
+                    </StackLayout>
+                </ViewCell>
+                <ViewCell>
+                    <StackLayout Margin="40,20,40,20">
+                        <Button Command="{Binding SendReportCommand}" Text="Enviar Reporte" 
+                            FontSize="18" BackgroundColor="#048CD6" HeightRequest="50" />
+                    </StackLayout>
+                </ViewCell>
+            </TableSection>
+        </TableView>
+    </ContentPage.Content>
+</views:BaseView>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<views:BaseView x:Class="CognitiveLocator.Views.CreateReportView" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:behaviors="clr-namespace:CognitiveLocator.Views.Behaviors" xmlns:converters="clr-namespace:CognitiveLocator.Views.Converters" xmlns:effects="clr-namespace:CognitiveLocator.Views.Effects" xmlns:viewmodels="clr-namespace:CognitiveLocator.ViewModels" xmlns:views="clr-namespace:CognitiveLocator.Views" Title="{Binding Title}" IsBusy="{Binding IsBusy}">
+    <views:BaseView.BindingContext>
+        <viewmodels:CreateReportViewModel />
+    </views:BaseView.BindingContext>
+    <views:BaseView.Resources>
+        <ResourceDictionary>
+            <converters:ByteArrayToImageConverter x:Key="photoCvt" />
+        </ResourceDictionary>
+    </views:BaseView.Resources>
+    <ContentPage.Content>
+        <TableView BackgroundColor="White" HasUnevenRows="true" Intent="Form">
+            <TableView.Effects>
+                <effects:NoInteractiveTableViewEffect />
+            </TableView.Effects>
+            <TableSection Title="Fotografía">
+                <ViewCell>
+                    <StackLayout>
+                        <Frame Margin="0,5,0,0" WidthRequest="154" HeightRequest="154" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Black" OutlineColor="Black" Padding="2">
+                            <Image WidthRequest="150" HeightRequest="150" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFill" Source="{Binding Photo,&#xA;                                                    Converter={StaticResource photoCvt}}" />
+                        </Frame>
+                        <ActivityIndicator HorizontalOptions="Center" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
+                        <StackLayout Margin="40,0,40,0" VerticalOptions="Center" Orientation="Horizontal">
+                            <Button HorizontalOptions="FillAndExpand" Command="{Binding TakePhotoCommand}" FontSize="18" BackgroundColor="#048CD6" HeightRequest="50" Text="Cámara" BorderRadius="15" BorderColor="White" BorderWidth="2" />
+                            <Button HorizontalOptions="FillAndExpand" Command="{Binding ChoosePhotoCommand}" FontSize="18" BackgroundColor="#048CD6" HeightRequest="50" Text="Galería" BorderRadius="15" BorderColor="White" BorderWidth="2" />
+                        </StackLayout>
+                    </StackLayout>
+                </ViewCell>
+            </TableSection>
+            <TableSection Title="Datos de la persona">
+                <ViewCell Height="60">
+                    <StackLayout Margin="40,10,40,10" Orientation="Horizontal">
+                        <Entry x:Name="name" HorizontalOptions="FillAndExpand" Placeholder="Nombre" Text="{Binding Name}">
+                            <Entry.Effects>
+                                <effects:KeyboardReturnEffect />
+                            </Entry.Effects>
+                            <Entry.Behaviors>
+                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference lastname}" />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </StackLayout>
+                </ViewCell>
+                <ViewCell Height="60">
+                    <StackLayout Margin="40,10,40,10" Orientation="Horizontal">
+                        <Entry x:Name="lastname" HorizontalOptions="FillAndExpand" Placeholder="Apellido" Text="{Binding LastName}">
+                            <Entry.Effects>
+                                <effects:KeyboardReturnEffect />
+                            </Entry.Effects>
+                            <Entry.Behaviors>
+                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference age}" />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </StackLayout>
+                </ViewCell>
+                <ViewCell Height="60">
+                    <StackLayout Margin="40,10,40,10" Orientation="Horizontal">
+                        <Entry x:Name="age" HorizontalOptions="FillAndExpand" Keyboard="Numeric" Placeholder="Edad" Text="{Binding Age}">
+                            <Entry.Effects>
+                                <effects:KeyboardReturnEffect />
+                            </Entry.Effects>
+                            <Entry.Behaviors>
+                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference location}" />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </StackLayout>
+                </ViewCell>
+                <ViewCell Height="60">
+                    <StackLayout Margin="40,10,40,10" Orientation="Horizontal">
+                        <Entry x:Name="location" HorizontalOptions="FillAndExpand" Placeholder="Ubicación" Text="{Binding Location}">
+                            <Entry.Effects>
+                                <effects:KeyboardReturnEffect />
+                            </Entry.Effects>
+                            <Entry.Behaviors>
+                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference notes}" />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </StackLayout>
+                </ViewCell>
+                <ViewCell Height="60">
+                    <StackLayout Margin="40,10,40,10" Orientation="Horizontal">
+                        <Entry x:Name="notes" HorizontalOptions="FillAndExpand" Placeholder="Notas" Text="{Binding Notes}">
+                            <Entry.Effects>
+                                <effects:KeyboardReturnEffect />
+                            </Entry.Effects>
+                            <Entry.Behaviors>
+                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference alias}" />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </StackLayout>
+                </ViewCell>
+                <ViewCell Height="60">
+                    <StackLayout Margin="40,10,40,10" Orientation="Horizontal">
+                        <Entry x:Name="alias" HorizontalOptions="FillAndExpand" Placeholder="Alias" Text="{Binding Alias}" />
+                    </StackLayout>
+                </ViewCell>
+                <ViewCell Height="60">
+                    <StackLayout Margin="40,20,40,20">
+                        <Button Command="{Binding PreviewReportCommand}" Text="Continuar" FontSize="18" BackgroundColor="#048CD6" HeightRequest="50" BorderRadius="15" BorderColor="White" BorderWidth="2" />
+                    </StackLayout>
+                </ViewCell>
+            </TableSection>
+        </TableView>
+    </ContentPage.Content>
+</views:BaseView>

@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBundleDisplayName</key>
-	<string>CognitiveLocator</string>
-	<key>CFBundleName</key>
-	<string>CognitiveLocator</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.cognitivelocator.app</string>
 	<key>CFBundleShortVersionString</key>
@@ -40,13 +36,21 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>XSAppIconAssets</key>
-	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleLightContent</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>NSCameraUsageDescription</key>
 	<string>Es necesario el acceso a la cámara para el funcionamiento óptimo de la aplicación</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Estamos usando tu Ubicación</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Estamos usando tu Ubicación</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>New Es necesario el acceso a la galería de fotos para el funcionamiento óptimo de la aplicación</string>
+	<key>CFBundleName</key>
+	<string>Busca.me</string>
+	<key>XSAppIconAssets</key>
+	<string>Assets.xcassets/AppIcon.appiconset</string>
 </dict>
 </plist>

@@ -14,8 +14,9 @@
 				<Setter Property="BarTextColor" Value="White" />
 			</Style>
 
+            <Color x:Key="UIMainColor">DarkBlue</Color>
             <Style TargetType="Button">
-                <Setter Property="BackgroundColor" Value="DarkBlue" />
+                <Setter Property="BackgroundColor" Value="{StaticResource UIMainColor}" />
                 <Setter Property="BorderColor" Value="White" />
                 <Setter Property="BorderRadius" Value="5" />
                 <Setter Property="BorderWidth" Value="2" />
