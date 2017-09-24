@@ -141,17 +141,17 @@ namespace CognitiveLocator.ViewModels
             if (String.IsNullOrEmpty(model.Apellido))
                 return null;
 
-            if (String.IsNullOrEmpty(model.Alias))
-                return null;
+            //if (String.IsNullOrEmpty(model.Alias))
+            //    return null;
 
-            if (String.IsNullOrEmpty(model.Edad))
-                return null;
+            //if (String.IsNullOrEmpty(model.Edad))
+            //    return null;
 
-            if (String.IsNullOrEmpty(model.Ubicacion))
-                return null;
+            //if (String.IsNullOrEmpty(model.Ubicacion))
+            //    return null;
 
-            if (String.IsNullOrEmpty(model.Notas))
-                return null;
+            //if (String.IsNullOrEmpty(model.Notas))
+                //return null;
 
             return model;
         }

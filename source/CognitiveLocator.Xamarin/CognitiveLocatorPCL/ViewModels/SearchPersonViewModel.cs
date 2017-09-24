@@ -75,16 +75,22 @@ namespace CognitiveLocator.ViewModels
                 return;
 
             }
+            if ((NameValidation == false || LastNameValidation == false) && (!IsByPicture))
+            {
+                await Application.Current.MainPage.DisplayAlert("Notificación", "Por favor asegúrate de llenar todos los campos.", "Aceptar");
+            }
+            else
+            {
+                if (!IsBusy)
+                {
+                    IsBusy = true;
 
-			if (!IsBusy)
-			{
-				IsBusy = true;
+                    var page = new SearchPersonResultView(IsByPicture, Photo, Person);
+                    await NavigationService.PushAsync(page);
 
-				var page = new SearchPersonResultView(IsByPicture, Photo, Person);
-				await NavigationService.PushAsync(page);
-
-				IsBusy = false;
-			}
+                    IsBusy = false;
+                }
+            }
         }
 
         async Task TakePhoto()
