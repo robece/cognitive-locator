@@ -133,6 +133,9 @@ namespace CognitiveLocator.ViewModels
                 Notes = this.Notes
             };
 
+            if (Photo == null)
+                return null;
+
             if (String.IsNullOrEmpty(model.Name))
                 return null;
 
