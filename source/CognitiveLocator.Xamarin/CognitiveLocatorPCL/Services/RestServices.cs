@@ -21,47 +21,47 @@ namespace CognitiveLocator.Services
 
         public async Task<bool> CreateReportAsync(CreateReportModel model, byte[] photo)
         {
-			try
-			{
-				using (var client = new HttpClient())
-				{
-					using (var form = new MultipartFormDataContent())
-					{
-						var request = new HttpRequestMessage();
-						request.Headers.TryAddWithoutValidation("content-type", "multipart/form-data");
-						var imageContent = new ByteArrayContent(photo);
-						imageContent.Headers.TryAddWithoutValidation("content-type", "image/jpeg"); //= new System.Net.Http.Headers.MediaTypeHeaderValue("image/jpeg");
-																									//content1.Add(imageContent,"photo",$"{Guid.NewGuid().ToString()}.jpg");
-																									//request.Content = imageContent;
-						request.Method = HttpMethod.Post;
-						request.RequestUri = new Uri(BaseURL + model.UrlFormat);
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    using (var form = new MultipartFormDataContent())
+                    {
+                        var request = new HttpRequestMessage();
+                        request.Headers.TryAddWithoutValidation("content-type", "multipart/form-data");
+                        var imageContent = new ByteArrayContent(photo);
+                        imageContent.Headers.TryAddWithoutValidation("content-type", "image/jpeg"); //= new System.Net.Http.Headers.MediaTypeHeaderValue("image/jpeg");
+                                                                                                    //content1.Add(imageContent,"photo",$"{Guid.NewGuid().ToString()}.jpg");
+                                                                                                    //request.Content = imageContent;
+                        request.Method = HttpMethod.Post;
+                        request.RequestUri = new Uri(BaseURL + "api/Photo/Post?"+ model.UrlFormat());
 
-						HttpContent content = null;
+                        HttpContent content = null;
 
-						content = new ByteArrayContent(photo);
-						content.Headers.TryAddWithoutValidation("content-type", "image/jpeg");
-						content.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
-						{
-							Name = "photo",
-							FileName = $"{Guid.NewGuid().ToString()}.jpg"
-						};
-						form.Add(content);
+                        content = new ByteArrayContent(photo);
+                        content.Headers.TryAddWithoutValidation("content-type", "image/jpeg");
+                        content.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+                        {
+                            Name = "photo",
+                            FileName = $"{Guid.NewGuid().ToString()}.jpg"
+                        };
+                        form.Add(content);
 
-						request.Content = form;
-						using (var response = await client.SendAsync(request))
-						{
-							response.EnsureSuccessStatusCode();
-						}
-					}
-				}
+                        request.Content = form;
+                        using (var response = await client.SendAsync(request))
+                        {
+                            response.EnsureSuccessStatusCode();
+                        }
+                    }
+                }
 
-				return true;
-			}
-			catch (Exception ex)
-			{
-				Debug.WriteLine(ex.InnerException?.ToString());
-				return false;
-			}
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.InnerException?.ToString());
+                return false;
+            }
         }
 
         public async Task<List<Person>> SearchPersonByNameAsync(Person person)
@@ -70,9 +70,9 @@ namespace CognitiveLocator.Services
         }
 
         public async Task<List<Person>> SearchPersonByLastNameAsync(Person person)
-		{
+        {
             return await SearchPersonByAsync($"ByLastName?lastName={person.LastName}");
-		}
+        }
 
         public async Task<List<Person>> SearchByNameAndLastNameAsync(Person person)
         {
@@ -114,9 +114,10 @@ namespace CognitiveLocator.Services
             List<Person> results = new List<Person>();
             try
             {
-                using(var client = new HttpClient())
+                using (var client = new HttpClient())
                 {
                     var uri = $"{BaseURL}api/Find/{endpoint}";
+
                     using(var response = await client.GetAsync(uri))
                     {
                         response.EnsureSuccessStatusCode();
@@ -126,7 +127,7 @@ namespace CognitiveLocator.Services
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Debug.WriteLine((ex?.InnerException?.ToString()));
                 return null;
