@@ -28,7 +28,7 @@ namespace CognitiveLocator.ViewModels
 
         private void SendEmailFeedback()
         {
-            DependencyService.Get<IEmailService>().SendEmail("rcervantes@outlook.com");
+            DependencyService.Get<IEmailService>().SendEmail("rcervantes@outlook.com", "Feedback de la app");
         }
     }
 }
