@@ -20,6 +20,7 @@ namespace CognitiveLocator.WebAPI.Controllers
     {
         private SPQuery querySp = new SPQuery();
         [Route("ByFace")]
+        [HttpPost]
         public async Task<IHttpActionResult> ByFace()
         {
             try
@@ -70,6 +71,7 @@ namespace CognitiveLocator.WebAPI.Controllers
             }
         }
         [Route("ByName")]
+        [HttpGet]
         public async Task<IHttpActionResult> ByName([FromUri] string name)
         {
             try
@@ -86,6 +88,7 @@ namespace CognitiveLocator.WebAPI.Controllers
 
         }
         [Route("ByLastName")]
+        [HttpGet]
         public async Task<IHttpActionResult> ByLastName([FromUri] string lastName)
         {
             try
@@ -101,7 +104,8 @@ namespace CognitiveLocator.WebAPI.Controllers
             }
         }
         [Route("UpdataFoundPerson")]
-        public async Task<IHttpActionResult> UpdateFoundPerson([FromUri] string idPerson, int isFound, string location)
+        [HttpGet]
+        public async Task<IHttpActionResult> UpdateFoundPerson([FromUri] string idPerson, int isFound, string location ="")
         {
             try
             {
@@ -115,22 +119,23 @@ namespace CognitiveLocator.WebAPI.Controllers
                 throw;
             }
         }
-        [Route("PersonDisable")]
-        public async Task<IHttpActionResult> DisablePerson([FromUri] string idPerson)
-        {
-            try
-            {
-                IEnumerable<dynamic> listDisableP = null;
-                listDisableP = await querySp.DisablePerson(idPerson);
-                return Ok(listDisableP);
-            }
-            catch (Exception e)
-            {
-                return InternalServerError(e);
-                throw;
-            }
-        }
+        //[Route("PersonDisable")]
+        //public async Task<IHttpActionResult> DisablePerson([FromUri] string idPerson)
+        //{
+        //    try
+        //    {
+        //        IEnumerable<dynamic> listDisableP = null;
+        //        listDisableP = await querySp.DisablePerson(idPerson);
+        //        return Ok(listDisableP);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return InternalServerError(e);
+        //        throw;
+        //    }
+        //}
         [Route("PersonEnable")]
+        [HttpGet]
         public async Task<IHttpActionResult> EnablePerson([FromUri] string idPerson)
         {
             try

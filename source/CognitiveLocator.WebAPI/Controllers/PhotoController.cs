@@ -19,7 +19,7 @@ namespace CognitiveLocator.WebAPI.Controllers
     {
         [HttpPost]
         [Route("Post")]
-        public async Task<IHttpActionResult> PostFormData([FromUri] int IsFound, string Name, string LastName, string Alias, int Age, string Location, string Notes)
+        public async Task<IHttpActionResult> PostFormData([FromUri] int IsFound, string Name, string LastName, string Alias="", int Age=0, string Location="", string Notes="")
         {
             byte[] fileBytes = null;
             String FileName = string.Empty;
