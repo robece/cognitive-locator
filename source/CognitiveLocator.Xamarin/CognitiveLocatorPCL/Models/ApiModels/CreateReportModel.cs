@@ -3,13 +3,13 @@ namespace CognitiveLocator.Models.ApiModels
 {
     public class CreateReportModel
     {
-        public string Nombre
+        public string Name
         {
             get;
             set;
         }
 
-        public string Apellido
+        public string LastName
         {
             get;
             set;
@@ -21,37 +21,50 @@ namespace CognitiveLocator.Models.ApiModels
             set;
         }
 
-        public string Edad
+        public string Age
         {
             get;
             set;
         }
 
-        public string Ubicacion
+        public string Location
         {
             get;
             set;
         }
 
-        public string Notas
+        public string Notes
         {
             get;
             set;
         }
 
-        /// <summary>
-        /// Found = 1
-        /// Not Found = 0
-        /// </summary>
-        /// <value>Encontrado.</value>
-        public int Encontrado
+        public string UrlFormat()
         {
-            get;
-            set;
+            string result = string.Empty;
+
+            result = "IsFound={0}";
+
+            if (!string.IsNullOrEmpty(Name))
+                result += string.Format("&Name={0}",Name);
+
+            if (!string.IsNullOrEmpty(LastName))
+                result += string.Format("&LastName={0}", LastName);
+
+            if (!string.IsNullOrEmpty(Alias))
+                result += string.Format("&Alias={0}", Alias);
+            
+            if (!string.IsNullOrEmpty(Age))
+                result += string.Format("&Age={0}", Age);
+
+            if (!string.IsNullOrEmpty(Location))
+                result += string.Format("&Location={0}", Location);
+
+            if (!string.IsNullOrEmpty(Notes))
+                result += string.Format("&Notes={0}", Notes);
+
+            return result;
         }
 
-        public string UrlFormat =>
-        String.Format("api/Photo/Post?IsFound={0}&Name={1}&LastName={2}&Alias={3}&Age={4}&Location={5}&Notes={5}",
-                      Encontrado, Nombre, Apellido, Alias, Edad, Ubicacion, Notas);
     }
 }
