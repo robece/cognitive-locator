@@ -63,6 +63,12 @@ namespace CognitiveLocator.ViewModels
             set { SetProperty(ref notes, value); }
         }
 
+        string reportedby;
+        public string ReportedBy
+        {
+            get { return reportedby; }
+            set { SetProperty(ref reportedby, value); }
+        }
 
         public CreateReportViewModel() : this(new DependencyServiceBase())
         {
@@ -137,7 +143,8 @@ namespace CognitiveLocator.ViewModels
                 Alias = this.Alias,
                 Age = this.Age,
                 Location = this.Location,
-                Notes = this.Notes
+                Notes = this.Notes,
+                ReportedBy = this.ReportedBy
             };
 
             if (Photo == null)
@@ -148,6 +155,8 @@ namespace CognitiveLocator.ViewModels
                 return null;
             if (String.IsNullOrEmpty(model.Location))
 				return null;
+            if (String.IsNullOrEmpty(model.ReportedBy))
+                return null;
             
             return model;
         }
