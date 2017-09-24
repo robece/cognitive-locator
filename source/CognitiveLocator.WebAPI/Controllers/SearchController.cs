@@ -150,5 +150,21 @@ namespace CognitiveLocator.WebAPI.Controllers
                 throw;
             }
         }
+        [Route("ByNameAndLastName")]
+        [HttpGet]
+        public async Task<IHttpActionResult> SelectPersonByNameAndLastName([FromUri] string name, string lastName)
+        {
+            try
+            {
+                List<Person> listPerson = new List<Person>();
+                listPerson = await querySp.SelectPersonByNameAndLastName(name,lastName);
+                return Ok(listPerson);
+            }
+            catch (Exception e)
+            {
+                return InternalServerError(e);
+                throw;
+            }
+        }
     }
 }
