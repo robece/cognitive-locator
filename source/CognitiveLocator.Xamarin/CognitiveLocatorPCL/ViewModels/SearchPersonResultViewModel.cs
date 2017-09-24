@@ -75,7 +75,8 @@ namespace CognitiveLocator.ViewModels
             }
             else
             {
-                res = await RestServices.SearchPersonByPhotoAsync(Photo);
+                var person = await RestServices.SearchPersonByPhotoAsync(Photo);
+                res.Add(person);
             }
 
             Results = new ObservableCollection<Person>(res);
