@@ -4,6 +4,7 @@ using CognitiveLocator.WebAPI.Models.FaceApiModel;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -19,7 +20,7 @@ namespace CognitiveLocator.WebAPI.Controllers
     {
         [HttpPost]
         [Route("Post")]
-        public async Task<IHttpActionResult> PostFormData([FromUri] int IsFound, string Name, string LastName, string Alias="", int Age=0, string Location="", string Notes="")
+        public async Task<IHttpActionResult> PostFormData([FromUri] int IsFound, string Name, string LastName, string Alias="", string Location="", string Notes="", string birthDate = "", string reportedBy="")
         {
             byte[] fileBytes = null;
             String FileName = string.Empty;
@@ -53,7 +54,6 @@ namespace CognitiveLocator.WebAPI.Controllers
                 AddFaceToList resultFaceToList = await ObjFaceApiPerson.AddFaceToList(uri);
                 Person person = new Person()
                 {
-                    Age = Age,
                     Alias = Alias,
                     FaceId = resultFaceToList.persistedFaceId,
                     IdPerson = resultCreatePerson.personId,
@@ -63,7 +63,9 @@ namespace CognitiveLocator.WebAPI.Controllers
                     LastName = LastName,
                     Name = Name,
                     Location = Location,
-                    Notes = Notes
+                    Notes = Notes,
+                    ReportedBy = reportedBy,
+                    BirthDate = DateTime.ParseExact(birthDate, "yyyyMMdd", CultureInfo.InvariantCulture)
                 };
                 await new SPQuery().AddPersonNotFound(person);
 
