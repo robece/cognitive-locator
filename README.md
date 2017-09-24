@@ -37,7 +37,7 @@ Team UI Testing:
 
 Team Design:
 
--Narciso Reyes (@ngreyes10)
+- Narciso Reyes (@ngreyes10)
 
 Team Lead:
 
