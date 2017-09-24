@@ -2,7 +2,9 @@
     [IdPerson]              UNIQUEIDENTIFIER NOT NULL,
     [IsFound]            INT               CONSTRAINT [DF_Persona_IdSituacion] DEFAULT ((1)) NOT NULL,
     [Name]            NVARCHAR (500)    NOT NULL,
-    [Age]                   INT               CONSTRAINT [DF_Persona_Edad] DEFAULT ((0)) NOT NULL,
+	[LastName] NVARCHAR(500) NOT NULL, 
+    [Alias] NVARCHAR(50) NULL, 
+    [Age]                   INT               CONSTRAINT [DF_Persona_Edad] DEFAULT ((0)) NULL,
     [Picture]                   NVARCHAR (1000)   NOT NULL,
     [Location]              NVARCHAR (500)    NULL,
     [Notes]                  NVARCHAR (1000)   NULL,
@@ -10,12 +12,7 @@
     [ModifiedDate] DATETIME          CONSTRAINT [DF_Table_1_UltimaActualizacion] DEFAULT (getdate()) NOT NULL,
     [IsActive]              INT               CONSTRAINT [DF_Persona_IdEstatus] DEFAULT ((1)) NOT NULL,
     [FaceId] UNIQUEIDENTIFIER NULL, 
-    [Height] FLOAT NULL, 
-    [Width] FLOAT NULL, 
-    [LeftMargin] FLOAT NULL, 
-    [RightMargin] FLOAT NULL, 
-    [LastName] NVARCHAR(500) NULL, 
-    [Alias] NVARCHAR(50) NULL, 
+    
     CONSTRAINT [PK_Person] PRIMARY KEY ([IdPerson]) 
 );
 
