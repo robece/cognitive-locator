@@ -11,7 +11,8 @@ namespace CognitiveLocator.WebAPI.Controllers
     [System.Web.Http.RoutePrefix("api/Test")]
     public class TestingController : ApiController
     {
-        [Route("")]
+        [Route("prueba")]
+        [HttpGet]
         public async Task<IHttpActionResult> TestAPI([FromUri] string name, [FromUri] string lastName, [FromUri] string faceId, [FromUri] string idPerson)
         {
             var a = await new SPQuery().SelectPersonByName(name);
@@ -20,6 +21,7 @@ namespace CognitiveLocator.WebAPI.Controllers
             //var d = await new SPQuery().DisablePerson(idPerson);
             var d = await new SPQuery().EnablePerson(idPerson);
             var e = await new SPQuery().UpdateFoundPerson(idPerson, 1, "loc 2");
+            var p = await new SPQuery().SelectPersonByNameAndLastName(name,lastName);
             return Ok();
         }
     }
