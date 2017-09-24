@@ -70,7 +70,7 @@ namespace CognitiveLocator.ViewModels
         {
             if (!Plugin.Connectivity.CrossConnectivity.Current.IsConnected)
             {
-                await Application.Current.MainPage.DisplayAlert("Notificación", "Es necesario tener conexión a internet para continuar", "Aceptar");
+                await Application.Current.MainPage.DisplayAlert("Error", "Es necesario tener conexión a internet para continuar.", "Aceptar");
                 await NavigationService.PopAsync();
             }
 				IsBusy = true;
@@ -91,7 +91,7 @@ namespace CognitiveLocator.ViewModels
 
             if (!Results.Any())
             {
-                await Application.Current.MainPage.DisplayAlert("Resultados", "No se encontro ninguna coincidencia", "Aceptar");
+                await Application.Current.MainPage.DisplayAlert("Resultados", "No se encontro ninguna coincidencia.", "Aceptar");
                 await NavigationService.PopAsync();
             }
             IsBusy = false;
