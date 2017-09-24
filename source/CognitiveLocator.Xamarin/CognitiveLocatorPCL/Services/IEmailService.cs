@@ -1,8 +1,11 @@
-﻿using System;
-namespace CognitiveLocator.Services
+﻿namespace CognitiveLocator.Services
 {
     public interface IEmailService
     {
-        void SendEmail(string to, string subject);
+        /// <summary>
+        /// Crea un correo usando apis nativas
+        /// </summary>
+        /// <param name="mail">Correo a excribir</param>
+        void SendEmail(string mail);
     }
 }
