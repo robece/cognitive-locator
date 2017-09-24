@@ -7,7 +7,7 @@
     Title="{Binding Title}">
 	<views:BaseView.Content>
         <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-            <Image Source="http://via.placeholder.com/250x250" HeightRequest="150" Margin="0,10,0,0" />
+            <Image Source="{Binding CurrentPerson.Picture}" HeightRequest="150" Margin="0,10,0,0" />
             <TableView Intent="Form" HasUnevenRows="true">
                 <TableSection>
                     <EntryCell Label="Nombre:" Text="{Binding CurrentPerson.Name}" IsEnabled="false"/>

@@ -3,7 +3,7 @@ namespace CognitiveLocator.Models
 {
     public class Person
     {
-		public int IdPerson { get; set; }
+        public string IdPerson { get; set; }
         public string Name { get; set; }
 		public string LastName { get; set; }
 		public int Age { get; set; }
