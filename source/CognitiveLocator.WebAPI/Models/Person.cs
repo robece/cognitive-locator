@@ -18,9 +18,9 @@ namespace CognitiveLocator.WebAPI.Models
         public string Notes { get; set; }
         public int IsActive { get; set; }
         public string FaceId { get; set; }
-        public float Height { get; set; }
-        public float Width { get; set; }
-        public float LeftMargin { get; set; }
-        public float RightMargin { get; set; }
+        //public float Height { get; set; }
+        //public float Width { get; set; }
+        //public float LeftMargin { get; set; }
+        //public float RightMargin { get; set; }
     }
 }
