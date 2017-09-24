@@ -75,7 +75,7 @@ namespace CognitiveLocator.WebAPI.Class
         public async Task<List<Person>> SelectPersonByNameAndLastName(string name,string lastName)
         {
             return BuildPersons(await Sql.RunAsyncStoredProcParams(connectionString, "SelectPersonByNameAndLastName",
-                new System.Data.SqlClient.SqlParameter[] { new System.Data.SqlClient.SqlParameter("LastName", lastName), new System.Data.SqlClient.SqlParameter("Name", name)}));
+                new System.Data.SqlClient.SqlParameter[] { new System.Data.SqlClient.SqlParameter("Name", name), new System.Data.SqlClient.SqlParameter("LastName", lastName) }));
         }
 
         public async Task<List<Person>> SelectPersonByFaceId(string faceId)
