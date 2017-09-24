@@ -91,6 +91,26 @@
                     </StackLayout>
                 </ViewCell>
                 <ViewCell>
+                    <StackLayout Margin="40,0,40,0" Orientation="Horizontal">
+                        <Label WidthRequest="80"
+                               VerticalOptions="Center"
+                               Text="Notas" />
+                        <Label HorizontalOptions="FillAndExpand"
+                               FontSize="18"
+                               Text="{Binding Notes}" />
+                    </StackLayout>
+                </ViewCell>
+                <ViewCell>
+                    <StackLayout Margin="40,0,40,0" Orientation="Horizontal">
+                        <Label WidthRequest="80"
+                               VerticalOptions="Center"
+                               Text="Alias" />
+                        <Label HorizontalOptions="FillAndExpand"
+                               FontSize="18"
+                               Text="{Binding Alias}" />
+                    </StackLayout>
+                </ViewCell>
+                <ViewCell>
                     <StackLayout Margin="40,20,40,20">
                         <Button Command="{Binding SendReportCommand}" Text="Enviar Reporte" 
                             FontSize="18" BackgroundColor="#048CD6" HeightRequest="50" />
