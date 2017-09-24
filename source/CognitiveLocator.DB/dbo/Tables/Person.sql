@@ -4,7 +4,6 @@
     [Name]            NVARCHAR (500)    NOT NULL,
 	[LastName] NVARCHAR(500) NOT NULL, 
     [Alias] NVARCHAR(50) NULL, 
-    [Age]                   INT               CONSTRAINT [DF_Persona_Edad] DEFAULT ((0)) NULL,
 	[BirthDate] DATETIME NULL, 
     [ReportedBy] NVARCHAR(100) NOT NULL, 
     [Picture]                   NVARCHAR (1000)   NOT NULL,
@@ -27,7 +26,7 @@ EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'Nombre Comp
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'Edad de la persona', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'Person', @level2type = N'COLUMN', @level2name = 'Age';
+
 
 
 GO
