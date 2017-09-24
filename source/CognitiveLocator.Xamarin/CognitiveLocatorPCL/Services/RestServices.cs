@@ -10,6 +10,7 @@ using System.Diagnostics;
 using System.Collections.Generic;
 using CognitiveLocator.Models;
 using Newtonsoft.Json;
+using System.Net.Http.Headers;
 
 [assembly: Dependency(typeof(RestServices))]
 namespace CognitiveLocator.Services
@@ -24,11 +25,30 @@ namespace CognitiveLocator.Services
             {
                 using (var client = new HttpClient())
                 {
-                    using (var content = new MultipartFormDataContent())
+                    using (var form = new MultipartFormDataContent())
                     {
-                        content.Add(new StreamContent(new MemoryStream(photo)));
+                        var request = new HttpRequestMessage();
+                        request.Headers.TryAddWithoutValidation("content-type", "multipart/form-data");
+                        var imageContent = new ByteArrayContent(photo);
+                        imageContent.Headers.TryAddWithoutValidation("content-type", "image/jpeg"); //= new System.Net.Http.Headers.MediaTypeHeaderValue("image/jpeg");
+                                                                                                    //content1.Add(imageContent,"photo",$"{Guid.NewGuid().ToString()}.jpg");
+                                                                                                    //request.Content = imageContent;
+                        request.Method = HttpMethod.Post;
+                        request.RequestUri = new Uri(BaseURL + model.UrlFormat);
 
-                        using (var response = await client.PostAsync(BaseURL + model.UrlFormat, content))
+                        HttpContent content = null;
+
+                        content = new ByteArrayContent(photo);
+                        content.Headers.TryAddWithoutValidation("content-type", "image/jpeg");
+                        content.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+                        {
+                            Name = "photo",
+                            FileName = $"{Guid.NewGuid().ToString()}.jpg"
+                        };
+                        form.Add(content);
+
+                        request.Content = form;
+                        using (var response = await client.SendAsync(request))
                         {
                             response.EnsureSuccessStatusCode();
                         }
@@ -50,9 +70,9 @@ namespace CognitiveLocator.Services
         }
 
         public async Task<List<Person>> SearchPersonByLastNameAsync(Person person)
-		{
+        {
             return await SearchPersonByAsync($"ByLastName?lastName={person.LastName}");
-		}
+        }
 
         public async Task<List<Person>> SearchPersonByPhotoAsync(byte[] photo)
         {
@@ -64,10 +84,10 @@ namespace CognitiveLocator.Services
             List<Person> results = new List<Person>();
             try
             {
-                using(var client = new HttpClient())
+                using (var client = new HttpClient())
                 {
                     var uri = $"{BaseURL}api/Find/{endpoint}";
-                    using(var response = await client.PostAsync(uri, null))
+                    using (var response = await client.PostAsync(uri, null))
                     {
                         response.EnsureSuccessStatusCode();
 
@@ -76,7 +96,7 @@ namespace CognitiveLocator.Services
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Debug.WriteLine((ex?.InnerException?.ToString()));
                 return null;

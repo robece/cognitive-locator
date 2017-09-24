@@ -126,33 +126,20 @@ namespace CognitiveLocator.ViewModels
         {
             var model = new CreateReportModel()
             {
-                Nombre = this.Name,
-                Apellido = this.LastName,
+                Name = this.Name,
+                LastName = this.LastName,
                 Alias = this.Alias,
-                Edad = this.Age,
-                Ubicacion = this.Location,
-                Notas = this.Notes,
-                Encontrado = 0
+                Age = this.Age,
+                Location = this.Location,
+                Notes = this.Notes
             };
 
-            if (String.IsNullOrEmpty(model.Nombre))
+            if (String.IsNullOrEmpty(model.Name))
                 return null;
 
-            if (String.IsNullOrEmpty(model.Apellido))
+            if (String.IsNullOrEmpty(model.LastName))
                 return null;
-
-            //if (String.IsNullOrEmpty(model.Alias))
-            //    return null;
-
-            //if (String.IsNullOrEmpty(model.Edad))
-            //    return null;
-
-            //if (String.IsNullOrEmpty(model.Ubicacion))
-            //    return null;
-
-            //if (String.IsNullOrEmpty(model.Notas))
-                //return null;
-
+            
             return model;
         }
     }
