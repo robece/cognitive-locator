@@ -97,6 +97,11 @@ namespace CognitiveLocator.ViewModels
 
         private async Task SendReport()
         {
+            var confirmation = await Application.Current.MainPage.DisplayAlert("Envío de información", "Confirmo que de manera bien intensionada estoy compartiendo una fotografía y datos personales de una persona extraviada.", "Si", "No");
+
+            if (!confirmation)
+                return;
+
             var model = ValidateInformation();
 			if (!Plugin.Connectivity.CrossConnectivity.Current.IsConnected)
 				await Application.Current.MainPage.DisplayAlert("Error", "Es necesario tener conexión a internet para continuar.", "Aceptar");
@@ -137,7 +142,6 @@ namespace CognitiveLocator.ViewModels
 
             if (Photo == null)
                 return null;
-
             if (String.IsNullOrEmpty(model.Name))
                 return null;
             if (String.IsNullOrEmpty(model.LastName))
