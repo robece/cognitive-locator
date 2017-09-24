@@ -67,11 +67,12 @@ namespace CognitiveLocator.Helpers
 
         public static async Task<byte[]> AdjustImageSize(byte[] photo)
         {
+            int maxSize = 800;
             if (photo != null)
             {
                 var imageDetails = await CrossImageData.Current.GetImageDetails(photo);
 
-                if (imageDetails.Heigth > 512 || imageDetails.Width > 512)
+                if (imageDetails.Heigth > maxSize || imageDetails.Width > maxSize)
                 {
 
                     bool isTaller = imageDetails.Heigth > imageDetails.Width;
@@ -79,7 +80,7 @@ namespace CognitiveLocator.Helpers
                                               imageDetails.Heigth :
                                               imageDetails.Width;
 
-                    float extra = bigSide - 512;
+                    float extra = bigSide - maxSize;
                     float extraPercentage = (extra / bigSide) * 100;
                     int newImagePercentage = (int)(100 - extraPercentage);
 

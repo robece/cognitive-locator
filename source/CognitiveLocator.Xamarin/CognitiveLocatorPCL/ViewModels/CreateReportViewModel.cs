@@ -99,10 +99,9 @@ namespace CognitiveLocator.ViewModels
         private async Task SendReport()
         {
             var model = ValidateInformation();
-            if (model == null)
-                return;
-
-            if (!IsBusy)
+			if (!Plugin.Connectivity.CrossConnectivity.Current.IsConnected)
+				await Application.Current.MainPage.DisplayAlert("Notificación", "Es necesario tener conexión a internet para continuar", "Aceptar");
+			else if (!IsBusy)
             {
                 IsBusy = true;
                 await RestServices.CreateReportAsync(model, Photo);
@@ -113,7 +112,11 @@ namespace CognitiveLocator.ViewModels
 
         private async Task PreviewReport()
         {
-            if (!IsBusy)
+			var model = ValidateInformation();
+
+			if (model == null)
+				await Application.Current.MainPage.DisplayAlert("Notificación", "Por favor ingrese todo los datos obligatorios", "Aceptar");
+			else if (!IsBusy)
             {
                 IsBusy = true;
                 await NavigationService.PushAsync(new PreviewView(this));
@@ -138,9 +141,10 @@ namespace CognitiveLocator.ViewModels
 
             if (String.IsNullOrEmpty(model.Name))
                 return null;
-
             if (String.IsNullOrEmpty(model.LastName))
                 return null;
+            if (String.IsNullOrEmpty(model.Location))
+				return null;
             
             return model;
         }

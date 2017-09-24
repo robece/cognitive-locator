@@ -13,6 +13,11 @@ namespace CognitiveLocator
 			await Application.Current.MainPage.Navigation.PopModalAsync();
 		}
 
+		public async Task PopAsync()
+		{
+            await Application.Current.MainPage.Navigation.PopAsync();
+		}
+
 		public async Task PopToRootAsync()
 		{
 			await Application.Current.MainPage.Navigation.PopToRootAsync();

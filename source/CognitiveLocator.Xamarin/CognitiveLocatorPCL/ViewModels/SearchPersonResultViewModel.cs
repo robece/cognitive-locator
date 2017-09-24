@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using CognitiveLocator.Models;
@@ -67,6 +68,12 @@ namespace CognitiveLocator.ViewModels
 
         public async override Task OnViewAppear()
         {
+            if (!Plugin.Connectivity.CrossConnectivity.Current.IsConnected)
+            {
+                await Application.Current.MainPage.DisplayAlert("Notificación", "Es necesario tener conexión a internet para continuar", "Aceptar");
+                await NavigationService.PopAsync();
+            }
+				IsBusy = true;
             var res = new List<Person>();
 
             if (!IsByPhoto)
@@ -76,13 +83,19 @@ namespace CognitiveLocator.ViewModels
             else
             {
                 var person = await RestServices.SearchPersonByPhotoAsync(Photo);
-                res.Add(person);
+                if(person!=null)
+                    res.Add(person);
             }
 
             Results = new ObservableCollection<Person>(res);
 
-            return;
-        }
+            if (!Results.Any())
+            {
+                await Application.Current.MainPage.DisplayAlert("Resultados", "No se encontro ninguna coincidencia", "Aceptar");
+                await NavigationService.PopAsync();
+            }
+            IsBusy = false;
+		}
 
         #endregion
     }

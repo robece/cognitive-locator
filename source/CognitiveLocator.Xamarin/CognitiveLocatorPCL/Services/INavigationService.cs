@@ -6,6 +6,8 @@ namespace CognitiveLocator
 {
     public interface INavigationService
     {
+        Task PopAsync();
+
 		Task PopModalAsync();
 
 		Task PushModalAsync(Page page);

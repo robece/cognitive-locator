@@ -6,8 +6,8 @@
 	<string>com.cognitivelocator.app</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
-	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>es-MX</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>

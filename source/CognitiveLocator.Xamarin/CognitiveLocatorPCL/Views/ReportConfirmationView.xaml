@@ -31,7 +31,6 @@
                    Text="¡Puedes estar cambiando la vida de una familia!" />
             <Button Grid.Row="4"
                     Command="{Binding HomeCommand}"
-                    FontSize="18" BackgroundColor="#048CD6" HeightRequest="50" BorderRadius="15" BorderColor="White" BorderWidth="2"
                     Text="Inicio" />  
         </Grid>
     </ContentPage.Content>

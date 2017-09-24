@@ -12,36 +12,21 @@
                FontSize="22"
                Text="¿Necesitas ayuda?" />
         <Button HeightRequest="50"
-                BackgroundColor="#048CD6"
-                BorderColor="White"
-                BorderRadius="15"
-                BorderWidth="2"
                 Command="{Binding CreateReportCommand}"
-                FontSize="18"
+
                 Text="Reportar persona" />
         <Button HeightRequest="50"
-                BackgroundColor="#048CD6"
-                BorderColor="White"
-                BorderRadius="15"
-                BorderWidth="2"
                 Command="{Binding SearchPersonNameCommand}"
-                FontSize="18"
+               
                 Text="Buscar por nombre" />
         <Button HeightRequest="50"
-                BackgroundColor="#048CD6"
-                BorderColor="White"
-                BorderRadius="15"
-                BorderWidth="2"
                 Command="{Binding SearchPersonPictureCommand}"
-                FontSize="18"
+
                 Text="Buscar por fotografía" />
         <Button HeightRequest="50"
                 BackgroundColor="#FF9940"
-                BorderColor="White"
-                BorderRadius="15"
-                BorderWidth="2"
                 Command="{Binding AboutCommand}"
-                FontSize="18"
+         
                 Text="Acerca de..." />
         <Label FontSize="12" Text="Responsiva: El uso de imagenes y datos personales es sin fines de lucro, usados para el apoyo de las personas extraviadas, la aplicación Busca.me no compartirá dicha información con terceros o particulares." />
     </StackLayout>
