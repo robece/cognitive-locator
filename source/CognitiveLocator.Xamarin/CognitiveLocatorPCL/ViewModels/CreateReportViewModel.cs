@@ -116,7 +116,6 @@ namespace CognitiveLocator.ViewModels
             if (!IsBusy)
             {
                 IsBusy = true;
-                await Task.Delay(3000);
                 await NavigationService.PushAsync(new PreviewView(this));
                 IsBusy = false;
             }

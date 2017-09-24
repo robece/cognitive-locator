@@ -43,7 +43,7 @@ namespace CognitiveLocator.Models.ApiModels
         {
             string result = string.Empty;
 
-            result = "IsFound={0}";
+            result = "IsFound=0";
 
             if (!string.IsNullOrEmpty(Name))
                 result += string.Format("&Name={0}",Name);
