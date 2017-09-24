@@ -87,6 +87,7 @@
     <Compile Include="Views\Behaviors\EmptyValidatorBaseBehavior.cs" />
     <Compile Include="Views\Behaviors\EmptyValidatorBehaviorName.cs" />
     <Compile Include="Views\Behaviors\EmptyValidatorBehaviorLastName.cs" />
+    <Compile Include="Services\IEmailService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
