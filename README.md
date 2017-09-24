@@ -12,12 +12,12 @@ Team Face API:
 
 - Lucia Vázquez (@analuciavazquez) 
 - Victor Manuel Islas (@OnlyD)
-- Héctor Arriaga (@HectorMap)
 
 Team Azure SQL:
 
 - Daniel Courtois (@dhcourtois)
 - Cristian Levi (@Baneforce)
+- Héctor Arriaga (@HectorMap)
 
 Team DevOps: 
 
@@ -26,11 +26,18 @@ Team DevOps:
 Team Xamarin:
 
 - Cristian González (@DarryStonem)
-- Fernando Arreguin (@FerArreguin92)
 - Gustavo Barrientos (@tavobarrientos)
 - Humberto Jaimes (@humbertojaimes)
 - Leonardo Romero (@Micnick)
 - Vicente Guzman (@LucioMSP)
+
+Team UI Testing:
+
+- Fernando Arreguin (@FerArreguin92)
+
+Team Design:
+
+-Narciso Reyes (@ngreyes10)
 
 Team Lead:
 
