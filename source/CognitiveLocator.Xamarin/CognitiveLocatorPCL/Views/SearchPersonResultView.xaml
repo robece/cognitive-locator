@@ -15,12 +15,14 @@
                     <ViewCell>
                         <Grid Padding="5">
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50" />
                                 <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="40" />
                             </Grid.ColumnDefinitions>
 
                             <Image Grid.Column="0"
                                    Aspect="AspectFill"
+                                HeightRequest="40"
+                                WidthRequest="40"
                                    Source="{Binding Picture}" />
                             <StackLayout Grid.Column="1" VerticalOptions="Center">
                                 <Label Grid.Row="0"
