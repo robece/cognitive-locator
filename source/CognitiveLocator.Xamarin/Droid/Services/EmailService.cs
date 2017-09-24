@@ -11,22 +11,17 @@ namespace CognitiveLocator.Droid.Services
 {
     public class EmailService : IEmailService
     {
-        public void SendEmail(string to, string subject)
+        public void SendEmail(string mail)
         {
-			try
-            {
-				var intent = new Intent(Intent.ActionSendMultiple);
+            var email = new Intent(Android.Content.Intent.ActionSend);
+            email.PutExtra(Android.Content.Intent.ExtraEmail,
+            new string[] { mail });
 
-				intent.SetType("text/plain");
-				intent.PutExtra(Intent.ExtraEmail, to);
-				intent.PutExtra(Intent.ExtraSubject, subject ?? string.Empty);
+            email.PutExtra(Android.Content.Intent.ExtraSubject, "Contacto Busca.me");
 
-				CrossCurrentActivity.Current.Activity.StartActivity(intent);
-            }
-            catch (System.Exception ex)
-            {
-			    
-			}
+            email.PutExtra(Intent.ExtraHtmlText, true);
+            email.SetType("message/rfc822");
+            Forms.Context.StartActivity(email);
         }
     }
 }
