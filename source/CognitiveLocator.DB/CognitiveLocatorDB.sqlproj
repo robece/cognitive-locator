@@ -61,10 +61,20 @@
     <Folder Include="Properties" />
     <Folder Include="dbo\" />
     <Folder Include="dbo\Tables\" />
+    <Folder Include="dbo\StoredProcedures" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Person.sql" />
-    <Build Include="dbo\Tables\PersonFaces.sql" />
+    <Build Include="dbo\StoredProcedures\AddPersonNotFound.sql" />
+    <Build Include="dbo\StoredProcedures\DisablePerson.sql" />
+    <Build Include="dbo\StoredProcedures\EnablePerson.sql" />
+    <Build Include="dbo\StoredProcedures\SelectAllPerson.sql" />
+    <Build Include="dbo\StoredProcedures\SelectPerson.sql" />
+    <Build Include="dbo\StoredProcedures\SelectPersonByFaceId.sql" />
+    <Build Include="dbo\StoredProcedures\SelectPersonByLastName.sql" />
+    <Build Include="dbo\StoredProcedures\SelectPersonByName.sql" />
+    <Build Include="dbo\StoredProcedures\UpdateFoundPerson.sql" />
+    <Build Include="dbo\StoredProcedures\SelectPersonByNameAndLastName.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="CognitiveLocatorDB.refactorlog" />
