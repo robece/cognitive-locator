@@ -34,7 +34,7 @@ namespace CognitiveLocator.Services
                                                                                                     //content1.Add(imageContent,"photo",$"{Guid.NewGuid().ToString()}.jpg");
                                                                                                     //request.Content = imageContent;
                         request.Method = HttpMethod.Post;
-                        request.RequestUri = new Uri(BaseURL + model.UrlFormat);
+                        request.RequestUri = new Uri(BaseURL + "api/Photo/Post?"+ model.UrlFormat());
 
                         HttpContent content = null;
 
