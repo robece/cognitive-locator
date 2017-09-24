@@ -215,6 +215,7 @@
     <Compile Include="Class\ClassStg.cs" />
     <Compile Include="Class\FaceAPIMethods.cs" />
     <Compile Include="Class\SPQuery.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PhotoController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\TestingController.cs" />
