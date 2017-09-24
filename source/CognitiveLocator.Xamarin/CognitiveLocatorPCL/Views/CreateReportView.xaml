@@ -77,6 +77,16 @@
                                     <effects:KeyboardReturnEffect />
                                 </Entry.Effects>
                                 <Entry.Behaviors>
+                                    <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference reportedby}" />
+                                </Entry.Behaviors>
+                            </Entry>
+                        </StackLayout>
+                        <StackLayout Margin="40,10,40,10" Orientation="Horizontal">
+                            <Entry x:Name="reportedby" HorizontalOptions="FillAndExpand" Placeholder="Quién reporta? (Dato obligatorio)" Text="{Binding ReportedBy}">
+                                <Entry.Effects>
+                                    <effects:KeyboardReturnEffect />
+                                </Entry.Effects>
+                                <Entry.Behaviors>
                                     <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference alias}" />
                                 </Entry.Behaviors>
                             </Entry>
