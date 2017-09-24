@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CognitiveLocator.WebAPI", "..\CognitiveLocator.WebAPI\CognitiveLocator.WebAPI.csproj", "{45C86EFA-3920-45E3-B30B-A92D8E133512}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CognitiveLocatorDAL", "..\CognitiveLocator.DAL\CognitiveLocatorDAL.csproj", "{0D0E64DB-426E-4ACA-AF43-AF82346B059B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{45C86EFA-3920-45E3-B30B-A92D8E133512}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45C86EFA-3920-45E3-B30B-A92D8E133512}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45C86EFA-3920-45E3-B30B-A92D8E133512}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D0E64DB-426E-4ACA-AF43-AF82346B059B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D0E64DB-426E-4ACA-AF43-AF82346B059B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D0E64DB-426E-4ACA-AF43-AF82346B059B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D0E64DB-426E-4ACA-AF43-AF82346B059B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
