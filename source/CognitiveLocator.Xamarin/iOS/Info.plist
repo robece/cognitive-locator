@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleIdentifier</key>
-	<string>com.cognitivelocator.app</string>
+	<string>StellaSoft.demo</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleDevelopmentRegion</key>
@@ -42,13 +42,13 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>NSCameraUsageDescription</key>
-	<string>Es necesario el acceso a la cámara para el funcionamiento óptimo de la aplicación</string>
+	<string>Es necesario el acceso a la cámara para el funcionamiento óptimo de la aplicación.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Estamos usando tu Ubicación</string>
+	<string>Estamos usando tu ubicación</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Estamos usando tu Ubicación</string>
+	<string>Estamos usando tu ubicación</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>New Es necesario el acceso a la galería de fotos para el funcionamiento óptimo de la aplicación</string>
+	<string>Es necesario el acceso a la galería de fotos para el funcionamiento óptimo de la aplicación.</string>
 	<key>CFBundleName</key>
 	<string>Busca.me</string>
 	<key>XSAppIconAssets</key>

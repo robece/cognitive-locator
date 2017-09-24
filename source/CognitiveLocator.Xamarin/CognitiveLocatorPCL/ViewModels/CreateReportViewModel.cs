@@ -9,7 +9,6 @@ namespace CognitiveLocator.ViewModels
 {
     public class CreateReportViewModel : BaseViewModel
     {
-
         public Command SendReportCommand { get; set; }
         public Command TakePhotoCommand { get; set; }
         public Command ChoosePhotoCommand { get; set; }
@@ -100,7 +99,7 @@ namespace CognitiveLocator.ViewModels
         {
             var model = ValidateInformation();
 			if (!Plugin.Connectivity.CrossConnectivity.Current.IsConnected)
-				await Application.Current.MainPage.DisplayAlert("Notificación", "Es necesario tener conexión a internet para continuar", "Aceptar");
+				await Application.Current.MainPage.DisplayAlert("Error", "Es necesario tener conexión a internet para continuar.", "Aceptar");
 			else if (!IsBusy)
             {
                 IsBusy = true;
@@ -115,7 +114,7 @@ namespace CognitiveLocator.ViewModels
 			var model = ValidateInformation();
 
 			if (model == null)
-				await Application.Current.MainPage.DisplayAlert("Notificación", "Por favor ingrese todo los datos obligatorios", "Aceptar");
+				await Application.Current.MainPage.DisplayAlert("Error", "Por favor ingrese todo los datos obligatorios.", "Aceptar");
 			else if (!IsBusy)
             {
                 IsBusy = true;

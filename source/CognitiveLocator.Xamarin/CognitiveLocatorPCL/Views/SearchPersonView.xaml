@@ -44,9 +44,9 @@
                     <StackLayout Orientation="Vertical">
                         <StackLayout Margin="40,10,40,10" HeightRequest="50" Orientation="Horizontal">
                             <Entry x:Name="name" HorizontalOptions="FillAndExpand" Placeholder="Nombre" Text="{Binding Person.Name}">
-                                <Entry.Behaviors>
-                                    <behaviors:EmptyValidatorBehaviorName x:Name="emptyValidatorName" />
-                                </Entry.Behaviors>
+                              <Entry.Behaviors>
+                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference lastname}" />
+                              </Entry.Behaviors>
                             </Entry>
                         </StackLayout>
                         <StackLayout Margin="40,10,40,10" HeightRequest="50" Orientation="Horizontal">
