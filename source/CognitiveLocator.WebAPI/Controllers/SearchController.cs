@@ -94,7 +94,7 @@ namespace CognitiveLocator.WebAPI.Controllers
             try
             {
                 List<Person> listByLastName = new List<Person>();
-                listByLastName = await querySp.SelectPersonByName(lastName);
+                listByLastName = await querySp.SelectPersonByLastName(lastName);
                 return Ok(listByLastName);
             }
             catch (Exception e)
