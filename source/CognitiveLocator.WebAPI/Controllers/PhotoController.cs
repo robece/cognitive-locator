@@ -20,7 +20,7 @@ namespace CognitiveLocator.WebAPI.Controllers
     {
         [HttpPost]
         [Route("Post")]
-        public async Task<IHttpActionResult> PostFormData([FromUri] int IsFound, string Name, string LastName, string Alias="", string Location="", string Notes="", string birthDate = "", string reportedBy="")
+        public async Task<IHttpActionResult> PostFormData([FromUri] int IsFound, string Name, string LastName, string Alias="", string Location="", string Notes="", string BirthDate = "", string ReportedBy="")
         {
             byte[] fileBytes = null;
             String FileName = string.Empty;
@@ -52,6 +52,7 @@ namespace CognitiveLocator.WebAPI.Controllers
                 AddPersonFace resultPersonFace = await ObjFaceApiPerson.AddPersonFace(uri, resultCreatePerson.personId);
                 //SaveDB
                 AddFaceToList resultFaceToList = await ObjFaceApiPerson.AddFaceToList(uri);
+                Nullable<DateTime> dateNull = null;
                 Person person = new Person()
                 {
                     Alias = Alias,
@@ -64,8 +65,8 @@ namespace CognitiveLocator.WebAPI.Controllers
                     Name = Name,
                     Location = Location,
                     Notes = Notes,
-                    ReportedBy = reportedBy,
-                    BirthDate = DateTime.ParseExact(birthDate, "yyyyMMdd", CultureInfo.InvariantCulture)
+                    ReportedBy = ReportedBy,
+                    BirthDate = (string.IsNullOrEmpty(BirthDate)) ? dateNull : DateTime.ParseExact(BirthDate, "yyyy-MM-dd", CultureInfo.InvariantCulture)
                 };
                 await new SPQuery().AddPersonNotFound(person);
 
