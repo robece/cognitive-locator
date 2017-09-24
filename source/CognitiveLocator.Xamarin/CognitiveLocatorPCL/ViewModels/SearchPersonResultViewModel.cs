@@ -48,7 +48,7 @@ namespace CognitiveLocator.ViewModels
         #endregion
         public SearchPersonResultViewModel(bool isPicture, byte[] picture, Person person) : base(new DependencyServiceBase())
         {
-            Title = "Buscar";
+            Title = "Resultado de la búsqueda";
             IsByPhoto = isPicture;
             Photo = picture;
             Person = person;
