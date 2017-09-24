@@ -1,14 +1,48 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<views:BaseView x:Class="CognitiveLocator.Views.HomeView" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:views="clr-namespace:CognitiveLocator.Views;assembly=CognitiveLocatorPCL" Title="{Binding Title}">
-    <Grid Margin="20,0">
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition  Height="50" />
-            <RowDefinition Height="50" />
-            <RowDefinition Height="2*"/>
-        </Grid.RowDefinitions>
-        <Label Grid.Row="0" HorizontalOptions="Center" VerticalOptions="End" FontSize="30" Text="¿Podemos ayudarte?"  />
-        <Button Grid.Row="1" Text="Deseo reportar a alguien" FontSize="20" Command="{Binding SearchPersonCommand}" />
-        <Button Grid.Row="2" Text="Deseo buscar a alguien" FontSize="20" Command="{Binding CreateReportCommand}" />
-    </Grid>
+<?xml version="1.0" encoding="UTF-8" ?>
+<views:BaseView x:Class="CognitiveLocator.Views.HomeView"
+                xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:views="clr-namespace:CognitiveLocator.Views;assembly=CognitiveLocatorPCL"
+                Title="{Binding Title}">
+    <StackLayout Margin="40,-50,40,0"
+                 VerticalOptions="Center"
+                 Spacing="40">
+        <Label HorizontalOptions="Center"
+               VerticalOptions="End"
+               FontSize="22"
+               Text="¿Necesitas ayuda?" />
+        <Button HeightRequest="50"
+                BackgroundColor="#048CD6"
+                BorderColor="White"
+                BorderRadius="15"
+                BorderWidth="2"
+                Command="{Binding CreateReportCommand}"
+                FontSize="18"
+                Text="Reportar persona" />
+        <Button HeightRequest="50"
+                BackgroundColor="#048CD6"
+                BorderColor="White"
+                BorderRadius="15"
+                BorderWidth="2"
+                Command="{Binding SearchPersonNameCommand}"
+                FontSize="18"
+                Text="Buscar por nombre" />
+        <Button HeightRequest="50"
+                BackgroundColor="#048CD6"
+                BorderColor="White"
+                BorderRadius="15"
+                BorderWidth="2"
+                Command="{Binding SearchPersonPictureCommand}"
+                FontSize="18"
+                Text="Buscar por fotografía" />
+        <Button HeightRequest="50"
+                BackgroundColor="#FF9940"
+                BorderColor="White"
+                BorderRadius="15"
+                BorderWidth="2"
+                Command="{Binding AboutCommand}"
+                FontSize="18"
+                Text="Acerca de..." />
+        <Label FontSize="12" Text="Responsiva: El uso de imagenes y datos personales es sin fines de lucro, usados para el apoyo de las personas extraviadas, la aplicación Busca.me no compartirá dicha información con terceros o particulares." />
+    </StackLayout>
 </views:BaseView>

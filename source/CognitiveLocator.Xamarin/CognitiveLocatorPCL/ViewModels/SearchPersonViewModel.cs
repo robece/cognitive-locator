@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using CognitiveLocator.Models;
 using CognitiveLocator.Views;
@@ -10,6 +10,7 @@ namespace CognitiveLocator.ViewModels
     public class SearchPersonViewModel : BaseViewModel
     {
         #region Properties
+
         Person _person;
         public Person Person
         {
@@ -17,54 +18,85 @@ namespace CognitiveLocator.ViewModels
             set { SetProperty(ref _person, value); }
         }
 
-        ObservableCollection<Person> _results;
-        public ObservableCollection<Person> Results
+        byte[] _photo;
+        public byte[] Photo
         {
-            get { return _results; }
-            set { SetProperty(ref _results, value); }
+            get { return _photo; }
+            set { SetProperty(ref _photo, value); }
         }
 
-        public ICommand OnSelectedItemCommand
+        string _searchType;
+        public string SearchType
         {
-            get;
-            set;
+            get { return _searchType; }
+            set { SetProperty(ref _searchType, value); }
         }
+
+        public bool IsByPicture => (SearchType == "picture") ? true : false;
+
+        public ICommand SearchPersonByPictureCommand { get; set; }
+        public ICommand SearchPersonByNameCommand { get; set; }
+        public ICommand TakePhotoCommand { get; set; }
+        public ICommand ChoosePhotoCommand { get; set; }
+
+        public static bool NameValidation = false;
+        public static bool LastNameValidation = false;
+
         #endregion
+
         public SearchPersonViewModel() : base(new DependencyServiceBase())
         {
-            Title = "Buscar";
-
-            OnSelectedItemCommand = new Command<Person>(async (obj) =>
-            {
-                var page = new PersonDetailPage(obj);
-              
-
-                await NavigationService.PushAsync(page);
-            });
+            InitializeViewModel();
         }
 
-        #region Overrided Methods
-        public override System.Threading.Tasks.Task OnViewAppear()
+        public SearchPersonViewModel(IDependencyService dependencyService) : base(dependencyService)
         {
-            // TODO: Load Results From WebAPI
+			DependencyService = dependencyService;
+			InitializeViewModel();
+		}
 
-            var res = new ObservableCollection<Person>();
+        void InitializeViewModel()
+        {
+            Title = "Buscar Persona";
+            Person = new Person();
+            SearchPersonByPictureCommand = new Command(async () => await SearchPerson());
+            SearchPersonByNameCommand = new Command(async () => await SearchPerson());
+            TakePhotoCommand = new Command(async () => await TakePhoto());
+            ChoosePhotoCommand = new Command(async () => await ChoosePhoto());
+        }
 
-            for (int i = 0; i < 5; i++)
+        #region Tasks
+
+        async Task SearchPerson() 
+        {          
+            if ((NameValidation == false || LastNameValidation == false) && (!IsByPicture))
             {
-                res.Add(new Person
-                {
-                    Nombre = "nombre",
-                    Apellidos = "apellidos",
-                    PhotoURL = "http://via.placeholder.com/150x150",
-                    Ubicacion = "Hospital Angeles"
-                });
+                await Application.Current.MainPage.DisplayAlert("Notificación", "Por favor asegúrate de llenar todos los campos.", "Aceptar");
             }
+            else
+            {
+                if (!IsBusy)
+                {
+                    IsBusy = true;
 
-            Results = res;
+                    var page = new SearchPersonResultView(IsByPicture, Photo, Person);
+                    await NavigationService.PushAsync(page);
 
-            return base.OnViewAppear();
+                    IsBusy = false;
+                }
+            }
+        }
+
+        async Task TakePhoto()
+        {
+            Photo = await Helpers.MediaHelper.TakePhotoAsync();
+        }
+
+        async Task ChoosePhoto()
+        {
+            Photo = await Helpers.MediaHelper.PickPhotoAsync();
         }
         #endregion
     }
 }
+

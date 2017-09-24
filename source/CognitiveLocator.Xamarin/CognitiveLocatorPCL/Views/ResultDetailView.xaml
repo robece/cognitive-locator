@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<views:BaseView x:Class="CognitiveLocator.Views.ResultDetailView"
-             xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:views="clr-namespace:CognitiveLocator.Views;assembly=CognitiveLocatorPCL"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
-    <ContentPage.Content />
-</views:BaseView>
