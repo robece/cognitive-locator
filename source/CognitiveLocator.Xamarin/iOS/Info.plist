@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleIdentifier</key>
-	<string>StellaSoft.demo</string>
+	<string>com.cognitivelocator.app</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleDevelopmentRegion</key>
@@ -27,7 +27,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
