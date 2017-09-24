@@ -58,6 +58,7 @@ namespace CognitiveLocator.ViewModels
         void InitializeViewModel()
         {
             Title = "Buscar Persona";
+            Person = new Person();
             SearchPersonByPictureCommand = new Command(async () => await SearchPerson());
             SearchPersonByNameCommand = new Command(async () => await SearchPerson());
             TakePhotoCommand = new Command(async () => await TakePhoto());
@@ -78,24 +79,7 @@ namespace CognitiveLocator.ViewModels
                 {
                     IsBusy = true;
 
-                    var page = new SearchPersonResultView();
-
-                    if (IsByPicture)
-                    {
-                        if (Photo == null)
-                        {
-                            IsBusy = false;
-                            return;
-                        }
-
-                        page.ViewModel.IsByPhoto = true;
-                        page.ViewModel.Photo = Photo;
-                    }
-                    else
-                    {
-                        page.ViewModel.Person = Person;
-                    }
-
+                    var page = new SearchPersonResultView(IsByPicture, Photo, Person);
                     await NavigationService.PushAsync(page);
 
                     IsBusy = false;

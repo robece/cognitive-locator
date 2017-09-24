@@ -9,25 +9,24 @@ namespace CognitiveLocator.Views
 {
     public partial class SearchPersonResultView : BaseView
     {
-        SearchPersonResultViewModel _vm;
-        public SearchPersonResultViewModel ViewModel => _vm ?? (_vm = BindingContext as SearchPersonResultViewModel); 
 
-        public SearchPersonResultView()
+        public SearchPersonResultView(bool isByPicture, byte[] picture, Person person)
         {
             InitializeComponent();
-            BindingContext = new SearchPersonResultViewModel();
+            BindingContext = new SearchPersonResultViewModel(isByPicture, picture, person);
             Analytics.TrackEvent("View: Search Person Results");
         }
 
         void Handle_ItemSelected(object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
         {
+            var vm = BindingContext as SearchPersonResultViewModel;
             if(e.SelectedItem != null)
             {
                 var person = e.SelectedItem as Person;
 
-                if(ViewModel.OnSelectedItemCommand.CanExecute(person))
+                if(vm.OnSelectedItemCommand.CanExecute(person))
                 {
-                    ViewModel.OnSelectedItemCommand.Execute(person);
+                    vm.OnSelectedItemCommand.Execute(person);
 
                     ((ListView)sender).SelectedItem = null;
                 }
