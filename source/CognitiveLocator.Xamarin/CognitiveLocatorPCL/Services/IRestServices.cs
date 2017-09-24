@@ -13,6 +13,7 @@ namespace CognitiveLocator.Services
         Task<bool> CreateReportAsync(CreateReportModel model, byte[] photo);
         Task<List<Person>> SearchPersonByNameAsync(Person person);
         Task<List<Person>> SearchPersonByLastNameAsync(Person person);
+        Task<List<Person>> SearchByNameAndLastNameAsync(Person person);
         Task<List<Person>> SearchPersonByPhotoAsync(byte[] photo);
     }
 }

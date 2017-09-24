@@ -71,14 +71,7 @@ namespace CognitiveLocator.ViewModels
 
             if (!IsByPhoto)
             {
-                if (!string.IsNullOrEmpty(Person.Name))
-                {
-                    res = await RestServices.SearchPersonByNameAsync(Person);
-                }
-                else
-                {
-                    res = await RestServices.SearchPersonByLastNameAsync(Person);
-                }
+                res = await RestServices.SearchByNameAndLastNameAsync(Person);
             }
             else
             {

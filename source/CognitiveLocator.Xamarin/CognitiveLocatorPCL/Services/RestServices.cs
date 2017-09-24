@@ -74,6 +74,11 @@ namespace CognitiveLocator.Services
             return await SearchPersonByAsync($"ByLastName?lastName={person.LastName}");
 		}
 
+        public async Task<List<Person>> SearchByNameAndLastNameAsync(Person person)
+        {
+            return await SearchPersonByAsync($"ByNameAndLastName?name={person.Name}&lastName={person.LastName}");
+        }
+
         public async Task<List<Person>> SearchPersonByPhotoAsync(byte[] photo)
         {
             var result = new List<Person>();
