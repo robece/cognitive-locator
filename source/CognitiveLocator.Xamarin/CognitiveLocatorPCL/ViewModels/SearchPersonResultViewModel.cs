@@ -34,6 +34,13 @@ namespace CognitiveLocator.ViewModels
             set { SetProperty(ref _IsByPhoto, value); }
         }
 
+        bool _isRefreshing;
+		public bool IsRefreshing
+		{
+			get { return _isRefreshing; }
+			set { SetProperty(ref _isRefreshing, value); }
+		}
+
         ObservableCollection<Person> _results;
         public ObservableCollection<Person> Results
         {
@@ -42,6 +49,11 @@ namespace CognitiveLocator.ViewModels
         }
 
         public ICommand OnSelectedItemCommand
+        {
+            get;
+            set;
+        }
+        public ICommand OnRefreshListCommand
         {
             get;
             set;
@@ -55,6 +67,12 @@ namespace CognitiveLocator.ViewModels
             Person = person;
 
             OnSelectedItemCommand = new Command<Person>(async (obj) => await OnItemSelected(obj));
+            OnRefreshListCommand = new Command(async () =>
+            {
+                IsRefreshing = true;
+                await LoadPersons();
+                IsRefreshing = false;
+            });
         }
 
         private async Task OnItemSelected(Person obj)
@@ -68,35 +86,42 @@ namespace CognitiveLocator.ViewModels
 
         public async override Task OnViewAppear()
         {
-            if (!Plugin.Connectivity.CrossConnectivity.Current.IsConnected)
-            {
-                await Application.Current.MainPage.DisplayAlert("Error", "Es necesario tener conexión a internet para continuar.", "Aceptar");
-                await NavigationService.PopAsync();
-            }
-				IsBusy = true;
-            var res = new List<Person>();
+            await LoadPersons();
+        }
 
-            if (!IsByPhoto)
-            {
-                res = await RestServices.SearchByNameAndLastNameAsync(Person);
-            }
-            else
-            {
-                var person = await RestServices.SearchPersonByPhotoAsync(Photo);
-                if(person!=null)
-                    res.Add(person);
-            }
+        #endregion
 
-            Results = new ObservableCollection<Person>(res);
+        #region Private Methods
+        async Task LoadPersons()
+        {
+			if (!Plugin.Connectivity.CrossConnectivity.Current.IsConnected)
+			{
+				await Application.Current.MainPage.DisplayAlert("Error", "Es necesario tener conexión a internet para continuar.", "Aceptar");
+				await NavigationService.PopAsync();
+			}
+			IsBusy = true;
+			var res = new List<Person>();
 
-            if (!Results.Any())
-            {
-                await Application.Current.MainPage.DisplayAlert("Resultados", "No se encontro ninguna coincidencia.", "Aceptar");
-                await NavigationService.PopAsync();
-            }
-            IsBusy = false;
-		}
+			if (!IsByPhoto)
+			{
+				res = await RestServices.SearchByNameAndLastNameAsync(Person);
+			}
+			else
+			{
+				var person = await RestServices.SearchPersonByPhotoAsync(Photo);
+				if (person != null)
+					res.Add(person);
+			}
 
+			Results = new ObservableCollection<Person>(res);
+
+			if (!Results.Any())
+			{
+				await Application.Current.MainPage.DisplayAlert("Resultados", "No se encontro ninguna coincidencia.", "Aceptar");
+				await NavigationService.PopAsync();
+			}
+			IsBusy = false;
+        }
         #endregion
     }
 }

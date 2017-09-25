@@ -6,42 +6,47 @@
                 Title="{Binding Title}"
     IsBusy="{Binding IsBusy}">
     <ContentPage.Content>
-        <ListView Margin="20,0"
+        <StackLayout>
+            <ActivityIndicator HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
+            <ListView Margin="20,0"
                   HasUnevenRows="true"
                   ItemSelected="Handle_ItemSelected"
                   ItemsSource="{Binding Results}"
                   RowHeight="100"
-                  SeparatorColor="{StaticResource UIMainColor}"
-            >
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Grid Padding="5">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="90" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Frame Margin="0,5,0,0" WidthRequest="80" HeightRequest="80" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Black" OutlineColor="Black" Padding="1">
-                            <Image WidthRequest="78" HeightRequest="78" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFill" Source="{Binding Picture}"/>
-                        </Frame>
-                            <StackLayout Grid.Column="1" VerticalOptions="Center">
-                                <Label FontSize="18"
-                                       LineBreakMode="TailTruncation"
-                                       Text="{Binding Name}" />
-                                <Label FontSize="18"
-                                       LineBreakMode="TailTruncation"
-                                       Text="{Binding LastName}" />
-                                <Label FontSize="Medium"
-                                       LineBreakMode="TailTruncation"
-                                       Text="{Binding Location,
-                                                      StringFormat='Ubicación: {0}'}"
-                                       TextColor="Gray" />
-                            </StackLayout>
+                  RefreshCommand="{Binding OnRefreshListCommand}"
+                  IsPullToRefreshEnabled="true"
+                  IsRefreshing="{Binding IsRefreshing}" 
+                  SeparatorColor="{StaticResource UIMainColor}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="90" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Frame Margin="0,5,0,0" WidthRequest="80" HeightRequest="80" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Black" OutlineColor="Black" Padding="1">
+                                <Image WidthRequest="78" HeightRequest="78" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFill" Source="{Binding Picture}"/>
+                            </Frame>
+                                <StackLayout Grid.Column="1" VerticalOptions="Center">
+                                    <Label FontSize="18"
+                                           LineBreakMode="TailTruncation"
+                                           Text="{Binding Name}" />
+                                    <Label FontSize="18"
+                                           LineBreakMode="TailTruncation"
+                                           Text="{Binding LastName}" />
+                                    <Label FontSize="Medium"
+                                           LineBreakMode="TailTruncation"
+                                           Text="{Binding Location,
+                                                          StringFormat='Ubicación: {0}'}"
+                                           TextColor="Gray" />
+                                </StackLayout>
 
-                        </Grid>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
     </ContentPage.Content>
 </views:BaseView>
