@@ -73,7 +73,7 @@ namespace CognitiveLocator.WebAPI.Controllers
                 File.Delete(provider.FileData.First().LocalFileName);
                 return Ok();
             }
-            catch
+            catch(Exception e)
             {
                 return InternalServerError();
             }
