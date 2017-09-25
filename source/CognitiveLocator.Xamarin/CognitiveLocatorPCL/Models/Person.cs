@@ -7,6 +7,7 @@ namespace CognitiveLocator.Models
         public string Name { get; set; }
 		public string LastName { get; set; }
 		public int Age { get; set; }
+        public string Alias { get; set; }
 		public string Picture { get; set; }
 		public string Location { get; set; }
         public double Latitude { get; set; }

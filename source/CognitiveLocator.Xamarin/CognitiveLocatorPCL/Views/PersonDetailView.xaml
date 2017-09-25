@@ -25,8 +25,12 @@
                                 <Label HorizontalOptions="FillAndExpand" FontSize="18" Text="{Binding CurrentPerson.LastName}" />
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
-                                <Label WidthRequest="80" VerticalOptions="Center" Text="Edad" />
-                                <Label HorizontalOptions="FillAndExpand" FontSize="18" Text="{Binding CurrentPerson.Age, StringFormat='{0} años'}" />
+                                <Label WidthRequest="80" VerticalOptions="Center" Text="Alias" />
+                                <Label HorizontalOptions="FillAndExpand" FontSize="18" Text="{Binding CurrentPerson.Alias}" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label WidthRequest="80" VerticalOptions="Center" Text="Fecha de Nacimiento" />
+                                <Label HorizontalOptions="FillAndExpand" FontSize="18" Text="{Binding CurrentPerson.BirthDate, StringFormat='{0:dd/MM/yyyy}'}" />
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
                                 <Label WidthRequest="80" VerticalOptions="Center" Text="Ubicación" />
@@ -37,7 +41,7 @@
                                 <Label HorizontalOptions="FillAndExpand" FontSize="18" Text="{Binding CurrentPerson.Notes}" />
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
-                                <Label WidthRequest="80" VerticalOptions="Center" Text="Quien Reporta" />
+                                <Label WidthRequest="80" VerticalOptions="Center" Text="Quién Reporta?" />
                                 <Label HorizontalOptions="FillAndExpand" FontSize="18" Text="{Binding CurrentPerson.ReportedBy}" />
                             </StackLayout>
                         </StackLayout>
