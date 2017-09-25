@@ -39,7 +39,7 @@ namespace CognitiveLocator.Models.ApiModels
             set;
         }
 
-        public DateTime BirthDate
+        public DateTime? BirthDate
         {
             get;
             set;
@@ -76,7 +76,7 @@ namespace CognitiveLocator.Models.ApiModels
                 result += string.Format("&Notes={0}", Notes);
 
             if (BirthDate != null)
-                result += string.Format("&BirthDate={0}", BirthDate);
+                result += string.Format("&BirthDate={0:yyyy-MM-dd}", BirthDate);
 
             if (!string.IsNullOrEmpty(ReportedBy))
                 result += string.Format("&ReportedBy={0}", ReportedBy);

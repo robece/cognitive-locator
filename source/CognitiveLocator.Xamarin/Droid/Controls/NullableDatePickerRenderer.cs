@@ -23,19 +23,36 @@ namespace CognitiveLocator.Droid.Controls
 				return;
 
 			this.Control.Click += OnPickerClick;
-			this.Control.Text = Element.Date.ToString(Element.Format);
 			this.Control.KeyListener = null;
 			this.Control.FocusChange += OnPickerFocusChange;
 			this.Control.Enabled = Element.IsEnabled;
 
+			var nullableDatePicker = this.Element as Views.Controls.NullableDatePicker;
+			this.Control.Hint = nullableDatePicker.Placeholder;
+			this.Control.Text = "";
 		}
 
 		protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
 		{
 			base.OnElementPropertyChanged(sender, e);
 
-            if (e.PropertyName == Forms.DatePicker.DateProperty.PropertyName || e.PropertyName == Forms.DatePicker.FormatProperty.PropertyName)
-				SetDate(Element.Date);
+			var nullableDatePicker = this.Element as Views.Controls.NullableDatePicker;
+
+			if (nullableDatePicker != null)
+			{
+				switch (e.PropertyName)
+				{
+					case nameof(nullableDatePicker.NullableDate):
+						if (nullableDatePicker.NullableDate != null)
+							this.Control.Text = nullableDatePicker.NullableDate.Value.ToString(nullableDatePicker.Format);
+						else
+						{
+                            this.Control.Hint = nullableDatePicker.Placeholder;
+							this.Control.Text = "";
+						}
+						break;
+				}
+			}
 		}
 
 		void OnPickerFocusChange(object sender, Android.Views.View.FocusChangeEventArgs e)
@@ -98,11 +115,12 @@ namespace CognitiveLocator.Droid.Controls
 				SetDate(_dialog.DatePicker.DateTime);
 				this.Element.Format = this.Element._originalFormat;
 				this.Element.AssignValue();
+                Control.ClearFocus();
 			});
-			_dialog.SetButton2("Limpiar", (sender, e) =>
+			_dialog.SetButton2("Ninguna", (sender, e) =>
 			{
 				this.Element.CleanDate();
-				Control.Text = this.Element.Format;
+                Control.ClearFocus();
 			});
 		}
 	}

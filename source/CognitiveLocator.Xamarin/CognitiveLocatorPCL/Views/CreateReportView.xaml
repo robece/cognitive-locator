@@ -46,20 +46,11 @@
                                 <Entry.Effects>
                                     <effects:KeyboardReturnEffect />
                                 </Entry.Effects>
-                                <Entry.Behaviors>
-                                    <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference age}" />
-                                </Entry.Behaviors>
+                
                             </Entry>
                         </StackLayout>
                         <StackLayout Margin="40,10,40,10" Orientation="Horizontal">
-                            <Entry x:Name="age" HorizontalOptions="FillAndExpand" Keyboard="Numeric" Placeholder="Edad" Text="{Binding Age}">
-                                <Entry.Effects>
-                                    <effects:KeyboardReturnEffect />
-                                </Entry.Effects>
-                                <Entry.Behaviors>
-                                    <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference location}" />
-                                </Entry.Behaviors>
-                            </Entry>
+                            <controls:NullableDatePicker x:Name="pickerBirthDate" HorizontalOptions="FillAndExpand" Placeholder="Fecha de nacimiento" NullableDate="{Binding Birthday}" />
                         </StackLayout>
                         <StackLayout Margin="40,10,40,10" Orientation="Horizontal">
                             <Entry x:Name="location" HorizontalOptions="FillAndExpand" Placeholder="Ubicación (Dato obligatorio)" Text="{Binding Location}">
@@ -82,7 +73,7 @@
                             </Entry>
                         </StackLayout>
                         <StackLayout Margin="40,10,40,10" Orientation="Horizontal">
-                            <Entry x:Name="reportedby" HorizontalOptions="FillAndExpand" Placeholder="Quién reporta? (Dato obligatorio)" Text="{Binding ReportedBy}">
+                            <Entry x:Name="reportedby" HorizontalOptions="FillAndExpand" Placeholder="¿Quién reporta? (Dato obligatorio)" Text="{Binding ReportedBy}">
                                 <Entry.Effects>
                                     <effects:KeyboardReturnEffect />
                                 </Entry.Effects>
@@ -93,10 +84,6 @@
                         </StackLayout>
                         <StackLayout Margin="40,10,40,10" Orientation="Horizontal">
                             <Entry x:Name="alias" HorizontalOptions="FillAndExpand" Placeholder="Alias" Text="{Binding Alias}" />
-                        </StackLayout>
-                     
-                        <StackLayout Margin="40,10,40,10" Orientation="Horizontal">
-                            <controls:NullableDatePicker x:Name="pickerBirthDate" HorizontalOptions="FillAndExpand" Placeholder="Fecha de nacimiento"  />
                         </StackLayout>
                         <StackLayout Margin="40,20,40,20">
                             <Button Command="{Binding PreviewReportCommand}" Text="Continuar"/>
