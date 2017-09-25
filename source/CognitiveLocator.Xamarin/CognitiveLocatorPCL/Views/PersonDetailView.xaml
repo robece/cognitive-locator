@@ -32,6 +32,14 @@
                                 <Label WidthRequest="80" VerticalOptions="Center" Text="Ubicación" />
                                 <Label HorizontalOptions="FillAndExpand" FontSize="18" Text="{Binding CurrentPerson.Location}" />
                             </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label WidthRequest="80" VerticalOptions="Center" Text="Notas" />
+                                <Label HorizontalOptions="FillAndExpand" FontSize="18" Text="{Binding CurrentPerson.Notes}" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label WidthRequest="80" VerticalOptions="Center" Text="Quien Reporta" />
+                                <Label HorizontalOptions="FillAndExpand" FontSize="18" Text="{Binding CurrentPerson.ReportedBy}" />
+                            </StackLayout>
                         </StackLayout>
                     </ViewCell>
                 </TableSection>
