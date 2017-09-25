@@ -11,19 +11,19 @@
                VerticalOptions="End"
                FontSize="22"
                Text="¿Necesitas ayuda?" />
-        <Button HeightRequest="50"
+        <Button 
                 Command="{Binding CreateReportCommand}"
 
                 Text="Reportar persona" />
-        <Button HeightRequest="50"
+        <Button 
                 Command="{Binding SearchPersonNameCommand}"
                
                 Text="Buscar por nombre" />
-        <Button HeightRequest="50"
+        <Button 
                 Command="{Binding SearchPersonPictureCommand}"
 
                 Text="Buscar por fotografía" />
-        <Button HeightRequest="50"
+        <Button 
                 BackgroundColor="#FF9940"
                 Command="{Binding AboutCommand}"
          
