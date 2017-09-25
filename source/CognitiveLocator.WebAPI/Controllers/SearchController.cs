@@ -52,12 +52,18 @@ namespace CognitiveLocator.WebAPI.Controllers
                     string detectFaceId = detectResult.First()["faceId"].ToString();
                     List<FindSimilar> similarFace = await ObjFaceApiPerson.FindSimilarFace(detectFaceId);
                     File.Delete(provider.FileData.First().LocalFileName);
-
-                    List<Person> listPFaceId = new List<Person>();
-                    listPFaceId = await querySp.SelectPersonByFaceId(similarFace.First().persistedFaceId);
-                    ObjPerson = listPFaceId.First();
-
-                    return Ok(ObjPerson);
+                    List<Person> listPFaceIdComplete = new List<Person>();
+                    foreach (var i in similarFace)
+                    {
+                        List<Person> listPFaceId = new List<Person>();
+                        listPFaceId = await querySp.SelectPersonByFaceId(i.persistedFaceId);
+                        if (listPFaceId.Count()!= 0) {
+                            ObjPerson = listPFaceId.First();
+                            listPFaceIdComplete.Add(ObjPerson);
+                        }
+                        
+                    }
+                    return Ok(listPFaceIdComplete);
                 }
                 catch (Exception e)
                 {

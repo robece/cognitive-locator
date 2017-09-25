@@ -136,7 +136,7 @@ namespace CognitiveLocator.WebAPI.Class
             var uri = "https://westus.api.cognitive.microsoft.com/face/v1.0/findsimilars";
             HttpResponseMessage response;
             // Request body
-            byte[] byteData = Encoding.UTF8.GetBytes("{'faceId':'" + faceId + "','faceListId':'" + FaceListId + "','maxNumOfCandidatesReturned':1,'mode':'matchPerson'}");
+            byte[] byteData = Encoding.UTF8.GetBytes("{'faceId':'" + faceId + "','faceListId':'" + FaceListId + "','maxNumOfCandidatesReturned':25,'mode':'matchPerson'}");
             using (var content = new ByteArrayContent(byteData))
             {
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
