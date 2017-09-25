@@ -25,31 +25,31 @@
                 <ViewCell>
                     <StackLayout Margin="40,0,40,0">
                         <StackLayout Orientation="Horizontal">
-                            <Label WidthRequest="80" VerticalOptions="Center" Text="Nombre" />
+                            <Label WidthRequest="85" VerticalOptions="Center" Text="Nombre" />
                             <Label HorizontalOptions="FillAndExpand" FontSize="18" Text="{Binding Name}" />
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
-                            <Label WidthRequest="80" VerticalOptions="Center" Text="Apellido" />
+                            <Label WidthRequest="85" VerticalOptions="Center" Text="Apellido" />
                             <Label HorizontalOptions="FillAndExpand" FontSize="18" Text="{Binding LastName}" />
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
-                            <Label WidthRequest="80" VerticalOptions="Center" Text="Edad" />
-                            <Label HorizontalOptions="FillAndExpand" FontSize="18" Text="{Binding Age}" />
+                            <Label WidthRequest="85" VerticalOptions="Center" Text="Fecha de nacimiento" />
+                            <Label HorizontalOptions="FillAndExpand" FontSize="18" Text="{Binding Birthday, StringFormat='{0:d}'}" />
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
-                            <Label WidthRequest="80" VerticalOptions="Center" Text="Ubicación" />
+                            <Label WidthRequest="85" VerticalOptions="Center" Text="Ubicación" />
                             <Label HorizontalOptions="FillAndExpand" FontSize="18" Text="{Binding Location}" />
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
-                            <Label WidthRequest="80" VerticalOptions="Center" Text="Notas" />
+                            <Label WidthRequest="85" VerticalOptions="Center" Text="Notas" />
                             <Label HorizontalOptions="FillAndExpand" FontSize="18" Text="{Binding Notes}" />
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
-                            <Label WidthRequest="80" VerticalOptions="Center" Text="Alias" />
+                            <Label WidthRequest="85" VerticalOptions="Center" Text="Alias" />
                             <Label HorizontalOptions="FillAndExpand" FontSize="18" Text="{Binding Alias}" />
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
-                            <Label WidthRequest="80" VerticalOptions="Center" Text="Quién reporta?" />
+                            <Label WidthRequest="85" VerticalOptions="Center" Text="¿Quién reporta?" />
                             <Label HorizontalOptions="FillAndExpand" FontSize="18" Text="{Binding ReportedBy}" />
                         </StackLayout>
                         <StackLayout Margin="0,20">

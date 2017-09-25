@@ -1,33 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<views:BaseView x:Class="CognitiveLocator.Views.HomeView"
-                xmlns="http://xamarin.com/schemas/2014/forms"
-                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                xmlns:views="clr-namespace:CognitiveLocator.Views;assembly=CognitiveLocatorPCL"
-                Title="{Binding Title}">
-    <StackLayout Margin="40,-50,40,0"
-                 VerticalOptions="Center"
-                 Spacing="40">
-        <Label HorizontalOptions="Center"
-               VerticalOptions="End"
-               FontSize="22"
-               Text="¿Necesitas ayuda?" />
-        <Button HeightRequest="50"
-                Command="{Binding CreateReportCommand}"
-
-                Text="Reportar persona" />
-        <Button HeightRequest="50"
-                Command="{Binding SearchPersonNameCommand}"
-               
-                Text="Buscar por nombre" />
-        <Button HeightRequest="50"
-                Command="{Binding SearchPersonPictureCommand}"
-
-                Text="Buscar por fotografía" />
-        <Button HeightRequest="50"
-                BackgroundColor="#FF9940"
-                Command="{Binding AboutCommand}"
-         
-                Text="Acerca de..." />
-        <Label FontSize="12" Text="Responsiva: El uso de imagenes y datos personales es sin fines de lucro, usados para el apoyo de las personas extraviadas, la aplicación Busca.me no compartirá dicha información con terceros o particulares." />
-    </StackLayout>
+<?xml version="1.0" encoding="UTF-8"?>
+<views:BaseView x:Class="CognitiveLocator.Views.HomeView" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:views="clr-namespace:CognitiveLocator.Views;assembly=CognitiveLocatorPCL" Title="{Binding Title}">
+    <ScrollView>
+        <StackLayout Margin="40,0,40,0" VerticalOptions="Center" Spacing="40">
+            <Label HorizontalOptions="Center" VerticalOptions="End" FontSize="18" Text="¿Necesitas ayuda?" />
+            <Button FontSize="16" HeightRequest="50" Command="{Binding CreateReportCommand}" Text="Reportar persona" />
+            <Button FontSize="16" HeightRequest="50" Command="{Binding SearchPersonNameCommand}" Text="Buscar por nombre" />
+            <Button FontSize="16" HeightRequest="50" Command="{Binding SearchPersonPictureCommand}" Text="Buscar por foto" />
+            <Button FontSize="16" HeightRequest="50" BackgroundColor="#FF9940" Command="{Binding AboutCommand}" Text="Acerca de..." />
+            <Label FontSize="14" Text="Responsiva: El uso de imagenes y datos personales es sin fines de lucro, usados para el apoyo de las personas extraviadas, la aplicación Busca.me no compartirá dicha información con terceros o particulares." />
+        </StackLayout>
+    </ScrollView>
 </views:BaseView>
