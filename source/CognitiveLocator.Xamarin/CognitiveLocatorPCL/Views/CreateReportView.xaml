@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<views:BaseView x:Class="CognitiveLocator.Views.CreateReportView" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:behaviors="clr-namespace:CognitiveLocator.Views.Behaviors" xmlns:converters="clr-namespace:CognitiveLocator.Views.Converters" xmlns:effects="clr-namespace:CognitiveLocator.Views.Effects" xmlns:viewmodels="clr-namespace:CognitiveLocator.ViewModels" xmlns:views="clr-namespace:CognitiveLocator.Views" Title="{Binding Title}" IsBusy="{Binding IsBusy}">
+<views:BaseView x:Class="CognitiveLocator.Views.CreateReportView" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:behaviors="clr-namespace:CognitiveLocator.Views.Behaviors" xmlns:converters="clr-namespace:CognitiveLocator.Views.Converters" xmlns:effects="clr-namespace:CognitiveLocator.Views.Effects" xmlns:viewmodels="clr-namespace:CognitiveLocator.ViewModels" xmlns:views="clr-namespace:CognitiveLocator.Views" Title="{Binding Title}" IsBusy="{Binding IsBusy}" xmlns:controls="clr-namespace:CognitiveLocator.Views.Controls">
     <views:BaseView.BindingContext>
         <viewmodels:CreateReportViewModel />
     </views:BaseView.BindingContext>
@@ -46,20 +46,11 @@
                                 <Entry.Effects>
                                     <effects:KeyboardReturnEffect />
                                 </Entry.Effects>
-                                <Entry.Behaviors>
-                                    <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference age}" />
-                                </Entry.Behaviors>
+                
                             </Entry>
                         </StackLayout>
                         <StackLayout Margin="40,10,40,10" Orientation="Horizontal">
-                            <Entry x:Name="age" HorizontalOptions="FillAndExpand" Keyboard="Numeric" Placeholder="Edad" Text="{Binding Age}">
-                                <Entry.Effects>
-                                    <effects:KeyboardReturnEffect />
-                                </Entry.Effects>
-                                <Entry.Behaviors>
-                                    <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference location}" />
-                                </Entry.Behaviors>
-                            </Entry>
+                            <controls:NullableDatePicker x:Name="pickerBirthDate" HorizontalOptions="FillAndExpand" Placeholder="Fecha de nacimiento" NullableDate="{Binding Birthday}" />
                         </StackLayout>
                         <StackLayout Margin="40,10,40,10" Orientation="Horizontal">
                             <Entry x:Name="location" HorizontalOptions="FillAndExpand" Placeholder="Ubicación (Dato obligatorio)" Text="{Binding Location}">
@@ -73,6 +64,16 @@
                         </StackLayout>
                         <StackLayout Margin="40,10,40,10" Orientation="Horizontal">
                             <Entry x:Name="notes" HorizontalOptions="FillAndExpand" Placeholder="Notas" Text="{Binding Notes}">
+                                <Entry.Effects>
+                                    <effects:KeyboardReturnEffect />
+                                </Entry.Effects>
+                                <Entry.Behaviors>
+                                    <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference reportedby}" />
+                                </Entry.Behaviors>
+                            </Entry>
+                        </StackLayout>
+                        <StackLayout Margin="40,10,40,10" Orientation="Horizontal">
+                            <Entry x:Name="reportedby" HorizontalOptions="FillAndExpand" Placeholder="¿Quién reporta? (Dato obligatorio)" Text="{Binding ReportedBy}">
                                 <Entry.Effects>
                                     <effects:KeyboardReturnEffect />
                                 </Entry.Effects>

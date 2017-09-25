@@ -42,11 +42,11 @@ namespace CognitiveLocator.ViewModels
             set { SetProperty(ref alias, value); }
         }
 
-        string age;
-        public string Age
+        DateTime? birthday = null;
+        public DateTime? Birthday
         {
-            get { return age; }
-            set { SetProperty(ref age, value); }
+            get { return birthday; }
+            set { SetProperty(ref birthday, value); }
         }
 
         string location;
@@ -63,6 +63,12 @@ namespace CognitiveLocator.ViewModels
             set { SetProperty(ref notes, value); }
         }
 
+        string reportedby;
+        public string ReportedBy
+        {
+            get { return reportedby; }
+            set { SetProperty(ref reportedby, value); }
+        }
 
         public CreateReportViewModel() : this(new DependencyServiceBase())
         {
@@ -97,15 +103,24 @@ namespace CognitiveLocator.ViewModels
 
         private async Task SendReport()
         {
+            var confirmation = await Application.Current.MainPage.DisplayAlert("Envío de información", "Confirmo que de manera bien intensionada estoy compartiendo una fotografía y datos personales de una persona extraviada.", "Si", "No");
+
+            if (!confirmation)
+                return;
+
             var model = ValidateInformation();
 			if (!Plugin.Connectivity.CrossConnectivity.Current.IsConnected)
 				await Application.Current.MainPage.DisplayAlert("Error", "Es necesario tener conexión a internet para continuar.", "Aceptar");
 			else if (!IsBusy)
             {
                 IsBusy = true;
-                await RestServices.CreateReportAsync(model, Photo);
-                await NavigationService.PushAsync(new ReportConfirmationView());
-                IsBusy = false;
+                if(await RestServices.CreateReportAsync(model, Photo))
+                    await NavigationService.PushAsync(new ReportConfirmationView());
+                else
+					await Application.Current.MainPage.DisplayAlert("Error", "No fue posible registrar el reporte, si el error persiste intenta mas tarde .", "Aceptar");
+
+				IsBusy = false;
+
             }
         }
 
@@ -130,20 +145,22 @@ namespace CognitiveLocator.ViewModels
                 Name = this.Name,
                 LastName = this.LastName,
                 Alias = this.Alias,
-                Age = this.Age,
+                BirthDate = this.Birthday,
                 Location = this.Location,
-                Notes = this.Notes
+                Notes = this.Notes,
+                ReportedBy = this.ReportedBy
             };
 
             if (Photo == null)
                 return null;
-
             if (String.IsNullOrEmpty(model.Name))
                 return null;
             if (String.IsNullOrEmpty(model.LastName))
                 return null;
             if (String.IsNullOrEmpty(model.Location))
 				return null;
+            if (String.IsNullOrEmpty(model.ReportedBy))
+                return null;
             
             return model;
         }
