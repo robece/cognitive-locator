@@ -42,11 +42,11 @@ namespace CognitiveLocator.ViewModels
             set { SetProperty(ref alias, value); }
         }
 
-        string age;
-        public string Age
+        DateTime? birthday = null;
+        public DateTime? Birthday
         {
-            get { return age; }
-            set { SetProperty(ref age, value); }
+            get { return birthday; }
+            set { SetProperty(ref birthday, value); }
         }
 
         string location;
@@ -114,9 +114,13 @@ namespace CognitiveLocator.ViewModels
 			else if (!IsBusy)
             {
                 IsBusy = true;
-                await RestServices.CreateReportAsync(model, Photo);
-                await NavigationService.PushAsync(new ReportConfirmationView());
-                IsBusy = false;
+                if(await RestServices.CreateReportAsync(model, Photo))
+                    await NavigationService.PushAsync(new ReportConfirmationView());
+                else
+					await Application.Current.MainPage.DisplayAlert("Error", "No fue posible registrar el reporte, si el error persiste intenta mas tarde .", "Aceptar");
+
+				IsBusy = false;
+
             }
         }
 
@@ -141,7 +145,7 @@ namespace CognitiveLocator.ViewModels
                 Name = this.Name,
                 LastName = this.LastName,
                 Alias = this.Alias,
-                Age = this.Age,
+                BirthDate = this.Birthday,
                 Location = this.Location,
                 Notes = this.Notes,
                 ReportedBy = this.ReportedBy

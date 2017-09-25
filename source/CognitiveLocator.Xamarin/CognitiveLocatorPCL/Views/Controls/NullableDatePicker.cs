@@ -8,6 +8,7 @@ namespace CognitiveLocator.Views.Controls
 		public NullableDatePicker()
 		{
 			Format = "d";
+            UpdateDate();
 		}
 		public string _originalFormat = null;
 

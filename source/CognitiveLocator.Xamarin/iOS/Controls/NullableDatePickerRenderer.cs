@@ -18,7 +18,9 @@ namespace CognitiveLocator.iOS.Controls
 			{
 				this.AddClearButton();
 
-				
+                var nullableDatePicker = this.Element as Views.Controls.NullableDatePicker;
+				this.Control.Placeholder = nullableDatePicker.Placeholder;
+				this.Control.Text = "";
 
 				if (Device.Idiom == TargetIdiom.Tablet)
 				{
@@ -34,7 +36,7 @@ namespace CognitiveLocator.iOS.Controls
 
 			if (this.Control == null) return;
 
-            var nullableDatePicker = this.Element as Views.Controls.NullableDatePicker;
+			var nullableDatePicker = this.Element as Views.Controls.NullableDatePicker;
 
 			if (nullableDatePicker != null)
 			{

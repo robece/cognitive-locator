@@ -22,7 +22,7 @@ namespace CognitiveLocator.Views
 
             this.FindByName<Entry>("name").TextChanged += NameOnTextChanged;
             this.FindByName<Entry>("lastname").TextChanged += LastNameOnTextChanged;
-            this.FindByName<Entry>("age").TextChanged += AgeOnTextChanged;
+            //this.FindByName<Entry>("age").TextChanged += AgeOnTextChanged;
             this.FindByName<Entry>("location").TextChanged += LocationOnTextChanged;
             this.FindByName<Entry>("notes").TextChanged += NotesOnTextChanged;
             this.FindByName<Entry>("alias").TextChanged += AliasOnTextChanged;
@@ -44,7 +44,7 @@ namespace CognitiveLocator.Views
         private void AgeOnTextChanged(object sender, TextChangedEventArgs e)
         {
             Entry entry = sender as Entry;
-            OnTextChanged("age", entry.Text, AgeRestrictCount);
+            //OnTextChanged("age", entry.Text, AgeRestrictCount);
         }
 
         private void LocationOnTextChanged(object sender, TextChangedEventArgs e)
