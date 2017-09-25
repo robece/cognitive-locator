@@ -12,7 +12,7 @@ namespace CognitiveLocator.WebAPI.Models
         public string Name { get; set; }
         public string LastName { get; set; }
         public string Alias { get; set; }
-        public DateTime BirthDate { get; set; }
+        public DateTime? BirthDate { get; set; }
         public string ReportedBy { get; set; }
         public string Picture { get; set; }
         public string Location { get; set; }
