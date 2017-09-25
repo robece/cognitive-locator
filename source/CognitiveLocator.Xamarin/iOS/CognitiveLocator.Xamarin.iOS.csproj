@@ -207,6 +207,7 @@
     <Compile Include="Effects\NoInteractiveTableViewEffect.cs" />
     <Compile Include="Effects\KeyboardReturnEffect.cs" />
     <Compile Include="Services\EmailService.cs" />
+    <Compile Include="Controls\NullableDatePickerRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />
@@ -220,6 +221,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets.xcassets\Icons.appiconset\" />
+    <Folder Include="Controls\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CognitiveLocatorPCL\CognitiveLocator.Xamarin.PCL.csproj">

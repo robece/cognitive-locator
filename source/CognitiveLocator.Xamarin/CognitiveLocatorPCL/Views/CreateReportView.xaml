@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<views:BaseView x:Class="CognitiveLocator.Views.CreateReportView" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:behaviors="clr-namespace:CognitiveLocator.Views.Behaviors" xmlns:converters="clr-namespace:CognitiveLocator.Views.Converters" xmlns:effects="clr-namespace:CognitiveLocator.Views.Effects" xmlns:viewmodels="clr-namespace:CognitiveLocator.ViewModels" xmlns:views="clr-namespace:CognitiveLocator.Views" Title="{Binding Title}" IsBusy="{Binding IsBusy}">
+<views:BaseView x:Class="CognitiveLocator.Views.CreateReportView" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:behaviors="clr-namespace:CognitiveLocator.Views.Behaviors" xmlns:converters="clr-namespace:CognitiveLocator.Views.Converters" xmlns:effects="clr-namespace:CognitiveLocator.Views.Effects" xmlns:viewmodels="clr-namespace:CognitiveLocator.ViewModels" xmlns:views="clr-namespace:CognitiveLocator.Views" Title="{Binding Title}" IsBusy="{Binding IsBusy}" xmlns:controls="clr-namespace:CognitiveLocator.Views.Controls">
     <views:BaseView.BindingContext>
         <viewmodels:CreateReportViewModel />
     </views:BaseView.BindingContext>
@@ -93,6 +93,10 @@
                         </StackLayout>
                         <StackLayout Margin="40,10,40,10" Orientation="Horizontal">
                             <Entry x:Name="alias" HorizontalOptions="FillAndExpand" Placeholder="Alias" Text="{Binding Alias}" />
+                        </StackLayout>
+                     
+                        <StackLayout Margin="40,10,40,10" Orientation="Horizontal">
+                            <controls:NullableDatePicker x:Name="pickerBirthDate" HorizontalOptions="FillAndExpand" Placeholder="Fecha de nacimiento"  />
                         </StackLayout>
                         <StackLayout Margin="40,20,40,20">
                             <Button Command="{Binding PreviewReportCommand}" Text="Continuar"/>
