@@ -8,23 +8,23 @@
 
 ## Credits
 
-Team Face Recognition:
+Team: Face Recognition
 
 - Lucia Vázquez (@analuciavazquez) 
 - Victor Manuel Islas (@OnlyD)
 
-Team Data Storage:
+Team: Data Storage
 
 - Daniel Courtois (@dhcourtois)
 - Cristian Levi (@Baneforce)
 - Héctor Arriaga (@HectorMap)
 
-Team DevOps: 
+Team: DevOps 
 
 - Cristian González (@DarryStonem)
 - Roberto Cervantes (@rcervantes)
 
-Team Mobile:
+Team: Mobile
 
 - Cristian González (@DarryStonem)
 - Gustavo Barrientos (@tavobarrientos)
@@ -33,14 +33,14 @@ Team Mobile:
 - Vicente Guzman (@LucioMSP)
 - Roberto Cervantes (@rcervantes)
 
-Team UI Testing:
+Team: UI Testing
 
 - Fernando Arreguin (@FerArreguin92)
 
-Team Design:
+Team: Design
 
 - Narciso Reyes (@ngreyes10)
 
-Team Leadership:
+Team: Leadership
 
 - Roberto Cervantes (@rcervantes)
