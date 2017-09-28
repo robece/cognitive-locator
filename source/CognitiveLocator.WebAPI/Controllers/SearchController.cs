@@ -25,6 +25,7 @@ namespace CognitiveLocator.WebAPI.Controllers
         {
             try
             {
+                Guid OperationID = Guid.NewGuid();
                 byte[] fileBytes = null;
                 String FileName = string.Empty;
                 // Check if the request contains multipart/form-data.
@@ -47,7 +48,7 @@ namespace CognitiveLocator.WebAPI.Controllers
                     Person ObjPerson = new Person();
 
                     string uri = await storage.UploadPhoto(new MemoryStream(fileBytes), FileName);
-                    FaceAPIMethods ObjFaceApiPerson = new FaceAPIMethods();
+                    FaceAPIMethods ObjFaceApiPerson = new FaceAPIMethods(OperationID);
                     List<JObject> detectResult = await ObjFaceApiPerson.DetectFace(uri);
                     string detectFaceId = detectResult.First()["faceId"].ToString();
                     List<FindSimilar> similarFace = await ObjFaceApiPerson.FindSimilarFace(detectFaceId);
@@ -69,6 +70,7 @@ namespace CognitiveLocator.WebAPI.Controllers
                 }
                 catch (Exception e)
                 {
+                    System.Diagnostics.Trace.TraceError(ex.Message);
                     return InternalServerError();
                 }
             }

@@ -22,6 +22,7 @@ namespace CognitiveLocator.WebAPI.Controllers
         [Route("Post")]
         public async Task<IHttpActionResult> PostFormData([FromUri] int IsFound, string Name, string LastName, string Alias="", string Location="", string Notes="", string BirthDate = "", string ReportedBy="")
         {
+            Guid OperationID = Guid.NewGuid();
             byte[] fileBytes = null;
             String FileName = string.Empty;
             // Check if the request contains multipart/form-data.
@@ -45,7 +46,7 @@ namespace CognitiveLocator.WebAPI.Controllers
                 //ModelPerson ObjPerson = new ModelPerson();
                 string uri = await storage.UploadPhoto(new MemoryStream(fileBytes), FileName);
                 //AddPersonToGroup
-                FaceAPIMethods ObjFaceApiPerson = new FaceAPIMethods();
+                FaceAPIMethods ObjFaceApiPerson = new FaceAPIMethods(OperationID);
                 //AddPersonId
                 CreatePerson resultCreatePerson = await ObjFaceApiPerson.AddPersonToGroup(Name + " " + LastName);
                 //AddFace
