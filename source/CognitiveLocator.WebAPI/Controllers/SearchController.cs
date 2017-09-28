@@ -68,7 +68,7 @@ namespace CognitiveLocator.WebAPI.Controllers
 
                     return Ok(listPFaceIdComplete.First());
                 }
-                catch (Exception e)
+                catch (Exception ex)
                 {
                     System.Diagnostics.Trace.TraceError(ex.Message);
                     return InternalServerError();
