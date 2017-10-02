@@ -15,6 +15,12 @@ namespace CognitiveLocator.WebAPI.Class
 {
     public class FaceAPIMethods
     {
+        public FaceAPIMethods(Guid OperationID)
+        {
+            this.OperationID = OperationID;
+        }
+
+        private Guid OperationID = Guid.Empty;
         private static string FaceAPIKey = ConfigurationManager.AppSettings["FaceAPIKey"].ToString();
         private static string PersonGroupId = ConfigurationManager.AppSettings["PersonGroupId"].ToString();
         private static string Zone = ConfigurationManager.AppSettings["Zone"].ToString();
@@ -40,6 +46,9 @@ namespace CognitiveLocator.WebAPI.Class
             }
             CreatePerson modelPerson = new CreatePerson();
             modelPerson = JsonConvert.DeserializeObject<CreatePerson>(await response.Content.ReadAsStringAsync());
+
+            System.Diagnostics.Trace.TraceInformation("Operation ID: " + OperationID + " - Adding person: " + personName + " to group: "+ PersonGroupId +" success!!");
+
             return modelPerson;
         }
 
@@ -66,6 +75,10 @@ namespace CognitiveLocator.WebAPI.Class
             }
             AddPersonFace ObjPersonFace = new AddPersonFace();
             ObjPersonFace = JsonConvert.DeserializeObject<AddPersonFace>(await response.Content.ReadAsStringAsync());
+
+            System.Diagnostics.Trace.TraceInformation("Operation ID: " + OperationID + " - Adding face to person ID: " + personId + " success!!");
+
+
             return ObjPersonFace;
         }
 
@@ -91,6 +104,8 @@ namespace CognitiveLocator.WebAPI.Class
             }
             AddFaceToList ObjFaceToList = new AddFaceToList();
             ObjFaceToList = JsonConvert.DeserializeObject<AddFaceToList>(await response.Content.ReadAsStringAsync());
+
+            System.Diagnostics.Trace.TraceInformation("Operation ID: " + OperationID + " - Adding face to list: " + FaceListId + " success!!");
 
             return ObjFaceToList;
         }
@@ -119,6 +134,9 @@ namespace CognitiveLocator.WebAPI.Class
                 response = await client.PostAsync(uri, content);
             }
             List<JObject> ObjResult = JsonConvert.DeserializeObject<List<JObject>>(await response.Content.ReadAsStringAsync());
+
+            System.Diagnostics.Trace.TraceInformation("Operation ID: " + OperationID + " - Detect face: " + url + " success!!");
+
             return ObjResult;
         }
 
@@ -136,7 +154,7 @@ namespace CognitiveLocator.WebAPI.Class
             var uri = "https://westus.api.cognitive.microsoft.com/face/v1.0/findsimilars";
             HttpResponseMessage response;
             // Request body
-            byte[] byteData = Encoding.UTF8.GetBytes("{'faceId':'" + faceId + "','faceListId':'" + FaceListId + "','maxNumOfCandidatesReturned':1,'mode':'matchPerson'}");
+            byte[] byteData = Encoding.UTF8.GetBytes("{'faceId':'" + faceId + "','faceListId':'" + FaceListId + "','maxNumOfCandidatesReturned':25,'mode':'matchPerson'}");
             using (var content = new ByteArrayContent(byteData))
             {
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
@@ -144,6 +162,9 @@ namespace CognitiveLocator.WebAPI.Class
             }
             List<FindSimilar> ObjFindSimilar = new List<FindSimilar>();
             ObjFindSimilar = JsonConvert.DeserializeObject<List<FindSimilar>>(await response.Content.ReadAsStringAsync());
+
+            System.Diagnostics.Trace.TraceInformation("Operation ID: " + OperationID + " - Find similar face: " + faceId + " success!!");
+
             return ObjFindSimilar;
         }
     }

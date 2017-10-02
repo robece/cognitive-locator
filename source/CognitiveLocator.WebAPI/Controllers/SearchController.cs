@@ -25,6 +25,7 @@ namespace CognitiveLocator.WebAPI.Controllers
         {
             try
             {
+                Guid OperationID = Guid.NewGuid();
                 byte[] fileBytes = null;
                 String FileName = string.Empty;
                 // Check if the request contains multipart/form-data.
@@ -47,20 +48,29 @@ namespace CognitiveLocator.WebAPI.Controllers
                     Person ObjPerson = new Person();
 
                     string uri = await storage.UploadPhoto(new MemoryStream(fileBytes), FileName);
-                    FaceAPIMethods ObjFaceApiPerson = new FaceAPIMethods();
+                    FaceAPIMethods ObjFaceApiPerson = new FaceAPIMethods(OperationID);
                     List<JObject> detectResult = await ObjFaceApiPerson.DetectFace(uri);
                     string detectFaceId = detectResult.First()["faceId"].ToString();
                     List<FindSimilar> similarFace = await ObjFaceApiPerson.FindSimilarFace(detectFaceId);
                     File.Delete(provider.FileData.First().LocalFileName);
+                    List<Person> listPFaceIdComplete = new List<Person>();
 
-                    List<Person> listPFaceId = new List<Person>();
-                    listPFaceId = await querySp.SelectPersonByFaceId(similarFace.First().persistedFaceId);
-                    ObjPerson = listPFaceId.First();
+                    foreach (var i in similarFace)
+                    {
+                        List<Person> listPFaceId = new List<Person>();
+                        listPFaceId = await querySp.SelectPersonByFaceId(i.persistedFaceId);
+                        if (listPFaceId.Count()!= 0) {
+                            ObjPerson = listPFaceId.First();
+                            listPFaceIdComplete.Add(ObjPerson);
+                        }
+                    }
 
-                    return Ok(ObjPerson);
+
+                    return Ok(listPFaceIdComplete.First());
                 }
-                catch (Exception e)
+                catch (Exception ex)
                 {
+                    System.Diagnostics.Trace.TraceError(ex.Message);
                     return InternalServerError();
                 }
             }
