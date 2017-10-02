@@ -4,7 +4,7 @@ using Microsoft.Azure.Mobile.Analytics;
 using System;
 using UIKit;
 
-namespace CognitiveLocator.Xamarin.iOS
+namespace CognitiveLocator.iOS
 {
     [Register("AppDelegate")]
     public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
