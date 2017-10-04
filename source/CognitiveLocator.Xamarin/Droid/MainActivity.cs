@@ -26,7 +26,7 @@ namespace CognitiveLocator.Droid
             base.OnCreate(bundle);
 
             //Telemetry on Mobile Center.
-            MobileCenter.Start("f8963ef0-4239-46ea-b69c-621fafe09d0c", typeof(Analytics));
+            MobileCenter.Start(Settings.MobileCenterID_Android, typeof(Analytics));
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
 

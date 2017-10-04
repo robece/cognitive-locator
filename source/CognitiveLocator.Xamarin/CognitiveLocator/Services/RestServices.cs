@@ -15,13 +15,6 @@ namespace CognitiveLocator.Services
 {
     public class RestServices : IRestServices
     {
-
-#if DEBUG
-        protected const string BaseURL = "http://cognitivelocatordev.azurewebsites.net/";
-#else
-        protected const string BaseURL = "http://cognitivelocator.azurewebsites.net/";
-#endif
-
 		public async Task<bool> CreateReportAsync(CreateReportModel model, byte[] photo)
         {
             try
@@ -37,7 +30,7 @@ namespace CognitiveLocator.Services
                                                                                                     //content1.Add(imageContent,"photo",$"{Guid.NewGuid().ToString()}.jpg");
                                                                                                     //request.Content = imageContent;
                         request.Method = HttpMethod.Post;
-                        request.RequestUri = new Uri(BaseURL + "api/Photo/Post?"+ model.UrlFormat());
+                        request.RequestUri = new Uri(Settings.GetBaseURL() + "api/Photo/Post?"+ model.UrlFormat());
 
                         HttpContent content = null;
 
@@ -96,7 +89,7 @@ namespace CognitiveLocator.Services
 						var imageContent = new ByteArrayContent(photo);
 						imageContent.Headers.TryAddWithoutValidation("content-type", "image/jpeg"); 
 						request.Method = HttpMethod.Post;
-						request.RequestUri = new Uri(BaseURL + "api/Find/ByFace");
+                        request.RequestUri = new Uri(Settings.GetBaseURL() + "api/Find/ByFace");
 
 						HttpContent content = null;
 
@@ -136,7 +129,7 @@ namespace CognitiveLocator.Services
             {
                 using (var client = new HttpClient())
                 {
-                    var uri = $"{BaseURL}api/Find/{endpoint}";
+                    var uri = $"{Settings.GetBaseURL()}api/Find/{endpoint}";
 
                     using(var response = await client.GetAsync(uri))
                     {
