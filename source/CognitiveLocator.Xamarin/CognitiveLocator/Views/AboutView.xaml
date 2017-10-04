@@ -7,7 +7,7 @@
         </Grid.RowDefinitions>
         <ScrollView>
             <StackLayout Margin="40,20,40,0">
-                <Label Margin="0,15,0,15" FontAttributes="Bold" FontSize="Large" Text="Versión 1.0.0" />
+                <Label Margin="0,15,0,15" FontAttributes="Bold" FontSize="Large" Text="Versión 1.0.1" />
                 <Label FontSize="Small" Text="Busca.me es una aplicación de ayuda para encontrar personas desaparecidas por el terremoto del 19 de Septiembre del 2017." />
                 <Label FontSize="Small" Text="Es una aplicación sin fines de lucro y únicamente con la finalidad de encontrar personas desaparecidas. " />
                 <Label Margin="0,15,0,15" FontAttributes="Bold" FontSize="Large" Text="Créditos " />
