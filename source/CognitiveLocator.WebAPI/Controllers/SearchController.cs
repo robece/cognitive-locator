@@ -22,7 +22,7 @@ namespace CognitiveLocator.WebAPI.Controllers
 
         [Route("ByFace")]
         [HttpPost]
-        [System.Web.Mvc.RequireHttps]
+        [CognitiveLocator.WebAPI.Attributes.RequireHttps]
         public async Task<IHttpActionResult> ByFace()
         {
             try
@@ -85,7 +85,7 @@ namespace CognitiveLocator.WebAPI.Controllers
 
         [Route("ByName")]
         [HttpGet]
-        [System.Web.Mvc.RequireHttps]
+        [CognitiveLocator.WebAPI.Attributes.RequireHttps]
         public async Task<IHttpActionResult> ByName([FromUri] string name)
         {
             try
@@ -104,7 +104,7 @@ namespace CognitiveLocator.WebAPI.Controllers
 
         [Route("ByLastName")]
         [HttpGet]
-        [System.Web.Mvc.RequireHttps]
+        [CognitiveLocator.WebAPI.Attributes.RequireHttps]
         public async Task<IHttpActionResult> ByLastName([FromUri] string lastName)
         {
             try
@@ -122,7 +122,7 @@ namespace CognitiveLocator.WebAPI.Controllers
 
         [Route("UpdataFoundPerson")]
         [HttpGet]
-        [System.Web.Mvc.RequireHttps]
+        [CognitiveLocator.WebAPI.Attributes.RequireHttps]
         public async Task<IHttpActionResult> UpdateFoundPerson([FromUri] string idPerson, int isFound, string location ="")
         {
             try
@@ -155,7 +155,7 @@ namespace CognitiveLocator.WebAPI.Controllers
 
         [Route("PersonEnable")]
         [HttpGet]
-        [System.Web.Mvc.RequireHttps]
+        [CognitiveLocator.WebAPI.Attributes.RequireHttps]
         public async Task<IHttpActionResult> EnablePerson([FromUri] string idPerson)
         {
             try
@@ -173,7 +173,7 @@ namespace CognitiveLocator.WebAPI.Controllers
 
         [Route("ByNameAndLastName")]
         [HttpGet]
-        [System.Web.Mvc.RequireHttps]
+        [CognitiveLocator.WebAPI.Attributes.RequireHttps]
         public async Task<IHttpActionResult> SelectPersonByNameAndLastName([FromUri] string name, string lastName)
         {
             try

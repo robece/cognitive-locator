@@ -8,7 +8,7 @@ namespace CognitiveLocator.WebAPI.Controllers
 {
     public class HomeController : Controller
     {
-        [System.Web.Mvc.RequireHttps]
+        [CognitiveLocator.WebAPI.Attributes.RequireHttps]
         public ActionResult Index()
         {
             ViewBag.Title = "Our API is running!! :)";
