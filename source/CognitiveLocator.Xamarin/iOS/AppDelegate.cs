@@ -12,7 +12,7 @@ namespace CognitiveLocator.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             //Telemetry on Mobile Center.
-            MobileCenter.Start("0da75977-ccf2-43fd-ba88-ae712f9a3568", typeof(Analytics));
+            MobileCenter.Start(Settings.MobileCenterID_iOS, typeof(Analytics));
             
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
