@@ -30,7 +30,7 @@ namespace CognitiveLocator.Services
                                                                                                     //content1.Add(imageContent,"photo",$"{Guid.NewGuid().ToString()}.jpg");
                                                                                                     //request.Content = imageContent;
                         request.Method = HttpMethod.Post;
-                        request.RequestUri = new Uri(Settings.GetBaseURL() + "api/Photo/Post?"+ model.UrlFormat());
+                        request.RequestUri = new Uri(Settings.BaseURL + "api/Photo/Post?"+ model.UrlFormat());
 
                         HttpContent content = null;
 
@@ -89,7 +89,7 @@ namespace CognitiveLocator.Services
 						var imageContent = new ByteArrayContent(photo);
 						imageContent.Headers.TryAddWithoutValidation("content-type", "image/jpeg"); 
 						request.Method = HttpMethod.Post;
-                        request.RequestUri = new Uri(Settings.GetBaseURL() + "api/Find/ByFace");
+                        request.RequestUri = new Uri(Settings.BaseURL + "api/Find/ByFace");
 
 						HttpContent content = null;
 
@@ -129,7 +129,7 @@ namespace CognitiveLocator.Services
             {
                 using (var client = new HttpClient())
                 {
-                    var uri = $"{Settings.GetBaseURL()}api/Find/{endpoint}";
+                    var uri = $"{Settings.BaseURL}api/Find/{endpoint}";
 
                     using(var response = await client.GetAsync(uri))
                     {
