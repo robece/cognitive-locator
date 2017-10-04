@@ -212,6 +212,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Attributes\RequireHttps.cs" />
     <Compile Include="Class\ClassStg.cs" />
     <Compile Include="Class\FaceAPIMethods.cs" />
     <Compile Include="Class\SPQuery.cs" />
