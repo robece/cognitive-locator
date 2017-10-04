@@ -11,7 +11,6 @@ namespace CognitiveLocator.WebAPI.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "API Home Page";
-
             return View();
         }
     }

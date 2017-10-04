@@ -20,6 +20,7 @@ namespace CognitiveLocator.WebAPI.Controllers
     {
         [HttpPost]
         [Route("Post")]
+        [System.Web.Mvc.RequireHttps]
         public async Task<IHttpActionResult> PostFormData([FromUri] int IsFound, string Name, string LastName, string Alias="", string Location="", string Notes="", string BirthDate = "", string ReportedBy="")
         {
             Guid OperationID = Guid.NewGuid();
