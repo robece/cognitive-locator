@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using Android.Content;
 using CognitiveLocator.Droid.Services;
-using CognitiveLocator.Services;
-using CognitiveLocator.Xamarin.Droid;
+using CognitiveLocator.Droid;
 using Plugin.CurrentActivity;
 using Xamarin.Forms;
+using CognitiveLocator.Services;
 
 [assembly: Dependency(typeof(EmailService))]
 namespace CognitiveLocator.Droid.Services
