@@ -4,7 +4,7 @@ using Microsoft.Azure.Mobile.Analytics;
 using System;
 using UIKit;
 
-namespace CognitiveLocator.Xamarin.iOS
+namespace CognitiveLocator.iOS
 {
     [Register("AppDelegate")]
     public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
@@ -12,7 +12,7 @@ namespace CognitiveLocator.Xamarin.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             //Telemetry on Mobile Center.
-            MobileCenter.Start("0da75977-ccf2-43fd-ba88-ae712f9a3568", typeof(Analytics));
+            MobileCenter.Start(Settings.MobileCenterID_iOS, typeof(Analytics));
             
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());

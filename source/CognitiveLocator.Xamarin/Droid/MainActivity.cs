@@ -12,7 +12,7 @@ using CognitiveLocator.Droid;
 using Microsoft.Azure.Mobile;
 using Microsoft.Azure.Mobile.Analytics;
 
-namespace CognitiveLocator.Xamarin.Droid
+namespace CognitiveLocator.Droid
 {
     [Activity(Label = "Busca.me", Theme = "@style/MyTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,
     ScreenOrientation = ScreenOrientation.Portrait)] //This is what controls orientation
@@ -26,7 +26,7 @@ namespace CognitiveLocator.Xamarin.Droid
             base.OnCreate(bundle);
 
             //Telemetry on Mobile Center.
-            MobileCenter.Start("f8963ef0-4239-46ea-b69c-621fafe09d0c", typeof(Analytics));
+            MobileCenter.Start(Settings.MobileCenterID_Android, typeof(Analytics));
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
 
