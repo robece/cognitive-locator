@@ -40,7 +40,6 @@
     <Compile Include="AddPersonFace.cs" />
     <Compile Include="CreatePerson.cs" />
     <Compile Include="DeviceRegistration.cs" />
-    <Compile Include="FaceAPIConfiguration.cs" />
     <Compile Include="FindSimilar.cs" />
     <Compile Include="MetadataVerification.cs" />
     <Compile Include="Person.cs" />

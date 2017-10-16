@@ -15,15 +15,12 @@ namespace CognitiveLocator.Functions
 {
     public static class MetadataVerification
     {
-        [FunctionName("MetadataVerification")]
+        private static DocumentClient client_document = new DocumentClient(new Uri(Settings.DocumentDB), Settings.DocumentDBAuthKey);
+
+        [FunctionName(nameof(MetadataVerification))]
         public static async Task<HttpResponseMessage> Run(
             [HttpTrigger(AuthorizationLevel.Function, "post", Route = "MetadataVerification/")]HttpRequestMessage req, TraceWriter log)
         {
-            var documentDB = Environment.GetEnvironmentVariable("CosmosDB_URI");
-            var documentDBAuthKey = Environment.GetEnvironmentVariable("CosmosDB_AuthKey");
-            var databaseId = Environment.GetEnvironmentVariable("CosmosDB_DatabaseId");
-            var collectionId = Environment.GetEnvironmentVariable("CosmosDB_Collection");
-
             Domain.MetadataVerification metadata = await req.Content.ReadAsAsync<Domain.MetadataVerification>();
 
             if (metadata == null)
@@ -55,17 +52,13 @@ namespace CognitiveLocator.Functions
                 query_attributes = query_attributes.Remove(query_attributes.Length - 4);
 
             List<Person> personsInDocuments = null;
-            using (var document_client = new DocumentClient(new Uri(documentDB), documentDBAuthKey))
+            var collection = await client_document.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri(Settings.DatabaseId), new DocumentCollection { Id = Settings.CollectionId }, new RequestOptions { OfferThroughput = 1000 });
+            var query = client_document.CreateDocumentQuery<Person>(collection.Resource.SelfLink, new SqlQuerySpec()
             {
-                var collection = await document_client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri(databaseId), new DocumentCollection { Id = collectionId }, new RequestOptions { OfferThroughput = 1000 });
+                QueryText = $"SELECT * FROM Person p WHERE {query_attributes}"
+            });
 
-                var query = document_client.CreateDocumentQuery<Person>(collection.Resource.SelfLink, new SqlQuerySpec()
-                {
-                    QueryText = $"SELECT * FROM Person p WHERE {query_attributes}"
-                });
-
-                personsInDocuments = query.ToList();
-            }
+            personsInDocuments = query.ToList();
 
             // Fetching the name from the path parameter in the request URL
             return req.CreateResponse(HttpStatusCode.OK, personsInDocuments);
