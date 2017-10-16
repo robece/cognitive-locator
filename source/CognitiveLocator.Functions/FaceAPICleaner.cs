@@ -1,5 +1,5 @@
+using CognitiveLocator.Domain;
 using CognitiveLocator.Functions.Client;
-using CognitiveLocator.Functions.Models;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
 using Microsoft.Azure.WebJobs;

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace CognitiveLocator.Functions.Models
+namespace CognitiveLocator.Domain
 {
     public class PersonInGroupOfPerson
     {

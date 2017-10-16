@@ -122,10 +122,8 @@ namespace CognitiveLocator.Functions.Console
             CloudBlockBlob.Metadata["location"] = "location";
             CloudBlockBlob.Metadata["notes"] = "notes";
             CloudBlockBlob.Metadata["alias"] = "alias";
-            CloudBlockBlob.Metadata["birthday"] = "birthday";
+            CloudBlockBlob.Metadata["birthdate"] = "birthdate";
             CloudBlockBlob.Metadata["reportedby"] = "cervantes";
-            CloudBlockBlob.Metadata["lastname"] = "cervantes";
-            CloudBlockBlob.Metadata["device_hash"] = "device_hash";
 
             CloudBlockBlob.Properties.ContentType = "image/jpeg";
             CloudBlockBlob.UploadFromStream(fileStream);
