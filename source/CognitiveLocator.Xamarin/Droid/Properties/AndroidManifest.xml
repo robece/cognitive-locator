@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="2" android:versionName="1.0.1" package="com.cognitivelocator.app">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="4" android:versionName="1.1.0" package="com.cognitivelocator.app">
 	<uses-sdk android:minSdkVersion="15" />
 	<application android:icon="@drawable/ic_launcher" android:label="Busca.me">
 		<provider android:name="android.support.v4.content.FileProvider" android:authorities="com.cognitivelocator.app.fileprovider" android:exported="false" android:grantUriPermissions="true">
