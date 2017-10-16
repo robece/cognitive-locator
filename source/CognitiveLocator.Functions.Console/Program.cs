@@ -16,6 +16,9 @@ namespace CognitiveLocator.Functions.Console
 {
     public class Program
     {
+        static string azureWebJobsStorage = "";
+        static string cryptographyKey = "";
+
         private static void Main(string[] args)
         {
             PrintMenu();
@@ -83,7 +86,7 @@ namespace CognitiveLocator.Functions.Console
                 byte[] time = BitConverter.GetBytes(DateTime.UtcNow.ToBinary());
                 byte[] key = Guid.NewGuid().ToByteArray();
                 token = Convert.ToBase64String(time.Concat(key).ToArray());
-                token = CryptoManager.Encrypt(token, "__KEY__");
+                token = CryptoManager.Encrypt(token, cryptographyKey);
                 System.Console.WriteLine($"Token: {token}");
             }
             else
@@ -143,7 +146,7 @@ namespace CognitiveLocator.Functions.Console
         private static async Task<string> UploadPhotoAsync(Stream fileStream, string fileName, bool isVerification)
         {
             string container = (isVerification) ? "verification" : "images";
-            string connectionString = "__CONNECTION STRING__";
+            string connectionString = azureWebJobsStorage;
             var blobUri = await UploadFileAsync(fileStream, fileName, container, connectionString);
             return blobUri;
         }
