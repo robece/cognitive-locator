@@ -1,12 +1,12 @@
 ﻿using System;
-using CognitiveLocator.Xamarin.iOS.Effects;
+using CognitiveLocator.iOS.Effects;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
 [assembly: ResolutionGroupName("CognitiveLocator")]
 [assembly: ExportEffect(typeof(NoInteractiveTableViewEffect), "NoInteractiveTableViewEffect")]
-namespace CognitiveLocator.Xamarin.iOS.Effects
+namespace CognitiveLocator.iOS.Effects
 {
 	public class NoInteractiveTableViewEffect : PlatformEffect
 	{
