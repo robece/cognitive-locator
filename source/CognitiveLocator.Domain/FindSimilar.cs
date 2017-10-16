@@ -1,4 +1,4 @@
-﻿namespace CognitiveLocator.Functions.Models
+﻿namespace CognitiveLocator.Domain
 {
     public class FindSimilar
     {

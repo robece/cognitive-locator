@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace CognitiveLocator.Functions.Models
+namespace CognitiveLocator.Domain
 {
     public class Person
     {
@@ -19,7 +19,7 @@ namespace CognitiveLocator.Functions.Models
         [JsonProperty("_birthdate")]
         public string BirthDate { get; set; }
 
-        [JsonProperty("_reportedby")]
+        [JsonProperty("_reported_by")]
         public string ReportedBy { get; set; }
 
         [JsonProperty("_picture")]

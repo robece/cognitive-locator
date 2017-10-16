@@ -1,4 +1,4 @@
-﻿using CognitiveLocator.Functions.Models;
+﻿using CognitiveLocator.Domain;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;

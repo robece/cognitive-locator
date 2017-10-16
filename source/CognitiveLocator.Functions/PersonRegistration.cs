@@ -1,5 +1,5 @@
+using CognitiveLocator.Domain;
 using CognitiveLocator.Functions.Client;
-using CognitiveLocator.Functions.Models;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
 using Microsoft.Azure.WebJobs;
@@ -57,12 +57,12 @@ namespace CognitiveLocator.Functions
             Person p = new Person();
             p.Name = blob.Metadata["name"];
             p.LastName = blob.Metadata["lastname"];
-            p.Location = string.Empty;
+            p.Location = blob.Metadata["location"];
             p.Country = blob.Metadata["country"];
-            p.Notes = string.Empty;
-            p.Alias = string.Empty;
-            p.BirthDate = string.Empty;
-            p.ReportedBy = string.Empty;
+            p.Notes = blob.Metadata["notes"];
+            p.Alias = blob.Metadata["alias"];
+            p.BirthDate = blob.Metadata["birthdate"];
+            p.ReportedBy = blob.Metadata["reportedby"];
             p.IsActive = 1;
             p.IsFound = 0;
             p.Picture = $"{name}.jpg";
