@@ -29,15 +29,14 @@ namespace CognitiveLocator.Models
         {
             return new Dictionary<string, string>
             {
-                {"Name", Name},
-                {"LastName", LastName},
-                {"Age", Age.ToString()},
-                {"Alias", Alias},
-                {"Location", Location},
-                {"Latitude", Latitude.ToString()},
-                {"Longitude", Longitude.ToString()},
-                {"Notes", Notes},
-                {"ReportedBy", ReportedBy}
+                {"country", "MEX"},
+                {"name", Name},
+                {"lastname", LastName},
+                {"location", Location},
+                {"notes", Notes},
+                {"alias", Alias},
+                {"birthdate", BirthDate.ToString("dd/MM/yyyy")},
+                {"reportedby", ReportedBy}
             };
         }
 	}
