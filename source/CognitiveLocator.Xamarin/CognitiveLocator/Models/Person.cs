@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace CognitiveLocator.Models
 {
     public class Person
@@ -22,5 +24,21 @@ namespace CognitiveLocator.Models
         public string FaceID { get; set; }
         public DateTime BirthDate { get; set; }
         public string ReportedBy { get; set; }
+
+        public Dictionary<string, string> ToMetadata()
+        {
+            return new Dictionary<string, string>
+            {
+                {"Name", Name},
+                {"LastName", LastName},
+                {"Age", Age.ToString()},
+                {"Alias", Alias},
+                {"Location", Location},
+                {"Latitude", Latitude.ToString()},
+                {"Longitude", Longitude.ToString()},
+                {"Notes", Notes},
+                {"ReportedBy", ReportedBy}
+            };
+        }
 	}
 }

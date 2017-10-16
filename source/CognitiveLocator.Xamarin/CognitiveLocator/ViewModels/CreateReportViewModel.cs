@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using CognitiveLocator.Models;
 using CognitiveLocator.Models.ApiModels;
 using CognitiveLocator.Services;
 using CognitiveLocator.Views;
@@ -114,10 +115,30 @@ namespace CognitiveLocator.ViewModels
 			else if (!IsBusy)
             {
                 IsBusy = true;
-                if(await RestServices.CreateReportAsync(model, Photo))
+                //           if(await RestServices.CreateReportAsync(model, Photo))
+                //               await NavigationService.PushAsync(new ReportConfirmationView());
+                //           else
+                //await Application.Current.MainPage.DisplayAlert("Error", "No fue posible registrar el reporte, si el error persiste intenta mas tarde .", "Aceptar");
+                var stream = new System.IO.MemoryStream(Photo);
+                var person = new Person
+                {
+                    Name = this.Name,
+                    LastName = this.LastName,
+                    Alias = this.Alias,
+                    BirthDate = this.Birthday.Value,
+                    Location = this.Location,
+                    Notes = this.Notes,
+                    ReportedBy = this.ReportedBy
+                };
+
+                if (await StorageManager.UploadPhoto(stream, person))
+                {
                     await NavigationService.PushAsync(new ReportConfirmationView());
+                }
                 else
-					await Application.Current.MainPage.DisplayAlert("Error", "No fue posible registrar el reporte, si el error persiste intenta mas tarde .", "Aceptar");
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "No fue posible registrar el reporte, si el error persiste intenta mas tarde .", "Aceptar");
+                }
 
 				IsBusy = false;
 
