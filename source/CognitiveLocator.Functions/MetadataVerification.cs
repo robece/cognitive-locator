@@ -21,8 +21,8 @@ namespace CognitiveLocator.Functions
         {
             var documentDB = Environment.GetEnvironmentVariable("CosmosDB_URI");
             var documentDBAuthKey = Environment.GetEnvironmentVariable("CosmosDB_AuthKey");
-            var DatabaseId = Environment.GetEnvironmentVariable("CosmosDB_DatabaseId");
-            var CollectionId = Environment.GetEnvironmentVariable("CosmosDB_Collection");
+            var databaseId = Environment.GetEnvironmentVariable("CosmosDB_DatabaseId");
+            var collectionId = Environment.GetEnvironmentVariable("CosmosDB_Collection");
 
             Domain.MetadataVerification metadata = await req.Content.ReadAsAsync<Domain.MetadataVerification>();
 
@@ -57,7 +57,7 @@ namespace CognitiveLocator.Functions
             List<Person> personsInDocuments = null;
             using (var document_client = new DocumentClient(new Uri(documentDB), documentDBAuthKey))
             {
-                var collection = await document_client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri(DatabaseId), new DocumentCollection { Id = CollectionId }, new RequestOptions { OfferThroughput = 1000 });
+                var collection = await document_client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri(databaseId), new DocumentCollection { Id = collectionId }, new RequestOptions { OfferThroughput = 1000 });
 
                 var query = document_client.CreateDocumentQuery<Person>(collection.Resource.SelfLink, new SqlQuerySpec()
                 {

@@ -25,8 +25,8 @@ namespace CognitiveLocator.Functions
             configuration.FaceListId = Environment.GetEnvironmentVariable("Vision_API_FaceList");
             var documentDB = Environment.GetEnvironmentVariable("CosmosDB_URI");
             var documentDBAuthKey = Environment.GetEnvironmentVariable("CosmosDB_AuthKey");
-            var DatabaseId = Environment.GetEnvironmentVariable("CosmosDB_DatabaseId");
-            var CollectionId = Environment.GetEnvironmentVariable("CosmosDB_Collection");
+            var databaseId = Environment.GetEnvironmentVariable("CosmosDB_DatabaseId");
+            var collectionId = Environment.GetEnvironmentVariable("CosmosDB_Collection");
 
             FaceClient client = new FaceClient(configuration);
 
@@ -49,36 +49,47 @@ namespace CognitiveLocator.Functions
                 return;
             }
 
-            //register person in Face API
-            CreatePerson resultCreatePerson = await client.AddPersonToGroup(blob.Metadata["name"] + " " + blob.Metadata["lastname"]);
-            AddPersonFace resultPersonFace = await client.AddPersonFace(blob.Uri.AbsoluteUri, resultCreatePerson.personId);
-            AddFaceToList resultFaceToList = await client.AddFaceToList(blob.Uri.AbsoluteUri);
-
-            Person p = new Person();
-            p.Name = blob.Metadata["name"];
-            p.LastName = blob.Metadata["lastname"];
-            p.Location = blob.Metadata["location"];
-            p.Country = blob.Metadata["country"];
-            p.Notes = blob.Metadata["notes"];
-            p.Alias = blob.Metadata["alias"];
-            p.BirthDate = blob.Metadata["birthdate"];
-            p.ReportedBy = blob.Metadata["reportedby"];
-            p.IsActive = 1;
-            p.IsFound = 0;
-            p.Picture = $"{name}.jpg";
-            p.FaceAPI_FaceId = resultFaceToList.persistedFaceId;
-            p.FaceAPI_PersonId = resultCreatePerson.personId;
-            p.PendingToBeDeleted = false;
-
-            using (var document_client = new DocumentClient(new Uri(documentDB), documentDBAuthKey))
+            
+            try
             {
-                await document_client.CreateDatabaseIfNotExistsAsync(new Database { Id = DatabaseId });
-                var collection = await document_client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri(DatabaseId), new DocumentCollection { Id = CollectionId }, new RequestOptions { OfferThroughput = 1000 });
+                //register person in Face API
+                CreatePerson resultCreatePerson = await client.AddPersonToGroup(blob.Metadata["name"] + " " + blob.Metadata["lastname"]);
+                AddPersonFace resultPersonFace = await client.AddPersonFace(blob.Uri.AbsoluteUri, resultCreatePerson.personId);
+                AddFaceToList resultFaceToList = await client.AddFaceToList(blob.Uri.AbsoluteUri);
 
-                var result = await document_client.CreateDocumentAsync(collection.Resource.SelfLink, p);
-                var document = result.Resource;
+                Person p = new Person();
+                p.Name = blob.Metadata["name"];
+                p.LastName = blob.Metadata["lastname"];
+                p.Location = blob.Metadata["location"];
+                p.Country = blob.Metadata["country"];
+                p.Notes = blob.Metadata["notes"];
+                p.Alias = blob.Metadata["alias"];
+                p.BirthDate = blob.Metadata["birthdate"];
+                p.ReportedBy = blob.Metadata["reportedby"];
+                p.IsActive = 1;
+                p.IsFound = 0;
+                p.Picture = $"{name}.jpg";
+                p.FaceAPI_FaceId = resultFaceToList.persistedFaceId;
+                p.FaceAPI_PersonId = resultCreatePerson.personId;
+                p.PendingToBeDeleted = false;
+
+                using (var document_client = new DocumentClient(new Uri(documentDB), documentDBAuthKey))
+                {
+                    await document_client.CreateDatabaseIfNotExistsAsync(new Database { Id = databaseId });
+                    var collection = await document_client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri(databaseId), new DocumentCollection { Id = collectionId }, new RequestOptions { OfferThroughput = 1000 });
+
+                    var result = await document_client.CreateDocumentAsync(collection.Resource.SelfLink, p);
+                    var document = result.Resource;
+                }
+
             }
-
+            catch (Exception ex)
+            {
+                await blob.DeleteAsync();
+                log.Info($"Error in file: {name}.jpg - {ex.Message}");
+                return;
+            }
+            
             log.Info("person registered successfully");
         }
     }
