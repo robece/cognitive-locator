@@ -41,7 +41,7 @@ namespace CognitiveLocator.Services
         public static async Task<string> UploadPhoto(Stream stream, string fileName, Person person, bool IsVerification)
         {
             var container = IsVerification ? "verification" : "images";
-            var connectionString = "DefaultEndpointsProtocol=https;AccountName=cognitivelocatordev;AccountKey=juIB8wTfGeS+OlZZctPXr39i5MUvO9AL8Ds4t1bloUvF5J5c3Y6dOxqEwqzYsAcTReekS4GsF9+CfaMnIWTceA==";
+            var connectionString = "__CN__";
 
             return await UpoloadFileAsync(stream, fileName, person, container, connectionString);
         }
