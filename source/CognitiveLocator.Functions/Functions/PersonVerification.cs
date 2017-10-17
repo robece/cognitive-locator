@@ -59,7 +59,7 @@ namespace CognitiveLocator.Functions
                 var collection = await client_document.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri(Settings.DatabaseId), new DocumentCollection { Id = Settings.CollectionId }, new RequestOptions { OfferThroughput = 1000 });
                 var query = client_document.CreateDocumentQuery<Person>(collection.Resource.SelfLink, new SqlQuerySpec()
                 {
-                    QueryText = "SELECT * FROM Person p WHERE (p._faceapi_faceid = @id)",
+                    QueryText = "SELECT * FROM Person p WHERE (p.faceapi_faceid = @id)",
                     Parameters = new SqlParameterCollection()
                     {
                         new SqlParameter("@id", i.persistedFaceId)

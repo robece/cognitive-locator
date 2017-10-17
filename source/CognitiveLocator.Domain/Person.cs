@@ -7,46 +7,46 @@ namespace CognitiveLocator.Domain
         [JsonProperty("id")]
         public string Id { get; set; }
 
-        [JsonProperty("_name")]
+        [JsonProperty("name")]
         public string Name { get; set; }
 
-        [JsonProperty("_lastname")]
+        [JsonProperty("lastname")]
         public string LastName { get; set; }
 
-        [JsonProperty("_alias")]
+        [JsonProperty("alias")]
         public string Alias { get; set; }
 
-        [JsonProperty("_birthdate")]
+        [JsonProperty("birthdate")]
         public string BirthDate { get; set; }
 
-        [JsonProperty("_reported_by")]
+        [JsonProperty("reported_by")]
         public string ReportedBy { get; set; }
 
-        [JsonProperty("_picture")]
+        [JsonProperty("picture")]
         public string Picture { get; set; }
 
-        [JsonProperty("_location")]
+        [JsonProperty("location")]
         public string Location { get; set; }
 
-        [JsonProperty("_country")]
+        [JsonProperty("country")]
         public string Country { get; set; }
 
-        [JsonProperty("_notes")]
+        [JsonProperty("notes")]
         public string Notes { get; set; }
 
-        [JsonProperty("_isactive")]
+        [JsonProperty("is_active")]
         public int IsActive { get; set; }
 
-        [JsonProperty("_isfound")]
+        [JsonProperty("is_found")]
         public int IsFound { get; set; }
 
-        [JsonProperty("_faceapi_faceid")]
+        [JsonProperty("faceapi_faceid")]
         public string FaceAPI_FaceId { get; set; }
 
-        [JsonProperty("_faceapi_personid")]
+        [JsonProperty("faceapi_personid")]
         public string FaceAPI_PersonId { get; set; }
 
-        [JsonProperty("_pending_to_be_deleted")]
+        [JsonProperty("pending_to_be_deleted")]
         public bool PendingToBeDeleted { get; set; }
     }
 }
