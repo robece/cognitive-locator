@@ -31,22 +31,22 @@ namespace CognitiveLocator.Functions
             string query_attributes = string.Empty;
 
             if (!string.IsNullOrEmpty(metadata.Country))
-                query_attributes += $"CONTAINS(UPPER(p._country), UPPER('{metadata.Country}')) AND ";
+                query_attributes += $"CONTAINS(UPPER(p.country), UPPER('{metadata.Country}')) AND ";
 
             if (!string.IsNullOrEmpty(metadata.Name))
-                query_attributes += $"CONTAINS(UPPER(p._name), UPPER('{metadata.Name}')) AND ";
+                query_attributes += $"CONTAINS(UPPER(p.name), UPPER('{metadata.Name}')) AND ";
 
             if (!string.IsNullOrEmpty(metadata.Lastname))
-                query_attributes += $"CONTAINS(UPPER(p._lastname), UPPER('{metadata.Lastname}')) AND ";
+                query_attributes += $"CONTAINS(UPPER(p.lastname), UPPER('{metadata.Lastname}')) AND ";
 
             if (!string.IsNullOrEmpty(metadata.Location))
-                query_attributes += $"CONTAINS(UPPER(p._location), UPPER('{metadata.Location}')) AND ";
+                query_attributes += $"CONTAINS(UPPER(p.location), UPPER('{metadata.Location}')) AND ";
 
             if (!string.IsNullOrEmpty(metadata.Alias))
-                query_attributes += $"CONTAINS(UPPER(p._alias), UPPER('{metadata.Alias}')) AND ";
+                query_attributes += $"CONTAINS(UPPER(p.alias), UPPER('{metadata.Alias}')) AND ";
 
             if (!string.IsNullOrEmpty(metadata.ReportedBy))
-                query_attributes += $"CONTAINS(UPPER(p._reported_by), UPPER('{metadata.ReportedBy}')) AND ";
+                query_attributes += $"CONTAINS(UPPER(p.reported_by), UPPER('{metadata.ReportedBy}')) AND ";
 
             if (query_attributes.Length > 0)
                 query_attributes = query_attributes.Remove(query_attributes.Length - 4);
