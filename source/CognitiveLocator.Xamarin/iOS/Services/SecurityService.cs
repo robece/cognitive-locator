@@ -1,11 +1,11 @@
-﻿using System;
+﻿using CognitiveLocator.Interfaces;
+using CognitiveLocator.iOS.Services;
+using System;
 using System.IO;
 using System.Security.Cryptography;
-using CognitiveLocator.Interfaces;
-using CognitiveLocator.iOS.Services;
-using Xamarin.Forms;
 
 [assembly: Dependency(typeof(SecurityService))]
+
 namespace CognitiveLocator.iOS.Services
 {
     public class SecurityService : ISecurityService
@@ -88,7 +88,6 @@ namespace CognitiveLocator.iOS.Services
                 using (CryptoStream cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read))
                 using (StreamReader streamReader = new StreamReader(cryptoStream))
                     plaintext = streamReader.ReadToEnd();
-
             }
             return plaintext;
         }

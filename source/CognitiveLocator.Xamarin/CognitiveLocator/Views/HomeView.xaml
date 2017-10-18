@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<views:BaseView x:Class="CognitiveLocator.Views.HomeView" 
-    xmlns="http://xamarin.com/schemas/2014/forms" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    xmlns:views="clr-namespace:CognitiveLocator.Views;assembly=CognitiveLocatorPCL" 
+<views:BaseView x:Class="CognitiveLocator.Views.HomeView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:CognitiveLocator.Views;assembly=CognitiveLocatorPCL"
     Title="{Binding Title}" IsBusy="{Binding IsBusy}">
     <ScrollView>
         <StackLayout Margin="40,-50,40,0" VerticalOptions="Center" Spacing="30">

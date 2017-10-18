@@ -1,9 +1,8 @@
-﻿using System;
-using CognitiveLocator.ViewModels;
+﻿using CognitiveLocator.ViewModels;
 
 namespace CognitiveLocator.Views.Behaviors
 {
-    public class EmptyValidatorBehaviorName: EmptyValidatorBaseBehavior
+    public class EmptyValidatorBehaviorName : EmptyValidatorBaseBehavior
     {
         public override void SetSetting(bool value)
         {

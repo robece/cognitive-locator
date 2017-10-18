@@ -1,6 +1,4 @@
-﻿using Xamarin.Forms;
-
-namespace CognitiveLocator.Views.Behaviors
+﻿namespace CognitiveLocator.Views.Behaviors
 {
     public class EmptyValidatorBaseBehavior : Behavior<Entry>
     {

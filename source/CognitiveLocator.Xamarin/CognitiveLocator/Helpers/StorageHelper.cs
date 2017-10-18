@@ -1,9 +1,7 @@
-﻿using System;
+﻿using CognitiveLocator.Domain;
+using System;
 using System.IO;
 using System.Threading.Tasks;
-using CognitiveLocator.Domain;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace CognitiveLocator.Helpers
 {
@@ -24,17 +22,17 @@ namespace CognitiveLocator.Helpers
             return await UpoloadFileAsync(stream, fileName, person, container, connectionString);
         }
 
-        static CloudStorageAccount GetCloudStorageAccount(string connectionString)
+        private static CloudStorageAccount GetCloudStorageAccount(string connectionString)
         {
             return CloudStorageAccount.Parse(connectionString);
         }
 
-        static CloudBlobClient GetCloudBlobClient(CloudStorageAccount account)
+        private static CloudBlobClient GetCloudBlobClient(CloudStorageAccount account)
         {
             return account.CreateCloudBlobClient();
         }
 
-        static async Task<CloudBlobContainer> GetCloudBlobContainer(CloudBlobClient client, string container)
+        private static async Task<CloudBlobContainer> GetCloudBlobContainer(CloudBlobClient client, string container)
         {
             var c = client.GetContainerReference(container);
             await c.CreateIfNotExistsAsync();
@@ -42,7 +40,7 @@ namespace CognitiveLocator.Helpers
             return client.GetContainerReference(container);
         }
 
-        static async Task<string> UpoloadFileAsync(Stream stream, string fileName, Person person, string container, string connectionString)
+        private static async Task<string> UpoloadFileAsync(Stream stream, string fileName, Person person, string container, string connectionString)
         {
             CloudStorageAccount cloudStorageAccount = GetCloudStorageAccount(connectionString);
             CloudBlobClient blobClient = GetCloudBlobClient(cloudStorageAccount);
@@ -69,6 +67,5 @@ namespace CognitiveLocator.Helpers
 
             return blockBlob.Uri.ToString();
         }
-
     }
 }

@@ -1,10 +1,8 @@
-﻿using System.Threading.Tasks;
-using System.Windows.Input;
-using CognitiveLocator.Domain;
+﻿using CognitiveLocator.Domain;
 using CognitiveLocator.Interfaces;
-using CognitiveLocator.Services;
 using CognitiveLocator.Views;
-using Xamarin.Forms;
+using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace CognitiveLocator.ViewModels
 {
@@ -12,21 +10,24 @@ namespace CognitiveLocator.ViewModels
     {
         #region Properties
 
-        Person _person;
+        private Person _person;
+
         public Person Person
         {
             get { return _person; }
             set { SetProperty(ref _person, value); }
         }
 
-        byte[] _photo;
+        private byte[] _photo;
+
         public byte[] Photo
         {
             get { return _photo; }
             set { SetProperty(ref _photo, value); }
         }
 
-        string _searchType;
+        private string _searchType;
+
         public string SearchType
         {
             get { return _searchType; }
@@ -43,7 +44,7 @@ namespace CognitiveLocator.ViewModels
         public static bool NameValidation = false;
         public static bool LastNameValidation = false;
 
-        #endregion
+        #endregion Properties
 
         public SearchPersonViewModel() : base(new DependencyServiceBase())
         {
@@ -52,11 +53,11 @@ namespace CognitiveLocator.ViewModels
 
         public SearchPersonViewModel(IDependencyService dependencyService) : base(dependencyService)
         {
-			DependencyService = dependencyService;
-			InitializeViewModel();
-		}
+            DependencyService = dependencyService;
+            InitializeViewModel();
+        }
 
-        void InitializeViewModel()
+        private void InitializeViewModel()
         {
             Title = "Buscar persona";
             Person = new Person();
@@ -68,7 +69,7 @@ namespace CognitiveLocator.ViewModels
 
         #region Tasks
 
-        async Task SearchPerson() 
+        private async Task SearchPerson()
         {
             if (IsByPicture == true && Photo == null)
             {
@@ -94,16 +95,16 @@ namespace CognitiveLocator.ViewModels
             }
         }
 
-        async Task TakePhoto()
+        private async Task TakePhoto()
         {
             Photo = await Helpers.MediaHelper.TakePhotoAsync();
         }
 
-        async Task ChoosePhoto()
+        private async Task ChoosePhoto()
         {
             Photo = await Helpers.MediaHelper.PickPhotoAsync();
         }
-        #endregion
+
+        #endregion Tasks
     }
 }
-

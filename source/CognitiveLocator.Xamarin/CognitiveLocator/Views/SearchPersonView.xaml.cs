@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using CognitiveLocator.ViewModels;
-using Microsoft.Azure.Mobile.Analytics;
-using Xamarin.Forms;
+﻿using CognitiveLocator.ViewModels;
 
 namespace CognitiveLocator.Views
 {
@@ -19,7 +15,7 @@ namespace CognitiveLocator.Views
         public SearchPersonView(string type)
         {
             InitializeComponent();
-            BindingContext = new SearchPersonViewModel(){ SearchType = type };
+            BindingContext = new SearchPersonViewModel() { SearchType = type };
             ChangeType(type);
             Analytics.TrackEvent("View: Search Person");
 

@@ -88,7 +88,6 @@ namespace CognitiveLocator.Droid.Services
                 using (CryptoStream cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read))
                 using (StreamReader streamReader = new StreamReader(cryptoStream))
                     plaintext = streamReader.ReadToEnd();
-
             }
             return plaintext;
         }

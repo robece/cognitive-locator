@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using CognitiveLocator.ViewModels;
-using Xamarin.Forms;
+﻿using CognitiveLocator.ViewModels;
 
 namespace CognitiveLocator.Views
 {

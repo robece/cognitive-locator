@@ -31,7 +31,7 @@
                    Text="¡Puedes estar cambiando la vida de una familia!" />
             <Button Grid.Row="4"
                     Command="{Binding HomeCommand}"
-                    Text="Inicio" />  
+                    Text="Inicio" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
