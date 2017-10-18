@@ -1,4 +1,5 @@
 ﻿using CognitiveLocator.ViewModels;
+using Microsoft.Azure.Mobile.Analytics;
 
 namespace CognitiveLocator.Views
 {

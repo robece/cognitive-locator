@@ -1,6 +1,7 @@
 ﻿using DevKit.Xamarin.ImageKit;
 using System;
 using System.Threading.Tasks;
+using Plugin.Media;
 
 namespace CognitiveLocator.Helpers
 {

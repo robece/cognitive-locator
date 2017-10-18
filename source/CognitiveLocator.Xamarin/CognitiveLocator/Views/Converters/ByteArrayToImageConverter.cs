@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.IO;
+using Xamarin.Forms;
 
 namespace CognitiveLocator.Views.Converters
 {

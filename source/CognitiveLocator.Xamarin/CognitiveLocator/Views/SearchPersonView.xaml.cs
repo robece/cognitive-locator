@@ -1,4 +1,6 @@
 ﻿using CognitiveLocator.ViewModels;
+using Microsoft.Azure.Mobile.Analytics;
+using Xamarin.Forms;
 
 namespace CognitiveLocator.Views
 {

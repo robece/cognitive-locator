@@ -1,4 +1,7 @@
-﻿namespace CognitiveLocator.Views
+﻿using Microsoft.Azure.Mobile.Analytics;
+using Xamarin.Forms;
+
+namespace CognitiveLocator.Views
 {
     public partial class CreateReportView : BaseView
     {
