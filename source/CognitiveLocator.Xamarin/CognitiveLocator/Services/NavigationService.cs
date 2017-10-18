@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using CognitiveLocator.Interfaces;
 using CognitiveLocator.Services;
 using Xamarin.Forms;
 

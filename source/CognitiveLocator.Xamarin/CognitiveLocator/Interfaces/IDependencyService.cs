@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace CognitiveLocator.Services
+namespace CognitiveLocator.Interfaces
 {
     public interface IDependencyService
     {

@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using System.Windows.Input;
-using CognitiveLocator.Models;
+using CognitiveLocator.Domain;
+using CognitiveLocator.Interfaces;
 using CognitiveLocator.Services;
 using CognitiveLocator.Views;
 using Xamarin.Forms;

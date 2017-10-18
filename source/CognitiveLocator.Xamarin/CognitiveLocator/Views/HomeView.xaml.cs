@@ -13,7 +13,6 @@ namespace CognitiveLocator.Views
             InitializeComponent();
             BindingContext = new HomeViewModel();
             Analytics.TrackEvent("View: Home");
-            NavigationPage.SetHasNavigationBar(this, false);
         }
     }
 }

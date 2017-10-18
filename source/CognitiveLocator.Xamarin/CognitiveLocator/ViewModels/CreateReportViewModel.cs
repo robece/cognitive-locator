@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using CognitiveLocator.Models;
-using CognitiveLocator.Models.ApiModels;
+using CognitiveLocator.Domain;
+using CognitiveLocator.Helpers;
+using CognitiveLocator.Interfaces;
 using CognitiveLocator.Services;
 using CognitiveLocator.Views;
 using Xamarin.Forms;
@@ -29,11 +30,11 @@ namespace CognitiveLocator.ViewModels
             set { SetProperty(ref name, value); }
         }
 
-        string lastName;
-        public string LastName
+        string lastname;
+        public string Lastname
         {
-            get { return lastName; }
-            set { SetProperty(ref lastName, value); }
+            get { return lastname; }
+            set { SetProperty(ref lastname, value); }
         }
 
         string alias;
@@ -41,13 +42,6 @@ namespace CognitiveLocator.ViewModels
         {
             get { return alias; }
             set { SetProperty(ref alias, value); }
-        }
-
-        DateTime? birthday = null;
-        public DateTime? Birthday
-        {
-            get { return birthday; }
-            set { SetProperty(ref birthday, value); }
         }
 
         string location;
@@ -71,10 +65,7 @@ namespace CognitiveLocator.ViewModels
             set { SetProperty(ref reportedby, value); }
         }
 
-        public CreateReportViewModel() : this(new DependencyServiceBase())
-        {
-
-        }
+        public CreateReportViewModel() : this(new DependencyServiceBase()) { }
 
         public CreateReportViewModel(IDependencyService dependencyService) : base(dependencyService)
         {
@@ -90,7 +81,6 @@ namespace CognitiveLocator.ViewModels
             TakePhotoCommand = new Command(async () => await TakePhoto());
             ChoosePhotoCommand = new Command(async () => await ChoosePhoto());
         }
-
 
         private async Task ChoosePhoto()
         {
@@ -115,23 +105,18 @@ namespace CognitiveLocator.ViewModels
 			else if (!IsBusy)
             {
                 IsBusy = true;
-                //           if(await RestServices.CreateReportAsync(model, Photo))
-                //               await NavigationService.PushAsync(new ReportConfirmationView());
-                //           else
-                //await Application.Current.MainPage.DisplayAlert("Error", "No fue posible registrar el reporte, si el error persiste intenta mas tarde .", "Aceptar");
                 var stream = new System.IO.MemoryStream(Photo);
                 var person = new Person
                 {
                     Name = this.Name,
-                    LastName = this.LastName,
+                    Lastname = this.Lastname,
                     Alias = this.Alias,
-                    BirthDate = this.Birthday.Value,
                     Location = this.Location,
                     Notes = this.Notes,
                     ReportedBy = this.ReportedBy
                 };
 
-                if (await StorageManager.UploadPhoto(stream, person))
+                if (await StorageHelper.UploadPhoto(stream, person))
                 {
                     await NavigationService.PushAsync(new ReportConfirmationView());
                 }
@@ -141,7 +126,6 @@ namespace CognitiveLocator.ViewModels
                 }
 
 				IsBusy = false;
-
             }
         }
 
@@ -159,14 +143,13 @@ namespace CognitiveLocator.ViewModels
             }
         }
 
-        private CreateReportModel ValidateInformation()
+        private Person ValidateInformation()
         {
-            var model = new CreateReportModel()
+            var model = new Person()
             {
                 Name = this.Name,
-                LastName = this.LastName,
+                Lastname = this.Lastname,
                 Alias = this.Alias,
-                BirthDate = this.Birthday,
                 Location = this.Location,
                 Notes = this.Notes,
                 ReportedBy = this.ReportedBy
@@ -176,7 +159,7 @@ namespace CognitiveLocator.ViewModels
                 return null;
             if (String.IsNullOrEmpty(model.Name))
                 return null;
-            if (String.IsNullOrEmpty(model.LastName))
+            if (String.IsNullOrEmpty(model.Lastname))
                 return null;
             if (String.IsNullOrEmpty(model.Location))
 				return null;

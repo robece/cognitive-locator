@@ -6,10 +6,10 @@
                 <TableView.Effects>
                     <effects:NoInteractiveTableViewEffect />
                 </TableView.Effects>
-                <TableSection Title="Foto">
+                <TableSection Title="Fotografía">
                     <ViewCell>
                         <Frame Margin="0,5,0,0" WidthRequest="154" HeightRequest="154" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Black" OutlineColor="Black" Padding="2">
-                            <Image WidthRequest="150" HeightRequest="150" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFill" Source="{Binding CurrentPerson.Picture}" />
+                            <Image WidthRequest="150" HeightRequest="150" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFill" Source="{Binding CurrentPerson.PictureUrl}" />
                         </Frame>
                     </ViewCell>
                 </TableSection>
@@ -18,31 +18,27 @@
                         <StackLayout Margin="40,0,40,0">
                             <StackLayout Orientation="Horizontal">
                                 <Label WidthRequest="80" VerticalOptions="Center" Text="Nombre" />
-                                <Label HorizontalOptions="FillAndExpand" FontSize="18" Text="{Binding CurrentPerson.Name}" />
+                                <Label HorizontalOptions="FillAndExpand" Text="{Binding CurrentPerson.Name}" />
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
                                 <Label WidthRequest="80" VerticalOptions="Center" Text="Apellido" />
-                                <Label HorizontalOptions="FillAndExpand" FontSize="18" Text="{Binding CurrentPerson.LastName}" />
+                                <Label HorizontalOptions="FillAndExpand" Text="{Binding CurrentPerson.Lastname}" />
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
                                 <Label WidthRequest="80" VerticalOptions="Center" Text="Alias" />
-                                <Label HorizontalOptions="FillAndExpand" FontSize="18" Text="{Binding CurrentPerson.Alias}" />
-                            </StackLayout>
-                            <StackLayout Orientation="Horizontal">
-                                <Label WidthRequest="80" VerticalOptions="Center" Text="Fecha de Nacimiento" />
-                                <Label HorizontalOptions="FillAndExpand" FontSize="18" Text="{Binding CurrentPerson.BirthDate, StringFormat='{0:dd/MM/yyyy}'}" />
+                                <Label HorizontalOptions="FillAndExpand" Text="{Binding CurrentPerson.Alias}" />
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
                                 <Label WidthRequest="80" VerticalOptions="Center" Text="Ubicación" />
-                                <Label HorizontalOptions="FillAndExpand" FontSize="18" Text="{Binding CurrentPerson.Location}" />
+                                <Label HorizontalOptions="FillAndExpand" Text="{Binding CurrentPerson.Location}" />
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
                                 <Label WidthRequest="80" VerticalOptions="Center" Text="Notas" />
-                                <Label HorizontalOptions="FillAndExpand" FontSize="18" Text="{Binding CurrentPerson.Notes}" />
+                                <Label HorizontalOptions="FillAndExpand" Text="{Binding CurrentPerson.Notes}" />
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
                                 <Label WidthRequest="80" VerticalOptions="Center" Text="Quién Reporta?" />
-                                <Label HorizontalOptions="FillAndExpand" FontSize="18" Text="{Binding CurrentPerson.ReportedBy}" />
+                                <Label HorizontalOptions="FillAndExpand" Text="{Binding CurrentPerson.ReportedBy}" />
                             </StackLayout>
                         </StackLayout>
                     </ViewCell>

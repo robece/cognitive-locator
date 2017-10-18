@@ -1,4 +1,5 @@
-﻿using CognitiveLocator.Models;
+﻿using CognitiveLocator.Domain;
+using CognitiveLocator.Interfaces;
 using CognitiveLocator.Services;
 
 namespace CognitiveLocator.ViewModels
@@ -16,7 +17,7 @@ namespace CognitiveLocator.ViewModels
 
         public PersonDetailViewModel(Person person) : base(new DependencyServiceBase())
         {
-            Title = "Detalle";
+            Title = "Detalle del reporte";
             CurrentPerson = person;
         }
     }

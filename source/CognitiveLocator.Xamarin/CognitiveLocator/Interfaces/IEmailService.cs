@@ -1,4 +1,4 @@
-﻿namespace CognitiveLocator.Services
+﻿namespace CognitiveLocator.Interfaces
 {
     public interface IEmailService
     {

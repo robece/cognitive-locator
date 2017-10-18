@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using CognitiveLocator.Models;
+using CognitiveLocator.Domain;
 using CognitiveLocator.ViewModels;
 using Microsoft.Azure.Mobile.Analytics;
 using Xamarin.Forms;

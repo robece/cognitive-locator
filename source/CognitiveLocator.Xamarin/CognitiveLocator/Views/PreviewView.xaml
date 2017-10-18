@@ -10,7 +10,7 @@
             <TableView.Effects>
                 <effects:NoInteractiveTableViewEffect />
             </TableView.Effects>
-            <TableSection Title="Foto">
+            <TableSection Title="Fotografía">
                 <ViewCell>
                     <StackLayout>
                         <Label HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" FontSize="14" HorizontalTextAlignment="Center" Text="Es importante que revises la información antes de enviar el reporte." />
@@ -23,34 +23,30 @@
             </TableSection>
             <TableSection Title="Datos de la persona">
                 <ViewCell>
-                    <StackLayout Margin="40,0,40,0">
+                    <StackLayout Margin="40,10,40,0">
                         <StackLayout Orientation="Horizontal">
                             <Label WidthRequest="85" VerticalOptions="Center" Text="Nombre" />
-                            <Label HorizontalOptions="FillAndExpand" FontSize="18" Text="{Binding Name}" />
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding Name}" />
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
                             <Label WidthRequest="85" VerticalOptions="Center" Text="Apellido" />
-                            <Label HorizontalOptions="FillAndExpand" FontSize="18" Text="{Binding LastName}" />
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label WidthRequest="85" VerticalOptions="Center" Text="Fecha de nacimiento" />
-                            <Label HorizontalOptions="FillAndExpand" FontSize="18" Text="{Binding Birthday, StringFormat='{0:d}'}" />
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding Lastname}" />
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
                             <Label WidthRequest="85" VerticalOptions="Center" Text="Ubicación" />
-                            <Label HorizontalOptions="FillAndExpand" FontSize="18" Text="{Binding Location}" />
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding Location}" />
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
                             <Label WidthRequest="85" VerticalOptions="Center" Text="Notas" />
-                            <Label HorizontalOptions="FillAndExpand" FontSize="18" Text="{Binding Notes}" />
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding Notes}" />
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
                             <Label WidthRequest="85" VerticalOptions="Center" Text="Alias" />
-                            <Label HorizontalOptions="FillAndExpand" FontSize="18" Text="{Binding Alias}" />
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding Alias}" />
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
                             <Label WidthRequest="85" VerticalOptions="Center" Text="¿Quién reporta?" />
-                            <Label HorizontalOptions="FillAndExpand" FontSize="18" Text="{Binding ReportedBy}" />
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding ReportedBy}" />
                         </StackLayout>
                         <StackLayout Margin="0,20">
                             <Button HeightRequest="50" BackgroundColor="#048CD6" Command="{Binding SendReportCommand}" FontSize="18" Text="Enviar Reporte" />

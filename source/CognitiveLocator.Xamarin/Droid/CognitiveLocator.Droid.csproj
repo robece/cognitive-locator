@@ -190,6 +190,7 @@
     <Compile Include="Effects\KeyboardReturnEffect.cs" />
     <Compile Include="Services\EmailService.cs" />
     <Compile Include="Renderers\NullableDatePickerRenderer.cs" />
+    <Compile Include="Services\SecurityService.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.png" />
@@ -217,6 +218,7 @@
     <Folder Include="Resources\drawable-xxxhdpi\" />
     <Folder Include="Services\" />
     <Folder Include="Renderers\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CognitiveLocator\CognitiveLocator.csproj">

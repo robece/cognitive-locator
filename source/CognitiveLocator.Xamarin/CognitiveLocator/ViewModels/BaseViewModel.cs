@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using CognitiveLocator.Interfaces;
 using CognitiveLocator.Services;
 
 namespace CognitiveLocator.ViewModels
@@ -11,7 +12,6 @@ namespace CognitiveLocator.ViewModels
     {
         public IDependencyService DependencyService;
         protected readonly INavigationService NavigationService;
-        public IRestServices RestServices;
 
         bool isBusy = false;
         public bool IsBusy
@@ -30,7 +30,6 @@ namespace CognitiveLocator.ViewModels
         public BaseViewModel(IDependencyService dependencyService)
         {
             DependencyService = dependencyService;
-            RestServices = DependencyService.Get<IRestServices>();
             NavigationService = DependencyService.Get<INavigationService>();
         }
 
@@ -47,13 +46,14 @@ namespace CognitiveLocator.ViewModels
             return true;
         }
 
-		public virtual async Task OnViewAppear()
+		public virtual Task OnViewAppear()
 		{
+            return null;
 		}
 
-		public virtual async Task OnViewDissapear()
+		public virtual Task OnViewDissapear()
 		{
-            
+            return null;
 		}
 
         #region INotifyPropertyChanged

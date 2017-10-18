@@ -3,7 +3,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using CognitiveLocator.Models;
+using CognitiveLocator.Domain;
+using CognitiveLocator.Interfaces;
 using CognitiveLocator.Services;
 using CognitiveLocator.Views;
 using Xamarin.Forms;
@@ -100,20 +101,28 @@ namespace CognitiveLocator.ViewModels
 				await NavigationService.PopAsync();
 			}
 			IsBusy = true;
-			var res = new List<Person>();
+			var result = new List<Person>();
 
 			if (!IsByPhoto)
 			{
-				res = await RestServices.SearchByNameAndLastNameAsync(Person);
+                MetadataVerification metadata = new MetadataVerification();
+                metadata.Country = Person.Country;
+                metadata.Name = Person.Name;
+                metadata.Lastname = Person.Lastname;
+                metadata.Location = Person.Location;
+                metadata.Alias = Person.Alias;
+                metadata.ReportedBy = Person.ReportedBy;
+
+                result = await RestServiceV2.MetadataVerification(metadata);
 			}
 			else
 			{
-				var person = await RestServices.SearchPersonByPhotoAsync(Photo);
-				if (person != null)
-					res.Add(person);
+				//var person = await RestServices.SearchPersonByPhotoAsync(Photo);
+				//if (person != null)
+					//res.Add(person);
 			}
 
-			Results = new ObservableCollection<Person>(res);
+            Results = new ObservableCollection<Person>(result);
 
 			if (!Results.Any())
 			{

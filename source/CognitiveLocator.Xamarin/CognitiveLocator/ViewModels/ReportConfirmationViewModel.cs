@@ -1,4 +1,5 @@
-﻿using CognitiveLocator.Services;
+﻿using CognitiveLocator.Interfaces;
+using CognitiveLocator.Services;
 using Xamarin.Forms;
 
 namespace CognitiveLocator.ViewModels
@@ -20,8 +21,7 @@ namespace CognitiveLocator.ViewModels
 		private void InitializeViewModel()
 		{
 			Title = "Gracias";
-            HomeCommand = new Command(async () => await NavigationService.PopToRootAsync());
-			
+            HomeCommand = new Command(async () => await NavigationService.PopToRootAsync());	
 		}
     }
 }

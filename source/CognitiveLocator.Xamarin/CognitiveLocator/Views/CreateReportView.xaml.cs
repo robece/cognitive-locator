@@ -9,7 +9,6 @@ namespace CognitiveLocator.Views
     {
         private int NameRestrictCount = 50;
         private int LastNameRestrictCount = 50;
-        private int AgeRestrictCount = 2;
         private int LocationRestrictCount = 350;
         private int NotesRestrictCount = 500;
         private int AliasRestrictCount = 500;
@@ -22,7 +21,6 @@ namespace CognitiveLocator.Views
 
             this.FindByName<Entry>("name").TextChanged += NameOnTextChanged;
             this.FindByName<Entry>("lastname").TextChanged += LastNameOnTextChanged;
-            //this.FindByName<Entry>("age").TextChanged += AgeOnTextChanged;
             this.FindByName<Entry>("location").TextChanged += LocationOnTextChanged;
             this.FindByName<Entry>("notes").TextChanged += NotesOnTextChanged;
             this.FindByName<Entry>("alias").TextChanged += AliasOnTextChanged;
@@ -39,12 +37,6 @@ namespace CognitiveLocator.Views
         {
             Entry entry = sender as Entry;
             OnTextChanged("lastname", entry.Text, LastNameRestrictCount);
-        }
-
-        private void AgeOnTextChanged(object sender, TextChangedEventArgs e)
-        {
-            Entry entry = sender as Entry;
-            //OnTextChanged("age", entry.Text, AgeRestrictCount);
         }
 
         private void LocationOnTextChanged(object sender, TextChangedEventArgs e)

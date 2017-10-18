@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<views:BaseView x:Class="CognitiveLocator.Views.CreateReportView" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:behaviors="clr-namespace:CognitiveLocator.Views.Behaviors" xmlns:converters="clr-namespace:CognitiveLocator.Views.Converters" xmlns:effects="clr-namespace:CognitiveLocator.Views.Effects" xmlns:viewmodels="clr-namespace:CognitiveLocator.ViewModels" xmlns:views="clr-namespace:CognitiveLocator.Views" Title="{Binding Title}" IsBusy="{Binding IsBusy}" xmlns:controls="clr-namespace:CognitiveLocator.Views.Controls">
+<views:BaseView x:Class="CognitiveLocator.Views.CreateReportView" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:behaviors="clr-namespace:CognitiveLocator.Views.Behaviors" xmlns:converters="clr-namespace:CognitiveLocator.Views.Converters" xmlns:effects="clr-namespace:CognitiveLocator.Views.Effects" xmlns:viewmodels="clr-namespace:CognitiveLocator.ViewModels" xmlns:views="clr-namespace:CognitiveLocator.Views" Title="{Binding Title}" IsBusy="{Binding IsBusy}"
+    xmlns:controls="clr-namespace:CognitiveLocator.Views.Controls">
     <views:BaseView.BindingContext>
         <viewmodels:CreateReportViewModel />
     </views:BaseView.BindingContext>
@@ -19,7 +20,7 @@
                         <Frame Margin="0,5,0,0" WidthRequest="154" HeightRequest="154" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Black" OutlineColor="Black" Padding="2">
                             <Image WidthRequest="150" HeightRequest="150" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFill" Source="{Binding Photo,&#xA;                                                    Converter={StaticResource photoCvt}}" />
                         </Frame>
-                         <Label Margin="5" Text="Importante: En la foto debe verse la cara completa de la persona." HorizontalTextAlignment="Center"/>
+                        <Label Margin="5" Text="Importante: En la foto debe verse la cara completa de la persona." HorizontalTextAlignment="Center" />
                         <ActivityIndicator HorizontalOptions="Center" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
                         <StackLayout Margin="40,0,40,0" VerticalOptions="Center" Orientation="Horizontal">
                             <Button HorizontalOptions="FillAndExpand" Command="{Binding TakePhotoCommand}" FontSize="18" BackgroundColor="#048CD6" HeightRequest="50" Text="Cámara" BorderRadius="15" BorderColor="White" BorderWidth="2" />
@@ -42,15 +43,14 @@
                             </Entry>
                         </StackLayout>
                         <StackLayout Margin="40,10,40,10" Orientation="Horizontal">
-                            <Entry x:Name="lastname" HorizontalOptions="FillAndExpand" Placeholder="Apellido (Dato obligatorio)" Text="{Binding LastName}">
+                            <Entry x:Name="lastname" HorizontalOptions="FillAndExpand" Placeholder="Apellido (Dato obligatorio)" Text="{Binding Lastname}">
                                 <Entry.Effects>
                                     <effects:KeyboardReturnEffect />
                                 </Entry.Effects>
-                
+                                <Entry.Behaviors>
+                                    <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference location}" />
+                                </Entry.Behaviors>
                             </Entry>
-                        </StackLayout>
-                        <StackLayout Margin="40,10,40,10" Orientation="Horizontal">
-                            <controls:NullableDatePicker x:Name="pickerBirthDate" HorizontalOptions="FillAndExpand" Placeholder="Fecha de nacimiento" NullableDate="{Binding Birthday}" />
                         </StackLayout>
                         <StackLayout Margin="40,10,40,10" Orientation="Horizontal">
                             <Entry x:Name="location" HorizontalOptions="FillAndExpand" Placeholder="Ubicación (Dato obligatorio)" Text="{Binding Location}">
@@ -86,7 +86,7 @@
                             <Entry x:Name="alias" HorizontalOptions="FillAndExpand" Placeholder="Alias" Text="{Binding Alias}" />
                         </StackLayout>
                         <StackLayout Margin="40,20,40,20">
-                            <Button Command="{Binding PreviewReportCommand}" Text="Continuar"/>
+                            <Button Command="{Binding PreviewReportCommand}" Text="Continuar" />
                         </StackLayout>
                     </StackLayout>
                 </ViewCell>
