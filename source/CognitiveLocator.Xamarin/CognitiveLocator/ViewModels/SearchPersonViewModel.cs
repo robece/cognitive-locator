@@ -3,6 +3,7 @@ using CognitiveLocator.Interfaces;
 using CognitiveLocator.Views;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace CognitiveLocator.ViewModels
 {

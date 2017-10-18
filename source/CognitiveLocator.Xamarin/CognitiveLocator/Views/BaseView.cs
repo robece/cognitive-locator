@@ -1,4 +1,5 @@
 ﻿using CognitiveLocator.ViewModels;
+using Xamarin.Forms;
 
 namespace CognitiveLocator.Views
 {

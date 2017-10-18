@@ -3,6 +3,7 @@ using CognitiveLocator.Services;
 using CognitiveLocator.Views;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace CognitiveLocator.ViewModels
 {

@@ -4,6 +4,7 @@ using CognitiveLocator.Interfaces;
 using CognitiveLocator.Views;
 using System;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace CognitiveLocator.ViewModels
 {

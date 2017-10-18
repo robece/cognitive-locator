@@ -1,6 +1,7 @@
 ﻿using CognitiveLocator.Interfaces;
 using CognitiveLocator.Services;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 [assembly: Dependency(typeof(NavigationService))]
 

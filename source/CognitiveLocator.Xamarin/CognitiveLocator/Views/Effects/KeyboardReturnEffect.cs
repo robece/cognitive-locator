@@ -1,4 +1,6 @@
-﻿namespace CognitiveLocator.Views.Effects
+﻿using Xamarin.Forms;
+
+namespace CognitiveLocator.Views.Effects
 {
     public class KeyboardReturnEffect : RoutingEffect
     {
