@@ -1,3 +1,4 @@
+using CognitiveLocator.Common;
 using CognitiveLocator.Domain;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
@@ -19,34 +20,43 @@ namespace CognitiveLocator.Functions
 
         [FunctionName(nameof(MetadataVerification))]
         public static async Task<HttpResponseMessage> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "post", Route = "MetadataVerification/")]HttpRequestMessage req, TraceWriter log)
+            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "MetadataVerification/")]HttpRequestMessage req, TraceWriter log)
         {
-            Domain.MetadataVerification metadata = await req.Content.ReadAsAsync<Domain.MetadataVerification>();
+            Domain.MetadataVerificationRequest request = await req.Content.ReadAsAsync<Domain.MetadataVerificationRequest>();
 
-            if (metadata == null)
+            var decrypted_token = CryptoManager.Decrypt(request.Token, Settings.CryptographyKey);
+
+            byte[] data = Convert.FromBase64String(decrypted_token);
+            DateTime when = DateTime.FromBinary(BitConverter.ToInt64(data, 0));
+            if (when < DateTime.UtcNow.AddMinutes(-5))
+            {
+                return req.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            
+            if (request.Metadata == null)
             {
                 return req.CreateResponse(HttpStatusCode.BadRequest, "Metadata is required to perform the search");
             }
 
             string query_attributes = string.Empty;
 
-            if (!string.IsNullOrEmpty(metadata.Country))
-                query_attributes += $"CONTAINS(UPPER(p.country), UPPER('{metadata.Country}')) AND ";
+            if (!string.IsNullOrEmpty(request.Metadata.Country))
+                query_attributes += $"CONTAINS(UPPER(p.country), UPPER('{request.Metadata.Country}')) AND ";
 
-            if (!string.IsNullOrEmpty(metadata.Name))
-                query_attributes += $"CONTAINS(UPPER(p.name), UPPER('{metadata.Name}')) AND ";
+            if (!string.IsNullOrEmpty(request.Metadata.Name))
+                query_attributes += $"CONTAINS(UPPER(p.name), UPPER('{request.Metadata.Name}')) AND ";
 
-            if (!string.IsNullOrEmpty(metadata.Lastname))
-                query_attributes += $"CONTAINS(UPPER(p.lastname), UPPER('{metadata.Lastname}')) AND ";
+            if (!string.IsNullOrEmpty(request.Metadata.Lastname))
+                query_attributes += $"CONTAINS(UPPER(p.lastname), UPPER('{request.Metadata.Lastname}')) AND ";
 
-            if (!string.IsNullOrEmpty(metadata.Location))
-                query_attributes += $"CONTAINS(UPPER(p.location), UPPER('{metadata.Location}')) AND ";
+            if (!string.IsNullOrEmpty(request.Metadata.Location))
+                query_attributes += $"CONTAINS(UPPER(p.location), UPPER('{request.Metadata.Location}')) AND ";
 
-            if (!string.IsNullOrEmpty(metadata.Alias))
-                query_attributes += $"CONTAINS(UPPER(p.alias), UPPER('{metadata.Alias}')) AND ";
+            if (!string.IsNullOrEmpty(request.Metadata.Alias))
+                query_attributes += $"CONTAINS(UPPER(p.alias), UPPER('{request.Metadata.Alias}')) AND ";
 
-            if (!string.IsNullOrEmpty(metadata.ReportedBy))
-                query_attributes += $"CONTAINS(UPPER(p.reported_by), UPPER('{metadata.ReportedBy}')) AND ";
+            if (!string.IsNullOrEmpty(request.Metadata.ReportedBy))
+                query_attributes += $"CONTAINS(UPPER(p.reported_by), UPPER('{request.Metadata.ReportedBy}')) AND ";
 
             if (query_attributes.Length > 0)
                 query_attributes = query_attributes.Remove(query_attributes.Length - 4);
