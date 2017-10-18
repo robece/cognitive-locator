@@ -1,6 +1,6 @@
 ﻿namespace CognitiveLocator.Domain
 {
-    public class AccessStorageToken
+    public class BaseRequest
     {
         public string Token { get; set; }
     }

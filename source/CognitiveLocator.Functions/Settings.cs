@@ -23,6 +23,11 @@ namespace CognitiveLocator.Functions
         public static string NotificationAccessSignature = Environment.GetEnvironmentVariable("NotificationHub_Access_Signature");
         public static string NotificationHubName = Environment.GetEnvironmentVariable("NotificationHub_Name");
         
-         public static string CryptographyKey = Environment.GetEnvironmentVariable("Cryptography_Key");
+        public static string CryptographyKey = Environment.GetEnvironmentVariable("Cryptography_Key");
+
+        public static string MobileCenterID_Android = Environment.GetEnvironmentVariable("MobileCenterID_Android");
+        public static string MobileCenterID_iOS = Environment.GetEnvironmentVariable("MobileCenterID_iOS");
+
+        public static string ImageStorageUrl = Environment.GetEnvironmentVariable("ImageStorageUrl");
     }
 }

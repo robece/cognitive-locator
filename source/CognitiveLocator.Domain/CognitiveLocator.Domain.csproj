@@ -35,15 +35,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AccessStorageKey.cs" />
-    <Compile Include="AddFaceToList.cs" />
-    <Compile Include="AddPersonFace.cs" />
-    <Compile Include="CreatePerson.cs" />
-    <Compile Include="DeviceRegistration.cs" />
-    <Compile Include="FindSimilar.cs" />
-    <Compile Include="MetadataVerification.cs" />
-    <Compile Include="Person.cs" />
-    <Compile Include="PersonInGroupOfPerson.cs" />
+    <Compile Include="Request\BaseRequest.cs" />
+    <Compile Include="FaceAPI\AddFaceToList.cs" />
+    <Compile Include="FaceAPI\AddPersonFace.cs" />
+    <Compile Include="FaceAPI\CreatePerson.cs" />
+    <Compile Include="Notifications\DeviceRegistration.cs" />
+    <Compile Include="FaceAPI\FindSimilar.cs" />
+    <Compile Include="Documents\MetadataVerification.cs" />
+    <Compile Include="Request\MetadataVerificationRequest.cs" />
+    <Compile Include="Request\MobileSettingsRequest.cs" />
+    <Compile Include="Documents\Person.cs" />
+    <Compile Include="FaceAPI\PersonInGroupOfPerson.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
