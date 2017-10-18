@@ -87,9 +87,6 @@
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="Plugin.Media.Abstractions">
-      <HintPath>..\..\Solutions\packages\Xam.Plugin.Media.3.0.1\lib\Xamarin.iOS10\Plugin.Media.Abstractions.dll</HintPath>
-    </Reference>
     <Reference Include="Plugin.Media">
       <HintPath>..\..\Solutions\packages\Xam.Plugin.Media.3.0.1\lib\Xamarin.iOS10\Plugin.Media.dll</HintPath>
     </Reference>
@@ -101,9 +98,6 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.IO.Compression" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\Solutions\packages\Newtonsoft.Json.10.0.3\lib\netstandard1.3\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Azure.Mobile">
       <HintPath>..\..\Solutions\packages\Microsoft.Azure.Mobile.0.15.2\lib\Xamarin.iOS10\Microsoft.Azure.Mobile.dll</HintPath>
     </Reference>
@@ -141,11 +135,17 @@
     <Reference Include="Microsoft.Data.Edm">
       <HintPath>..\..\Solutions\packages\Microsoft.Data.Edm.5.8.3\lib\netstandard1.1\Microsoft.Data.Edm.dll</HintPath>
     </Reference>
-    <Reference Include="System.Spatial">
-      <HintPath>..\..\Solutions\packages\System.Spatial.5.8.3\lib\netstandard1.1\System.Spatial.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Data.OData">
       <HintPath>..\..\Solutions\packages\Microsoft.Data.OData.5.8.3\lib\netstandard1.1\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Media.Abstractions">
+      <HintPath>..\..\Solutions\packages\Xam.Plugin.Media.3.0.1\lib\Xamarin.iOS10\Plugin.Media.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\Solutions\packages\Newtonsoft.Json.10.0.3\lib\netstandard1.3\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Spatial">
+      <HintPath>..\..\Solutions\packages\System.Spatial.5.8.3\lib\netstandard1.1\System.Spatial.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -222,6 +222,7 @@
     <Compile Include="Effects\KeyboardReturnEffect.cs" />
     <Compile Include="Services\EmailService.cs" />
     <Compile Include="Renderers\NullableDatePickerRenderer.cs" />
+    <Compile Include="Services\SecurityService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />

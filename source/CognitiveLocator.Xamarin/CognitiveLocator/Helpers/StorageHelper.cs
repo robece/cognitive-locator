@@ -1,36 +1,14 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
-using CognitiveLocator.Models;
+using CognitiveLocator.Domain;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 
-namespace CognitiveLocator.Services
+namespace CognitiveLocator.Helpers
 {
-    public class StorageManager
+    public class StorageHelper
     {
-
-        public static async Task PerformBlobOperation()
-        {
-            // Retrieve storage account from connection string.
-            CloudStorageAccount storageAccount = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=your_account_name_here;AccountKey=your_account_key_here");
-
-            // Create the blob client.
-            CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-
-            // Retrieve reference to a previously created container.
-            CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
-
-            // Create the container if it doesn't already exist.
-            await container.CreateIfNotExistsAsync();
-
-            // Retrieve reference to a blob named "myblob".
-            CloudBlockBlob blockBlob = container.GetBlockBlobReference("myblob");
-
-            // Create the "myblob" blob with the text "Hello, world!"
-            await blockBlob.UploadTextAsync("Hello, world!");
-        }
-
         public static async Task<bool> UploadPhoto(Stream stream, Person person, bool IsVerification = false)
         {
             var upload = await UploadPhoto(stream, $"{Guid.NewGuid().ToString()}.jpg", person, IsVerification);
@@ -41,7 +19,7 @@ namespace CognitiveLocator.Services
         public static async Task<string> UploadPhoto(Stream stream, string fileName, Person person, bool IsVerification)
         {
             var container = IsVerification ? "verification" : "images";
-            var connectionString = "__CN__";
+            var connectionString = Settings.AzureWebJobsStorage;
 
             return await UpoloadFileAsync(stream, fileName, person, container, connectionString);
         }
@@ -88,7 +66,6 @@ namespace CognitiveLocator.Services
 
             blockBlob.Properties.ContentType = "image/jpeg";
             await blockBlob.UploadFromStreamAsync(stream);
-
 
             return blockBlob.Uri.ToString();
         }

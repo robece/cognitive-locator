@@ -1,4 +1,5 @@
-﻿using CognitiveLocator.Services;
+﻿using CognitiveLocator.Interfaces;
+using CognitiveLocator.Services;
 using Xamarin.Forms;
 
 namespace CognitiveLocator.ViewModels

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace CognitiveLocator.Services
+namespace CognitiveLocator.Interfaces
 {
     public interface INavigationService
     {
