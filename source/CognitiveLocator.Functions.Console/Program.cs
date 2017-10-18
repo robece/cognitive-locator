@@ -89,6 +89,7 @@ namespace CognitiveLocator.Functions.Console
                         string fresult = await RequestMobileSettings(currentToken);
                         System.Console.ReadKey();
                         break;
+
                     case "7":
                         MetadataVerification metadata = new MetadataVerification();
                         metadata.Name = "Ro";
