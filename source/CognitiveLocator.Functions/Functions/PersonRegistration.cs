@@ -23,9 +23,9 @@ namespace CognitiveLocator.Functions
         {
             //determine if image has a face
             List<JObject> list = await client_face.DetectFaces(blob.Uri.AbsoluteUri);
-            
-            //validate image extension 
-            if(extension != "jpg")
+
+            //validate image extension
+            if (extension != "jpg")
             {
                 log.Info($"no valid extension for: {name}.{extension}");
                 await blob.DeleteAsync();
@@ -47,7 +47,7 @@ namespace CognitiveLocator.Functions
                 await blob.DeleteAsync();
                 return;
             }
-            
+
             try
             {
                 //register person in Face API
@@ -82,7 +82,7 @@ namespace CognitiveLocator.Functions
                 log.Info($"Error in file: {name}.{extension} - {ex.Message}");
                 return;
             }
-            
+
             log.Info("person registered successfully");
         }
     }

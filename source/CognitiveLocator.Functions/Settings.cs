@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CognitiveLocator.Functions
 {
@@ -22,7 +18,7 @@ namespace CognitiveLocator.Functions
 
         public static string NotificationAccessSignature = Environment.GetEnvironmentVariable("NotificationHub_Access_Signature");
         public static string NotificationHubName = Environment.GetEnvironmentVariable("NotificationHub_Name");
-        
+
         public static string CryptographyKey = Environment.GetEnvironmentVariable("Cryptography_Key");
 
         public static string MobileCenterID_Android = Environment.GetEnvironmentVariable("MobileCenterID_Android");

@@ -25,7 +25,7 @@ namespace CognitiveLocator.Functions
             //determine if image has a face
             List<JObject> list = await client_face.DetectFaces(blob.Uri.AbsoluteUri);
 
-            //validate image extension 
+            //validate image extension
             if (extension != "jpg")
             {
                 log.Info($"no valid extension for: {name}.{extension}");
