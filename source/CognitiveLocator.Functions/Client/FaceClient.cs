@@ -13,18 +13,10 @@ namespace CognitiveLocator.Functions.Client
 {
     public class FaceClient
     {
-        public FaceClient(FaceAPIConfiguration configuration)
-        {
-            this.FaceAPIKey = configuration.FaceAPIKey;
-            this.PersonGroupId = configuration.PersonGroupId;
-            this.Zone = configuration.Zone;
-            this.FaceListId = configuration.FaceListId;
-        }
-
-        private string FaceAPIKey = string.Empty;
-        private string PersonGroupId = string.Empty;
-        private string Zone = string.Empty;
-        private string FaceListId = string.Empty;
+        private string FaceAPIKey = Settings.FaceAPIKey;
+        private string PersonGroupId = Settings.PersonGroupId;
+        private string Zone = Settings.Zone;
+        private string FaceListId = Settings.FaceListId;
 
         public async Task<CreatePerson> AddPersonToGroup(String personName)
         {

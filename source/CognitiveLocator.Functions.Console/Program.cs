@@ -1,14 +1,15 @@
 ﻿using CognitiveLocator.Common;
+using CognitiveLocator.Domain;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using Newtonsoft.Json;
 using System;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,6 +17,9 @@ namespace CognitiveLocator.Functions.Console
 {
     public class Program
     {
+        private static string azureWebJobsStorage = "";
+        private static string cryptographyKey = "";
+
         private static void Main(string[] args)
         {
             PrintMenu();
@@ -28,15 +32,31 @@ namespace CognitiveLocator.Functions.Console
             {
                 option = string.Empty;
                 System.Console.Clear();
-                System.Console.WriteLine("1.- Upload a person image");
-                System.Console.WriteLine("2.- Upload a verification person image");
-                System.Console.WriteLine("3.- Upload a wrong person image");
-                System.Console.WriteLine("4.- Upload a multiple face image");
-                System.Console.WriteLine("5.- Request a new token to get current storage access key");
-                System.Console.WriteLine("6.- Request using an existing token to get current storage access key");
-                System.Console.WriteLine("7.- Exit");
 
-                System.Console.Write("\nPick an option:");
+                int r = 225;
+                int g = 255;
+                int b = 250;
+
+                Colorful.Console.WriteAscii("COGNITIVE LOCATOR", Color.FromArgb(r, g, b));
+
+                Colorful.Console.WriteLine("1.- Register person", Color.FromArgb(r, g, b));
+                r -= 18; b -= 9;
+                Colorful.Console.WriteLine("2.- Verificate person", Color.FromArgb(r, g, b));
+                r -= 18; b -= 9;
+                Colorful.Console.WriteLine("3.- Upload wrong person image", Color.FromArgb(r, g, b));
+                r -= 18; b -= 9;
+                Colorful.Console.WriteLine("4.- Upload multiple face image", Color.FromArgb(r, g, b));
+                r -= 18; b -= 9;
+                Colorful.Console.WriteLine("5.- Request new token to get current storage access key", Color.FromArgb(r, g, b));
+                r -= 18; b -= 9;
+                Colorful.Console.WriteLine("6.- Request using an existing token to get current storage access key", Color.FromArgb(r, g, b));
+                r -= 18; b -= 9;
+                Colorful.Console.WriteLine("7.- Search document by metadata attribute", Color.FromArgb(r, g, b));
+                r -= 18; b -= 9;
+                Colorful.Console.WriteLine("8.- Exit", Color.FromArgb(r, g, b));
+                r -= 18; b -= 9;
+
+                Colorful.Console.Write("\nPick an option:", Color.FromArgb(r, g, b));
                 option = System.Console.ReadLine();
 
                 switch (option)
@@ -69,11 +89,45 @@ namespace CognitiveLocator.Functions.Console
                         string fresult = await RequestStorageToken(currentToken);
                         System.Console.ReadKey();
                         break;
+                    case "7":
+                        MetadataVerification metadata = new MetadataVerification();
+                        metadata.Name = "Ro";
+                        metadata.Country = "MEX";
+                        string sdresult = await SearchDocument(metadata);
+                        System.Console.WriteLine(sdresult);
+                        System.Console.ReadKey();
+                        break;
                 }
             }
-            while (option != "7");
+            while (option != "8");
         }
-        
+
+        public static async Task<string> SearchDocument(MetadataVerification metadata)
+        {
+            using (var client = new HttpClient())
+            {
+                var service = $"http://localhost:7071/api/MetadataVerification/";
+                byte[] byteData = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(metadata));
+                using (var content = new ByteArrayContent(byteData))
+                {
+                    content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                    var httpResponse = client.PostAsync(service, content).Result;
+
+                    if (httpResponse.StatusCode == HttpStatusCode.OK)
+                    {
+                        System.Console.WriteLine(httpResponse.StatusCode);
+                        return await httpResponse.Content.ReadAsStringAsync();
+                    }
+                    else
+                    {
+                        System.Console.WriteLine(httpResponse.StatusCode);
+                    }
+                }
+            }
+            return null;
+        }
+
         public static async Task<string> RequestStorageToken(string existingToken)
         {
             string token = string.Empty;
@@ -83,7 +137,7 @@ namespace CognitiveLocator.Functions.Console
                 byte[] time = BitConverter.GetBytes(DateTime.UtcNow.ToBinary());
                 byte[] key = Guid.NewGuid().ToByteArray();
                 token = Convert.ToBase64String(time.Concat(key).ToArray());
-                token = CryptoManager.Encrypt(token, "__KEY__");
+                token = CryptoManager.Encrypt(token, cryptographyKey);
                 System.Console.WriteLine($"Token: {token}");
             }
             else
@@ -143,7 +197,7 @@ namespace CognitiveLocator.Functions.Console
         private static async Task<string> UploadPhotoAsync(Stream fileStream, string fileName, bool isVerification)
         {
             string container = (isVerification) ? "verification" : "images";
-            string connectionString = "__CONNECTION STRING__";
+            string connectionString = azureWebJobsStorage;
             var blobUri = await UploadFileAsync(fileStream, fileName, container, connectionString);
             return blobUri;
         }
