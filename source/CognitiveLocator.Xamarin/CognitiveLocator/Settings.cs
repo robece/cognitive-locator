@@ -1,5 +1,4 @@
-﻿using System;
-namespace CognitiveLocator
+﻿namespace CognitiveLocator
 {
     public class Settings
     {
@@ -21,6 +20,5 @@ namespace CognitiveLocator
 #else
         public const string FunctionURL = "https://cognitivelocatorfuncdev.azurewebsites.net/";
 #endif
-
     }
 }

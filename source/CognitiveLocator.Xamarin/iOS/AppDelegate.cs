@@ -1,7 +1,4 @@
 ﻿using Foundation;
-using Microsoft.Azure.Mobile;
-using Microsoft.Azure.Mobile.Analytics;
-using System;
 using UIKit;
 
 namespace CognitiveLocator.iOS
@@ -13,11 +10,11 @@ namespace CognitiveLocator.iOS
         {
             //Telemetry on Mobile Center.
             MobileCenter.Start(Settings.MobileCenterID_iOS, typeof(Analytics));
-            
+
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
-        }       
+        }
     }
 }

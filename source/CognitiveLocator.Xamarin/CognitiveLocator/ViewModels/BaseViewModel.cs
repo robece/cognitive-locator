@@ -1,10 +1,9 @@
-﻿using System;
+﻿using CognitiveLocator.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
-using CognitiveLocator.Interfaces;
-using CognitiveLocator.Services;
 
 namespace CognitiveLocator.ViewModels
 {
@@ -13,14 +12,16 @@ namespace CognitiveLocator.ViewModels
         public IDependencyService DependencyService;
         protected readonly INavigationService NavigationService;
 
-        bool isBusy = false;
+        private bool isBusy = false;
+
         public bool IsBusy
         {
             get { return isBusy; }
             set { SetProperty(ref isBusy, value); }
         }
 
-        string title = string.Empty;
+        private string title = string.Empty;
+
         public string Title
         {
             get { return title; }
@@ -46,18 +47,20 @@ namespace CognitiveLocator.ViewModels
             return true;
         }
 
-		public virtual Task OnViewAppear()
-		{
+        public virtual Task OnViewAppear()
+        {
             return null;
-		}
+        }
 
-		public virtual Task OnViewDissapear()
-		{
+        public virtual Task OnViewDissapear()
+        {
             return null;
-		}
+        }
 
         #region INotifyPropertyChanged
+
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             var changed = PropertyChanged;
@@ -66,6 +69,7 @@ namespace CognitiveLocator.ViewModels
 
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        #endregion
+
+        #endregion INotifyPropertyChanged
     }
 }

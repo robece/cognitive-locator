@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using Xamarin.Forms;
 
 namespace CognitiveLocator.Interfaces
 {
@@ -7,11 +6,11 @@ namespace CognitiveLocator.Interfaces
     {
         Task PopAsync();
 
-		Task PopModalAsync();
+        Task PopModalAsync();
 
-		Task PushModalAsync(Page page);
+        Task PushModalAsync(Page page);
 
-		Task PopToRootAsync();
+        Task PopToRootAsync();
 
         Task PushAsync(Page page);
     }

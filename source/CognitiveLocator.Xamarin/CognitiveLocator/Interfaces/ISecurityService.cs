@@ -1,5 +1,4 @@
-﻿using System;
-namespace CognitiveLocator.Interfaces
+﻿namespace CognitiveLocator.Interfaces
 {
     public interface ISecurityService
     {

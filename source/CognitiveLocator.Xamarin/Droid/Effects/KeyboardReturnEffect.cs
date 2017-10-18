@@ -8,17 +8,16 @@ namespace CognitiveLocator.Droid.Effects
 {
     public class KeyboardReturnEffect : PlatformEffect
     {
-		protected override void OnAttached()
-		{
-			if (Control == null)
-				return;
+        protected override void OnAttached()
+        {
+            if (Control == null)
+                return;
 
-           // var editText = Control as Android.Widget.EditText;
-           
-		}
+            // var editText = Control as Android.Widget.EditText;
+        }
 
-		protected override void OnDetached()
-		{
-		}
+        protected override void OnDetached()
+        {
+        }
     }
 }

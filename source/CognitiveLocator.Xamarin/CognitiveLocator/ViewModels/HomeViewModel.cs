@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using CognitiveLocator.Interfaces;
+﻿using CognitiveLocator.Interfaces;
 using CognitiveLocator.Services;
 using CognitiveLocator.Views;
-using Xamarin.Forms;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CognitiveLocator.ViewModels
 {
@@ -15,7 +14,9 @@ namespace CognitiveLocator.ViewModels
         public Command AboutCommand { get; set; }
         public Command NavigateToResultsCommand { get; set; }
 
-        public HomeViewModel() : this(new DependencyServiceBase()) { }
+        public HomeViewModel() : this(new DependencyServiceBase())
+        {
+        }
 
         public HomeViewModel(IDependencyService dependencyService) : base(dependencyService)
         {
@@ -32,13 +33,15 @@ namespace CognitiveLocator.ViewModels
             AboutCommand = new Command(async () => await GoToAbout());
 
             this.IsBusy = true;
-            Task.Run(async()=>{
+            Task.Run(async () =>
+            {
                 Dictionary<string, string> result = await RestServiceV2.GetMobileSettings();
                 Settings.MobileCenterID_Android = result[nameof(Settings.MobileCenterID_Android)];
                 Settings.MobileCenterID_iOS = result[nameof(Settings.MobileCenterID_iOS)];
                 Settings.AzureWebJobsStorage = result[nameof(Settings.AzureWebJobsStorage)];
                 Settings.ImageStorageUrl = result[nameof(Settings.ImageStorageUrl)];
-            }).ContinueWith((b)=>{
+            }).ContinueWith((b) =>
+            {
                 this.IsBusy = false;
             });
         }

@@ -1,19 +1,21 @@
 ﻿using CognitiveLocator.Domain;
 using CognitiveLocator.Interfaces;
-using CognitiveLocator.Services;
 
 namespace CognitiveLocator.ViewModels
 {
     public class PersonDetailViewModel : BaseViewModel
     {
         #region Properties
-        Person _currentPerson;
+
+        private Person _currentPerson;
+
         public Person CurrentPerson
         {
             get { return _currentPerson; }
             set { SetProperty(ref _currentPerson, value); }
         }
-        #endregion
+
+        #endregion Properties
 
         public PersonDetailViewModel(Person person) : base(new DependencyServiceBase())
         {

@@ -1,11 +1,9 @@
-﻿using System;
-using System.Threading.Tasks;
-using CognitiveLocator.Domain;
+﻿using CognitiveLocator.Domain;
 using CognitiveLocator.Helpers;
 using CognitiveLocator.Interfaces;
-using CognitiveLocator.Services;
 using CognitiveLocator.Views;
-using Xamarin.Forms;
+using System;
+using System.Threading.Tasks;
 
 namespace CognitiveLocator.ViewModels
 {
@@ -16,56 +14,65 @@ namespace CognitiveLocator.ViewModels
         public Command ChoosePhotoCommand { get; set; }
         public Command PreviewReportCommand { get; set; }
 
-        byte[] photo;
+        private byte[] photo;
+
         public byte[] Photo
         {
             get { return photo; }
             set { SetProperty(ref photo, value); }
         }
 
-        string name;
+        private string name;
+
         public string Name
         {
             get { return name; }
             set { SetProperty(ref name, value); }
         }
 
-        string lastname;
+        private string lastname;
+
         public string Lastname
         {
             get { return lastname; }
             set { SetProperty(ref lastname, value); }
         }
 
-        string alias;
+        private string alias;
+
         public string Alias
         {
             get { return alias; }
             set { SetProperty(ref alias, value); }
         }
 
-        string location;
+        private string location;
+
         public string Location
         {
             get { return location; }
             set { SetProperty(ref location, value); }
         }
 
-        string notes;
+        private string notes;
+
         public string Notes
         {
             get { return notes; }
             set { SetProperty(ref notes, value); }
         }
 
-        string reportedby;
+        private string reportedby;
+
         public string ReportedBy
         {
             get { return reportedby; }
             set { SetProperty(ref reportedby, value); }
         }
 
-        public CreateReportViewModel() : this(new DependencyServiceBase()) { }
+        public CreateReportViewModel() : this(new DependencyServiceBase())
+        {
+        }
 
         public CreateReportViewModel(IDependencyService dependencyService) : base(dependencyService)
         {
@@ -100,9 +107,9 @@ namespace CognitiveLocator.ViewModels
                 return;
 
             var model = ValidateInformation();
-			if (!Plugin.Connectivity.CrossConnectivity.Current.IsConnected)
-				await Application.Current.MainPage.DisplayAlert("Error", "Es necesario tener conexión a internet para continuar.", "Aceptar");
-			else if (!IsBusy)
+            if (!Plugin.Connectivity.CrossConnectivity.Current.IsConnected)
+                await Application.Current.MainPage.DisplayAlert("Error", "Es necesario tener conexión a internet para continuar.", "Aceptar");
+            else if (!IsBusy)
             {
                 IsBusy = true;
                 var stream = new System.IO.MemoryStream(Photo);
@@ -125,17 +132,17 @@ namespace CognitiveLocator.ViewModels
                     await Application.Current.MainPage.DisplayAlert("Error", "No fue posible registrar el reporte, si el error persiste intenta mas tarde .", "Aceptar");
                 }
 
-				IsBusy = false;
+                IsBusy = false;
             }
         }
 
         private async Task PreviewReport()
         {
-			var model = ValidateInformation();
+            var model = ValidateInformation();
 
-			if (model == null)
-				await Application.Current.MainPage.DisplayAlert("Error", "Por favor ingrese todo los datos obligatorios.", "Aceptar");
-			else if (!IsBusy)
+            if (model == null)
+                await Application.Current.MainPage.DisplayAlert("Error", "Por favor ingrese todo los datos obligatorios.", "Aceptar");
+            else if (!IsBusy)
             {
                 IsBusy = true;
                 await NavigationService.PushAsync(new PreviewView(this));
@@ -162,10 +169,10 @@ namespace CognitiveLocator.ViewModels
             if (String.IsNullOrEmpty(model.Lastname))
                 return null;
             if (String.IsNullOrEmpty(model.Location))
-				return null;
+                return null;
             if (String.IsNullOrEmpty(model.ReportedBy))
                 return null;
-            
+
             return model;
         }
     }

@@ -1,6 +1,4 @@
 ﻿using CognitiveLocator.Interfaces;
-using CognitiveLocator.Services;
-using Xamarin.Forms;
 
 namespace CognitiveLocator.ViewModels
 {
@@ -8,16 +6,15 @@ namespace CognitiveLocator.ViewModels
     {
         public Command SendFeedbackCommand { get; set; }
 
-		public AboutViewModel() : this(new DependencyServiceBase())
+        public AboutViewModel() : this(new DependencyServiceBase())
         {
+        }
 
-		}
-
-		public AboutViewModel(IDependencyService dependencyService) : base(dependencyService)
+        public AboutViewModel(IDependencyService dependencyService) : base(dependencyService)
         {
-			DependencyService = dependencyService;
-			InitializeViewModel();
-		}
+            DependencyService = dependencyService;
+            InitializeViewModel();
+        }
 
         private void InitializeViewModel()
         {

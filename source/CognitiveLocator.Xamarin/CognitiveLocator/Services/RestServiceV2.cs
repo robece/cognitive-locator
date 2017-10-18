@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CognitiveLocator.Domain;
+using CognitiveLocator.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -6,10 +8,6 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-using CognitiveLocator.Domain;
-using CognitiveLocator.Interfaces;
-using Newtonsoft.Json;
-using Xamarin.Forms;
 
 namespace CognitiveLocator.Services
 {
@@ -33,7 +31,7 @@ namespace CognitiveLocator.Services
                     var httpResponse = await client.PostAsync(service, content);
 
                     if (httpResponse.StatusCode == HttpStatusCode.OK)
-                    {  
+                    {
                         Dictionary<string, string> result = JsonConvert.DeserializeObject<Dictionary<string, string>>(await httpResponse.Content.ReadAsStringAsync());
                         return result;
                     }

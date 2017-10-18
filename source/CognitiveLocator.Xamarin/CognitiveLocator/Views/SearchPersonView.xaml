@@ -16,25 +16,25 @@
                         <Frame Margin="0,5,0,0" WidthRequest="154" HeightRequest="154" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Black" OutlineColor="Black" Padding="2">
                             <Image WidthRequest="150" HeightRequest="150" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFill" Source="{Binding Photo,&#xA;                                                    Converter={StaticResource photoCvt}}" />
                         </Frame>
-                        <Label Margin="5" Text="Importante: En la foto debe verse la cara completa de la persona." HorizontalTextAlignment="Center"/>
+                        <Label Margin="5" Text="Importante: En la foto debe verse la cara completa de la persona." HorizontalTextAlignment="Center" />
                         <ActivityIndicator HorizontalOptions="Center" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
                         <StackLayout Margin="20,0,20,0" VerticalOptions="Center" Orientation="Horizontal">
                             <Button HeightRequest="50"
                                 HorizontalOptions="FillAndExpand"
                                 Command="{Binding TakePhotoCommand}"
 
-                                Text="Cámara"/>
+                                Text="Cámara" />
                             <Button HeightRequest="50"
                                 HorizontalOptions="FillAndExpand"
                                 Command="{Binding ChoosePhotoCommand}"
-                               
-                                Text="Galería"/>
+
+                                Text="Galería" />
                         </StackLayout>
                         <StackLayout Margin="20,0,20,0">
                             <Button HeightRequest="50"
                                 Command="{Binding SearchPersonByPictureCommand}"
 
-                                Text="Buscar"/>
+                                Text="Buscar" />
                         </StackLayout>
                     </StackLayout>
                 </ViewCell>
@@ -60,8 +60,8 @@
                         <StackLayout Margin="40,10,40,10" HeightRequest="50">
                             <Button HeightRequest="50"
                                 Command="{Binding SearchPersonByNameCommand}"
-                             
-                                Text="Buscar"/>
+
+                                Text="Buscar" />
                         </StackLayout>
                     </StackLayout>
                 </ViewCell>
