@@ -47,9 +47,9 @@ namespace CognitiveLocator.Functions.Console
                 r -= 18; b -= 9;
                 Colorful.Console.WriteLine("4.- Upload multiple face image", Color.FromArgb(r, g, b));
                 r -= 18; b -= 9;
-                Colorful.Console.WriteLine("5.- Request new token to get current storage access key", Color.FromArgb(r, g, b));
+                Colorful.Console.WriteLine("5.- Request new token to get mobile settings", Color.FromArgb(r, g, b));
                 r -= 18; b -= 9;
-                Colorful.Console.WriteLine("6.- Request using an existing token to get current storage access key", Color.FromArgb(r, g, b));
+                Colorful.Console.WriteLine("6.- Request using an existing token to get mobile settings", Color.FromArgb(r, g, b));
                 r -= 18; b -= 9;
                 Colorful.Console.WriteLine("7.- Search document by metadata attribute", Color.FromArgb(r, g, b));
                 r -= 18; b -= 9;
@@ -78,7 +78,7 @@ namespace CognitiveLocator.Functions.Console
                         break;
 
                     case "5":
-                        string sresult = await RequestStorageToken(string.Empty);
+                        string sresult = await RequestMobileSettings(string.Empty);
                         System.Console.WriteLine(sresult);
                         System.Console.ReadKey();
                         break;
@@ -86,7 +86,7 @@ namespace CognitiveLocator.Functions.Console
                     case "6":
                         System.Console.Write("\nCurrent token:");
                         string currentToken = System.Console.ReadLine();
-                        string fresult = await RequestStorageToken(currentToken);
+                        string fresult = await RequestMobileSettings(currentToken);
                         System.Console.ReadKey();
                         break;
                     case "7":
@@ -104,10 +104,20 @@ namespace CognitiveLocator.Functions.Console
 
         public static async Task<string> SearchDocument(MetadataVerification metadata)
         {
+            byte[] time = BitConverter.GetBytes(DateTime.UtcNow.ToBinary());
+            byte[] key = Guid.NewGuid().ToByteArray();
+            var token = Convert.ToBase64String(time.Concat(key).ToArray());
+            token = CryptoManager.Encrypt(token, cryptographyKey);
+            System.Console.WriteLine($"Token: {token}");
+
+            MetadataVerificationRequest request = new MetadataVerificationRequest();
+            request.Token = token;
+            request.Metadata = metadata;
+
             using (var client = new HttpClient())
             {
                 var service = $"http://localhost:7071/api/MetadataVerification/";
-                byte[] byteData = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(metadata));
+                byte[] byteData = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(request));
                 using (var content = new ByteArrayContent(byteData))
                 {
                     content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
@@ -128,7 +138,7 @@ namespace CognitiveLocator.Functions.Console
             return null;
         }
 
-        public static async Task<string> RequestStorageToken(string existingToken)
+        public static async Task<string> RequestMobileSettings(string existingToken)
         {
             string token = string.Empty;
 
@@ -145,10 +155,13 @@ namespace CognitiveLocator.Functions.Console
                 token = existingToken;
             }
 
+            MobileSettingsRequest request = new MobileSettingsRequest();
+            request.Token = token;
+
             using (var client = new HttpClient())
             {
-                var service = $"http://localhost:7071/api/StorageAccessKey/";
-                byte[] byteData = Encoding.UTF8.GetBytes("{'Token':'" + token + "'}");
+                var service = $"http://localhost:7071/api/MobileSettings/";
+                byte[] byteData = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(request));
                 using (var content = new ByteArrayContent(byteData))
                 {
                     content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
@@ -158,8 +171,7 @@ namespace CognitiveLocator.Functions.Console
                     if (httpResponse.StatusCode == HttpStatusCode.OK)
                     {
                         System.Console.WriteLine(httpResponse.StatusCode);
-                        string result = JsonConvert.DeserializeObject<string>(await httpResponse.Content.ReadAsStringAsync());
-                        return result;
+                        return await httpResponse.Content.ReadAsStringAsync();
                     }
                     else
                     {
