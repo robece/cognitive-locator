@@ -130,7 +130,7 @@ namespace CognitiveLocator.ViewModels
                 }
                 else
                 {
-                    await Application.Current.MainPage.DisplayAlert("Error", "No fue posible registrar el reporte, si el error persiste intenta mas tarde .", "Aceptar");
+                    await Application.Current.MainPage.DisplayAlert("Error", "No fue posible registrar el reporte, si el error persiste intenta más tarde .", "Aceptar");
                 }
 
                 IsBusy = false;

@@ -34,7 +34,7 @@
                             <Button HeightRequest="50"
                                 Command="{Binding SearchPersonByPictureCommand}"
 
-                                Text="Buscar" />
+                                Text="Encolar una petición" />
                         </StackLayout>
                     </StackLayout>
                 </ViewCell>

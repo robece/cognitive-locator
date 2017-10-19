@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using CognitiveLocator.Helpers;
 
 namespace CognitiveLocator.ViewModels
 {
@@ -127,18 +128,18 @@ namespace CognitiveLocator.ViewModels
             }
             else
             {
-                //var person = await RestServices.SearchPersonByPhotoAsync(Photo);
-                //if (person != null)
-                //res.Add(person);
+                var stream = new System.IO.MemoryStream(Photo);
+
+                if (await StorageHelper.UploadPhoto(stream, null, true))
+                {
+                    await NavigationService.PushAsync(new ReportConfirmationView());
+                }
+                else
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "No fue posible verificar a la persona, si el error persiste intenta más tarde .", "Aceptar");
+                }
             }
 
-            Results = new ObservableCollection<Person>(result);
-
-            if (!Results.Any())
-            {
-                await Application.Current.MainPage.DisplayAlert("Resultados", "No se encontro ninguna coincidencia.", "Aceptar");
-                await NavigationService.PopAsync();
-            }
             IsBusy = false;
         }
 

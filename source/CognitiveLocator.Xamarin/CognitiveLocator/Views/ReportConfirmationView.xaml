@@ -28,7 +28,7 @@
                    VerticalOptions="End"
                    FontSize="18"
                    HorizontalTextAlignment="Center"
-                   Text="¡Puedes estar cambiando la vida de una familia!" />
+                   Text="¡En breve estarás recibiendo una notificación a tu celular!" />
             <Button Grid.Row="4"
                     Command="{Binding HomeCommand}"
                     Text="Inicio" />
