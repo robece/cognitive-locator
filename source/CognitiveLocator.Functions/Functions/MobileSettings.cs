@@ -8,7 +8,7 @@ using Microsoft.Azure.WebJobs.Host;
 using System;
 using System.IO;
 using System.Security.Cryptography;
-using CognitiveLocator.Common;
+using CognitiveLocator.Functions.Helpers;
 using System.Collections.Generic;
 
 namespace CognitiveLocator.Functions
@@ -21,7 +21,7 @@ namespace CognitiveLocator.Functions
         {
             Domain.MobileSettingsRequest request = await req.Content.ReadAsAsync<Domain.MobileSettingsRequest>();
 
-            var decrypted_token = CryptoManager.Decrypt(request.Token, Settings.CryptographyKey);
+            var decrypted_token = SecurityHelper.Decrypt(request.Token, Settings.CryptographyKey);
 
             byte[] data = Convert.FromBase64String(decrypted_token);
             DateTime when = DateTime.FromBinary(BitConverter.ToInt64(data, 0));
