@@ -1,4 +1,4 @@
-using CognitiveLocator.Common;
+using CognitiveLocator.Functions.Helpers;
 using CognitiveLocator.Domain;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
@@ -24,7 +24,7 @@ namespace CognitiveLocator.Functions
         {
             Domain.MetadataVerificationRequest request = await req.Content.ReadAsAsync<Domain.MetadataVerificationRequest>();
 
-            var decrypted_token = CryptoManager.Decrypt(request.Token, Settings.CryptographyKey);
+            var decrypted_token = SecurityHelper.Decrypt(request.Token, Settings.CryptographyKey);
 
             byte[] data = Convert.FromBase64String(decrypted_token);
             DateTime when = DateTime.FromBinary(BitConverter.ToInt64(data, 0));

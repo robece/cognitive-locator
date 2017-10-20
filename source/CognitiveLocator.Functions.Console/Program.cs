@@ -1,4 +1,4 @@
-﻿using CognitiveLocator.Common;
+﻿using CognitiveLocator.Helpers;
 using CognitiveLocator.Domain;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
@@ -17,9 +17,6 @@ namespace CognitiveLocator.Functions.Console
 {
     public class Program
     {
-        private static string azureWebJobsStorage = "";
-        private static string cryptographyKey = "";
-
         private static void Main(string[] args)
         {
             PrintMenu();
@@ -107,7 +104,7 @@ namespace CognitiveLocator.Functions.Console
             byte[] time = BitConverter.GetBytes(DateTime.UtcNow.ToBinary());
             byte[] key = Guid.NewGuid().ToByteArray();
             var token = Convert.ToBase64String(time.Concat(key).ToArray());
-            token = CryptoManager.Encrypt(token, cryptographyKey);
+            token = SecurityHelper.Encrypt(token, Settings.CryptographyKey);
             System.Console.WriteLine($"Token: {token}");
 
             MetadataVerificationRequest request = new MetadataVerificationRequest();
@@ -147,7 +144,7 @@ namespace CognitiveLocator.Functions.Console
                 byte[] time = BitConverter.GetBytes(DateTime.UtcNow.ToBinary());
                 byte[] key = Guid.NewGuid().ToByteArray();
                 token = Convert.ToBase64String(time.Concat(key).ToArray());
-                token = CryptoManager.Encrypt(token, cryptographyKey);
+                token = SecurityHelper.Encrypt(token, Settings.CryptographyKey);
                 System.Console.WriteLine($"Token: {token}");
             }
             else
@@ -209,7 +206,7 @@ namespace CognitiveLocator.Functions.Console
         private static async Task<string> UploadPhotoAsync(Stream fileStream, string fileName, bool isVerification)
         {
             string container = (isVerification) ? "verification" : "images";
-            string connectionString = azureWebJobsStorage;
+            string connectionString = Settings.AzureWebJobsStorage;
             var blobUri = await UploadFileAsync(fileStream, fileName, container, connectionString);
             return blobUri;
         }
