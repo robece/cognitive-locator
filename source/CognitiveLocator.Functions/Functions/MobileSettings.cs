@@ -10,6 +10,8 @@ using System.IO;
 using System.Security.Cryptography;
 using CognitiveLocator.Functions.Helpers;
 using System.Collections.Generic;
+using CognitiveLocator.Domain.Templates;
+using Newtonsoft.Json;
 
 namespace CognitiveLocator.Functions
 {
@@ -36,6 +38,25 @@ namespace CognitiveLocator.Functions
             result.Add(nameof(Settings.MobileCenterID_iOS), Settings.MobileCenterID_iOS);
             result.Add(nameof(Settings.ImageStorageUrl), Settings.ImageStorageUrl);
             return req.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        private static string GenerateRegistrationTemplate()
+        {
+            Registration registration = new Registration();
+            registration.Version = "1.0";
+            Registration.TableSection section1 = new Registration.TableSection();
+            section1.Title = "Custom Section";
+
+            Registration.Label label = new Registration.Label();
+            label.Name = "name";
+            label.Text = "Nombre:";
+            label.Margin = "40,20,40,0";
+            label.FontSize = "Medium";
+            label.TextColor = "Gray";
+            section1.Elements.Add(label);
+
+            registration.Sections.Add(section1);
+            return JsonConvert.SerializeObject(registration);
         }
     }
 }

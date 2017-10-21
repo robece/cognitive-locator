@@ -72,7 +72,7 @@ namespace CognitiveLocator.Functions
                 p.PendingToBeDeleted = false;
 
                 await client_document.CreateDatabaseIfNotExistsAsync(new Database { Id = Settings.DatabaseId });
-                var collection = await client_document.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri(Settings.DatabaseId), new DocumentCollection { Id = Settings.CollectionId }, new RequestOptions { OfferThroughput = 1000 });
+                var collection = await client_document.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri(Settings.DatabaseId), new DocumentCollection { Id = Settings.PersonCollectionId }, new RequestOptions { OfferThroughput = 1000 });
                 var result = await client_document.CreateDocumentAsync(collection.Resource.SelfLink, p);
                 var document = result.Resource;
             }
