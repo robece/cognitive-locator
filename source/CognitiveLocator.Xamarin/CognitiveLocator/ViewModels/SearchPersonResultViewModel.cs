@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using CognitiveLocator.Helpers;
+using System;
 
 namespace CognitiveLocator.ViewModels
 {
@@ -119,9 +120,7 @@ namespace CognitiveLocator.ViewModels
                 MetadataVerification metadata = new MetadataVerification();
                 metadata.Country = Person.Country;
                 metadata.Name = Person.Name;
-                metadata.Lastname = Person.Lastname;
-                metadata.Location = Person.Location;
-                metadata.Alias = Person.Alias;
+                metadata.Lastname = Person.Lastname;  
                 metadata.ReportedBy = Person.ReportedBy;
 
                 result = await RestServiceV2.MetadataVerification(metadata);
@@ -130,7 +129,9 @@ namespace CognitiveLocator.ViewModels
             {
                 var stream = new System.IO.MemoryStream(Photo);
 
-                if (await StorageHelper.UploadPhoto(stream, null, true))
+                var pid = Guid.NewGuid().ToString();
+
+                if (await StorageHelper.UploadPhoto(pid, stream, true))
                 {
                     await NavigationService.PushAsync(new ReportConfirmationView());
                 }
