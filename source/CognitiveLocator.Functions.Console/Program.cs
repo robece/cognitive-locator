@@ -84,12 +84,16 @@ namespace CognitiveLocator.Functions.Console
                         System.Console.Write("\nCurrent token:");
                         string currentToken = System.Console.ReadLine();
                         string fresult = await RequestMobileSettings(currentToken);
+                        System.Console.WriteLine(fresult);
                         System.Console.ReadKey();
                         break;
                     case "7":
                         MetadataVerification metadata = new MetadataVerification();
-                        metadata.Name = "Ro";
-                        metadata.Country = "MEX";
+                        metadata.ReportedBy = "Roberto Cervantes";
+                        metadata.Country = "MX";
+                        metadata.Name = "Liam";
+                        metadata.Lastname = "Neeson";
+                        
                         string sdresult = await SearchDocument(metadata);
                         System.Console.WriteLine(sdresult);
                         System.Console.ReadKey();
@@ -179,7 +183,7 @@ namespace CognitiveLocator.Functions.Console
             return null;
         }
 
-        private static async Task<string> UploadImageAsync(int option, bool isVerification)
+        private static async Task UploadImageAsync(int option, bool isVerification)
         {
             var file = string.Empty;
             switch (option)
@@ -197,65 +201,67 @@ namespace CognitiveLocator.Functions.Console
                     break;
             }
 
-            var fullPath = Path.Combine(@"C:\GitHub\cognitive-locator\source\CognitiveLocator.Functions.Console", file);
+            var person = new Person
+            {
+                Country = "MX",
+                ReportedBy = "Roberto Cervantes",
+                Name = "Liam",
+                Lastname = "Neeson",
+                LocationOfLoss = "La Roma",
+                DateOfLoss = "20-07-2017",
+                ReportId = "675216731",
+                Genre = "H",
+                Complexion = "Delgada",
+                Skin = "Morena",
+                Front = "Amplia",
+                Mouth = "Grande",
+                Eyebrows = "Largas",
+                Age = "42",
+                Height = "1.80",
+                Face = "Delgada",
+                Nose = "Aguilena",
+                Lips = "Delgados",
+                Chin = "Corto",
+                TypeColorEyes = "Cafe",
+                TypeColorHair = "Negro corto",
+                ParticularSigns = "Un tatuaje en la espalda",
+                Clothes = "Pantalon de mezclilla"
+            };
+
+            var fullPath = Path.Combine(Settings.ImagesPath, file);
             byte[] byteArray = File.ReadAllBytes(fullPath);
             Stream stream = new MemoryStream(byteArray);
-            return await UploadPhotoAsync(stream, Guid.NewGuid().ToString() + ".jpg", isVerification);
-        }
 
-        private static async Task<string> UploadPhotoAsync(Stream fileStream, string fileName, bool isVerification)
-        {
-            string container = (isVerification) ? "verification" : "images";
-            string connectionString = Settings.AzureWebJobsStorage;
-            var blobUri = await UploadFileAsync(fileStream, fileName, container, connectionString);
-            return blobUri;
-        }
-
-        private static CloudStorageAccount GetCloudStorageAccount(string account)
-        {
-            return CloudStorageAccount.Parse(account);
-        }
-
-        private static CloudBlobClient GetCloudBlobClient(CloudStorageAccount account)
-        {
-            return account.CreateCloudBlobClient();
-        }
-
-        private static CloudBlobContainer GetCloudBlobContainer(CloudBlobClient blob, string container)
-        {
-            CloudBlobContainer c = blob.GetContainerReference(container);
-            c.CreateIfNotExists();
-            c.SetPermissions(new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob });
-            return blob.GetContainerReference(container);
-        }
-
-        private static async Task<string> UploadFileAsync(Stream fileStream, string fileName, string container, string connectionString, string fileExtension = ".jpg")
-        {
-            CloudStorageAccount CloudStorageAccount = null;
-            CloudBlobClient CloudBlobClient = null;
-            CloudBlobContainer CloudBlobContainer = null;
-            CloudBlockBlob CloudBlockBlob = null;
-
-            fileName = fileName.Replace("\"", "");
-            fileStream.Seek(0, SeekOrigin.Begin);
-            CloudStorageAccount = GetCloudStorageAccount(connectionString);
-            CloudBlobClient = GetCloudBlobClient(CloudStorageAccount);
-            CloudBlobContainer = GetCloudBlobContainer(CloudBlobClient, container);
-            CloudBlockBlob = CloudBlobContainer.GetBlockBlobReference(fileName);
-            CloudBlockBlob.Metadata["country"] = "MEX";
-            CloudBlockBlob.Metadata["name"] = "roberto";
-            CloudBlockBlob.Metadata["lastname"] = "cervantes";
-            CloudBlockBlob.Metadata["location"] = "location";
-            CloudBlockBlob.Metadata["notes"] = "notes";
-            CloudBlockBlob.Metadata["alias"] = "alias";
-            CloudBlockBlob.Metadata["birthdate"] = "birthdate";
-            CloudBlockBlob.Metadata["reportedby"] = "cervantes";
-
-            CloudBlockBlob.Properties.ContentType = "image/jpeg";
-            CloudBlockBlob.UploadFromStream(fileStream);
-
-            string uri = CloudBlockBlob.Uri.ToString();
-            return uri;
+            var pid = Guid.NewGuid().ToString();
+            if (!isVerification)
+            {
+                if (await StorageHelper.UploadMetadata(pid, person))
+                {
+                    if (await StorageHelper.UploadPhoto(pid, stream, isVerification))
+                    {
+                        System.Console.WriteLine("Carga satisfactoria.");
+                    }
+                    else
+                    {
+                        System.Console.WriteLine("No fue posible registrar el reporte, si el error persiste intenta más tarde.");
+                    }
+                }
+                else
+                {
+                    System.Console.WriteLine("No fue posible registrar el reporte, si el error persiste intenta más tarde.");
+                }
+            }
+            else
+            {
+                if (await StorageHelper.UploadPhoto(pid, stream, isVerification))
+                {
+                    System.Console.WriteLine("Carga satisfactoria.");
+                }
+                else
+                {
+                    System.Console.WriteLine("No fue posible registrar el reporte, si el error persiste intenta más tarde.");
+                }
+            }
         }
     }
 }

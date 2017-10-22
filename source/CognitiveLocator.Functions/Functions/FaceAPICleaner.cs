@@ -40,7 +40,7 @@ namespace CognitiveLocator.Functions
                 Parallel.ForEach(personsInFaceAPI, async person =>
                 {
                     //search person id from face api in documents.
-                    Person person_in_document_and_face_api = personsInDocuments.Find(x => x.FaceAPI_PersonId == person.PersonId);
+                    Person person_in_document_and_face_api = personsInDocuments.Find(x => x.FaceAPIPersonId == person.PersonId);
 
                     //if person registered in Face API not exists in documents then delete it from Face API.
                     if (person_in_document_and_face_api == null)

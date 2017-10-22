@@ -10,6 +10,6 @@ namespace CognitiveLocator.Functions.Console
     {
         public static string AzureWebJobsStorage = "";
         public static string CryptographyKey = "";
-
+        public static string ImagesPath = @"";
     }
 }

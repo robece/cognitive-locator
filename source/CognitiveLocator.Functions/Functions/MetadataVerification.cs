@@ -49,14 +49,8 @@ namespace CognitiveLocator.Functions
             if (!string.IsNullOrEmpty(request.Metadata.Lastname))
                 query_attributes += $"CONTAINS(UPPER(p.lastname), UPPER('{request.Metadata.Lastname}')) AND ";
 
-            if (!string.IsNullOrEmpty(request.Metadata.Location))
-                query_attributes += $"CONTAINS(UPPER(p.location), UPPER('{request.Metadata.Location}')) AND ";
-
-            if (!string.IsNullOrEmpty(request.Metadata.Alias))
-                query_attributes += $"CONTAINS(UPPER(p.alias), UPPER('{request.Metadata.Alias}')) AND ";
-
             if (!string.IsNullOrEmpty(request.Metadata.ReportedBy))
-                query_attributes += $"CONTAINS(UPPER(p.reported_by), UPPER('{request.Metadata.ReportedBy}')) AND ";
+                query_attributes += $"CONTAINS(UPPER(p.reportedby), UPPER('{request.Metadata.ReportedBy}')) AND ";
 
             if (query_attributes.Length > 0)
                 query_attributes = query_attributes.Remove(query_attributes.Length - 4);

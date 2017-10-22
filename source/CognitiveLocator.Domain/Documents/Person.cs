@@ -4,6 +4,15 @@ namespace CognitiveLocator.Domain
 {
     public class Person
     {
+        [JsonProperty("country")]
+        public string Country { get; set; }
+
+        [JsonProperty("picture")]
+        public string Picture { get; set; }
+
+        [JsonProperty("reportedby")]
+        public string ReportedBy { get; set; }
+
         [JsonProperty("id")]
         public string Id { get; set; }
 
@@ -11,42 +20,75 @@ namespace CognitiveLocator.Domain
         public string Name { get; set; }
 
         [JsonProperty("lastname")]
-        public string LastName { get; set; }
+        public string Lastname { get; set; }
 
-        [JsonProperty("alias")]
-        public string Alias { get; set; }
+        [JsonProperty("locationofloss")]
+        public string LocationOfLoss { get; set; }
 
-        [JsonProperty("birthdate")]
-        public string BirthDate { get; set; }
+        [JsonProperty("dateofloss")]
+        public string DateOfLoss { get; set; }
 
-        [JsonProperty("reported_by")]
-        public string ReportedBy { get; set; }
+        [JsonProperty("reportid")]
+        public string ReportId { get; set; }
 
-        [JsonProperty("picture")]
-        public string Picture { get; set; }
+        [JsonProperty("genre")]
+        public string Genre { get; set; }
 
-        [JsonProperty("location")]
-        public string Location { get; set; }
+        [JsonProperty("complexion")]
+        public string Complexion { get; set; }
 
-        [JsonProperty("country")]
-        public string Country { get; set; }
+        [JsonProperty("skin")]
+        public string Skin { get; set; }
 
-        [JsonProperty("notes")]
-        public string Notes { get; set; }
+        [JsonProperty("front")]
+        public string Front { get; set; }
 
-        [JsonProperty("is_active")]
+        [JsonProperty("mouth")]
+        public string Mouth { get; set; }
+
+        [JsonProperty("eyebrows")]
+        public string Eyebrows { get; set; }
+
+        [JsonProperty("age")]
+        public string Age { get; set; }
+
+        [JsonProperty("height")]
+        public string Height { get; set; }
+
+        [JsonProperty("face")]
+        public string Face { get; set; }
+
+        [JsonProperty("nose")]
+        public string Nose { get; set; }
+
+        [JsonProperty("lips")]
+        public string Lips { get; set; }
+
+        [JsonProperty("chin")]
+        public string Chin { get; set; }
+
+        [JsonProperty("typecoloreyes")]
+        public string TypeColorEyes { get; set; }
+
+        [JsonProperty("typecolorhair")]
+        public string TypeColorHair { get; set; }
+
+        [JsonProperty("particularsigns")]
+        public string ParticularSigns { get; set; }
+
+        [JsonProperty("clothes")]
+        public string Clothes { get; set; }
+
+        [JsonProperty("isactive")]
         public int IsActive { get; set; }
 
-        [JsonProperty("is_found")]
+        [JsonProperty("isfound")]
         public int IsFound { get; set; }
 
-        [JsonProperty("faceapi_faceid")]
-        public string FaceAPI_FaceId { get; set; }
+        [JsonProperty("faceapifaceid")]
+        public string FaceAPIFaceId { get; set; }
 
-        [JsonProperty("faceapi_personid")]
-        public string FaceAPI_PersonId { get; set; }
-
-        [JsonProperty("pending_to_be_deleted")]
-        public bool PendingToBeDeleted { get; set; }
+        [JsonProperty("faceapipersonid")]
+        public string FaceAPIPersonId { get; set; }
     }
 }
