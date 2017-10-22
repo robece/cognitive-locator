@@ -9,16 +9,11 @@
         public static string NotificationAccessSignature = string.Empty;
         public static string NotificationHubName = string.Empty;
         public static string ImageStorageUrl = string.Empty;
-#if DEBUG
-        public const string BaseURL = "https://cognitivelocatordev.azurewebsites.net/";
-#else
-        public const string BaseURL = "https://cognitivelocator.azurewebsites.net/";
-#endif
 
 #if DEBUG
-        public const string FunctionURL = "https://cognitivelocatorfuncdev.azurewebsites.net/";
+        public const string FunctionURL = "https://cognitivelocatordev-fun.azurewebsites.net/";
 #else
-        public const string FunctionURL = "https://cognitivelocatorfuncdev.azurewebsites.net/";
+        public const string FunctionURL = "https://cognitivelocatordev-fun.azurewebsites.net/";
 #endif
     }
 }

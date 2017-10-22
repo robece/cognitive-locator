@@ -5,24 +5,30 @@ namespace CognitiveLocator.Views
 {
     public partial class CreateReportView : BaseView
     {
-        private int NameRestrictCount = 50;
-        private int LastNameRestrictCount = 50;
-        private int LocationRestrictCount = 350;
-        private int NotesRestrictCount = 500;
-        private int AliasRestrictCount = 500;
-        private int ReportedByRestrictCount = 500;
+        private int ReportedByRestrictCount = 200;
+        private int NameRestrictCount = 100;
+        private int LastNameRestrictCount = 100;
+        private int LocationOfLossRestrictCount = 350;
+        private int DateOfLossRestrictCount = 100;
+        private int ReportIdRestrictCount = 100;
 
         public CreateReportView()
         {
             InitializeComponent();
             Analytics.TrackEvent("View: Create Report");
 
+            this.FindByName<Entry>("reportedBy").TextChanged += ReportedByOnTextChanged;
             this.FindByName<Entry>("name").TextChanged += NameOnTextChanged;
             this.FindByName<Entry>("lastname").TextChanged += LastNameOnTextChanged;
-            this.FindByName<Entry>("location").TextChanged += LocationOnTextChanged;
-            this.FindByName<Entry>("notes").TextChanged += NotesOnTextChanged;
-            this.FindByName<Entry>("alias").TextChanged += AliasOnTextChanged;
-            this.FindByName<Entry>("reportedby").TextChanged += ReportedByOnTextChanged;
+            this.FindByName<Entry>("locationOfLoss").TextChanged += LocationOfLossOnTextChanged;
+            this.FindByName<Entry>("dateOfLoss").TextChanged += DateOfLossOnTextChanged;
+            this.FindByName<Entry>("reportId").TextChanged += ReportIdOnTextChanged;
+        }
+
+        private void ReportedByOnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            Entry entry = sender as Entry;
+            OnTextChanged("reportedBy", entry.Text, ReportedByRestrictCount);
         }
 
         private void NameOnTextChanged(object sender, TextChangedEventArgs e)
@@ -37,28 +43,22 @@ namespace CognitiveLocator.Views
             OnTextChanged("lastname", entry.Text, LastNameRestrictCount);
         }
 
-        private void LocationOnTextChanged(object sender, TextChangedEventArgs e)
+        private void LocationOfLossOnTextChanged(object sender, TextChangedEventArgs e)
         {
             Entry entry = sender as Entry;
-            OnTextChanged("location", entry.Text, LocationRestrictCount);
+            OnTextChanged("locationOfLoss", entry.Text, LocationOfLossRestrictCount);
         }
 
-        private void NotesOnTextChanged(object sender, TextChangedEventArgs e)
+        private void DateOfLossOnTextChanged(object sender, TextChangedEventArgs e)
         {
             Entry entry = sender as Entry;
-            OnTextChanged("notes", entry.Text, NotesRestrictCount);
+            OnTextChanged("dateOfLoss", entry.Text, DateOfLossRestrictCount);
         }
 
-        private void AliasOnTextChanged(object sender, TextChangedEventArgs e)
+        private void ReportIdOnTextChanged(object sender, TextChangedEventArgs e)
         {
             Entry entry = sender as Entry;
-            OnTextChanged("alias", entry.Text, AliasRestrictCount);
-        }
-
-        private void ReportedByOnTextChanged(object sender, TextChangedEventArgs e)
-        {
-            Entry entry = sender as Entry;
-            OnTextChanged("reportedby", entry.Text, ReportedByRestrictCount);
+            OnTextChanged("reportId", entry.Text, ReportIdRestrictCount);
         }
 
         private void OnTextChanged(string entryName, string text, int restrictCount)

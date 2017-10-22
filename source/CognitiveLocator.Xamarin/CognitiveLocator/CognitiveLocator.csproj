@@ -81,9 +81,6 @@
       <DependentUpon>AboutView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\NavigationService.cs" />
-    <Compile Include="Views\Behaviors\EmptyValidatorBaseBehavior.cs" />
-    <Compile Include="Views\Behaviors\EmptyValidatorBehaviorName.cs" />
-    <Compile Include="Views\Behaviors\EmptyValidatorBehaviorLastName.cs" />
     <Compile Include="Views\Controls\NullableDatePicker.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Services\RestServiceV2.cs" />
@@ -94,6 +91,7 @@
     <Compile Include="Helpers\StorageHelper.cs" />
     <Compile Include="Domain\Person.cs" />
     <Compile Include="Domain\MetadataVerification.cs" />
+    <Compile Include="Views\Converters\NonAvailableConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="DevKit.Xamarin.ImageKit.Abstractions">

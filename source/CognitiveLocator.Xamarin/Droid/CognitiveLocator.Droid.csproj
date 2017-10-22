@@ -218,7 +218,6 @@
     <Folder Include="Resources\drawable-xxxhdpi\" />
     <Folder Include="Services\" />
     <Folder Include="Renderers\" />
-    <Folder Include="Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CognitiveLocator\CognitiveLocator.csproj">
