@@ -4,6 +4,7 @@ using CognitiveLocator.Views;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using CognitiveLocator.Domain;
 
 namespace CognitiveLocator.ViewModels
 {
@@ -36,6 +37,8 @@ namespace CognitiveLocator.ViewModels
             this.IsBusy = true;
             Task.Run(async () =>
             {
+                Catalogs.InitCountries();
+                Catalogs.InitGenre();
                 Dictionary<string, string> result = await RestServiceV2.GetMobileSettings();
                 Settings.MobileCenterID_Android = result[nameof(Settings.MobileCenterID_Android)];
                 Settings.MobileCenterID_iOS = result[nameof(Settings.MobileCenterID_iOS)];

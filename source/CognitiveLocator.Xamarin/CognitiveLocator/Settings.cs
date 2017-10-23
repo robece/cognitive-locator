@@ -11,9 +11,9 @@
         public static string ImageStorageUrl = string.Empty;
 
 #if DEBUG
-        public const string FunctionURL = "https://cognitivelocatordev-fun.azurewebsites.net/";
+        public const string FunctionURL = "https://cognitivelocatordev-fun.azurewebsites.net";
 #else
-        public const string FunctionURL = "https://cognitivelocatordev-fun.azurewebsites.net/";
+        public const string FunctionURL = "https://cognitivelocatordev-fun.azurewebsites.net";
 #endif
     }
 }

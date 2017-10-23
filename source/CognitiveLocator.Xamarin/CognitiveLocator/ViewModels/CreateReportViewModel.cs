@@ -16,7 +16,7 @@ namespace CognitiveLocator.ViewModels
         public Command ChoosePhotoCommand { get; set; }
         public Command PreviewReportCommand { get; set; }
 
-        List<string> countries = new List<string> { "México" };
+        List<string> countries = Catalogs.GetCountries();
         public List<string> Countries => countries;
 
         private string selectedCountry;
@@ -42,32 +42,17 @@ namespace CognitiveLocator.ViewModels
             }
             set
             {
-                //if (countriesSelectedIndex != value)
-                //{
                 countriesSelectedIndex = value;
 
                 // trigger some action to take such as updating other labels or fields
                 OnPropertyChanged(nameof(CountriesSelectedIndex));
 
                 SelectedCountryText = countries[CountriesSelectedIndex];
-                SelectedCountry = GetAbbreviations(CountriesSelectedIndex);
-                //}
+                SelectedCountry = Catalogs.GetCountryKey(SelectedCountryText);
             }
         }
 
-        private string GetAbbreviations(int idx)
-        {
-            var result = string.Empty;
-            switch (idx)
-            {
-                case 0:
-                    result = "MX";
-                    break;
-            }
-            return result;
-        }
-
-        List<string> genre = new List<string> { "Hombre", "Mujer" };
+        List<string> genre = Catalogs.GetGenre();
         public List<string> Genre => genre;
 
         private string selectedGenre;
@@ -93,16 +78,13 @@ namespace CognitiveLocator.ViewModels
             }
             set
             {
-                //if (genreSelectedIndex != value)
-                //{
                 genreSelectedIndex = value;
 
                 // trigger some action to take such as updating other labels or fields
                 OnPropertyChanged(nameof(GenreSelectedIndex));
 
                 SelectedGenreText = genre[GenreSelectedIndex];
-                SelectedGenre = (GenreSelectedIndex == 0) ? "H" : "M";
-                //}
+                SelectedGenre = Catalogs.GetGenreKey(SelectedGenreText);
             }
         }
 
@@ -310,6 +292,7 @@ namespace CognitiveLocator.ViewModels
                 var person = new Person
                 {
                     Country = (string.IsNullOrEmpty(this.SelectedCountry)) ? NonAvailable : this.SelectedCountry,
+
                     ReportedBy = (string.IsNullOrEmpty(this.ReportedBy)) ? NonAvailable : this.ReportedBy,
                     Name = (string.IsNullOrEmpty(this.Name)) ? NonAvailable : this.Name,
                     Lastname = (string.IsNullOrEmpty(this.Lastname)) ? NonAvailable : this.Lastname,

@@ -50,14 +50,12 @@
                             </Entry>
                         </StackLayout>
                         <StackLayout Margin="40,10,40,10" HeightRequest="50" Orientation="Horizontal">
-                            <Entry x:Name="lastname" HorizontalOptions="FillAndExpand" Placeholder="Apellido" Text="{Binding Person.LastName}">
+                            <Entry x:Name="lastname" HorizontalOptions="FillAndExpand" Placeholder="Apellido" Text="{Binding Person.Lastname}">
                             </Entry>
                         </StackLayout>
                         <StackLayout Margin="40,10,40,10" HeightRequest="50">
                             <Button HeightRequest="50"
-                                Command="{Binding SearchPersonByNameCommand}"
-
-                                Text="Buscar" />
+                                Command="{Binding SearchPersonByNameCommand}" Text="Buscar" />
                         </StackLayout>
                     </StackLayout>
                 </ViewCell>

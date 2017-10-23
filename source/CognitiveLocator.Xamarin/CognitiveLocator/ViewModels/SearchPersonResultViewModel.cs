@@ -141,6 +141,14 @@ namespace CognitiveLocator.ViewModels
                 }
             }
 
+            Results = new ObservableCollection<Person>(result);
+
+            if (!Results.Any())
+            {
+                await Application.Current.MainPage.DisplayAlert("Resultados", "No se encontro ninguna coincidencia.", "Aceptar");
+                await NavigationService.PopAsync();
+            }
+
             IsBusy = false;
         }
 
