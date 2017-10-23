@@ -1,22 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<views:BaseView x:Class="CognitiveLocator.Views.SearchPersonResultView"
-                xmlns="http://xamarin.com/schemas/2014/forms"
-                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                xmlns:views="clr-namespace:CognitiveLocator.Views;assembly=CognitiveLocatorPCL"
-                Title="{Binding Title}"
-    IsBusy="{Binding IsBusy}">
+<?xml version="1.0" encoding="UTF-8"?>
+<views:BaseView x:Class="CognitiveLocator.Views.SearchPersonResultView" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:views="clr-namespace:CognitiveLocator.Views;assembly=CognitiveLocatorPCL" Title="{Binding Title}" IsBusy="{Binding IsBusy}">
     <ContentPage.Content>
         <StackLayout>
             <ActivityIndicator HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
-            <ListView Margin="20,0"
-                  HasUnevenRows="true"
-                  ItemSelected="Handle_ItemSelected"
-                  ItemsSource="{Binding Results}"
-                  RowHeight="100"
-                  RefreshCommand="{Binding OnRefreshListCommand}"
-                  IsPullToRefreshEnabled="true"
-                  IsRefreshing="{Binding IsRefreshing}" 
-                  SeparatorColor="{StaticResource UIMainColor}">
+            <ListView Margin="20,0" HasUnevenRows="true" ItemSelected="Handle_ItemSelected" ItemsSource="{Binding Results}" RowHeight="100" RefreshCommand="{Binding OnRefreshListCommand}" IsPullToRefreshEnabled="true" IsRefreshing="{Binding IsRefreshing}" SeparatorColor="{StaticResource UIMainColor}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -26,22 +13,13 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Frame Margin="0,5,0,0" WidthRequest="80" HeightRequest="80" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Black" OutlineColor="Black" Padding="1">
-                                <Image WidthRequest="78" HeightRequest="78" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFill" Source="{Binding Picture}"/>
-                            </Frame>
+                                    <Image WidthRequest="78" HeightRequest="78" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFill" Source="{Binding PictureUrl}" />
+                                </Frame>
                                 <StackLayout Grid.Column="1" VerticalOptions="Center">
-                                    <Label FontSize="18"
-                                           LineBreakMode="TailTruncation"
-                                           Text="{Binding Name}" />
-                                    <Label FontSize="18"
-                                           LineBreakMode="TailTruncation"
-                                           Text="{Binding LastName}" />
-                                    <Label FontSize="Medium"
-                                           LineBreakMode="TailTruncation"
-                                           Text="{Binding Location,
-                                                          StringFormat='Ubicación: {0}'}"
-                                           TextColor="Gray" />
+                                    <Label LineBreakMode="TailTruncation" Text="{Binding Name}" />
+                                    <Label LineBreakMode="TailTruncation" Text="{Binding Lastname}" />
+                                    <Label LineBreakMode="TailTruncation" Text="{Binding LocationOfLoss}" />
                                 </StackLayout>
-
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

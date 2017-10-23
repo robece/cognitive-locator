@@ -1,47 +1,56 @@
-﻿using System.Collections.Generic;
+﻿using CognitiveLocator.Domain;
+using CognitiveLocator.Interfaces;
+using CognitiveLocator.Services;
+using CognitiveLocator.Views;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using CognitiveLocator.Models;
-using CognitiveLocator.Services;
-using CognitiveLocator.Views;
 using Xamarin.Forms;
+using CognitiveLocator.Helpers;
+using System;
 
 namespace CognitiveLocator.ViewModels
 {
     public class SearchPersonResultViewModel : BaseViewModel
     {
         #region Properties
-        Person _person;
+
+        private Person _person;
+
         public Person Person
         {
             get { return _person; }
             set { SetProperty(ref _person, value); }
         }
 
-        byte[] _photo;
+        private byte[] _photo;
+
         public byte[] Photo
         {
             get { return _photo; }
             set { SetProperty(ref _photo, value); }
         }
 
-        bool _IsByPhoto;
+        private bool _IsByPhoto;
+
         public bool IsByPhoto
         {
             get { return _IsByPhoto; }
             set { SetProperty(ref _IsByPhoto, value); }
         }
 
-        bool _isRefreshing;
-		public bool IsRefreshing
-		{
-			get { return _isRefreshing; }
-			set { SetProperty(ref _isRefreshing, value); }
-		}
+        private bool _isRefreshing;
 
-        ObservableCollection<Person> _results;
+        public bool IsRefreshing
+        {
+            get { return _isRefreshing; }
+            set { SetProperty(ref _isRefreshing, value); }
+        }
+
+        private ObservableCollection<Person> _results;
+
         public ObservableCollection<Person> Results
         {
             get { return _results; }
@@ -53,12 +62,15 @@ namespace CognitiveLocator.ViewModels
             get;
             set;
         }
+
         public ICommand OnRefreshListCommand
         {
             get;
             set;
         }
-        #endregion
+
+        #endregion Properties
+
         public SearchPersonResultViewModel(bool isPicture, byte[] picture, Person person) : base(new DependencyServiceBase())
         {
             Title = "Resultado de la búsqueda";
@@ -89,39 +101,57 @@ namespace CognitiveLocator.ViewModels
             await LoadPersons();
         }
 
-        #endregion
+        #endregion Overrided Methods
 
         #region Private Methods
-        async Task LoadPersons()
+
+        private async Task LoadPersons()
         {
-			if (!Plugin.Connectivity.CrossConnectivity.Current.IsConnected)
-			{
-				await Application.Current.MainPage.DisplayAlert("Error", "Es necesario tener conexión a internet para continuar.", "Aceptar");
-				await NavigationService.PopAsync();
-			}
-			IsBusy = true;
-			var res = new List<Person>();
+            if (!Plugin.Connectivity.CrossConnectivity.Current.IsConnected)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", "Es necesario tener conexión a internet para continuar.", "Aceptar");
+                await NavigationService.PopAsync();
+            }
+            IsBusy = true;
+            var result = new List<Person>();
 
-			if (!IsByPhoto)
-			{
-				res = await RestServices.SearchByNameAndLastNameAsync(Person);
-			}
-			else
-			{
-				var person = await RestServices.SearchPersonByPhotoAsync(Photo);
-				if (person != null)
-					res.Add(person);
-			}
+            if (!IsByPhoto)
+            {
+                MetadataVerification metadata = new MetadataVerification();
+                metadata.Country = Person.Country;
+                metadata.Name = Person.Name;
+                metadata.Lastname = Person.Lastname;  
+                metadata.ReportedBy = Person.ReportedBy;
 
-			Results = new ObservableCollection<Person>(res);
+                result = await RestServiceV2.MetadataVerification(metadata);
+            }
+            else
+            {
+                var stream = new System.IO.MemoryStream(Photo);
 
-			if (!Results.Any())
-			{
-				await Application.Current.MainPage.DisplayAlert("Resultados", "No se encontro ninguna coincidencia.", "Aceptar");
-				await NavigationService.PopAsync();
-			}
-			IsBusy = false;
+                var pid = Guid.NewGuid().ToString();
+
+                if (await StorageHelper.UploadPhoto(pid, stream, true))
+                {
+                    await NavigationService.PushAsync(new ReportConfirmationView());
+                }
+                else
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "No fue posible verificar a la persona, si el error persiste intenta más tarde .", "Aceptar");
+                }
+            }
+
+            Results = new ObservableCollection<Person>(result);
+
+            if (!Results.Any())
+            {
+                await Application.Current.MainPage.DisplayAlert("Resultados", "No se encontro ninguna coincidencia.", "Aceptar");
+                await NavigationService.PopAsync();
+            }
+
+            IsBusy = false;
         }
-        #endregion
+
+        #endregion Private Methods
     }
 }

@@ -1,13 +1,12 @@
-﻿using System;
+﻿using DevKit.Xamarin.ImageKit;
+using System;
 using System.Threading.Tasks;
-using DevKit.Xamarin.ImageKit;
 using Plugin.Media;
 
 namespace CognitiveLocator.Helpers
 {
     public class MediaHelper
     {
-
         public static async Task<byte[]> TakePhotoAsync()
         {
             byte[] photo = null;
@@ -24,7 +23,6 @@ namespace CognitiveLocator.Helpers
                     AllowCropping = true
                 });
 
-
                 if (file != null)
                     using (var photoStream = file.GetStream())
                     {
@@ -35,7 +33,6 @@ namespace CognitiveLocator.Helpers
 
             return await AdjustImageSize(photo);
         }
-
 
         public static async Task<byte[]> PickPhotoAsync()
         {
@@ -48,7 +45,6 @@ namespace CognitiveLocator.Helpers
                 {
                     PhotoSize = Plugin.Media.Abstractions.PhotoSize.Full,
                 });
-
 
                 if (file != null)
                 {
@@ -74,7 +70,6 @@ namespace CognitiveLocator.Helpers
 
                 if (imageDetails.Heigth > maxSize || imageDetails.Width > maxSize)
                 {
-
                     bool isTaller = imageDetails.Heigth > imageDetails.Width;
                     int bigSide = isTaller ?
                                               imageDetails.Heigth :
@@ -90,8 +85,5 @@ namespace CognitiveLocator.Helpers
             }
             return photo;
         }
-
-
-
     }
 }

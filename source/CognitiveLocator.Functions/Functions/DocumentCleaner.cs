@@ -1,9 +1,3 @@
-using Microsoft.Azure.Documents;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Host;
-using System;
-using System.Collections.Generic;
-
 namespace CognitiveLocator.Functions
 {
     //public static class DocumentCleaner
