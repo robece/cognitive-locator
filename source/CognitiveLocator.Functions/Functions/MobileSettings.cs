@@ -1,21 +1,17 @@
-using CognitiveLocator.Common;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Azure.WebJobs.Host;
 using System;
-<<<<<<< HEAD
-using System.Collections.Generic;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-=======
 using System.IO;
 using System.Security.Cryptography;
 using CognitiveLocator.Functions.Helpers;
 using System.Collections.Generic;
 using CognitiveLocator.Domain.Templates;
 using Newtonsoft.Json;
->>>>>>> master
 
 namespace CognitiveLocator.Functions
 {
