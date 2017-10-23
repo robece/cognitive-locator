@@ -1,4 +1,6 @@
-﻿using CognitiveLocator.ViewModels;
+﻿using System;
+using CognitiveLocator.ViewModels;
+using Xamarin.Forms;
 
 namespace CognitiveLocator.Views
 {
@@ -8,6 +10,15 @@ namespace CognitiveLocator.Views
         {
             InitializeComponent();
             BindingContext = new AboutViewModel();
+
+            websiteLink.Text = "Visitanos en: cognitivelocator.github.io";
+
+            var tapGestureRecognizer = new TapGestureRecognizer();
+            tapGestureRecognizer.Tapped += (s, e) => {
+                Uri uri = new Uri("https://cognitivelocator.github.io/");
+                Device.OpenUri(uri);
+            };
+            websiteLink.GestureRecognizers.Add(tapGestureRecognizer);
         }
     }
 }
