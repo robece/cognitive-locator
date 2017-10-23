@@ -91,8 +91,8 @@ namespace CognitiveLocator.Functions.Console
                         MetadataVerification metadata = new MetadataVerification();
                         metadata.ReportedBy = "Roberto Cervantes";
                         metadata.Country = "MX";
-                        metadata.Name = "Liam";
-                        metadata.Lastname = "Neeson";
+                        metadata.Name = "Ang";
+                        metadata.Lastname = "Jol";
                         
                         string sdresult = await SearchDocument(metadata);
                         System.Console.WriteLine(sdresult);
@@ -210,7 +210,7 @@ namespace CognitiveLocator.Functions.Console
                 LocationOfLoss = "La Roma",
                 DateOfLoss = "20-07-2017",
                 ReportId = "675216731",
-                Genre = "H",
+                Genre = "M",
                 Complexion = "Delgada",
                 Skin = "Morena",
                 Front = "Amplia",
