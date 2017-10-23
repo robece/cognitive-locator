@@ -1,4 +1,4 @@
-﻿using CognitiveLocator.Services;
+﻿using CognitiveLocator.Interfaces;
 using Xamarin.Forms;
 
 namespace CognitiveLocator.ViewModels
@@ -7,20 +7,19 @@ namespace CognitiveLocator.ViewModels
     {
         public Command SendFeedbackCommand { get; set; }
 
-		public AboutViewModel() : this(new DependencyServiceBase())
+        public AboutViewModel() : this(new DependencyServiceBase())
         {
+        }
 
-		}
-
-		public AboutViewModel(IDependencyService dependencyService) : base(dependencyService)
+        public AboutViewModel(IDependencyService dependencyService) : base(dependencyService)
         {
-			DependencyService = dependencyService;
-			InitializeViewModel();
-		}
+            DependencyService = dependencyService;
+            InitializeViewModel();
+        }
 
         private void InitializeViewModel()
         {
-            Title = "Acerca de";
+            Title = "Acerca de Busca.me";
             SendFeedbackCommand = new Command(() => SendEmailFeedback());
         }
 

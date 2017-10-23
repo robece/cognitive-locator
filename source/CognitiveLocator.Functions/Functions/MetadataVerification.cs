@@ -32,7 +32,7 @@ namespace CognitiveLocator.Functions
             {
                 return req.CreateResponse(HttpStatusCode.BadRequest);
             }
-            
+
             if (request.Metadata == null)
             {
                 return req.CreateResponse(HttpStatusCode.BadRequest, "Metadata is required to perform the search");

@@ -5,6 +5,7 @@ using CognitiveLocator.Droid;
 using Plugin.CurrentActivity;
 using Xamarin.Forms;
 using CognitiveLocator.Services;
+using CognitiveLocator.Interfaces;
 
 [assembly: Dependency(typeof(EmailService))]
 namespace CognitiveLocator.Droid.Services

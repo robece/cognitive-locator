@@ -1,16 +1,19 @@
-﻿using System;
-namespace CognitiveLocator
+﻿namespace CognitiveLocator
 {
     public class Settings
     {
-        public static string MobileCenterID_Android = "f8963ef0-4239-46ea-b69c-621fafe09d0c";
-        public static string MobileCenterID_iOS = "0da75977-ccf2-43fd-ba88-ae712f9a3568";
+        public static string CryptographyKey = "aadaf729-2499-4b7e";
+        public static string AzureWebJobsStorage = string.Empty;
+        public static string MobileCenterID_Android = string.Empty;
+        public static string MobileCenterID_iOS = string.Empty;
+        public static string NotificationAccessSignature = string.Empty;
+        public static string NotificationHubName = string.Empty;
+        public static string ImageStorageUrl = string.Empty;
 
 #if DEBUG
-        public const string BaseURL = "https://cognitivelocatordev.azurewebsites.net/";
+        public const string FunctionURL = "https://cognitivelocatordev-fun.azurewebsites.net";
 #else
-        public const string BaseURL = "https://cognitivelocator.azurewebsites.net/";
+        public const string FunctionURL = "https://cognitivelocatordev-fun.azurewebsites.net";
 #endif
-
     }
 }

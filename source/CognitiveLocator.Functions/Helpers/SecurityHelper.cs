@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CognitiveLocator.Functions.Helpers
 {
@@ -88,7 +84,6 @@ namespace CognitiveLocator.Functions.Helpers
                 using (CryptoStream cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read))
                 using (StreamReader streamReader = new StreamReader(cryptoStream))
                     plaintext = streamReader.ReadToEnd();
-
             }
             return plaintext;
         }

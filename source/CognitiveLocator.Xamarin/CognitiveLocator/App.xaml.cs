@@ -1,5 +1,4 @@
-﻿using System;
-using CognitiveLocator.Views;
+﻿using CognitiveLocator.Views;
 using Xamarin.Forms;
 
 namespace CognitiveLocator
@@ -11,7 +10,6 @@ namespace CognitiveLocator
             InitializeComponent();
 
             MainPage = new NavigationPage(new HomeView());
-
         }
     }
 }

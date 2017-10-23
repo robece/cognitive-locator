@@ -33,10 +33,10 @@ namespace CognitiveLocator.Droid
             LoadApplication(new App());
         }
 
-		public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
-		{
-			PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-		}
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
+        {
+            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {

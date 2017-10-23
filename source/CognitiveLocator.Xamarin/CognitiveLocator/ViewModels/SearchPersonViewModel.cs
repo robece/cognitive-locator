@@ -1,9 +1,10 @@
-﻿using System.Threading.Tasks;
-using System.Windows.Input;
-using CognitiveLocator.Models;
-using CognitiveLocator.Services;
+﻿using CognitiveLocator.Domain;
+using CognitiveLocator.Interfaces;
 using CognitiveLocator.Views;
+using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
+using System;
 
 namespace CognitiveLocator.ViewModels
 {
@@ -11,21 +12,24 @@ namespace CognitiveLocator.ViewModels
     {
         #region Properties
 
-        Person _person;
+        private Person _person;
+
         public Person Person
         {
             get { return _person; }
             set { SetProperty(ref _person, value); }
         }
 
-        byte[] _photo;
+        private byte[] _photo;
+
         public byte[] Photo
         {
             get { return _photo; }
             set { SetProperty(ref _photo, value); }
         }
 
-        string _searchType;
+        private string _searchType;
+
         public string SearchType
         {
             get { return _searchType; }
@@ -39,10 +43,7 @@ namespace CognitiveLocator.ViewModels
         public ICommand TakePhotoCommand { get; set; }
         public ICommand ChoosePhotoCommand { get; set; }
 
-        public static bool NameValidation = false;
-        public static bool LastNameValidation = false;
-
-        #endregion
+        #endregion Properties
 
         public SearchPersonViewModel() : base(new DependencyServiceBase())
         {
@@ -51,11 +52,11 @@ namespace CognitiveLocator.ViewModels
 
         public SearchPersonViewModel(IDependencyService dependencyService) : base(dependencyService)
         {
-			DependencyService = dependencyService;
-			InitializeViewModel();
-		}
+            DependencyService = dependencyService;
+            InitializeViewModel();
+        }
 
-        void InitializeViewModel()
+        private void InitializeViewModel()
         {
             Title = "Buscar persona";
             Person = new Person();
@@ -67,7 +68,7 @@ namespace CognitiveLocator.ViewModels
 
         #region Tasks
 
-        async Task SearchPerson() 
+        private async Task SearchPerson()
         {
             if (IsByPicture == true && Photo == null)
             {
@@ -75,7 +76,7 @@ namespace CognitiveLocator.ViewModels
                 return;
             }
 
-            if ((NameValidation == false || LastNameValidation == false) && (!IsByPicture))
+            if ((!ValidateInformation()) && (!IsByPicture))
             {
                 await Application.Current.MainPage.DisplayAlert("Error", "Por favor asegúrate de llenar todos los campos.", "Aceptar");
             }
@@ -93,16 +94,25 @@ namespace CognitiveLocator.ViewModels
             }
         }
 
-        async Task TakePhoto()
+        private bool ValidateInformation()
+        {
+            if (String.IsNullOrEmpty(Person.Name))
+                return false;
+            if (String.IsNullOrEmpty(Person.Lastname))
+                return false;
+            return true;
+        }
+
+        private async Task TakePhoto()
         {
             Photo = await Helpers.MediaHelper.TakePhotoAsync();
         }
 
-        async Task ChoosePhoto()
+        private async Task ChoosePhoto()
         {
             Photo = await Helpers.MediaHelper.PickPhotoAsync();
         }
-        #endregion
+
+        #endregion Tasks
     }
 }
-
