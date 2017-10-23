@@ -92,6 +92,10 @@
     <Compile Include="Domain\Person.cs" />
     <Compile Include="Domain\MetadataVerification.cs" />
     <Compile Include="Views\Converters\NonAvailableConverter.cs" />
+    <Compile Include="Requests\Requests.cs" />
+    <Compile Include="Domain\Catalogs.cs" />
+    <Compile Include="Views\Converters\CountryConverter.cs" />
+    <Compile Include="Views\Converters\GenreConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="DevKit.Xamarin.ImageKit.Abstractions">
@@ -153,6 +157,7 @@
     <Folder Include="Views\Behaviors\" />
     <Folder Include="Views\Controls\" />
     <Folder Include="Interfaces\" />
+    <Folder Include="Requests\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\Solutions\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\Solutions\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

@@ -4,6 +4,7 @@ using CognitiveLocator.Views;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using System;
 
 namespace CognitiveLocator.ViewModels
 {
@@ -42,9 +43,6 @@ namespace CognitiveLocator.ViewModels
         public ICommand TakePhotoCommand { get; set; }
         public ICommand ChoosePhotoCommand { get; set; }
 
-        public static bool NameValidation = false;
-        public static bool LastNameValidation = false;
-
         #endregion Properties
 
         public SearchPersonViewModel() : base(new DependencyServiceBase())
@@ -78,7 +76,7 @@ namespace CognitiveLocator.ViewModels
                 return;
             }
 
-            if ((NameValidation == false || LastNameValidation == false) && (!IsByPicture))
+            if ((!ValidateInformation()) && (!IsByPicture))
             {
                 await Application.Current.MainPage.DisplayAlert("Error", "Por favor asegúrate de llenar todos los campos.", "Aceptar");
             }
@@ -94,6 +92,15 @@ namespace CognitiveLocator.ViewModels
                     IsBusy = false;
                 }
             }
+        }
+
+        private bool ValidateInformation()
+        {
+            if (String.IsNullOrEmpty(Person.Name))
+                return false;
+            if (String.IsNullOrEmpty(Person.Lastname))
+                return false;
+            return true;
         }
 
         private async Task TakePhoto()

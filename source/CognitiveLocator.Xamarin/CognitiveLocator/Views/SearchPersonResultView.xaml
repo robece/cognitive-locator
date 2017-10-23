@@ -18,7 +18,7 @@
                                 <StackLayout Grid.Column="1" VerticalOptions="Center">
                                     <Label LineBreakMode="TailTruncation" Text="{Binding Name}" />
                                     <Label LineBreakMode="TailTruncation" Text="{Binding Lastname}" />
-                                    <Label LineBreakMode="TailTruncation" Text="{Binding Location,&#xA;StringFormat='Ubicación: {0}'}" TextColor="Gray" />
+                                    <Label LineBreakMode="TailTruncation" Text="{Binding LocationOfLoss}" />
                                 </StackLayout>
                             </Grid>
                         </ViewCell>

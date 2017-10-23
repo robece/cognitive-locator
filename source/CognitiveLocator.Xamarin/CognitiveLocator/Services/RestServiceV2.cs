@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Newtonsoft.Json;
+using CognitiveLocator.Requests;
 
 namespace CognitiveLocator.Services
 {
@@ -26,7 +27,10 @@ namespace CognitiveLocator.Services
                 var token = Convert.ToBase64String(time.Concat(key).ToArray());
                 token = DependencyService.Get<ISecurityService>().Encrypt(token, Settings.CryptographyKey);
 
-                byte[] byteData = Encoding.UTF8.GetBytes("{'Token':'" + token + "'}");
+                MobileSettingsRequest request = new MobileSettingsRequest();
+                request.Token = token;
+
+                byte[] byteData = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(request));
                 using (var content = new ByteArrayContent(byteData))
                 {
                     content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
@@ -53,7 +57,11 @@ namespace CognitiveLocator.Services
                 var token = Convert.ToBase64String(time.Concat(key).ToArray());
                 token = DependencyService.Get<ISecurityService>().Encrypt(token, Settings.CryptographyKey);
 
-                byte[] byteData = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(metadata));
+                MetadataVerificationRequest request = new MetadataVerificationRequest();
+                request.Token = token;
+                request.Metadata = metadata;
+              
+                byte[] byteData = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(request));
                 using (var content = new ByteArrayContent(byteData))
                 {
                     content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
