@@ -19,7 +19,7 @@ namespace CognitiveLocator.ViewModels
 
         private void InitializeViewModel()
         {
-            Title = "Acerca de";
+            Title = "Acerca de Busca.me";
             SendFeedbackCommand = new Command(() => SendEmailFeedback());
         }
 
