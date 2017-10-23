@@ -8,10 +8,6 @@
 
         public string Lastname { get; set; }
 
-        public string Location { get; set; }
-
-        public string Alias { get; set; }
-
         public string ReportedBy { get; set; }
     }
 }

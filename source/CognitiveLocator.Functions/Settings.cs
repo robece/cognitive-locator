@@ -14,7 +14,7 @@ namespace CognitiveLocator.Functions
         public static string DocumentDB = Environment.GetEnvironmentVariable("CosmosDB_URI");
         public static string DocumentDBAuthKey = Environment.GetEnvironmentVariable("CosmosDB_AuthKey");
         public static string DatabaseId = Environment.GetEnvironmentVariable("CosmosDB_DatabaseId");
-        public static string CollectionId = Environment.GetEnvironmentVariable("CosmosDB_Collection");
+        public static string PersonCollectionId = Environment.GetEnvironmentVariable("CosmosDB_PersonCollection");
 
         public static string NotificationAccessSignature = Environment.GetEnvironmentVariable("NotificationHub_Access_Signature");
         public static string NotificationHubName = Environment.GetEnvironmentVariable("NotificationHub_Name");

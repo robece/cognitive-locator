@@ -2,9 +2,9 @@
 using System.IO;
 using System.Security.Cryptography;
 
-namespace CognitiveLocator.Common
+namespace CognitiveLocator.Functions.Helpers
 {
-    public static class CryptoManager
+    public static class SecurityHelper
     {
         private static byte[] CreateKey(string password, int keyBytes = 32)
         {
