@@ -31,9 +31,9 @@ namespace CognitiveLocator.Functions
 
             //determine if image has a face
             List<JObject> list = await client_face.DetectFaces(blob.Uri.AbsoluteUri);
-
-            //validate image extension
-            if (extension != "jpg")
+            
+            //validate image extension 
+            if(extension != "jpg")
             {
                 log.Info($"no valid extension for: {name}.{extension}");
                 await blob.DeleteAsync();
@@ -58,7 +58,7 @@ namespace CognitiveLocator.Functions
                 await cbb.DeleteAsync();
                 return;
             }
-
+            
             try
             {
                 using (var memoryStream = new MemoryStream())
@@ -93,10 +93,7 @@ namespace CognitiveLocator.Functions
                 return;
             }
 
-<<<<<<< HEAD
-=======
             await cbb.DeleteAsync();
->>>>>>> master
             log.Info("person registered successfully");
         }
     }
