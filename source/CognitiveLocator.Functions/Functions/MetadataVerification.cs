@@ -1,4 +1,4 @@
-using CognitiveLocator.Common;
+using CognitiveLocator.Functions.Helpers;
 using CognitiveLocator.Domain;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
@@ -24,7 +24,7 @@ namespace CognitiveLocator.Functions
         {
             Domain.MetadataVerificationRequest request = await req.Content.ReadAsAsync<Domain.MetadataVerificationRequest>();
 
-            var decrypted_token = CryptoManager.Decrypt(request.Token, Settings.CryptographyKey);
+            var decrypted_token = SecurityHelper.Decrypt(request.Token, Settings.CryptographyKey);
 
             byte[] data = Convert.FromBase64String(decrypted_token);
             DateTime when = DateTime.FromBinary(BitConverter.ToInt64(data, 0));
@@ -49,20 +49,14 @@ namespace CognitiveLocator.Functions
             if (!string.IsNullOrEmpty(request.Metadata.Lastname))
                 query_attributes += $"CONTAINS(UPPER(p.lastname), UPPER('{request.Metadata.Lastname}')) AND ";
 
-            if (!string.IsNullOrEmpty(request.Metadata.Location))
-                query_attributes += $"CONTAINS(UPPER(p.location), UPPER('{request.Metadata.Location}')) AND ";
-
-            if (!string.IsNullOrEmpty(request.Metadata.Alias))
-                query_attributes += $"CONTAINS(UPPER(p.alias), UPPER('{request.Metadata.Alias}')) AND ";
-
             if (!string.IsNullOrEmpty(request.Metadata.ReportedBy))
-                query_attributes += $"CONTAINS(UPPER(p.reported_by), UPPER('{request.Metadata.ReportedBy}')) AND ";
+                query_attributes += $"CONTAINS(UPPER(p.reportedby), UPPER('{request.Metadata.ReportedBy}')) AND ";
 
             if (query_attributes.Length > 0)
                 query_attributes = query_attributes.Remove(query_attributes.Length - 4);
 
             List<Person> personsInDocuments = null;
-            var collection = await client_document.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri(Settings.DatabaseId), new DocumentCollection { Id = Settings.CollectionId }, new RequestOptions { OfferThroughput = 1000 });
+            var collection = await client_document.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri(Settings.DatabaseId), new DocumentCollection { Id = Settings.PersonCollectionId }, new RequestOptions { OfferThroughput = 1000 });
             var query = client_document.CreateDocumentQuery<Person>(collection.Resource.SelfLink, new SqlQuerySpec()
             {
                 QueryText = $"SELECT * FROM Person p WHERE {query_attributes}"

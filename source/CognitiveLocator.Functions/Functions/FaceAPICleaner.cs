@@ -25,7 +25,7 @@ namespace CognitiveLocator.Functions
             //Search in documents all persons registered.
             List<Person> personsInDocuments = null;
 
-            var collection = await client_document.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri(Settings.DatabaseId), new DocumentCollection { Id = Settings.CollectionId }, new RequestOptions { OfferThroughput = 1000 });
+            var collection = await client_document.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri(Settings.DatabaseId), new DocumentCollection { Id = Settings.PersonCollectionId }, new RequestOptions { OfferThroughput = 1000 });
             var query = client_document.CreateDocumentQuery<Person>(collection.Resource.SelfLink, new SqlQuerySpec()
             {
                 QueryText = "SELECT * FROM Person f"
@@ -40,7 +40,7 @@ namespace CognitiveLocator.Functions
                 Parallel.ForEach(personsInFaceAPI, async person =>
                 {
                     //search person id from face api in documents.
-                    Person person_in_document_and_face_api = personsInDocuments.Find(x => x.FaceAPI_PersonId == person.PersonId);
+                    Person person_in_document_and_face_api = personsInDocuments.Find(x => x.FaceAPIPersonId == person.PersonId);
 
                     //if person registered in Face API not exists in documents then delete it from Face API.
                     if (person_in_document_and_face_api == null)
