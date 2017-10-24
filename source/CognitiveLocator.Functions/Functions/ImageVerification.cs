@@ -22,7 +22,7 @@ namespace CognitiveLocator.Functions
         private static FaceClient client_face = new FaceClient();
         private static DocumentClient client_document = new DocumentClient(new Uri(Settings.DocumentDB), Settings.DocumentDBAuthKey);
 
-        [FunctionName(nameof(MetadataVerification))]
+        [FunctionName(nameof(ImageVerification))]
         public static async Task<HttpResponseMessage> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "ImageVerification/")]HttpRequestMessage req, TraceWriter log)
         {
