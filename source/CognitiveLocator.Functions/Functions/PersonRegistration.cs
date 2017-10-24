@@ -11,6 +11,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace CognitiveLocator.Functions
@@ -22,22 +23,33 @@ namespace CognitiveLocator.Functions
 
         [FunctionName(nameof(PersonRegistration))]
         public static async Task Run(
-            [BlobTrigger("images/{name}.{extension}")]CloudBlockBlob blob, string name, string extension, TraceWriter log)
+            [BlobTrigger("images/{name}.{extension}")]CloudBlockBlob blobImage, string name, string extension, TraceWriter log)
         {
-            //get json file from storage
             Person p = new Person();
             string json = string.Empty;
-            CloudBlockBlob cbb = await StorageHelper.GetBlockBlob($"{name}.json", Settings.AzureWebJobsStorage, "metadata", false);
+            var collection = await client_document.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri(Settings.DatabaseId), new DocumentCollection { Id = Settings.PersonCollectionId }, new RequestOptions { OfferThroughput = 1000 });
+
+            //get json file from storage
+            CloudBlockBlob blobJson = await StorageHelper.GetBlockBlob($"{name}.json", Settings.AzureWebJobsStorage, "metadata", false);
+      
+            //validate record has not been processed before
+            var query = client_document.CreateDocumentQuery<Person>(collection.Resource.SelfLink, new SqlQuerySpec()
+            {
+                QueryText = $"SELECT * FROM Person p WHERE p.picture = '{name}.{extension}'"
+            });
+            int count = query.ToList().Count;
+            if(count > 0)
+                return;
 
             //determine if image has a face
-            List<JObject> list = await client_face.DetectFaces(blob.Uri.AbsoluteUri);
-            
+            List<JObject> list = await client_face.DetectFaces(blobImage.Uri.AbsoluteUri);
+
             //validate image extension 
-            if(extension != "jpg")
+            if (blobImage.Properties.ContentType != "image/jpeg")
             {
-                log.Info($"no valid extension for: {name}.{extension}");
-                await blob.DeleteAsync();
-                await cbb.DeleteAsync();
+                log.Info($"no valid content type for: {name}.{extension}");
+                await blobImage.DeleteAsync();
+                await blobJson.DeleteAsync();
                 return;
             }
 
@@ -45,8 +57,8 @@ namespace CognitiveLocator.Functions
             if (list.Count == 0)
             {
                 log.Info($"there are no faces in the image: {name}.{extension}");
-                await blob.DeleteAsync();
-                await cbb.DeleteAsync();
+                await blobImage.DeleteAsync();
+                await blobJson.DeleteAsync();
                 return;
             }
 
@@ -54,24 +66,24 @@ namespace CognitiveLocator.Functions
             if (list.Count > 1)
             {
                 log.Info($"multiple faces detected in the image: {name}.{extension}");
-                await blob.DeleteAsync();
-                await cbb.DeleteAsync();
+                await blobImage.DeleteAsync();
+                await blobJson.DeleteAsync();
                 return;
             }
-            
+
             try
             {
                 using (var memoryStream = new MemoryStream())
                 {
-                    cbb.DownloadToStream(memoryStream);
+                    blobJson.DownloadToStream(memoryStream);
                     json = System.Text.Encoding.UTF8.GetString(memoryStream.ToArray());
                     p = JsonConvert.DeserializeObject<Person>(json);
                 }
 
                 //register person in Face API
                 CreatePerson resultCreatePerson = await client_face.AddPersonToGroup(p.Name + " " + p.Lastname);
-                AddPersonFace resultPersonFace = await client_face.AddPersonFace(blob.Uri.AbsoluteUri, resultCreatePerson.personId);
-                AddFaceToList resultFaceToList = await client_face.AddFaceToList(blob.Uri.AbsoluteUri);
+                AddPersonFace resultPersonFace = await client_face.AddPersonFace(blobImage.Uri.AbsoluteUri, resultCreatePerson.personId);
+                AddFaceToList resultFaceToList = await client_face.AddFaceToList(blobImage.Uri.AbsoluteUri);
 
                 //Add custom settings
                 p.IsActive = 1;
@@ -81,19 +93,18 @@ namespace CognitiveLocator.Functions
                 p.Picture = $"{name}.jpg";
 
                 await client_document.CreateDatabaseIfNotExistsAsync(new Database { Id = Settings.DatabaseId });
-                var collection = await client_document.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri(Settings.DatabaseId), new DocumentCollection { Id = Settings.PersonCollectionId }, new RequestOptions { OfferThroughput = 1000 });
                 var result = await client_document.CreateDocumentAsync(collection.Resource.SelfLink, p);
                 var document = result.Resource;
             }
             catch (Exception ex)
             {
-                await blob.DeleteAsync();
-                await cbb.DeleteAsync();
+                await blobImage.DeleteAsync();
+                await blobJson.DeleteAsync();
                 log.Info($"Error in file: {name}.{extension} - {ex.Message}");
                 return;
             }
 
-            await cbb.DeleteAsync();
+            await blobJson.DeleteAsync();
             log.Info("person registered successfully");
         }
     }

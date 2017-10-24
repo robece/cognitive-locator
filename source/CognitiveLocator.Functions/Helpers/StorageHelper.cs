@@ -37,5 +37,12 @@ namespace CognitiveLocator.Functions.Helpers
             CloudBlockBlob blockBlob = blobContainer.GetBlockBlobReference(filename);
             return blockBlob;
         }
+
+        public static bool BlobExistsOnCloud(string connectionString, string containerName, string key)
+        {
+            CloudStorageAccount cloudStorageAccount = GetCloudStorageAccount(connectionString);
+            CloudBlobClient client = GetCloudBlobClient(cloudStorageAccount);
+            return client.GetContainerReference(containerName).GetBlockBlobReference(key).Exists();
+        }
     }
 }
