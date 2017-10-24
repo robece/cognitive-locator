@@ -118,11 +118,9 @@ namespace CognitiveLocator.ViewModels
             if (!IsByPhoto)
             {
                 MetadataVerification metadata = new MetadataVerification();
-                metadata.Country = Person.Country;
                 metadata.Name = Person.Name;
-                metadata.Lastname = Person.Lastname;  
-                metadata.ReportedBy = Person.ReportedBy;
-
+                metadata.Lastname = Person.Lastname;
+           
                 result = await RestServiceV2.MetadataVerification(metadata);
             }
             else
@@ -130,10 +128,11 @@ namespace CognitiveLocator.ViewModels
                 var stream = new System.IO.MemoryStream(Photo);
 
                 var pid = Guid.NewGuid().ToString();
+                var extension = "jpg";
 
                 if (await StorageHelper.UploadPhoto(pid, stream, true))
                 {
-                    await NavigationService.PushAsync(new ReportConfirmationView());
+                    result = await RestServiceV2.ImageVerification($"{pid}.{extension}");
                 }
                 else
                 {
