@@ -15,4 +15,9 @@ namespace CognitiveLocator.Requests
     public class MobileSettingsRequest : BaseRequest
     {
     }
+
+    public class ImageVerificationRequest : BaseRequest
+    {
+        public string ImageName { get; set; }
+    }
 }
