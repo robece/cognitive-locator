@@ -64,6 +64,7 @@ namespace CognitiveLocator.Functions.Console
 
                     case "2":
                         await UploadImageAsync(0, true);
+                        System.Console.ReadKey();
                         break;
 
                     case "3":
@@ -92,8 +93,8 @@ namespace CognitiveLocator.Functions.Console
                         MetadataVerification metadata = new MetadataVerification();
                         metadata.ReportedBy = "Roberto Cervantes";
                         metadata.Country = "MX";
-                        metadata.Name = "Ang";
-                        metadata.Lastname = "Jol";
+                        metadata.Name = "Liam";
+                        metadata.Lastname = "Neeson";
                         
                         string sdresult = await SearchDocument(metadata);
                         System.Console.WriteLine(sdresult);
@@ -184,6 +185,44 @@ namespace CognitiveLocator.Functions.Console
             return null;
         }
 
+        public static async Task<string> SearchImage(string fileName)
+        {
+            byte[] time = BitConverter.GetBytes(DateTime.UtcNow.ToBinary());
+            byte[] key = Guid.NewGuid().ToByteArray();
+            var token = Convert.ToBase64String(time.Concat(key).ToArray());
+            token = SecurityHelper.Encrypt(token, Settings.CryptographyKey);
+            System.Console.WriteLine($"Token: {token}");
+
+            ImageVerificationRequest request = new ImageVerificationRequest();
+            request.Token = token;
+            request.ImageName = fileName;
+
+            using (var client = new HttpClient())
+            {
+                var service = $"http://localhost:7071/api/ImageVerification/";
+                byte[] byteData = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(request));
+                using (var content = new ByteArrayContent(byteData))
+                {
+                    content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                    var httpResponse = client.PostAsync(service, content).Result;
+
+                    if (httpResponse.StatusCode == HttpStatusCode.OK)
+                    {
+                        System.Console.WriteLine(httpResponse.StatusCode);
+                        var output = await httpResponse.Content.ReadAsStringAsync();
+                        System.Console.WriteLine(output);
+                        return output;
+                    }
+                    else
+                    {
+                        System.Console.WriteLine(httpResponse.StatusCode);
+                    }
+                }
+            }
+            return null;
+        }
+
         private static async Task UploadImageAsync(int option, bool isVerification)
         {
             var file = string.Empty;
@@ -256,7 +295,7 @@ namespace CognitiveLocator.Functions.Console
             {
                 if (await StorageHelper.UploadPhoto(pid, stream, isVerification))
                 {
-                    System.Console.WriteLine("Carga satisfactoria.");
+                    await SearchImage($"{pid}.jpg");
                 }
                 else
                 {

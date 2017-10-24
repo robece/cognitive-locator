@@ -43,6 +43,7 @@
     <Compile Include="FaceAPI\FindSimilar.cs" />
     <Compile Include="Documents\MetadataVerification.cs" />
     <Compile Include="Request\MetadataVerificationRequest.cs" />
+    <Compile Include="Request\ImageVerificationRequest.cs" />
     <Compile Include="Request\MobileSettingsRequest.cs" />
     <Compile Include="Documents\Person.cs" />
     <Compile Include="FaceAPI\PersonInGroupOfPerson.cs" />
