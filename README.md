@@ -61,14 +61,16 @@ To run locally the Azure Functions project a local.settings is required, so crea
 ```
 Now it's time to create our Face API 'Person Group ID' and 'Face List' for this tasks execute the following requests in the specific API testing console:
 
-**Person Group ID**
-- Parameter: missingpeople
+**Person Group ID Parameters**
+- personGroupId: missingpeople
+- Content-Type: application/json
 - Ocp-Apim-Subscription-Key: FACE_API_KEY
 - Zone: Select the same zone where your FACE API has been created
 - Link: [Person Group - Create a Person Group](https://southcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)
 
-**Face List**
-- Parameter: list
+**Face List Parameters**
+- faceListId: list
+- Content-Type: application/json
 - Ocp-Apim-Subscription-Key: FACE_API_KEY
 - Zone: Select the same zone where your FACE API has been created
 - Link: [Face List - Create a Face List](https://southcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b)
