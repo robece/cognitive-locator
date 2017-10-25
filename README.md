@@ -117,4 +117,4 @@ The only settings required to be fixed in the mobile app are: CryptographyKey an
 
 I want to thank all people who had participated in the first version of this project and those people who still continue participating actively on the contribution of this project.
 
-Development team site: [Cognitive Locator](https://cognitivelocator.github.io)
+Development team site: [Cognitive Locator](https://cognitivelocator.github.io) (Under Construction)
