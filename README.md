@@ -8,8 +8,6 @@ The source code of the Cognitive Locator project is under the MIT license, nonet
 
 This project is non-profit, seeing how it only supports non-governmental organizations that face different cases of disappearances every day.
 
-Developer team site: [Cognitive Locator](https://cognitivelocator.github.io)
-
 ## Architecture
 
 Cognitive Locator is based on Xamarin Forms and Azure platform: Azure Functions, CosmosDB, Storage, Notification Hub, Cognitive Services (Face API).
@@ -34,7 +32,7 @@ For this project is required:
 
 <img src="http://rcervantes.me/images/cognitive-locator-resources.png">
 
-To run locally the Azure Functions project a local.settings is required, so create a local.settings.json file with the following information:
+To run locally the Azure Functions project we need to configure the local settings file, let's go and create a local.settings.json file with the following information:
 
 ```json
 {
@@ -118,3 +116,5 @@ The only settings required to be fixed in the mobile app are: CryptographyKey an
 **Credits**
 
 I want to thank all people who had participated in the first version of this project and those people who still continue participating actively on the contribution of this project.
+
+Development team site: [Cognitive Locator](https://cognitivelocator.github.io)
