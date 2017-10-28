@@ -25,5 +25,7 @@ namespace CognitiveLocator.Functions
         public static string MobileCenterID_iOS = Environment.GetEnvironmentVariable("MobileCenterID_iOS");
 
         public static string ImageStorageUrl = Environment.GetEnvironmentVariable("ImageStorageUrl");
+
+        public static string ModeratorImageAPIKey = Environment.GetEnvironmentVariable("ModeratorImage_API_Subscription_Key");
     }
 }
