@@ -3,6 +3,7 @@ using CognitiveLocator.iOS.Services;
 using System;
 using System.IO;
 using System.Security.Cryptography;
+using Xamarin.Forms;
 
 [assembly: Dependency(typeof(SecurityService))]
 

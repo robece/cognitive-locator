@@ -70,6 +70,6 @@ namespace CognitiveLocator.ViewModels
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        #endregion INotifyPropertyChanged
+        #endregion
     }
 }

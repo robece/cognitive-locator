@@ -2,7 +2,10 @@
 {
     public class Settings
     {
-        public static string CryptographyKey = "CRYPT_KEY";
+        public static string CognitiveLocator = "CognitiveLocator";
+        public static string Language = "en-US";
+
+        public static string CryptographyKey = "aadaf729-2499-4b7e";
         public static string AzureWebJobsStorage = string.Empty;
         public static string MobileCenterID_Android = string.Empty;
         public static string MobileCenterID_iOS = string.Empty;
@@ -11,9 +14,9 @@
         public static string ImageStorageUrl = string.Empty;
 
 #if DEBUG
-        public const string FunctionURL = "https://YOUR_AZUREFUNCTION.azurewebsites.net";
+        public const string FunctionURL = "https://coglogdev-fn.azurewebsites.net";
 #else
-        public const string FunctionURL = "https://YOUR_AZUREFUNCTION.azurewebsites.net";
+        public const string FunctionURL = "https://coglogdev-fun.azurewebsites.net";
 #endif
     }
 }
