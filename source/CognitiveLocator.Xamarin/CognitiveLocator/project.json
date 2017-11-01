@@ -1,5 +1,6 @@
 ﻿{
   "dependencies": {
+    "akavache": "5.0.0",
     "Microsoft.Azure.Mobile": "0.16.0",
     "Microsoft.Azure.Mobile.Analytics": "0.16.0",
     "Microsoft.Bcl": "1.1.10",
@@ -41,7 +42,7 @@
     "WindowsAzure.Storage": "8.5.0",
     "Xam.Plugin.Connectivity": "3.0.3",
     "Xam.Plugin.Media": "3.0.1",
-    "Xamarin.Forms": "2.4.0.282",
+    "Xamarin.Forms": "2.4.0.38779",
     "Xamarin.Forms.Maps": "2.4.0.282"
   },
   "frameworks": {

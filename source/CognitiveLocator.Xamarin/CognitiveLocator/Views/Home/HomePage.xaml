@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<views:BasePage 
+    x:Class="CognitiveLocator.Views.HomePage" 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:views="clr-namespace:CognitiveLocator.Views" Title="{Binding Title}">
+    <ScrollView>
+        <StackLayout Style="{DynamicResource CommonVerticalStackLayout}">
+            <Button Command="{Binding CreateReportCommand}" Text="{Binding Home_ReportPerson}" />
+            <Button Command="{Binding SearchPersonNameCommand}" Text="{Binding Home_NameSearch}" />
+            <Button Command="{Binding SearchPersonPictureCommand}" Text="{Binding Home_ImageSearch}" />
+            <Button Command="{Binding SettingsCommand}" Text="{Binding Home_Settings}" />
+            <Button Command="{Binding AboutCommand}" Text="{Binding Home_About}" />
+        </StackLayout>
+    </ScrollView>
+</views:BasePage>

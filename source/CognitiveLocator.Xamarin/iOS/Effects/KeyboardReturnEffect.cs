@@ -1,4 +1,6 @@
 ﻿using CognitiveLocator.iOS.Effects;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.iOS;
 
 [assembly: ExportEffect(typeof(KeyboardReturnEffect), "KeyboardReturnEffect")]
 

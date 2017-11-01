@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<!-- AMERICAN ENGLISH -->
+	<data name="Catalogs_LanguageSpanish" xml:space="preserve">
+        <value>Spanish</value>
+        <comment></comment>
+    </data>
+	<data name="Catalogs_LanguageEnglish" xml:space="preserve">
+        <value>English</value>
+        <comment></comment>
+    </data>
+	<data name="Catalogs_GenreMale" xml:space="preserve">
+        <value>Male</value>
+        <comment></comment>
+    </data>
+	<data name="Catalogs_GenreFemale" xml:space="preserve">
+        <value>Female</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_Title" xml:space="preserve">
+        <value>Report person</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_CameraText" xml:space="preserve">
+        <value>Camera</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_GalleryText" xml:space="preserve">
+        <value>Gallery</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_DisclaimerHeader" xml:space="preserve">
+        <value>Send information</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_DisclaimerMessage" xml:space="preserve">
+        <value>I confirm that I am intentionally sharing a photograph and personal information of a lost person.</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_DisclaimerYes" xml:space="preserve">
+        <value>Yes</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_DisclaimerNo" xml:space="preserve">
+        <value>No</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_ConnectivityHeader" xml:space="preserve">
+        <value>Error</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_ConnectivityMessage" xml:space="preserve">
+        <value>It is necessary to have an internet connection to continue.</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_ConnectivityAccept" xml:space="preserve">
+        <value>Accept</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_InformationNotAvailable" xml:space="preserve">
+        <value>Information not available</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_ReportErrorHeader" xml:space="preserve">
+        <value>Error</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_ReportErrorMessage" xml:space="preserve">
+        <value>It was not possible to register the report, if the error persists try later.</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_ReportErrorAccept" xml:space="preserve">
+        <value>Accept</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_ValidationErrorHeader" xml:space="preserve">
+        <value>Error</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_ValidationErrorMessage" xml:space="preserve">
+        <value>Enter all the required data.</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_ValidationErrorAccept" xml:space="preserve">
+        <value>Accept</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_SectionPhoto" xml:space="preserve">
+        <value>Photograph</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_SectionPhotoMessage" xml:space="preserve">
+        <value>Important: In the photo you should see the full face of the person.</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_SectionGeneral" xml:space="preserve">
+        <value>General information</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_Country" xml:space="preserve">
+        <value>Country</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_ReportedBy" xml:space="preserve">
+        <value>Reported by *</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_Name" xml:space="preserve">
+        <value>Name *</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_Lastname" xml:space="preserve">
+        <value>Lastname *</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_LocationOfLoss" xml:space="preserve">
+        <value>Location of loss *</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_DateOfLoss" xml:space="preserve">
+        <value>Date of loss *</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_ReportId" xml:space="preserve">
+        <value>Report id *</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_PhysicalAttributes" xml:space="preserve">
+        <value>Physical attributes</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_Genre" xml:space="preserve">
+        <value>Genre</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_Complexion" xml:space="preserve">
+        <value>Complexion</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_Skin" xml:space="preserve">
+        <value>Skin</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_Front" xml:space="preserve">
+        <value>Front</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_Mouth" xml:space="preserve">
+        <value>Mouth</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_Eyebrows" xml:space="preserve">
+        <value>Eyebrows</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_Age" xml:space="preserve">
+        <value>Age (include months)</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_Height" xml:space="preserve">
+        <value>Height</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_Face" xml:space="preserve">
+        <value>Face</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_Nose" xml:space="preserve">
+        <value>Nose</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_Lips" xml:space="preserve">
+        <value>Lips</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_Chin" xml:space="preserve">
+        <value>Chin</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_TypeColorEyes" xml:space="preserve">
+        <value>Type and color eyes</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_TypeColorHair" xml:space="preserve">
+        <value>Type and color hair</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_SectionAditionalInformation" xml:space="preserve">
+        <value>Aditional information</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_ParticularSigns" xml:space="preserve">
+        <value>Particular signs</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_Clothes" xml:space="preserve">
+        <value>Clothes</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_Next" xml:space="preserve">
+        <value>Next</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_PreviewMessage" xml:space="preserve">
+        <value>It is important that you review the information before sending the report.</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReport_SendReport" xml:space="preserve">
+        <value>Send report</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReportConfirmation_Title" xml:space="preserve">
+        <value>Report confirmation</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReportConfirmation_P1" xml:space="preserve">
+        <value>Thanks for your support!</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReportConfirmation_P2" xml:space="preserve">
+        <value>Soon you will be receiving a notification to your cell phone!</value>
+        <comment></comment>
+    </data>
+	<data name="CreateReportConfirmation_ButtonHome" xml:space="preserve">
+        <value>Go to home</value>
+        <comment></comment>
+    </data>
+	<data name="SearchPerson_Title" xml:space="preserve">
+        <value>Search person</value>
+        <comment></comment>
+    </data>
+	<data name="SearchPerson_ValidationHeader" xml:space="preserve">
+        <value>Error</value>
+        <comment></comment>
+    </data>
+	<data name="SearchPerson_ValidationMessage" xml:space="preserve">
+        <value>Make sure you fill in all the fields.</value>
+        <comment></comment>
+    </data>
+	<data name="SearchPerson_ValidationAccept" xml:space="preserve">
+        <value>Accept</value>
+        <comment></comment>
+    </data>
+	<data name="SearchPerson_SectionPhoto" xml:space="preserve">
+        <value>Photograph</value>
+        <comment></comment>
+    </data>
+	<data name="SearchPerson_SectionPhotoMessage" xml:space="preserve">
+        <value>Important: In the photo you should see the full face of the person.</value>
+        <comment></comment>
+    </data>
+	<data name="SearchPerson_CameraText" xml:space="preserve">
+        <value>Camera</value>
+        <comment></comment>
+    </data>
+	<data name="SearchPerson_GalleryText" xml:space="preserve">
+        <value>Gallery</value>
+        <comment></comment>
+    </data>
+	<data name="SearchPerson_SearchText" xml:space="preserve">
+        <value>Search</value>
+        <comment></comment>
+    </data>
+	<data name="SearchPerson_SectionPersonData" xml:space="preserve">
+        <value>Person information</value>
+        <comment></comment>
+    </data>
+	<data name="SearchPerson_Name" xml:space="preserve">
+        <value>Name</value>
+        <comment></comment>
+    </data>
+	<data name="SearchPerson_Lastname" xml:space="preserve">
+        <value>Lastname</value>
+        <comment></comment>
+    </data>
+	<data name="SearchPersonResult_Title" xml:space="preserve">
+        <value>Search results</value>
+        <comment></comment>
+    </data>
+	<data name="SearchPersonResult_ConnectivityHeader" xml:space="preserve">
+        <value>Error</value>
+        <comment></comment>
+    </data>
+	<data name="SearchPersonResult_ConnectivityMessage" xml:space="preserve">
+        <value>It is necessary to have an internet connection to continue.</value>
+        <comment></comment>
+    </data>
+	<data name="SearchPersonResult_ConnectivityAccept" xml:space="preserve">
+        <value>Accept</value>
+        <comment></comment>
+    </data>
+	<data name="SearchPersonResult_NoResultsHeader" xml:space="preserve">
+        <value>Results</value>
+        <comment></comment>
+    </data>
+	<data name="SearchPersonResult_NoResultsMessage" xml:space="preserve">
+        <value>No match was found.</value>
+        <comment></comment>
+    </data>
+	<data name="SearchPersonResult_NoResultsAccept" xml:space="preserve">
+        <value>Accept</value>
+        <comment></comment>
+    </data>
+	<data name="SearchPersonResult_VerificationErrorHeader" xml:space="preserve">
+        <value>Error</value>
+        <comment></comment>
+    </data>
+	<data name="SearchPersonResult_VerificationErrorMessage" xml:space="preserve">
+        <value>It was not possible to verify the person, if the error persists try later.</value>
+        <comment></comment>
+    </data>
+	<data name="SearchPersonResult_VerificationErrorAccept" xml:space="preserve">
+        <value>Accept</value>
+        <comment></comment>
+    </data>
+    <data name="PersonDetail_Title" xml:space="preserve">
+        <value>Report detail</value>
+        <comment></comment>
+    </data>
+	<data name="Settings_Title" xml:space="preserve">
+        <value>Settings</value>
+        <comment></comment>
+    </data>
+	<data name="Settings_GeneralSettings" xml:space="preserve">
+        <value>General settings</value>
+        <comment></comment>
+    </data>
+	<data name="Settings_LanguageTitle" xml:space="preserve">
+        <value>Language</value>
+        <comment></comment>
+    </data>
+	<data name="Settings_Language" xml:space="preserve">
+        <value>Language</value>
+        <comment></comment>
+    </data>
+	<data name="Settings_LanguageSelect" xml:space="preserve">
+        <value>Select a language</value>
+        <comment></comment>
+    </data>
+	<data name="Home_Title" xml:space="preserve">
+        <value>Need help?</value>
+        <comment></comment>
+    </data>
+	<data name="Home_ReportPerson" xml:space="preserve">
+        <value>Report person</value>
+        <comment></comment>
+    </data>
+	<data name="Home_NameSearch" xml:space="preserve">
+        <value>Search by name</value>
+        <comment></comment>
+    </data>
+	<data name="Home_ImageSearch" xml:space="preserve">
+        <value>Search by image</value>
+        <comment></comment>
+    </data>
+	<data name="Home_Settings" xml:space="preserve">
+        <value>Settings</value>
+        <comment></comment>
+    </data>
+	<data name="Home_About" xml:space="preserve">
+        <value>About...</value>
+        <comment></comment>
+    </data>
+	<data name="About_Title" xml:space="preserve">
+        <value>About the project</value>
+        <comment></comment>
+    </data>
+	<data name="About_P1" xml:space="preserve">
+        <value>The Cognitive Locator project, known publicly as ‘Busca.me’, is a project dedicated to reporting and finding missing persons. The project was founded due to the disasters related to the earthquake of September 19, 2017, which affected multiple states in Mexico. At first, the project was solely focused on finding or reporting people who went missing as a result of the earthquake. However, now that the project has grown, it not only aims to support the people affected at that time, but to anyone who is going through this devastating situation.</value>
+        <comment></comment>
+    </data>
+	<data name="About_P2" xml:space="preserve">
+        <value>Cognitive Locator is a project hoping that every person can potentially be a medium to report and locate people who have been publicly declared as ‘missing’.</value>
+        <comment></comment>
+    </data>
+	<data name="About_P3" xml:space="preserve">
+        <value>The source code of the Cognitive Locator project is under the MIT license, nonetheless, the ‘Busca.me’ team is in charge of the implementation of the project.</value>
+        <comment></comment>
+    </data>
+	<data name="About_P4" xml:space="preserve">
+        <value>This project is non-profit, seeing how it only supports non-governmental organizations that face different cases of disappearances every day.</value>
+        <comment></comment>
+    </data>
+	<data name="About_Team" xml:space="preserve">
+        <value>Cognitive Locator Team</value>
+        <comment></comment>
+    </data>
+	<data name="About_Feedback" xml:space="preserve">
+        <value>Send feedback</value>
+        <comment></comment>
+    </data>
+	<data name="About_Link" xml:space="preserve">
+        <value>Visit us: cognitivelocator.github.io</value>
+        <comment></comment>
+    </data>
+</root>

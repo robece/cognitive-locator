@@ -3,7 +3,7 @@ using Xamarin.Forms;
 
 namespace CognitiveLocator.Views
 {
-    public class BaseView : ContentPage
+    public class BasePage : ContentPage
     {
         protected override void OnAppearing()
         {

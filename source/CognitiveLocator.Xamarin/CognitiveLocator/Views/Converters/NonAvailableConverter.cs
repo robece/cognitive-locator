@@ -8,7 +8,7 @@ namespace CognitiveLocator.Views.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            string NonAvailable = "Información no disponible";
+            string NonAvailable = CreateReport_InformationNotAvailable;
             return (string.IsNullOrEmpty((string)value)) ? NonAvailable : (string)value;
         }
 
@@ -16,5 +16,14 @@ namespace CognitiveLocator.Views.Converters
         {
             throw new NotImplementedException();
         }
+
+        #region Binding Multiculture
+
+        public string CreateReport_InformationNotAvailable
+        {
+            get { return Resx.AppResources.ResourceManager.GetString(nameof(CreateReport_InformationNotAvailable), Resx.AppResources.Culture); }
+        }
+
+        #endregion
     }
 }
