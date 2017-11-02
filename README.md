@@ -48,6 +48,18 @@ For this project is required:
 
 <img src="http://rcervantes.me/images/cognitive-locator-resources.png">
 
+**Cosmos DB configuration**
+
+From the portal is required generate the document collection 'Person' in the Cosmos DB service previously generated with the following parameters:
+
+- Database id: CognitiveLocator
+- Collection id: Person
+- Storage capactity: Fixed (10 GB)
+- Throughput (400 - 10,000 RU/s): 1000
+* leave in blank Partition key field
+
+**Azure Functions configuration**
+
 To run locally the Azure Functions project we need to configure the local settings file, let's go and create a local.settings.json file with the following information:
 
 ```json
@@ -73,16 +85,18 @@ To run locally the Azure Functions project we need to configure the local settin
   }
 }
 ```
+**Face API configuration**
+
 Now it's time to create our Face API 'Person Group ID' and 'Face List' for this tasks execute the following requests in the specific API testing console:
 
-**Person Group ID Parameters**
+**Person Group ID parameters**
 - personGroupId: missingpeople
 - Content-Type: application/json
 - Ocp-Apim-Subscription-Key: FACE_API_KEY
 - Zone: Select the same zone where your FACE API has been created
 - Link: [Person Group - Create a Person Group](https://southcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)
 
-**Face List Parameters**
+**Face List parameters**
 - faceListId: list
 - Content-Type: application/json
 - Ocp-Apim-Subscription-Key: FACE_API_KEY
