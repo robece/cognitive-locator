@@ -13,7 +13,6 @@
                 <Setter Property="BarBackgroundColor" Value="{StaticResource Primary}" />
                 <Setter Property="BarTextColor" Value="White" />
             </Style>
-
             <Color x:Key="UIMainColor">#048CD6</Color>
             <Style TargetType="Button">
                 <Setter Property="BackgroundColor" Value="{StaticResource UIMainColor}" />
@@ -22,6 +21,53 @@
                 <Setter Property="BorderWidth" Value="2" />
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="FontSize" Value="18" />
+                <Setter Property="HeightRequest" Value="60" />
+            </Style>
+            <Style x:Key="CommonVerticalStackLayout" TargetType="StackLayout">
+                <Setter Property="Orientation" Value="Vertical" />
+                <Setter Property="Margin" Value="40,20,40,0" />
+            </Style>
+            <Style x:Key="TitleText" TargetType="Label">
+                <Setter Property="TextColor" Value="Gray" />
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="Margin" Value="0,15,0,15" />
+            </Style>
+            <Style x:Key="TextColor" TargetType="Label">
+                <Setter Property="TextColor" Value="Gray" />
+            </Style>
+            <Style x:Key="SmallText" TargetType="Label">
+                <Setter Property="TextColor" Value="Gray" />
+                <Setter Property="FontSize" Value="Small" />
+            </Style>
+            <Style x:Key="RegistrationPickerLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="Gray" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="Margin" Value="0,10,0,10" />
+            </Style>
+            <Style x:Key="SmallBoldText" TargetType="Label">
+                <Setter Property="TextColor" Value="Gray" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="RegistrationEntry" TargetType="Entry">
+                <Setter Property="Margin" Value="0,10,0,10" />
+                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="TextColor" Value="Gray" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="PlaceholderColor" Value="Gray" />
+            </Style>
+            <Style x:Key="PreviewBoldLabel" TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+            <Style x:Key="ConfirmationTitleText" TargetType="Label">
+                <Setter Property="TextColor" Value="Gray" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="Margin" Value="0,15,0,15" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
             </Style>
         </ResourceDictionary>
     </Application.Resources>

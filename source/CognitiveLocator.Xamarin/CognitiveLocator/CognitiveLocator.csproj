@@ -43,43 +43,12 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="ViewModels\HomeViewModel.cs" />
-    <Compile Include="Views\HomeView.xaml.cs">
-      <DependentUpon>HomeView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\SearchPersonResultView.xaml.cs">
-      <DependentUpon>SearchPersonResultView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModels\SearchPersonResultViewModel.cs" />
     <Compile Include="Views\BaseView.cs" />
-    <Compile Include="Views\PersonDetailView.xaml.cs">
-      <DependentUpon>PersonDetailView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModels\PersonDetailViewModel.cs" />
     <Compile Include="Helpers\MediaHelper.cs" />
-    <Compile Include="Views\CreateReportView.xaml.cs">
-      <DependentUpon>CreateReportView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModels\CreateReportViewModel.cs" />
     <Compile Include="Views\Converters\ByteArrayToImageConverter.cs" />
     <Compile Include="Views\Effects\NoInteractiveTableViewEffect.cs" />
-    <Compile Include="Views\PreviewView.xaml.cs">
-      <DependentUpon>PreviewView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ReportConfirmationView.xaml.cs">
-      <DependentUpon>ReportConfirmationView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\SearchPersonView.xaml.cs">
-      <DependentUpon>SearchPersonView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModels\SearchPersonViewModel.cs" />
     <Compile Include="Views\Behaviors\NextEntryFocusBehavior.cs" />
     <Compile Include="Views\Effects\KeyboardReturnEffect.cs" />
-    <Compile Include="ViewModels\ReportConfirmationViewModel.cs" />
-    <Compile Include="ViewModels\AboutViewModel.cs" />
-    <Compile Include="Views\AboutView.xaml.cs">
-      <DependentUpon>AboutView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Views\Controls\NullableDatePicker.cs" />
     <Compile Include="Settings.cs" />
@@ -96,6 +65,54 @@
     <Compile Include="Domain\Catalogs.cs" />
     <Compile Include="Views\Converters\CountryConverter.cs" />
     <Compile Include="Views\Converters\GenreConverter.cs" />
+    <Compile Include="Interfaces\ILocalize.cs" />
+    <Compile Include="Domain\LanguageConfiguration.cs" />
+    <Compile Include="Helpers\AkavacheHelper.cs" />
+    <Compile Include="Resx\AppResources.Designer.cs">
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resx\AppResources.es-MX.Designer.cs">
+      <DependentUpon>AppResources.es-MX.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\LanguageSettingsPage.xaml.cs">
+      <DependentUpon>LanguageSettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Settings\SettingsViewModel.cs" />
+    <Compile Include="ViewModels\Settings\LanguageSettingsViewModel.cs" />
+    <Compile Include="Views\Settings\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\About\AboutPage.xaml.cs">
+      <DependentUpon>AboutPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\About\AboutViewModel.cs" />
+    <Compile Include="ViewModels\Home\HomeViewModel.cs" />
+    <Compile Include="Views\Home\HomePage.xaml.cs">
+      <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Report\CreateReportPage.xaml.cs">
+      <DependentUpon>CreateReportPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Report\CreateReportViewModel.cs" />
+    <Compile Include="Views\Report\CreateReportPreviewPage.xaml.cs">
+      <DependentUpon>CreateReportPreviewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Report\CreateReportConfirmationPage.xaml.cs">
+      <DependentUpon>CreateReportConfirmationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Report\CreateReportConfirmationViewModel.cs" />
+    <Compile Include="Views\Search\SearchPersonPage.xaml.cs">
+      <DependentUpon>SearchPersonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Search\SearchPersonViewModel.cs" />
+    <Compile Include="Views\Search\SearchPersonResultPage.xaml.cs">
+      <DependentUpon>SearchPersonResultPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Search\SearchPersonResultViewModel.cs" />
+    <Compile Include="Views\Search\PersonDetailPage.xaml.cs">
+      <DependentUpon>PersonDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Search\PersonDetailViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="DevKit.Xamarin.ImageKit.Abstractions">
@@ -121,30 +138,44 @@
       <SubType>
       </SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\SearchPersonResultView.xaml">
+    <EmbeddedResource Include="Resx\AppResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resx\AppResources.es-MX.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.es-MX.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Settings\LanguageSettingsPage.xaml">
+      <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\PersonDetailView.xaml">
+    <EmbeddedResource Include="Views\Settings\SettingsPage.xaml">
+      <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\CreateReportView.xaml">
+    <EmbeddedResource Include="Views\About\AboutPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\PreviewView.xaml">
+    <EmbeddedResource Include="Views\Home\HomePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ReportConfirmationView.xaml">
+    <EmbeddedResource Include="Views\Report\CreateReportPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\SearchPersonView.xaml">
+    <EmbeddedResource Include="Views\Report\CreateReportPreviewPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\AboutView.xaml">
+    <EmbeddedResource Include="Views\Report\CreateReportConfirmationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Views\HomeView.xaml">
+    <EmbeddedResource Include="Views\Search\SearchPersonPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Search\SearchPersonResultPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Search\PersonDetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -158,6 +189,17 @@
     <Folder Include="Views\Controls\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Requests\" />
+    <Folder Include="Resx\" />
+    <Folder Include="Views\Settings\" />
+    <Folder Include="ViewModels\Settings\" />
+    <Folder Include="Views\About\" />
+    <Folder Include="ViewModels\About\" />
+    <Folder Include="ViewModels\Home\" />
+    <Folder Include="Views\Home\" />
+    <Folder Include="Views\Report\" />
+    <Folder Include="ViewModels\Report\" />
+    <Folder Include="Views\Search\" />
+    <Folder Include="ViewModels\Search\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\Solutions\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\Solutions\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

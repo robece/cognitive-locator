@@ -1,4 +1,6 @@
 ﻿using Foundation;
+using Microsoft.Azure.Mobile;
+using Microsoft.Azure.Mobile.Analytics;
 using UIKit;
 
 namespace CognitiveLocator.iOS

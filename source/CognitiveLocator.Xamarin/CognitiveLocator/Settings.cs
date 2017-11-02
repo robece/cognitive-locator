@@ -2,6 +2,9 @@
 {
     public class Settings
     {
+        public static string CognitiveLocator = "CognitiveLocator";
+        public static string Language = "en-US";
+
         public static string CryptographyKey = "CRYPT_KEY";
         public static string AzureWebJobsStorage = string.Empty;
         public static string MobileCenterID_Android = string.Empty;
