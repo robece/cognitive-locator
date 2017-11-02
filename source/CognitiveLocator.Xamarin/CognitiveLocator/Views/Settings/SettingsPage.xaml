@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<views:BasePage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="CognitiveLocator.Views.SettingsPage" 
+    xmlns:views="clr-namespace:CognitiveLocator.Views" Title="{Binding Title}">
+    <ContentPage.Content>
+        <TableView Intent="Settings">
+            <TableRoot>
+                <TableSection Title="{Binding Settings_GeneralSettings}">
+                    <ImageCell Text="{Binding Settings_Language}" TextColor="Gray" ImageSource="language.png" Command="{Binding LanguageSettingsCommand}" />
+                </TableSection>
+            </TableRoot>
+        </TableView>
+    </ContentPage.Content>
+</views:BasePage>

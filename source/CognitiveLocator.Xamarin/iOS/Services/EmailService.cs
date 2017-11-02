@@ -1,6 +1,8 @@
-﻿using CognitiveLocator.iOS.Services;
+﻿using CognitiveLocator.Interfaces;
+using CognitiveLocator.iOS.Services;
 using MessageUI;
 using UIKit;
+using Xamarin.Forms;
 
 [assembly: Dependency(typeof(EmailService))]
 
