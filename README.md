@@ -3,7 +3,10 @@
 
 | Branch     | App        | Status          |
 | ---------- | ---------- | --------------- |
+| Master        | Cognitive Locator (Droid)  | ![Build status][app-data-build-status-droid-master] |
 | Xamarin-Development        | Cognitive Locator (Droid)  | ![Build status][app-data-build-status-droid-xamarin-development] |
+
+[app-data-build-status-droid-master]:https://build.mobile.azure.com/v0.1/apps/596b9007-8b42-4325-9a49-0251fa24cc87/branches/master/badge
 
 [app-data-build-status-droid-xamarin-development]:https://build.mobile.azure.com/v0.1/apps/596b9007-8b42-4325-9a49-0251fa24cc87/branches/xamarin-development/badge
 
