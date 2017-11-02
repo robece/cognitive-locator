@@ -1,5 +1,21 @@
 # Cognitive Locator
 
+
+| Branch     | App        | Status          |
+| ---------- | ---------- | --------------- |
+| Master        | Cognitive Locator (Droid)  | ![Build status][app-data-build-status-droid-master] |
+| Master        | Cognitive Locator (iOS)  | ![Build status][app-data-build-status-ios-master] |
+| Xamarin-Development        | Cognitive Locator (Droid)  | ![Build status][app-data-build-status-droid-xamarin-development] |
+| Xamarin-Development        | Cognitive Locator (iOS)  | ![Build status][app-data-build-status-ios-xamarin-development] |
+
+[app-data-build-status-droid-master]:https://build.mobile.azure.com/v0.1/apps/596b9007-8b42-4325-9a49-0251fa24cc87/branches/master/badge
+
+[app-data-build-status-ios-master]:https://build.mobile.azure.com/v0.1/apps/346c8576-7ceb-4b6b-8951-8846b42fdc68/branches/master/badge
+
+[app-data-build-status-droid-xamarin-development]:https://build.mobile.azure.com/v0.1/apps/596b9007-8b42-4325-9a49-0251fa24cc87/branches/xamarin-development/badge
+
+[app-data-build-status-ios-xamarin-development]:https://build.mobile.azure.com/v0.1/apps/346c8576-7ceb-4b6b-8951-8846b42fdc68/branches/xamarin-development/badge
+
 The Cognitive Locator project, known publicly as 'Busca.me', is a project dedicated to reporting and finding missing persons. The project was founded due to the disasters related to the earthquake of September 19, 2017, which affected multiple states in Mexico. At first, the project was solely focused on finding or reporting people who went missing as a result of the earthquake. However, now that the project has grown, it not only aims to support the people affected at that time, but to anyone who is going through this devastating situation.
 
 Cognitive Locator is a project hoping that every person can potentially be a medium to report and locate people who have been publicly declared as 'missing'.
@@ -7,8 +23,6 @@ Cognitive Locator is a project hoping that every person can potentially be a med
 The source code of the Cognitive Locator project is under the MIT license, nonetheless, the ‘Busca.me’ team is in charge of the implementation of the project.
 
 This project is non-profit, seeing how it only supports non-governmental organizations that face different cases of disappearances every day.
-
-Developer team site: [Cognitive Locator](https://cognitivelocator.github.io)
 
 ## Architecture
 
@@ -34,7 +48,19 @@ For this project is required:
 
 <img src="http://rcervantes.me/images/cognitive-locator-resources.png">
 
-To run locally the Azure Functions project a local.settings is required, so create a local.settings.json file with the following information:
+**Cosmos DB configuration**
+
+From the portal is required generate the document collection 'Person' in the Cosmos DB service previously generated with the following parameters:
+
+- Database id: CognitiveLocator
+- Collection id: Person
+- Storage capactity: Fixed (10 GB)
+- Throughput (400 - 10,000 RU/s): 1000
+- (leave in blank the partition key field)
+
+**Azure Functions configuration**
+
+To run locally the Azure Functions project we need to configure the local settings file, let's go and create a local.settings.json file with the following information:
 
 ```json
 {
@@ -59,16 +85,20 @@ To run locally the Azure Functions project a local.settings is required, so crea
   }
 }
 ```
+**Face API configuration**
+
 Now it's time to create our Face API 'Person Group ID' and 'Face List' for this tasks execute the following requests in the specific API testing console:
 
-**Person Group ID**
-- Parameter: missingpeople
+**Person Group ID parameters**
+- personGroupId: missingpeople
+- Content-Type: application/json
 - Ocp-Apim-Subscription-Key: FACE_API_KEY
 - Zone: Select the same zone where your FACE API has been created
 - Link: [Person Group - Create a Person Group](https://southcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)
 
-**Face List**
-- Parameter: list
+**Face List parameters**
+- faceListId: list
+- Content-Type: application/json
 - Ocp-Apim-Subscription-Key: FACE_API_KEY
 - Zone: Select the same zone where your FACE API has been created
 - Link: [Face List - Create a Face List](https://southcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b)
@@ -116,3 +146,5 @@ The only settings required to be fixed in the mobile app are: CryptographyKey an
 **Credits**
 
 I want to thank all people who had participated in the first version of this project and those people who still continue participating actively on the contribution of this project.
+
+Development team site: [Cognitive Locator](https://cognitivelocator.github.io) (Under Construction)
