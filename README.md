@@ -56,7 +56,7 @@ From the portal is required generate the document collection 'Person' in the Cos
 - Collection id: Person
 - Storage capactity: Fixed (10 GB)
 - Throughput (400 - 10,000 RU/s): 1000
-* leave in blank Partition key field
+- leave in blank Partition key field
 
 **Azure Functions configuration**
 
