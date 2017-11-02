@@ -89,7 +89,7 @@ namespace CognitiveLocator.ViewModels
 
         private async Task OnItemSelected(Person obj)
         {
-            var page = new PersonDetailView(obj);
+            var page = new PersonDetailPage(obj);
 
             await NavigationService.PushAsync(page);
         }
