@@ -133,4 +133,4 @@ The only settings required to be fixed in the mobile app are: CryptographyKey an
 
 #### Credits
 
-I want to thank all people who had participated in the first version of this project and those people who still continue participating actively on the contribution of this project.
+I want to thank to [all contributors](https://github.com/rcervantes/cognitive-locator/graphs/contributors) who had participated in this project and those people who still continue participating actively on this project.
