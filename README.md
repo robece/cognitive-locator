@@ -30,13 +30,13 @@ Cognitive Locator is based on Xamarin Forms and Azure platform: Azure Functions,
 
 <img src="http://rcervantes.me/images/cognitive-locator-architecture.png" width="500">
 
-## Run the project
+## Setup project
 
-***Clone the project from GitHub repo***
+#### Clone the project from GitHub repo
 
 `git clone https://github.com/rcervantes/cognitive-locator.git`
 
-***Configure Azure resources***
+#### Configure Azure resources
 
 For this project is required:
 
@@ -47,18 +47,6 @@ For this project is required:
 - Notification Hub.
 
 <img src="http://rcervantes.me/images/cognitive-locator-resources.png">
-
-**Cosmos DB configuration**
-
-From the portal is required generate the document collection 'Person' in the Cosmos DB service previously generated with the following parameters:
-
-- Database id: CognitiveLocator
-- Collection id: Person
-- Storage capactity: Fixed (10 GB)
-- Throughput (400 - 10,000 RU/s): 1000
-- (leave in blank the partition key field)
-
-**Azure Functions configuration**
 
 To run locally the Azure Functions project we need to configure the local settings file, let's go and create a local.settings.json file with the following information:
 
@@ -85,18 +73,16 @@ To run locally the Azure Functions project we need to configure the local settin
   }
 }
 ```
-**Face API configuration**
-
 Now it's time to create our Face API 'Person Group ID' and 'Face List' for this tasks execute the following requests in the specific API testing console:
 
-**Person Group ID parameters**
+**Person Group ID Parameters**
 - personGroupId: missingpeople
 - Content-Type: application/json
 - Ocp-Apim-Subscription-Key: FACE_API_KEY
 - Zone: Select the same zone where your FACE API has been created
 - Link: [Person Group - Create a Person Group](https://southcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)
 
-**Face List parameters**
+**Face List Parameters**
 - faceListId: list
 - Content-Type: application/json
 - Ocp-Apim-Subscription-Key: FACE_API_KEY
@@ -112,6 +98,8 @@ With the testing console we are able to debug and see how Azure Functions operat
 **Remember all local settings must be replicated on the Azure Function to work properly**
 
 <img src="http://rcervantes.me/images/cognitive-locator-publish.png" width="450">
+
+#### Mobile application (Xamarin)
 
 Now it's time to configure our Xamarin application to point to our function.
 
@@ -139,12 +127,10 @@ namespace CognitiveLocator
 
 The only settings required to be fixed in the mobile app are: CryptographyKey and FunctionURL, the rest of the settings will be provided at runtime by the MobileSettings function.
 
-***It's time to run the cognitive locator application***
+#### It's time to run the cognitive locator application
 
 <img src="http://rcervantes.me/images/cognitive-locator-app.png" width="300">
 
-**Credits**
+#### Credits
 
 I want to thank all people who had participated in the first version of this project and those people who still continue participating actively on the contribution of this project.
-
-Development team site: [Cognitive Locator](https://cognitivelocator.github.io) (Under Construction)
