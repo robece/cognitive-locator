@@ -80,6 +80,13 @@ Now it's time to create our Face API 'Person Group ID' and 'Face List' for this 
 - Content-Type: application/json
 - Ocp-Apim-Subscription-Key: FACE_API_KEY
 - Zone: Select the same zone where your FACE API has been created
+- Post parameters:
+```json
+{
+    "name":"Missing People",
+    "userData":"Missing people person group"
+}
+```
 - Link: [Person Group - Create a Person Group](https://southcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)
 
 **Face List Parameters**
