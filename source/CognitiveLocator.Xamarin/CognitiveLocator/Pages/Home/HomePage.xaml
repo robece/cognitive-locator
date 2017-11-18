@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pages:BasePage x:Class="CognitiveLocator.Pages.HomePage" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:pages="clr-namespace:CognitiveLocator.Pages" xmlns:controls="clr-namespace:CognitiveLocator.Pages.Controls" Title="{Binding Title}">
+    <ScrollView>
+        <StackLayout Style="{DynamicResource CommonVerticalStackLayout}" IsVisible="{Binding IsAuthenticated}">
+            <Label Text="{Binding Title}" Style="{DynamicResource TitleText}" />
+            <Label x:Name="WelcomeUser" Text="" Style="{DynamicResource SmallBoldText}" Margin="0,-10,0,40" />
+            <Button Command="{Binding CreateReportCommand}" Text="{Binding Home_ReportPerson}" />
+            <Button Command="{Binding SearchPersonNameCommand}" Text="{Binding Home_NameSearch}" />
+            <Button Command="{Binding SearchPersonPictureCommand}" Text="{Binding Home_ImageSearch}" />
+            <Button Command="{Binding SettingsCommand}" Text="{Binding Home_Settings}" />
+            <Button Command="{Binding AboutCommand}" Text="{Binding Home_About}" />
+            <Button Command="{Binding LogoutCommand}" Text="{Binding Home_Logout}" />
+        </StackLayout>
+    </ScrollView>
+</pages:BasePage>

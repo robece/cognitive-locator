@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pages:BasePage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CognitiveLocator.Pages.PersonDetailPage" xmlns:converters="clr-namespace:CognitiveLocator.Pages.Converters" xmlns:effects="clr-namespace:CognitiveLocator.Pages.Effects" xmlns:pages="clr-namespace:CognitiveLocator.Pages" Title="{Binding Title}">
+    <pages:BasePage.Resources>
+        <ResourceDictionary>
+            <converters:NonAvailableConverter x:Key="nonAvailableCvt" />
+            <converters:CountryConverter x:Key="countryCvt" />
+            <converters:GenreConverter x:Key="genreCvt" />
+        </ResourceDictionary>
+    </pages:BasePage.Resources>
+    <pages:BasePage.Content>
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <TableView BackgroundColor="White" HasUnevenRows="true" Intent="Form">
+                <TableView.Effects>
+                    <effects:NoInteractiveTableViewEffect />
+                </TableView.Effects>
+                <TableSection Title="{Binding CreateReport_SectionPhoto}">
+                    <ViewCell>
+                        <Frame Margin="0,5,0,0" WidthRequest="154" HeightRequest="154" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Black" OutlineColor="Black" Padding="2">
+                            <Image WidthRequest="150" HeightRequest="150" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFill" Source="{Binding CurrentPerson.PictureUrl}" />
+                        </Frame>
+                    </ViewCell>
+                </TableSection>
+                <TableSection Title="{Binding CreateReport_PhysicalAttributes}">
+                    <ViewCell>
+                        <StackLayout Style="{DynamicResource CommonVerticalStackLayout}">
+                            <Label Style="{DynamicResource PreviewBoldLabel}" Text="{Binding CreateReport_ReportedBy}" />
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding Path=CurrentPerson.ReportedBy, Converter={StaticResource nonAvailableCvt}}" LineBreakMode="WordWrap" />
+                            <Label Style="{DynamicResource PreviewBoldLabel}" Text="{Binding CreateReport_Country}" />
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding Path=CurrentPerson.Country, Converter={StaticResource countryCvt}}" LineBreakMode="WordWrap" />
+                            <Label Style="{DynamicResource PreviewBoldLabel}" Text="{Binding CreateReport_Name}" />
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding Path=CurrentPerson.Name, Converter={StaticResource nonAvailableCvt}}" LineBreakMode="WordWrap" />
+                            <Label Style="{DynamicResource PreviewBoldLabel}" Text="{Binding CreateReport_Lastname}" />
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding Path=CurrentPerson.Lastname, Converter={StaticResource nonAvailableCvt}}" LineBreakMode="WordWrap" />
+                            <Label Style="{DynamicResource PreviewBoldLabel}" Text="{Binding CreateReport_LocationOfLoss}" />
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding Path=CurrentPerson.LocationOfLoss, Converter={StaticResource nonAvailableCvt}}" LineBreakMode="WordWrap" />
+                            <Label Style="{DynamicResource PreviewBoldLabel}" Text="{Binding CreateReport_DateOfLoss}" />
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding Path=CurrentPerson.DateOfLoss, Converter={StaticResource nonAvailableCvt}}" LineBreakMode="WordWrap" />
+                            <Label Style="{DynamicResource PreviewBoldLabel}" Text="{Binding CreateReport_ReportId}" />
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding Path=CurrentPerson.ReportId, Converter={StaticResource nonAvailableCvt}}" LineBreakMode="WordWrap" />
+                            <Label Style="{DynamicResource PreviewBoldLabel}" Text="{Binding CreateReport_Genre}" />
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding Path=CurrentPerson.Genre, Converter={StaticResource genreCvt}}" LineBreakMode="WordWrap" />
+                            <Label Style="{DynamicResource PreviewBoldLabel}" Text="{Binding CreateReport_Complexion}" />
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding Path=CurrentPerson.Complexion, Converter={StaticResource nonAvailableCvt}}" LineBreakMode="WordWrap" />
+                            <Label Style="{DynamicResource PreviewBoldLabel}" Text="{Binding CreateReport_Skin}" />
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding Path=CurrentPerson.Skin, Converter={StaticResource nonAvailableCvt}}" LineBreakMode="WordWrap" />
+                            <Label Style="{DynamicResource PreviewBoldLabel}" Text="{Binding CreateReport_Front}" />
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding Path=CurrentPerson.Front, Converter={StaticResource nonAvailableCvt}}" LineBreakMode="WordWrap" />
+                            <Label Style="{DynamicResource PreviewBoldLabel}" Text="{Binding CreateReport_Mouth}" />
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding Path=CurrentPerson.Mouth, Converter={StaticResource nonAvailableCvt}}" LineBreakMode="WordWrap" />
+                            <Label Style="{DynamicResource PreviewBoldLabel}" Text="{Binding CreateReport_Eyebrows}" />
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding Path=CurrentPerson.Eyebrows, Converter={StaticResource nonAvailableCvt}}" LineBreakMode="WordWrap" />
+                            <Label Style="{DynamicResource PreviewBoldLabel}" Text="{Binding CreateReport_Age}" />
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding Path=CurrentPerson.Age, Converter={StaticResource nonAvailableCvt}}" LineBreakMode="WordWrap" />
+                            <Label Style="{DynamicResource PreviewBoldLabel}" Text="{Binding CreateReport_Height}" />
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding Path=CurrentPerson.Height, Converter={StaticResource nonAvailableCvt}}" LineBreakMode="WordWrap" />
+                            <Label Style="{DynamicResource PreviewBoldLabel}" Text="{Binding CreateReport_Face}" />
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding Path=CurrentPerson.Face, Converter={StaticResource nonAvailableCvt}}" LineBreakMode="WordWrap" />
+                            <Label Style="{DynamicResource PreviewBoldLabel}" Text="{Binding CreateReport_Nose}" />
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding Path=CurrentPerson.Nose, Converter={StaticResource nonAvailableCvt}}" LineBreakMode="WordWrap" />
+                            <Label Style="{DynamicResource PreviewBoldLabel}" Text="{Binding CreateReport_Lips}" />
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding Path=CurrentPerson.Lips, Converter={StaticResource nonAvailableCvt}}" LineBreakMode="WordWrap" />
+                            <Label Style="{DynamicResource PreviewBoldLabel}" Text="{Binding CreateReport_Chin}" />
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding Path=CurrentPerson.Chin, Converter={StaticResource nonAvailableCvt}}" LineBreakMode="WordWrap" />
+                            <Label Style="{DynamicResource PreviewBoldLabel}" Text="{Binding CreateReport_TypeColorEyes}" />
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding Path=CurrentPerson.TypeColorEyes, Converter={StaticResource nonAvailableCvt}}" LineBreakMode="WordWrap" />
+                            <Label Style="{DynamicResource PreviewBoldLabel}" Text="{Binding CreateReport_TypeColorHair}" />
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding Path=CurrentPerson.TypeColorHair, Converter={StaticResource nonAvailableCvt}}" LineBreakMode="WordWrap" />
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+                <TableSection Title="{Binding CreateReport_SectionAditionalInformation}">
+                    <ViewCell>
+                        <StackLayout Style="{DynamicResource CommonVerticalStackLayout}">
+                            <Label Style="{DynamicResource PreviewBoldLabel}" Text="{Binding CreateReport_ParticularSigns}" />
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding Path=CurrentPerson.ParticularSigns, Converter={StaticResource nonAvailableCvt}}" LineBreakMode="WordWrap" />
+                            <Label Style="{DynamicResource PreviewBoldLabel}" Text="{Binding CreateReport_Clothes}" />
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding Path=CurrentPerson.Clothes, Converter={StaticResource nonAvailableCvt}}" LineBreakMode="WordWrap" />
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+            </TableView>
+        </StackLayout>
+    </pages:BasePage.Content>
+</pages:BasePage>

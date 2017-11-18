@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pages:BasePage x:Class="CognitiveLocator.Pages.SearchPersonPage" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:converters="clr-namespace:CognitiveLocator.Pages.Converters" xmlns:effects="clr-namespace:CognitiveLocator.Pages.Effects" xmlns:viewmodels="clr-namespace:CognitiveLocator.ViewModels" xmlns:behaviors="clr-namespace:CognitiveLocator.Pages.Behaviors" xmlns:pages="clr-namespace:CognitiveLocator.Pages" Title="{Binding Title}">
+    <pages:BasePage.Resources>
+        <ResourceDictionary>
+            <converters:ByteArrayToImageConverter x:Key="photoCvt" />
+        </ResourceDictionary>
+    </pages:BasePage.Resources>
+    <pages:BasePage.Content>
+        <TableView x:Name="table" BackgroundColor="White" HasUnevenRows="true" Intent="Form">
+            <TableView.Effects>
+                <effects:NoInteractiveTableViewEffect />
+            </TableView.Effects>
+            <TableSection x:Name="SectionByPicture" Title="{Binding SearchPerson_SectionPhoto}">
+                <ViewCell>
+                    <StackLayout Style="{DynamicResource CommonVerticalStackLayout}">
+                        <Frame Margin="0,5,0,0" WidthRequest="154" HeightRequest="154" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Black" OutlineColor="Black" Padding="2">
+                            <Image WidthRequest="150" HeightRequest="150" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFill" Source="{Binding Photo,&#xA;Converter={StaticResource photoCvt}}" />
+                        </Frame>
+                        <Label Margin="5" Style="{DynamicResource SmallText}" Text="{Binding SearchPerson_SectionPhotoMessage}" HorizontalTextAlignment="Center" />
+                        <ActivityIndicator HorizontalOptions="Center" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
+                        <StackLayout Margin="40,0,40,0" VerticalOptions="Center" Orientation="Horizontal">
+                            <Button HorizontalOptions="FillAndExpand" Command="{Binding TakePhotoCommand}" Text="{Binding SearchPerson_CameraText}" />
+                            <Button HorizontalOptions="FillAndExpand" Command="{Binding ChoosePhotoCommand}" Text="{Binding SearchPerson_GalleryText}" />
+                        </StackLayout>
+                        <StackLayout Margin="40,0,40,0">
+                            <Button HeightRequest="50" Command="{Binding SearchPersonByPictureCommand}" Text="{Binding SearchPerson_SearchText}" />
+                        </StackLayout>
+                    </StackLayout>
+                </ViewCell>
+            </TableSection>
+            <TableSection x:Name="SectionByName" Title="{Binding SearchPerson_SectionPersonData}">
+                <ViewCell>
+                    <StackLayout Orientation="Vertical">
+                        <StackLayout Margin="40,10,40,10" HeightRequest="50" Orientation="Horizontal">
+                            <Entry x:Name="name" HorizontalOptions="FillAndExpand" Placeholder="{Binding SearchPerson_Name}" Text="{Binding Person.Name}">
+                                <Entry.Behaviors>
+                                    <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference lastname}" />
+                                </Entry.Behaviors>
+                            </Entry>
+                        </StackLayout>
+                        <StackLayout Margin="40,10,40,10" HeightRequest="50" Orientation="Horizontal">
+                            <Entry x:Name="lastname" HorizontalOptions="FillAndExpand" Placeholder="{Binding SearchPerson_Lastname}" Text="{Binding Person.Lastname}">
+                            </Entry>
+                        </StackLayout>
+                        <StackLayout Margin="40,10,40,10" HeightRequest="50">
+                            <Button HeightRequest="50" Command="{Binding SearchPersonByNameCommand}" Text="{Binding SearchPerson_SearchText}" />
+                        </StackLayout>
+                    </StackLayout>
+                </ViewCell>
+            </TableSection>
+        </TableView>
+    </pages:BasePage.Content>
+</pages:BasePage>

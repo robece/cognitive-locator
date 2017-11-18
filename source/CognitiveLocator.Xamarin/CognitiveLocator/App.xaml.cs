@@ -1,9 +1,6 @@
 ﻿using CognitiveLocator.Interfaces;
-using CognitiveLocator.Views;
+using CognitiveLocator.Pages;
 using Xamarin.Forms;
-using System.Reactive.Linq;
-using Akavache;
-using System.Globalization;
 using CognitiveLocator.Domain;
 using CognitiveLocator.Helpers;
 using System.Threading.Tasks;
@@ -17,7 +14,7 @@ namespace CognitiveLocator
         {
             InitializeComponent();
             LoadAppConfiguration();
-            MainPage = new NavigationPage(new HomePage());
+            MainPage = new LoginPage();
         }
 
         private async void LoadAppConfiguration()
@@ -36,6 +33,11 @@ namespace CognitiveLocator
             }
 
             DependencyService.Get<ILocalize>().SetLocale(language.Language);
+        }
+
+        public static void ProceedToHome()
+        {
+            Application.Current.MainPage = new NavigationPage(new HomePage());
         }
     }
 }
