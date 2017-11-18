@@ -64,9 +64,6 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.IO.Compression" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\Solutions\packages\Newtonsoft.Json.10.0.3\lib\netstandard1.3\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Xamarin.GooglePlayServices.Base, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\Solutions\packages\Xamarin.GooglePlayServices.Base.29.0.0.1\lib\MonoAndroid41\Xamarin.GooglePlayServices.Base.dll</HintPath>
     </Reference>
@@ -212,6 +209,45 @@
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\..\Solutions\packages\Xamarin.Forms.2.4.0.38779\lib\MonoAndroid10\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
+    <Reference Include="PInvoke.Windows.Core">
+      <HintPath>..\..\Solutions\packages\PInvoke.Windows.Core.0.3.2\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\PInvoke.Windows.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="PInvoke.Kernel32">
+      <HintPath>..\..\Solutions\packages\PInvoke.Kernel32.0.3.2\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\PInvoke.Kernel32.dll</HintPath>
+    </Reference>
+    <Reference Include="PInvoke.BCrypt">
+      <HintPath>..\..\Solutions\packages\PInvoke.BCrypt.0.3.2\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\PInvoke.BCrypt.dll</HintPath>
+    </Reference>
+    <Reference Include="PInvoke.NCrypt">
+      <HintPath>..\..\Solutions\packages\PInvoke.NCrypt.0.3.2\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\PInvoke.NCrypt.dll</HintPath>
+    </Reference>
+    <Reference Include="Validation">
+      <HintPath>..\..\Solutions\packages\Validation.2.2.8\lib\dotnet\Validation.dll</HintPath>
+    </Reference>
+    <Reference Include="PCLCrypto">
+      <HintPath>..\..\Solutions\packages\PCLCrypto.2.0.147\lib\MonoAndroid23\PCLCrypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.CustomTabs">
+      <HintPath>..\..\Solutions\packages\Xamarin.Android.Support.CustomTabs.26.0.2\lib\MonoAndroid80\Xamarin.Android.Support.CustomTabs.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Mobile.Client">
+      <HintPath>..\..\Solutions\packages\Microsoft.Azure.Mobile.Client.4.0.2\lib\monoandroid70\Microsoft.Azure.Mobile.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Bolts.AppLinks">
+      <HintPath>..\..\Solutions\packages\Bolts.1.4.0.1\lib\MonoAndroid403\Bolts.AppLinks.dll</HintPath>
+    </Reference>
+    <Reference Include="Bolts.Tasks">
+      <HintPath>..\..\Solutions\packages\Bolts.1.4.0.1\lib\MonoAndroid403\Bolts.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.ZXing.Core">
+      <HintPath>..\..\Solutions\packages\Xamarin.Google.ZXing.Core.3.3.0\lib\MonoAndroid\Google.ZXing.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Facebook">
+      <HintPath>..\..\Solutions\packages\Xamarin.Facebook.Android.4.26.0\lib\MonoAndroid70\Xamarin.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\Solutions\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AboutAssets.txt" />
@@ -230,6 +266,11 @@
     <Compile Include="Services\SecurityService.cs" />
     <Compile Include="AkavacheSqliteLinkerOverride.cs" />
     <Compile Include="Services\LocalizeService.cs" />
+    <Compile Include="Services\AuthenticateService.cs" />
+    <Compile Include="Renderers\FacebookButtonRenderer.cs" />
+    <Compile Include="Callbacks\FacebookCallback.cs" />
+    <Compile Include="Callbacks\GraphCallback.cs" />
+    <Compile Include="Services\AzureService.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.png" />
@@ -251,12 +292,16 @@
     <AndroidResource Include="Resources\drawable-mdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\values-v24\styles.xml" />
     <AndroidResource Include="Resources\drawable\language.png" />
+    <AndroidResource Include="Resources\drawable\facialrecog.jpg" />
+    <AndroidResource Include="Resources\values\strings.xml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <Folder Include="Resources\drawable-mdpi\" />
     <Folder Include="Resources\drawable-xxxhdpi\" />
     <Folder Include="Services\" />
+    <Folder Include="Renderers\" />
+    <Folder Include="Callbacks\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CognitiveLocator\CognitiveLocator.csproj">
@@ -284,4 +329,5 @@
   <Import Project="..\..\Solutions\packages\Xamarin.Android.Support.Design.26.0.2\build\MonoAndroid80\Xamarin.Android.Support.Design.targets" Condition="Exists('..\..\Solutions\packages\Xamarin.Android.Support.Design.26.0.2\build\MonoAndroid80\Xamarin.Android.Support.Design.targets')" />
   <Import Project="..\..\Solutions\packages\Xamarin.Android.Support.v7.MediaRouter.26.0.2\build\MonoAndroid80\Xamarin.Android.Support.v7.MediaRouter.targets" Condition="Exists('..\..\Solutions\packages\Xamarin.Android.Support.v7.MediaRouter.26.0.2\build\MonoAndroid80\Xamarin.Android.Support.v7.MediaRouter.targets')" />
   <Import Project="..\..\Solutions\packages\Xamarin.Forms.2.4.0.38779\build\netstandard1.0\Xamarin.Forms.targets" Condition="Exists('..\..\Solutions\packages\Xamarin.Forms.2.4.0.38779\build\netstandard1.0\Xamarin.Forms.targets')" />
+  <Import Project="..\..\Solutions\packages\Xamarin.Android.Support.CustomTabs.26.0.2\build\MonoAndroid80\Xamarin.Android.Support.CustomTabs.targets" Condition="Exists('..\..\Solutions\packages\Xamarin.Android.Support.CustomTabs.26.0.2\build\MonoAndroid80\Xamarin.Android.Support.CustomTabs.targets')" />
 </Project>

@@ -14,7 +14,7 @@
                 <Setter Property="BarTextColor" Value="White" />
             </Style>
             <Color x:Key="UIMainColor">#048CD6</Color>
-            <Style TargetType="Button">
+           <!-- <Style TargetType="Button">
                 <Setter Property="BackgroundColor" Value="{StaticResource UIMainColor}" />
                 <Setter Property="BorderColor" Value="White" />
                 <Setter Property="BorderRadius" Value="15" />
@@ -22,7 +22,7 @@
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="FontSize" Value="18" />
                 <Setter Property="HeightRequest" Value="60" />
-            </Style>
+            </Style>-->
             <Style x:Key="CommonVerticalStackLayout" TargetType="StackLayout">
                 <Setter Property="Orientation" Value="Vertical" />
                 <Setter Property="Margin" Value="40,20,40,0" />
