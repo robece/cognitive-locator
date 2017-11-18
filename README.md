@@ -1,5 +1,6 @@
 # Cognitive Locator
 
+## Build Status
 
 | Branch     | App        | Status          |
 | ---------- | ---------- | --------------- |
@@ -15,6 +16,8 @@
 [app-data-build-status-droid-xamarin-development]:https://build.mobile.azure.com/v0.1/apps/596b9007-8b42-4325-9a49-0251fa24cc87/branches/xamarin-development/badge
 
 [app-data-build-status-ios-xamarin-development]:https://build.mobile.azure.com/v0.1/apps/346c8576-7ceb-4b6b-8951-8846b42fdc68/branches/xamarin-development/badge
+
+## Cognitive Locator
 
 The Cognitive Locator project, known publicly as 'Busca.me', is a project dedicated to reporting and finding missing persons. The project was founded due to the disasters related to the earthquake of September 19, 2017, which affected multiple states in Mexico. At first, the project was solely focused on finding or reporting people who went missing as a result of the earthquake. However, now that the project has grown, it not only aims to support the people affected at that time, but to anyone who is going through this devastating situation.
 
