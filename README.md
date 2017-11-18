@@ -73,7 +73,50 @@ To run locally the Azure Functions project we need to configure the local settin
   }
 }
 ```
-Now it's time to create our Face API 'Person Group ID' and 'Face List' for this tasks execute the following requests in the specific API testing console:
+
+#### Adding Authentication / Authorization
+
+Once we have created our Azure Functions and correctly deployed it's time to configure some settings to enable Facebook authentication, select Authentication/Authorization under Networking.
+
+<img src="http://rcervantes.me/images/cognitive-locator-functions-settings.png" width="800">
+
+Turn on the 'App Service Authentication' feature, then select 'Action to take when request is not authenticated' to Log in with Facebook.
+
+<img src="http://rcervantes.me/images/cognitive-locator-functions-add-facebook.png" width="500">
+
+Click on Facebook option then set the Facebook Application Id, Application Secret and the scope: public_profile and email, then save the configuration. 
+
+<img src="http://rcervantes.me/images/cognitive-locator-functions-add-facebook-settings.png" width="500">
+
+Now enable advanced token and set an allowed external redirect URL. e.g. cognitivelocator://easyauth.callback
+
+<img src="http://rcervantes.me/images/cognitive-locator-functions-add-facebook2.png" width="500">
+
+#### Configure Facebook Application
+
+Go to [Facebook Developer Portal](https://developer.facebook.com) with your Facebook account add a new application e.g. Locator. now you will be able to see your Dashboard with your Application Name, Application ID and Application Secret.
+
+<img src="http://rcervantes.me/images/cognitive-locator-facebook-dashboard.png" width="500">
+
+Now it's time to configure the login, add the valid OAuth redirect URIs using your Azure Function callback URI previously configured: **https://YOUR_AZURE_FUNCTION.azurewebsites.net/.auth/login/facebook/callback** and verify the reset client OAuth settings.
+
+<img src="http://rcervantes.me/images/cognitive-locator-facebook-login-settings.png" width="800">
+
+Now go to Settings -> Basic and configure your Android and iOS App.
+
+For Android. Fill the required fields and verify the rest of the settings, if you need a key hash, you can get it using [this steps](https://blog.xamarin.com/simplified-android-keystore-signature-disovery/).
+
+<img src="http://rcervantes.me/images/cognitive-locator-facebook-android-setting.png" width="500">
+
+For iOS. Fill the required fields and verify the rest of the settings.
+
+<img src="http://rcervantes.me/images/cognitive-locator-facebook-ios-setting.png" width="500">
+
+At this moment you have successfuly configure your Facebook application to login with your apps.
+
+#### Configure Face API
+
+Now it's time to create our Face API 'Person Group' and 'Face List' in the specific API testing console:
 
 **Person Group ID Parameters**
 - personGroupId: missingpeople
@@ -110,12 +153,28 @@ With the testing console we are able to debug and see how Azure Functions operat
 
 Now it's time to configure our Xamarin application to point to our function.
 
+In your CognitiveLocator\Settings.cs file set the following attributes:
+
+- FunctionURL
+- CryptographyKey
+- FacebookAppId
+- FacebookAppName
+
 ```csharp
 namespace CognitiveLocator
 {
     public class Settings
     {
-        public static string CryptographyKey = "CRYPT_KEY";
+#if DEBUG
+        public const string FunctionURL = "https://YOUR_AZURE_FUNCTION.azurewebsites.net";
+#else
+        public const string FunctionURL = "https://YOUR_AZURE_FUNCTION.azurewebsites.net";
+#endif
+
+        public static string CognitiveLocator = "CognitiveLocator";
+        public static string Language = "en-US";
+
+        public static string CryptographyKey = "YOUR_CRYPT_KEY";
         public static string AzureWebJobsStorage = string.Empty;
         public static string MobileCenterID_Android = string.Empty;
         public static string MobileCenterID_iOS = string.Empty;
@@ -123,21 +182,51 @@ namespace CognitiveLocator
         public static string NotificationHubName = string.Empty;
         public static string ImageStorageUrl = string.Empty;
 
-#if DEBUG
-        public const string FunctionURL = "https://YOUR_AZUREFUNCTION.azurewebsites.net";
-#else
-        public const string FunctionURL = "https://YOUR_AZUREFUNCTION.azurewebsites.net";
-#endif
+        public static string FacebookAppId = "YOUR_FACEBOOK_APP_ID";
+        public static string FacebookAppName = "YOUR_FACEBOOK_APP_NAME";
+        public static string MobileServiceAuthenticationToken = string.Empty;
+        public static FacebookProfileData FacebookProfile = new FacebookProfileData();
     }
 }
 ```
 
-The only settings required to be fixed in the mobile app are: CryptographyKey and FunctionURL, the rest of the settings will be provided at runtime by the MobileSettings function.
+In your CognitiveLocator.Droid project go to Resources\values\strings.xml and set the following attributes:
 
-#### It's time to run the cognitive locator application
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_id">YOUR_FACEBOOK_APP_ID</string>
+    <string name="app_name">YOUR_FACEBOOK_APP_NAME</string>
+</resources>
+```
+In addition go to AndroidManifest.xml and verify that your android:scheme and android:host are the same configured previously in our Azure Function authentication settings.
+
+```xml
+<activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity" android:launchMode="singleTop" android:noHistory="true">
+    <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data android:scheme="cognitivelocator" android:host="easyauth.callback" />
+    </intent-filter>
+</activity>
+```
+
+In your CognitiveLocator.iOS project edit your Info.plist and set the following attributes:
+
+```xml
+<key>FacebookAppID</key>
+<string>YOUR_FACEBOOK_APP_ID</string>
+<key>FacebookDisplayName</key>
+<string>YOUR_FACEBOOK_APP_NAME</string>
+```
+
+Congrats if you successfully configure the app you can run it now!
 
 <img src="http://rcervantes.me/images/cognitive-locator-app.png" width="300">
 
-#### Credits
+<img src="http://rcervantes.me/images/cognitive-locator-app2.png" width="300">
+
+## Credits
 
 I want to thank to [all contributors](https://github.com/rcervantes/cognitive-locator/graphs/contributors) who had participated in this project and those people who still continue participating actively on this project.
