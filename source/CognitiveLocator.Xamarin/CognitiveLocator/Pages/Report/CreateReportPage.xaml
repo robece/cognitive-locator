@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pages:BasePage x:Class="CognitiveLocator.Pages.CreateReportPage" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:behaviors="clr-namespace:CognitiveLocator.Pages.Behaviors" xmlns:converters="clr-namespace:CognitiveLocator.Pages.Converters" xmlns:effects="clr-namespace:CognitiveLocator.Pages.Effects" xmlns:viewmodels="clr-namespace:CognitiveLocator.ViewModels" xmlns:pages="clr-namespace:CognitiveLocator.Pages" Title="{Binding Title}" IsBusy="{Binding IsBusy}">
+    <pages:BasePage.BindingContext>
+        <viewmodels:CreateReportViewModel />
+    </pages:BasePage.BindingContext>
+    <pages:BasePage.Resources>
+        <ResourceDictionary>
+            <converters:ByteArrayToImageConverter x:Key="photoCvt" />
+        </ResourceDictionary>
+    </pages:BasePage.Resources>
+    <pages:BasePage.Content>
+        <TableView BackgroundColor="White" HasUnevenRows="true" Intent="Form">
+            <TableView.Effects>
+                <effects:NoInteractiveTableViewEffect />
+            </TableView.Effects>
+            <TableSection Title="{Binding CreateReport_SectionPhoto}">
+                <ViewCell>
+                    <StackLayout Style="{DynamicResource CommonVerticalStackLayout}">
+                        <Frame Margin="0,5,0,0" WidthRequest="154" HeightRequest="154" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Black" OutlineColor="Black" Padding="2">
+                            <Image WidthRequest="150" HeightRequest="150" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFill" Source="{Binding Photo,&#xA;Converter={StaticResource photoCvt}}" />
+                        </Frame>
+                        <Label Margin="5" Style="{DynamicResource SmallText}" Text="{Binding CreateReport_SectionPhotoMessage}" HorizontalTextAlignment="Center" />
+                        <ActivityIndicator HorizontalOptions="Center" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
+                        <StackLayout Margin="40,0,40,0" VerticalOptions="Center" Orientation="Horizontal">
+                            <Button HorizontalOptions="FillAndExpand" Command="{Binding TakePhotoCommand}" Text="{Binding CreateReport_CameraText}" />
+                            <Button HorizontalOptions="FillAndExpand" Command="{Binding ChoosePhotoCommand}" Text="{Binding CreateReport_GalleryText}" />
+                        </StackLayout>
+                    </StackLayout>
+                </ViewCell>
+            </TableSection>
+            <TableSection Title="{Binding CreateReport_SectionGeneral}">
+                <ViewCell>
+                    <StackLayout Style="{DynamicResource CommonVerticalStackLayout}">
+                        <Label Style="{DynamicResource RegistrationPickerLabel}" Text="{Binding CreateReport_Country}" />
+                        <Picker Title="{Binding CreateReport_Country}" TextColor="Gray" ItemsSource="{Binding Countries}" SelectedIndex="{Binding CountriesSelectedIndex}" />
+                        <Entry x:Name="reportedBy" Style="{DynamicResource RegistrationEntry}" Placeholder="{Binding CreateReport_ReportedBy}" Text="{Binding ReportedBy}">
+                            <Entry.Effects>
+                                <effects:KeyboardReturnEffect />
+                            </Entry.Effects>
+                            <Entry.Behaviors>
+                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference name}" />
+                            </Entry.Behaviors>
+                        </Entry>
+                        <Entry x:Name="name" Style="{DynamicResource RegistrationEntry}" Placeholder="{Binding CreateReport_Name}" Text="{Binding Name}">
+                            <Entry.Effects>
+                                <effects:KeyboardReturnEffect />
+                            </Entry.Effects>
+                            <Entry.Behaviors>
+                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference lastname}" />
+                            </Entry.Behaviors>
+                        </Entry>
+                        <Entry x:Name="lastname" Style="{DynamicResource RegistrationEntry}" Placeholder="{Binding CreateReport_Lastname}" Text="{Binding Lastname}">
+                            <Entry.Effects>
+                                <effects:KeyboardReturnEffect />
+                            </Entry.Effects>
+                            <Entry.Behaviors>
+                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference locationOfLoss}" />
+                            </Entry.Behaviors>
+                        </Entry>
+                        <Entry x:Name="locationOfLoss" Style="{DynamicResource RegistrationEntry}" Placeholder="{Binding CreateReport_LocationOfLoss}" Text="{Binding LocationOfLoss}">
+                            <Entry.Effects>
+                                <effects:KeyboardReturnEffect />
+                            </Entry.Effects>
+                            <Entry.Behaviors>
+                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference dateOfLoss}" />
+                            </Entry.Behaviors>
+                        </Entry>
+                        <Entry x:Name="dateOfLoss" Style="{DynamicResource RegistrationEntry}" Placeholder="{Binding CreateReport_DateOfLoss}" Text="{Binding DateOfLoss}">
+                            <Entry.Effects>
+                                <effects:KeyboardReturnEffect />
+                            </Entry.Effects>
+                            <Entry.Behaviors>
+                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference reportId}" />
+                            </Entry.Behaviors>
+                        </Entry>
+                        <Entry x:Name="reportId" Style="{DynamicResource RegistrationEntry}" Placeholder="{Binding CreateReport_ReportId}" Text="{Binding ReportId}">
+                            <Entry.Effects>
+                                <effects:KeyboardReturnEffect />
+                            </Entry.Effects>
+                            <Entry.Behaviors>
+                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference complexion}" />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </StackLayout>
+                </ViewCell>
+            </TableSection>
+            <TableSection Title="{Binding CreateReport_PhysicalAttributes}">
+                <ViewCell>
+                    <StackLayout Style="{DynamicResource CommonVerticalStackLayout}">
+                        <Label Style="{DynamicResource RegistrationPickerLabel}" Text="{Binding CreateReport_Genre}" />
+                        <Picker Title="{Binding CreateReport_Genre}" TextColor="Gray" ItemsSource="{Binding Genre}" SelectedIndex="{Binding GenreSelectedIndex}" />
+                        <Entry x:Name="complexion" Style="{DynamicResource RegistrationEntry}" Placeholder="{Binding CreateReport_Complexion}" Text="{Binding Complexion}">
+                            <Entry.Effects>
+                                <effects:KeyboardReturnEffect />
+                            </Entry.Effects>
+                            <Entry.Behaviors>
+                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference skin}" />
+                            </Entry.Behaviors>
+                        </Entry>
+                        <Entry x:Name="skin" Style="{DynamicResource RegistrationEntry}" Placeholder="{Binding CreateReport_Skin}" Text="{Binding Skin}">
+                            <Entry.Effects>
+                                <effects:KeyboardReturnEffect />
+                            </Entry.Effects>
+                            <Entry.Behaviors>
+                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference front}" />
+                            </Entry.Behaviors>
+                        </Entry>
+                        <Entry x:Name="front" Style="{DynamicResource RegistrationEntry}" Placeholder="{Binding CreateReport_Front}" Text="{Binding Front}">
+                            <Entry.Effects>
+                                <effects:KeyboardReturnEffect />
+                            </Entry.Effects>
+                            <Entry.Behaviors>
+                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference mouth}" />
+                            </Entry.Behaviors>
+                        </Entry>
+                        <Entry x:Name="mouth" Style="{DynamicResource RegistrationEntry}" Placeholder="{Binding CreateReport_Mouth}" Text="{Binding Mouth}">
+                            <Entry.Effects>
+                                <effects:KeyboardReturnEffect />
+                            </Entry.Effects>
+                            <Entry.Behaviors>
+                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference eyebrows}" />
+                            </Entry.Behaviors>
+                        </Entry>
+                        <Entry x:Name="eyebrows" Style="{DynamicResource RegistrationEntry}" Placeholder="{Binding CreateReport_Eyebrows}" Text="{Binding Eyebrows}">
+                            <Entry.Effects>
+                                <effects:KeyboardReturnEffect />
+                            </Entry.Effects>
+                            <Entry.Behaviors>
+                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference age}" />
+                            </Entry.Behaviors>
+                        </Entry>
+                        <Entry x:Name="age" Style="{DynamicResource RegistrationEntry}" Placeholder="{Binding CreateReport_Age}" Text="{Binding Age}">
+                            <Entry.Effects>
+                                <effects:KeyboardReturnEffect />
+                            </Entry.Effects>
+                            <Entry.Behaviors>
+                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference height}" />
+                            </Entry.Behaviors>
+                        </Entry>
+                        <Entry x:Name="height" Style="{DynamicResource RegistrationEntry}" Placeholder="{Binding CreateReport_Height}" Text="{Binding Height}">
+                            <Entry.Effects>
+                                <effects:KeyboardReturnEffect />
+                            </Entry.Effects>
+                            <Entry.Behaviors>
+                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference face}" />
+                            </Entry.Behaviors>
+                        </Entry>
+                        <Entry x:Name="face" Style="{DynamicResource RegistrationEntry}" Placeholder="{Binding CreateReport_Face}" Text="{Binding Face}">
+                            <Entry.Effects>
+                                <effects:KeyboardReturnEffect />
+                            </Entry.Effects>
+                            <Entry.Behaviors>
+                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference nose}" />
+                            </Entry.Behaviors>
+                        </Entry>
+                        <Entry x:Name="nose" Style="{DynamicResource RegistrationEntry}" Placeholder="{Binding CreateReport_Nose}" Text="{Binding Nose}">
+                            <Entry.Effects>
+                                <effects:KeyboardReturnEffect />
+                            </Entry.Effects>
+                            <Entry.Behaviors>
+                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference lips}" />
+                            </Entry.Behaviors>
+                        </Entry>
+                        <Entry x:Name="lips" Style="{DynamicResource RegistrationEntry}" Placeholder="{Binding CreateReport_Lips}" Text="{Binding Lips}">
+                            <Entry.Effects>
+                                <effects:KeyboardReturnEffect />
+                            </Entry.Effects>
+                            <Entry.Behaviors>
+                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference chin}" />
+                            </Entry.Behaviors>
+                        </Entry>
+                        <Entry x:Name="chin" Style="{DynamicResource RegistrationEntry}" Placeholder="{Binding CreateReport_Chin}" Text="{Binding Chin}">
+                            <Entry.Effects>
+                                <effects:KeyboardReturnEffect />
+                            </Entry.Effects>
+                            <Entry.Behaviors>
+                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference typeColorEyes}" />
+                            </Entry.Behaviors>
+                        </Entry>
+                        <Entry x:Name="typeColorEyes" Style="{DynamicResource RegistrationEntry}" Placeholder="{Binding CreateReport_TypeColorEyes}" Text="{Binding TypeColorEyes}">
+                            <Entry.Effects>
+                                <effects:KeyboardReturnEffect />
+                            </Entry.Effects>
+                            <Entry.Behaviors>
+                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference typeColorHair}" />
+                            </Entry.Behaviors>
+                        </Entry>
+                        <Entry x:Name="typeColorHair" Style="{DynamicResource RegistrationEntry}" Placeholder="{Binding CreateReport_TypeColorHair}" Text="{Binding TypeColorHair}">
+                            <Entry.Effects>
+                                <effects:KeyboardReturnEffect />
+                            </Entry.Effects>
+                            <Entry.Behaviors>
+                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference particularSigns}" />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </StackLayout>
+                </ViewCell>
+            </TableSection>
+            <TableSection Title="{Binding CreateReport_SectionAditionalInformation}">
+                <ViewCell>
+                    <StackLayout Style="{DynamicResource CommonVerticalStackLayout}">
+                        <Entry x:Name="particularSigns" Style="{DynamicResource RegistrationEntry}" Placeholder="{Binding CreateReport_ParticularSigns}" Text="{Binding ParticularSigns}">
+                            <Entry.Effects>
+                                <effects:KeyboardReturnEffect />
+                            </Entry.Effects>
+                            <Entry.Behaviors>
+                                <behaviors:NextEntryFocusBehavior NextEntry="{x:Reference clothes}" />
+                            </Entry.Behaviors>
+                        </Entry>
+                        <Entry x:Name="clothes" Style="{DynamicResource RegistrationEntry}" Placeholder="{Binding CreateReport_Clothes}" Text="{Binding Clothes}" />
+                        <StackLayout Margin="0,20">
+                            <Button Command="{Binding PreviewReportCommand}" Text="{Binding CreateReport_Next}" />
+                        </StackLayout>
+                    </StackLayout>
+                </ViewCell>
+            </TableSection>
+        </TableView>
+    </pages:BasePage.Content>
+</pages:BasePage>

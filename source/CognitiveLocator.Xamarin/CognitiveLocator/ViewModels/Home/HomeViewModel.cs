@@ -1,10 +1,11 @@
 ﻿using CognitiveLocator.Interfaces;
-using CognitiveLocator.Services;
-using CognitiveLocator.Views;
+using CognitiveLocator.Pages;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using CognitiveLocator.Domain;
+using CognitiveLocator.Helpers;
+using Newtonsoft.Json.Linq;
 
 namespace CognitiveLocator.ViewModels
 {
@@ -15,6 +16,7 @@ namespace CognitiveLocator.ViewModels
         public Command SearchPersonPictureCommand { get; set; }
         public Command SettingsCommand { get; set; }
         public Command AboutCommand { get; set; }
+        public Command LogoutCommand { get; set; }
         public Command NavigateToResultsCommand { get; set; }
 
         public HomeViewModel() : this(new DependencyServiceBase())
@@ -35,19 +37,39 @@ namespace CognitiveLocator.ViewModels
             SearchPersonPictureCommand = new Command(async () => await GoToSearchPersonByPicture());
             SettingsCommand = new Command(async () => await GoToSettings());
             AboutCommand = new Command(async () => await GoToAbout());
+            LogoutCommand = new Command(async () => await GoToLogout());
 
             this.IsBusy = true;
             Task.Run(async () =>
             {
+                //initialize catalogs
                 Akavache.BlobCache.ApplicationName = nameof(Settings.CognitiveLocator);
                 Catalogs.InitCountries();
                 Catalogs.InitGenre();
                 Catalogs.InitLanguages();
-                Dictionary<string, string> result = await RestServiceV2.GetMobileSettings();
+
+                //init facebook token
+                var token = new JObject();
+                token["access_token"] = DependencyService.Get<IAuthenticate>().GetToken();
+
+                //use facebook token on Azure Mobile App
+                Settings.MobileServiceAuthenticationToken = await DependencyService.Get<IAuthenticate>().Authenticate(token);
+
+                //get facebook profile
+                var isAuthenticated = DependencyService.Get<IAuthenticate>().IsAuthenticated();
+                if (isAuthenticated)
+                    DependencyService.Get<IAuthenticate>().GetUserInfo();
+
+                //get mobile settings
+                Dictionary<string, string> result = await RestHelper.GetMobileSettings();
                 Settings.MobileCenterID_Android = result[nameof(Settings.MobileCenterID_Android)];
                 Settings.MobileCenterID_iOS = result[nameof(Settings.MobileCenterID_iOS)];
                 Settings.AzureWebJobsStorage = result[nameof(Settings.AzureWebJobsStorage)];
                 Settings.ImageStorageUrl = result[nameof(Settings.ImageStorageUrl)];
+
+                //initialize Mobile Center and Azure Mobile App
+                DependencyService.Get<IAzureService>().Initialize();
+
             }).ContinueWith((b) =>
             {
                 this.IsBusy = false;
@@ -77,6 +99,12 @@ namespace CognitiveLocator.ViewModels
         private async Task GoToAbout()
         {
             await NavigationService.PushAsync(new AboutPage());
+        }
+
+        private async Task GoToLogout()
+        {
+            await DependencyService.Get<IAuthenticate>().ClearToken();
+            Application.Current.MainPage = new LoginPage();
         }
 
         #region Binding Multiculture
@@ -109,6 +137,11 @@ namespace CognitiveLocator.ViewModels
         public string Home_About
         {
             get { return Resx.AppResources.ResourceManager.GetString(nameof(Home_About), Resx.AppResources.Culture); }
+        }
+
+        public string Home_Logout
+        {
+            get { return Resx.AppResources.ResourceManager.GetString(nameof(Home_Logout), Resx.AppResources.Culture); }
         }
 
         #endregion

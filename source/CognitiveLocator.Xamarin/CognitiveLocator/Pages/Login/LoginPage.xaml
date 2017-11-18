@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:controls="clr-namespace:CognitiveLocator.Pages.Controls"
+    xmlns:converters="clr-namespace:CognitiveLocator.Pages.Converters"
+    x:Class="CognitiveLocator.Pages.LoginPage">
+     <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:InverseBooleanConverter x:Key="inverseBooleanConverter"></converters:InverseBooleanConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+	<ContentPage.Content>
+        <StackLayout Style="{DynamicResource CommonVerticalStackLayout}">
+            <Label Style="{DynamicResource TitleText}" 
+                Text="Cognitive Locator" 
+                HorizontalTextAlignment="Center" />
+            <Image Source="facialrecog.jpg" Margin="0,10,0,10"  WidthRequest="250" />
+            <Button Margin="0,40,0,40" Text="{Binding Login_Proceed}" 
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" IsVisible="{Binding IsAuthenticated}" Command="{Binding NavigateToHomeCommand}" />
+            <controls:FacebookLoginNative x:Name="fbLoginButton" Text="{Binding Login_Login}" 
+                VerticalOptions="Center" HorizontalOptions="Center" 
+                IsVisible="{Binding Path=IsAuthenticated, Converter={StaticResource inverseBooleanConverter}}" />
+        </StackLayout>
+	</ContentPage.Content>
+</ContentPage>

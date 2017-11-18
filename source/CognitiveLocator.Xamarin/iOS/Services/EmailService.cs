@@ -5,7 +5,6 @@ using UIKit;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(EmailService))]
-
 namespace CognitiveLocator.iOS.Services
 {
     public class EmailService : IEmailService

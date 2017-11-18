@@ -1,7 +1,7 @@
 ﻿using CognitiveLocator.Domain;
 using CognitiveLocator.Interfaces;
 using CognitiveLocator.Services;
-using CognitiveLocator.Views;
+using CognitiveLocator.Pages;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -121,7 +121,7 @@ namespace CognitiveLocator.ViewModels
                 metadata.Name = Person.Name;
                 metadata.Lastname = Person.Lastname;
 
-                result = await RestServiceV2.MetadataVerification(metadata);
+                result = await RestHelper.MetadataVerification(metadata);
             }
             else
             {
@@ -132,7 +132,7 @@ namespace CognitiveLocator.ViewModels
 
                 if (await StorageHelper.UploadPhoto(pid, stream, true))
                 {
-                    result = await RestServiceV2.ImageVerification($"{pid}.{extension}");
+                    result = await RestHelper.ImageVerification($"{pid}.{extension}");
                 }
                 else
                 {

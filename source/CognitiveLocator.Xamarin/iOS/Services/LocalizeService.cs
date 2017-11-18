@@ -4,6 +4,7 @@ using System.Threading;
 using System.Globalization;
 using CognitiveLocator.iOS.Services;
 using CognitiveLocator.Interfaces;
+using Foundation;
 
 [assembly: Dependency(typeof(LocalizeService))]
 namespace CognitiveLocator.iOS.Services

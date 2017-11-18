@@ -13,6 +13,18 @@
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
 	<!-- AMERICAN ENGLISH -->
+	<data name="Login_Title" xml:space="preserve">
+        <value>Login</value>
+        <comment></comment>
+    </data>
+	<data name="Login_Proceed" xml:space="preserve">
+        <value>You're already authenticated, proceed!</value>
+        <comment></comment>
+    </data>
+	<data name="Login_Login" xml:space="preserve">
+        <value>Login with Facebook</value>
+        <comment></comment>
+    </data>
 	<data name="Catalogs_LanguageSpanish" xml:space="preserve">
         <value>Spanish</value>
         <comment></comment>
@@ -102,7 +114,7 @@
         <comment></comment>
     </data>
 	<data name="CreateReport_SectionPhotoMessage" xml:space="preserve">
-        <value>Important: In the photo you should see the full face of the person.</value>
+        <value>ImHome_Logoutportant: In the photo you should see the full face of the person.</value>
         <comment></comment>
     </data>
 	<data name="CreateReport_SectionGeneral" xml:space="preserve">
@@ -325,7 +337,7 @@
         <value>Accept</value>
         <comment></comment>
     </data>
-    <data name="PersonDetail_Title" xml:space="preserve">
+	<data name="PersonDetail_Title" xml:space="preserve">
         <value>Report detail</value>
         <comment></comment>
     </data>
@@ -370,7 +382,11 @@
         <comment></comment>
     </data>
 	<data name="Home_About" xml:space="preserve">
-        <value>About...</value>
+        <value>About</value>
+        <comment></comment>
+    </data>
+	<data name="Home_Logout" xml:space="preserve">
+        <value>Logout</value>
         <comment></comment>
     </data>
 	<data name="About_Title" xml:space="preserve">

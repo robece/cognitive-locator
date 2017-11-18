@@ -47,6 +47,24 @@ namespace CognitiveLocator.Resx {
             }
         }
         
+        public static string Login_Title {
+            get {
+                return ResourceManager.GetString("Login_Title", resourceCulture);
+            }
+        }
+        
+        public static string Login_Proceed {
+            get {
+                return ResourceManager.GetString("Login_Proceed", resourceCulture);
+            }
+        }
+        
+        public static string Login_Login {
+            get {
+                return ResourceManager.GetString("Login_Login", resourceCulture);
+            }
+        }
+        
         public static string Catalogs_LanguageSpanish {
             get {
                 return ResourceManager.GetString("Catalogs_LanguageSpanish", resourceCulture);
@@ -584,6 +602,12 @@ namespace CognitiveLocator.Resx {
         public static string Home_About {
             get {
                 return ResourceManager.GetString("Home_About", resourceCulture);
+            }
+        }
+        
+        public static string Home_Logout {
+            get {
+                return ResourceManager.GetString("Home_Logout", resourceCulture);
             }
         }
         

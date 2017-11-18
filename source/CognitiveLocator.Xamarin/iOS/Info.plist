@@ -4,10 +4,10 @@
 <dict>
 	<key>CFBundleIdentifier</key>
 	<string>com.cognitivelocator.app</string>
-	<key>CFBundleShortVersionString</key>
-	<string>1.1.0</string>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>es-MX</string>
+	<string>en-US</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>
@@ -47,9 +47,58 @@
 	<string>Estamos usando tu ubicación</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Es necesario el acceso a la galería de fotos para el funcionamiento óptimo de la aplicación.</string>
-	<key>CFBundleName</key>
-	<string>Busca.me</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>facebook.com</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+				<false/>
+			</dict>
+			<key>fbcdn.net</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+				<false/>
+			</dict>
+			<key>akamaihd.net</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+				<false/>
+			</dict>
+		</dict>
+	</dict>
+	<key>CFBundleName</key>
+	<string>${PRODUCT_NAME}</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb1812003772432184</string>
+			</array>
+		</dict>
+	</array>
+	<key>FacebookAppID</key>
+	<string>YOUR_FACEBOOK_APP_ID</string>
+	<key>FacebookDisplayName</key>
+	<string>YOUR_FACEBOOK_APP_NAME</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
+	<key>CFBundleDisplayName</key>
+	<string>Locator</string>
 </dict>
 </plist>
