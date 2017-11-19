@@ -2,6 +2,8 @@
 using Microsoft.WindowsAzure.MobileServices;
 using UIKit;
 using Facebook.CoreKit;
+using System.Collections.Generic;
+using CognitiveLocator.iOS.Classes;
 
 namespace CognitiveLocator.iOS
 {
@@ -15,9 +17,11 @@ namespace CognitiveLocator.iOS
             //create the client instance, using the mobile app backend URL.
             AppDelegate.MobileClient = new MobileServiceClient(Settings.FunctionURL);
 
+            Dictionary<string, object> dict = (Dictionary<string, object>)PListCSLight.readPlist("Info.plist");
+
             Profile.EnableUpdatesOnAccessTokenChange(true);
-            Facebook.CoreKit.Settings.AppID = Settings.FacebookAppId;
-            Facebook.CoreKit.Settings.DisplayName = Settings.FacebookAppName;
+            Facebook.CoreKit.Settings.AppID = dict.GetValueOrDefault("FacebookAppID").ToString();
+            Facebook.CoreKit.Settings.DisplayName = dict.GetValueOrDefault("FacebookDisplayName").ToString();
 
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());

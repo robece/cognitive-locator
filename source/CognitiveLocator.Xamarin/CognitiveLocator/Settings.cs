@@ -20,9 +20,6 @@ namespace CognitiveLocator
         public static string NotificationAccessSignature = string.Empty;
         public static string NotificationHubName = string.Empty;
         public static string ImageStorageUrl = string.Empty;
-
-        public static string FacebookAppId = "YOUR_FACEBOOK_APP_ID";
-        public static string FacebookAppName = "YOUR_FACEBOOK_APP_NAME";
         public static string MobileServiceAuthenticationToken = string.Empty;
         public static FacebookProfileData FacebookProfile = new FacebookProfileData();
     }

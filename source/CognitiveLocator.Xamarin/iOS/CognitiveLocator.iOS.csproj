@@ -295,6 +295,7 @@
     <Compile Include="Services\AuthenticateService.cs" />
     <Compile Include="Renderers\FacebookButtonRenderer.cs" />
     <Compile Include="Services\AppCenterService.cs" />
+    <Compile Include="Classes\PListCSLight.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />
@@ -309,6 +310,7 @@
   <ItemGroup>
     <Folder Include="Assets.xcassets\Icons.appiconset\" />
     <Folder Include="Renderers\" />
+    <Folder Include="Classes\" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
