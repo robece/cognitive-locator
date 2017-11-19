@@ -1,10 +1,7 @@
 ﻿using Foundation;
-using Microsoft.Azure.Mobile;
-using Microsoft.Azure.Mobile.Analytics;
 using Microsoft.WindowsAzure.MobileServices;
 using UIKit;
 using Facebook.CoreKit;
-using Facebook.LoginKit;
 
 namespace CognitiveLocator.iOS
 {
@@ -25,20 +22,20 @@ namespace CognitiveLocator.iOS
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
-            Facebook.CoreKit.ApplicationDelegate.SharedInstance.FinishedLaunching(app, options);
+            ApplicationDelegate.SharedInstance.FinishedLaunching(app, options);
 
             return base.FinishedLaunching(app, options);
         }
 
         public override bool OpenUrl(UIApplication application, NSUrl url, string sourceApplication, NSObject annotation)
         {
-            return Facebook.CoreKit.ApplicationDelegate.SharedInstance.OpenUrl(application, url, sourceApplication, annotation);
+            return ApplicationDelegate.SharedInstance.OpenUrl(application, url, sourceApplication, annotation);
         }
 
         public override void OnActivated(UIApplication uiApplication)
         {
             base.OnActivated(uiApplication);
-            Facebook.CoreKit.AppEvents.ActivateApp();
+            AppEvents.ActivateApp();
         }
     }
 }

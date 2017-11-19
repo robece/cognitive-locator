@@ -1,5 +1,5 @@
 ﻿using CognitiveLocator.ViewModels;
-using Microsoft.Azure.Mobile.Analytics;
+using Microsoft.AppCenter.Analytics;
 
 namespace CognitiveLocator.Pages
 {

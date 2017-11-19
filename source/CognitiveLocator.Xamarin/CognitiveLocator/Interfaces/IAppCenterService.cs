@@ -1,6 +1,6 @@
 ﻿namespace CognitiveLocator.Interfaces
 {
-    public interface IAzureService
+    public interface IAppCenterService
     {
         void Initialize();
     }

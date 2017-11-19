@@ -5,7 +5,7 @@
     x:Class="CognitiveLocator.Pages.SettingsPage" 
     xmlns:pages="clr-namespace:CognitiveLocator.Pages" Title="{Binding Title}">
     <ContentPage.Content>
-        <TableView Intent="Settings">
+        <TableView Intent="Settings" Style="{DynamicResource CommonVerticalStackLayout}" BackgroundColor="Transparent">
             <TableRoot>
                 <TableSection Title="{Binding Settings_GeneralSettings}">
                     <ImageCell Text="{Binding Settings_Language}" TextColor="Gray" ImageSource="language.png" Command="{Binding LanguageSettingsCommand}" />

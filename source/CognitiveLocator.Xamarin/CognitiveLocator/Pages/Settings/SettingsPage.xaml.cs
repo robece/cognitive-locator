@@ -1,6 +1,5 @@
 ﻿using CognitiveLocator.ViewModels;
-using Microsoft.Azure.Mobile.Analytics;
-using Xamarin.Forms;
+using Microsoft.AppCenter.Analytics;
 
 namespace CognitiveLocator.Pages
 {

@@ -3,8 +3,6 @@ using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Plugin.Permissions;
-using Microsoft.Azure.Mobile;
-using Microsoft.Azure.Mobile.Analytics;
 using Microsoft.WindowsAzure.MobileServices;
 using Xamarin.Facebook;
 using Xamarin.Facebook.Login;

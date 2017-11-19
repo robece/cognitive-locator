@@ -1,6 +1,6 @@
 ﻿using CognitiveLocator.Domain;
 using CognitiveLocator.ViewModels;
-using Microsoft.Azure.Mobile.Analytics;
+using Microsoft.AppCenter.Analytics;
 using Xamarin.Forms;
 
 namespace CognitiveLocator.Pages

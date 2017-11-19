@@ -118,11 +118,10 @@
     <Compile Include="ViewModels\Login\LoginViewModel.cs" />
     <Compile Include="Interfaces\IAuthenticate.cs" />
     <Compile Include="Helpers\RestHelper.cs" />
-    <Compile Include="Pages\Controls\FacebookLoginButton.cs" />
     <Compile Include="Pages\Converters\InverseBooleanConverter.cs" />
     <Compile Include="Domain\FacebookProfileData.cs" />
     <Compile Include="Pages\Controls\FacebookLoginNative.cs" />
-    <Compile Include="Interfaces\IAzureService.cs" />
+    <Compile Include="Interfaces\IAppCenterService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="DevKit.Xamarin.ImageKit.Abstractions">

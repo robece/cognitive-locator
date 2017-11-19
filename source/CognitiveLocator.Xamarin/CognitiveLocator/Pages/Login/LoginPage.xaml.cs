@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using CognitiveLocator.ViewModels;
-using Microsoft.Azure.Mobile.Analytics;
+﻿using CognitiveLocator.ViewModels;
+using Microsoft.AppCenter.Analytics;
 using Xamarin.Forms;
 
 namespace CognitiveLocator.Pages

@@ -68,7 +68,7 @@ namespace CognitiveLocator.ViewModels
                 Settings.ImageStorageUrl = result[nameof(Settings.ImageStorageUrl)];
 
                 //initialize Mobile Center and Azure Mobile App
-                DependencyService.Get<IAzureService>().Initialize();
+                DependencyService.Get<IAppCenterService>().Initialize();
 
             }).ContinueWith((b) =>
             {
