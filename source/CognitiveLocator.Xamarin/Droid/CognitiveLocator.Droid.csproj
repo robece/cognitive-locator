@@ -286,6 +286,7 @@
     <Compile Include="Callbacks\FacebookCallback.cs" />
     <Compile Include="Callbacks\GraphCallback.cs" />
     <Compile Include="Services\AppCenterService.cs" />
+    <Compile Include="Services\MobileAppService.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.png" />

@@ -296,6 +296,7 @@
     <Compile Include="Renderers\FacebookButtonRenderer.cs" />
     <Compile Include="Services\AppCenterService.cs" />
     <Compile Include="Classes\PListCSLight.cs" />
+    <Compile Include="Services\MobileAppService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />

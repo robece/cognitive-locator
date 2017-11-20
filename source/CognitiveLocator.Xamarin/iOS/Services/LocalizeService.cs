@@ -9,9 +9,9 @@ using Foundation;
 [assembly: Dependency(typeof(LocalizeService))]
 namespace CognitiveLocator.iOS.Services
 {
-    public class LocalizeService : ILocalize
+    public class LocalizeService : ILocalizeService
     {
-        public void SetLocale(string culture)
+        public void Set(string culture)
         {
             CultureInfo ci = new CultureInfo(culture);
             Resx.AppResources.Culture = ci;

@@ -3,7 +3,7 @@ using Newtonsoft.Json.Linq;
 
 namespace CognitiveLocator.Interfaces
 {
-    public interface IAuthenticate
+    public interface IAuthenticateService
     {
         void GetUserInfo();
 

@@ -19,7 +19,7 @@ using CognitiveLocator.Pages;
 [assembly: Dependency(typeof(AuthenticateService))]
 namespace CognitiveLocator.Droid.Services
 {
-    public class AuthenticateService : IAuthenticate
+    public class AuthenticateService : IAuthenticateService
     {
         private MobileServiceUser user;
 
@@ -33,9 +33,10 @@ namespace CognitiveLocator.Droid.Services
             await Task.Run(() => { request.ExecuteAsync(); });
         }
 
-        void GraphCallBack_RequestCompleted(object sender, Callbacks.GraphResponseEventArgs e)
+        async void GraphCallBack_RequestCompleted(object sender, Callbacks.GraphResponseEventArgs e)
         {
-            Settings.FacebookProfile = JsonConvert.DeserializeObject<FacebookProfileData>(e.Response.JSONObject.ToString());
+            var profile = JsonConvert.DeserializeObject<FacebookProfileData>(e.Response.JSONObject.ToString());
+            await Settings.Set<FacebookProfileData>(SettingsType.FacebookProfile, profile);
             Xamarin.Forms.MessagingCenter.Send(new object(),"connected");
         }
 

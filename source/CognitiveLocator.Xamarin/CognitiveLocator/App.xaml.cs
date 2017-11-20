@@ -1,10 +1,8 @@
-﻿using CognitiveLocator.Interfaces;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using CognitiveLocator.Interfaces;
 using CognitiveLocator.Pages;
 using Xamarin.Forms;
-using CognitiveLocator.Domain;
-using CognitiveLocator.Helpers;
-using System.Threading.Tasks;
-using System.Collections.Generic;
 
 namespace CognitiveLocator
 {
@@ -17,22 +15,40 @@ namespace CognitiveLocator
             MainPage = new LoginPage();
         }
 
-        private async void LoadAppConfiguration()
+        private void LoadAppConfiguration()
         {
             List<Task> tasks = new List<Task>();
-            Task<LanguageConfiguration> language_task = Task.Run(() => { return AkavacheHelper.GetUserAccountObject<LanguageConfiguration>(nameof(Settings.Language));});
-            tasks.Add(language_task);
+            Task startup = Task.Run(async() => { 
+
+                //set startup akavache
+                Akavache.BlobCache.ApplicationName = nameof(SettingsType.CognitiveLocator);
+
+                //set startup settings
+                await Settings.Initialize();
+
+                //set startup app configuration
+                await Settings.Set<string>(SettingsType.CognitiveLocator, "CognitiveLocator");
+                await Settings.Set<string>(SettingsType.FunctionURL, "https://YOUR_AZURE_FUNCTION.azurewebsites.net");
+                await Settings.Set<string>(SettingsType.CryptographyKey, "YOUR_CRYPT_KEY");
+
+                //set startup language configuration
+                string language = Settings.Language;
+
+                if (string.IsNullOrEmpty(language))
+                {
+                    language = "en-US";
+                    await Settings.Set<string>(SettingsType.Language, language);
+                }
+
+                //initialize multi-culture
+                DependencyService.Get<ILocalizeService>().Set(language);
+
+                //initialize Azure Mobile App
+                DependencyService.Get<IMobileAppService>().Initialize();
+
+            });
+            tasks.Add(startup);
             Task.WaitAll(tasks.ToArray());
-
-            LanguageConfiguration language = language_task.Result;
-
-            if (language == null)
-            {
-                language = new LanguageConfiguration(Settings.Language);
-                await AkavacheHelper.InsertUserAccountObject<LanguageConfiguration>(nameof(Settings.Language), language);
-            }
-
-            DependencyService.Get<ILocalize>().SetLocale(language.Language);
         }
 
         public static void ProceedToHome()

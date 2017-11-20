@@ -1,5 +1,4 @@
-﻿using System;
-namespace CognitiveLocator.Domain
+﻿namespace CognitiveLocator.Domain
 {
     public class FacebookProfileData
     {

@@ -30,7 +30,7 @@ namespace CognitiveLocator.ViewModels
         private void InitializeViewModel()
         {
             Title = Login_Title;
-            IsAuthenticated = DependencyService.Get<IAuthenticate>().IsAuthenticated();
+            IsAuthenticated = DependencyService.Get<IAuthenticateService>().IsAuthenticated();
 
             NavigateToHomeCommand = new Command(() => App.ProceedToHome());
         }

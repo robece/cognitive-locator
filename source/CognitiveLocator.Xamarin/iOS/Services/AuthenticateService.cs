@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 [assembly: Dependency(typeof(AuthenticateService))]
 namespace CognitiveLocator.iOS.Services
 {
-    public class AuthenticateService : IAuthenticate
+    public class AuthenticateService : IAuthenticateService
     {
         private MobileServiceUser user;
 
@@ -24,10 +24,13 @@ namespace CognitiveLocator.iOS.Services
         {
             var request = new GraphRequest("/me", null, AccessToken.CurrentAccessToken.TokenString, string.Empty, "GET");
             var requestConnection = new GraphRequestConnection();
-            requestConnection.AddRequest(request, (connection, result, error) =>
+            requestConnection.AddRequest(request, async (connection, result, error) =>
             {
-                Settings.FacebookProfile.id = result.ValueForKeyPath(new NSString("id")).ToString();
-                Settings.FacebookProfile.name = result.ValueForKeyPath(new NSString("name")).ToString();
+                FacebookProfileData profile = new FacebookProfileData();
+                profile.id = result.ValueForKeyPath(new NSString("id")).ToString();
+                profile.name = result.ValueForKeyPath(new NSString("name")).ToString();
+
+                await Settings.Set<FacebookProfileData>(SettingsType.FacebookProfile, profile);
                 Xamarin.Forms.MessagingCenter.Send(new object(), "connected");
             });
             requestConnection.Start();

@@ -62,25 +62,23 @@ namespace CognitiveLocator.ViewModels
             InitializeViewModel();
         }
 
-        private async void InitializeViewModel()
+        private void InitializeViewModel()
         {
             SaveChangesCommand = new Command(() => SaveConfiguration());
 
-            LanguageConfiguration language = await AkavacheHelper.GetUserAccountObject<LanguageConfiguration>(nameof(Settings.Language));
+            string language = Settings.Language;
 
-            if (language == null){
+            if (string.IsNullOrEmpty(language)){
                 LanguagesSelectedIndex = 0;
             }else{
-                LanguagesSelectedIndex= Catalogs.GetLanguageIndex(language.Language);
+                LanguagesSelectedIndex= Catalogs.GetLanguageIndex(language);
             }
         }
 
         private async void SaveConfiguration()
         {
-            LanguageConfiguration language = new LanguageConfiguration(SelectedLanguage);
-            await AkavacheHelper.InsertUserAccountObject<LanguageConfiguration>(nameof(Settings.Language), language);
-           
-            DependencyService.Get<ILocalize>().SetLocale(language.Language);
+            await Settings.Set<string>(SettingsType.Language, SelectedLanguage);          
+            DependencyService.Get<ILocalizeService>().Set(SelectedLanguage);
         }
 
         #region Binding Multiculture

@@ -25,9 +25,6 @@ namespace CognitiveLocator.Droid
             base.OnCreate(bundle);
             global::Xamarin.Forms.Forms.Init(this, bundle);
 
-            //create the client instance, using the mobile app backend URL
-            MainActivity.MobileClient = new MobileServiceClient(Settings.FunctionURL);
-
             //facebook implementation
             callbackManager = CallbackManagerFactory.Create();
 

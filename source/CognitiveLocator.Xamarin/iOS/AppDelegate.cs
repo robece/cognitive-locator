@@ -14,9 +14,6 @@ namespace CognitiveLocator.iOS
      
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            //create the client instance, using the mobile app backend URL.
-            AppDelegate.MobileClient = new MobileServiceClient(Settings.FunctionURL);
-
             Dictionary<string, object> dict = (Dictionary<string, object>)PListCSLight.readPlist("Info.plist");
 
             Profile.EnableUpdatesOnAccessTokenChange(true);

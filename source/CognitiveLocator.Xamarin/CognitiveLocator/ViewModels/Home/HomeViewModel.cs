@@ -43,31 +43,31 @@ namespace CognitiveLocator.ViewModels
             Task.Run(async () =>
             {
                 //initialize catalogs
-                Akavache.BlobCache.ApplicationName = nameof(Settings.CognitiveLocator);
                 Catalogs.InitCountries();
                 Catalogs.InitGenre();
                 Catalogs.InitLanguages();
 
                 //init facebook token
                 var token = new JObject();
-                token["access_token"] = DependencyService.Get<IAuthenticate>().GetToken();
+                token["access_token"] = DependencyService.Get<IAuthenticateService>().GetToken();
 
                 //use facebook token on Azure Mobile App
-                Settings.MobileServiceAuthenticationToken = await DependencyService.Get<IAuthenticate>().Authenticate(token);
+                var authToken = await DependencyService.Get<IAuthenticateService>().Authenticate(token);
+                await Settings.Set<string>(SettingsType.MobileServiceAuthenticationToken, authToken);
 
                 //get facebook profile
-                var isAuthenticated = DependencyService.Get<IAuthenticate>().IsAuthenticated();
+                var isAuthenticated = DependencyService.Get<IAuthenticateService>().IsAuthenticated();
                 if (isAuthenticated)
-                    DependencyService.Get<IAuthenticate>().GetUserInfo();
+                    DependencyService.Get<IAuthenticateService>().GetUserInfo();
 
                 //get mobile settings
                 Dictionary<string, string> result = await RestHelper.GetMobileSettings();
-                Settings.MobileCenterID_Android = result[nameof(Settings.MobileCenterID_Android)];
-                Settings.MobileCenterID_iOS = result[nameof(Settings.MobileCenterID_iOS)];
-                Settings.AzureWebJobsStorage = result[nameof(Settings.AzureWebJobsStorage)];
-                Settings.ImageStorageUrl = result[nameof(Settings.ImageStorageUrl)];
+                await Settings.Set<string>(SettingsType.MobileCenterID_Android, result[nameof(SettingsType.MobileCenterID_Android)]);
+                await Settings.Set<string>(SettingsType.MobileCenterID_iOS, result[nameof(SettingsType.MobileCenterID_iOS)]);
+                await Settings.Set<string>(SettingsType.AzureWebJobsStorage, result[nameof(SettingsType.AzureWebJobsStorage)]);
+                await Settings.Set<string>(SettingsType.ImageStorageUrl, result[nameof(SettingsType.ImageStorageUrl)]);
 
-                //initialize Mobile Center and Azure Mobile App
+                //initialize App Center
                 DependencyService.Get<IAppCenterService>().Initialize();
 
             }).ContinueWith((b) =>
@@ -103,7 +103,7 @@ namespace CognitiveLocator.ViewModels
 
         private async Task GoToLogout()
         {
-            await DependencyService.Get<IAuthenticate>().ClearToken();
+            await DependencyService.Get<IAuthenticateService>().ClearToken();
             Application.Current.MainPage = new LoginPage();
         }
 

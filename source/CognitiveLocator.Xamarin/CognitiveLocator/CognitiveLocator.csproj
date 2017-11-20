@@ -64,8 +64,7 @@
     <Compile Include="Domain\Catalogs.cs" />
     <Compile Include="Pages\Converters\CountryConverter.cs" />
     <Compile Include="Pages\Converters\GenreConverter.cs" />
-    <Compile Include="Interfaces\ILocalize.cs" />
-    <Compile Include="Domain\LanguageConfiguration.cs" />
+    <Compile Include="Interfaces\ILocalizeService.cs" />
     <Compile Include="Helpers\AkavacheHelper.cs" />
     <Compile Include="Resx\AppResources.Designer.cs">
       <DependentUpon>AppResources.resx</DependentUpon>
@@ -122,6 +121,8 @@
     <Compile Include="Domain\FacebookProfileData.cs" />
     <Compile Include="Pages\Controls\FacebookLoginNative.cs" />
     <Compile Include="Interfaces\IAppCenterService.cs" />
+    <Compile Include="Domain\InternalSettings.cs" />
+    <Compile Include="Interfaces\IMobileAppService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="DevKit.Xamarin.ImageKit.Abstractions">
