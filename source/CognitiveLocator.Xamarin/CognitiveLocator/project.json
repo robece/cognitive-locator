@@ -1,6 +1,5 @@
 ﻿{
   "dependencies": {
-    "akavache": "5.0.0",
     "Microsoft.AppCenter": "1.0.1",
     "Microsoft.AppCenter.Analytics": "1.0.1",
     "Microsoft.AppCenter.Crashes": "1.0.1",
@@ -43,6 +42,7 @@
     "WindowsAzure.Storage": "8.6.0",
     "Xam.Plugin.Connectivity": "3.0.3",
     "Xam.Plugin.Media": "3.0.1",
+    "Xam.Plugins.Settings": "3.1.1",
     "Xamarin.Forms": "2.5.0.91635"
   },
   "frameworks": {

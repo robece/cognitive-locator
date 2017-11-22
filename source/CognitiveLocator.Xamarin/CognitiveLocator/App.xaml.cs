@@ -18,18 +18,11 @@ namespace CognitiveLocator
         private void LoadAppConfiguration()
         {
             List<Task> tasks = new List<Task>();
-            Task startup = Task.Run(async() => { 
-
-                //set startup akavache
-                Akavache.BlobCache.ApplicationName = nameof(SettingsType.CognitiveLocator);
-
-                //set startup settings
-                await Settings.Initialize();
-
+            Task startup = Task.Run(() =>
+            {
                 //set startup app configuration
-                await Settings.Set<string>(SettingsType.CognitiveLocator, "CognitiveLocator");
-                await Settings.Set<string>(SettingsType.FunctionURL, "https://YOUR_AZURE_FUNCTION.azurewebsites.net");
-                await Settings.Set<string>(SettingsType.CryptographyKey, "YOUR_CRYPT_KEY");
+                Settings.FunctionURL = "https://YOUR_AZURE_FUNCTION.azurewebsites.net";
+                Settings.Cryptography = "YOUR_CRYPT_KEY";
 
                 //set startup language configuration
                 string language = Settings.Language;
@@ -37,7 +30,7 @@ namespace CognitiveLocator
                 if (string.IsNullOrEmpty(language))
                 {
                     language = "en-US";
-                    await Settings.Set<string>(SettingsType.Language, language);
+                    Settings.Language = language;
                 }
 
                 //initialize multi-culture

@@ -20,7 +20,7 @@ namespace CognitiveLocator.Pages
 
             MessagingCenter.Subscribe<object>(this, "connected", (sender) => {
                 Device.BeginInvokeOnMainThread(() => {
-                    WelcomeUser.Text = Settings.FacebookProfile.name;
+                    WelcomeUser.Text = Settings.FacebookProfileName;
                 });
             });
         }

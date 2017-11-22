@@ -27,7 +27,7 @@ namespace CognitiveLocator.Helpers
                 byte[] time = BitConverter.GetBytes(DateTime.UtcNow.ToBinary());
                 byte[] key = Guid.NewGuid().ToByteArray();
                 var token = Convert.ToBase64String(time.Concat(key).ToArray());
-                token = DependencyService.Get<ISecurityService>().Encrypt(token, Settings.CryptographyKey);
+                token = DependencyService.Get<ISecurityService>().Encrypt(token, Settings.Cryptography);
 
                 MobileSettingsRequest request = new MobileSettingsRequest();
                 request.Token = token;
@@ -59,7 +59,7 @@ namespace CognitiveLocator.Helpers
                 byte[] time = BitConverter.GetBytes(DateTime.UtcNow.ToBinary());
                 byte[] key = Guid.NewGuid().ToByteArray();
                 var token = Convert.ToBase64String(time.Concat(key).ToArray());
-                token = DependencyService.Get<ISecurityService>().Encrypt(token, Settings.CryptographyKey);
+                token = DependencyService.Get<ISecurityService>().Encrypt(token, Settings.Cryptography);
 
                 MetadataVerificationRequest request = new MetadataVerificationRequest();
                 request.Token = token;
@@ -93,7 +93,7 @@ namespace CognitiveLocator.Helpers
                 byte[] time = BitConverter.GetBytes(DateTime.UtcNow.ToBinary());
                 byte[] key = Guid.NewGuid().ToByteArray();
                 var token = Convert.ToBase64String(time.Concat(key).ToArray());
-                token = DependencyService.Get<ISecurityService>().Encrypt(token, Settings.CryptographyKey);
+                token = DependencyService.Get<ISecurityService>().Encrypt(token, Settings.Cryptography);
 
                 ImageVerificationRequest request = new ImageVerificationRequest();
                 request.Token = token;

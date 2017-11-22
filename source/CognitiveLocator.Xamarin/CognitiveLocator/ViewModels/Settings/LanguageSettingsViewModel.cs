@@ -75,9 +75,9 @@ namespace CognitiveLocator.ViewModels
             }
         }
 
-        private async void SaveConfiguration()
+        private void SaveConfiguration()
         {
-            await Settings.Set<string>(SettingsType.Language, SelectedLanguage);          
+            Settings.Language = SelectedLanguage;        
             DependencyService.Get<ILocalizeService>().Set(SelectedLanguage);
         }
 

@@ -33,10 +33,16 @@ namespace CognitiveLocator.Droid.Services
             await Task.Run(() => { request.ExecuteAsync(); });
         }
 
-        async void GraphCallBack_RequestCompleted(object sender, Callbacks.GraphResponseEventArgs e)
+        class FacebookProfileData{
+            public string id { get; set; }
+            public string name { get; set; }
+        }
+
+        void GraphCallBack_RequestCompleted(object sender, Callbacks.GraphResponseEventArgs e)
         {
             var profile = JsonConvert.DeserializeObject<FacebookProfileData>(e.Response.JSONObject.ToString());
-            await Settings.Set<FacebookProfileData>(SettingsType.FacebookProfile, profile);
+            Settings.FacebookProfileId = profile.id;
+            Settings.FacebookProfileName = profile.name;
             Xamarin.Forms.MessagingCenter.Send(new object(),"connected");
         }
 

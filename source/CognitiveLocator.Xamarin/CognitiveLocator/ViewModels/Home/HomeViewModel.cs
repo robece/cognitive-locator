@@ -53,7 +53,7 @@ namespace CognitiveLocator.ViewModels
 
                 //use facebook token on Azure Mobile App
                 var authToken = await DependencyService.Get<IAuthenticateService>().Authenticate(token);
-                await Settings.Set<string>(SettingsType.MobileServiceAuthenticationToken, authToken);
+                Settings.MobileServiceAuthenticationToken = authToken;
 
                 //get facebook profile
                 var isAuthenticated = DependencyService.Get<IAuthenticateService>().IsAuthenticated();
@@ -62,10 +62,10 @@ namespace CognitiveLocator.ViewModels
 
                 //get mobile settings
                 Dictionary<string, string> result = await RestHelper.GetMobileSettings();
-                await Settings.Set<string>(SettingsType.MobileCenterID_Android, result[nameof(SettingsType.MobileCenterID_Android)]);
-                await Settings.Set<string>(SettingsType.MobileCenterID_iOS, result[nameof(SettingsType.MobileCenterID_iOS)]);
-                await Settings.Set<string>(SettingsType.AzureWebJobsStorage, result[nameof(SettingsType.AzureWebJobsStorage)]);
-                await Settings.Set<string>(SettingsType.ImageStorageUrl, result[nameof(SettingsType.ImageStorageUrl)]);
+                Settings.MobileCenterID_Android = result[nameof(Settings.MobileCenterID_Android)];
+                Settings.MobileCenterID_iOS = result[nameof(Settings.MobileCenterID_iOS)];
+                Settings.AzureWebJobsStorage = result[nameof(Settings.AzureWebJobsStorage)];
+                Settings.ImageStorageUrl = result[nameof(Settings.ImageStorageUrl)];
 
                 //initialize App Center
                 DependencyService.Get<IAppCenterService>().Initialize();
