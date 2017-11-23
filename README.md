@@ -7,6 +7,8 @@
 | Cognitive Locator (Droid)  | ![Build status][app-data-build-status-droid-master] |
 | Cognitive Locator (iOS)  | ![Build status][app-data-build-status-ios-master] |
 
+[![Deploy to Azure](https://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/)
+
 [app-data-build-status-droid-master]:https://build.mobile.azure.com/v0.1/apps/596b9007-8b42-4325-9a49-0251fa24cc87/branches/master/badge
 
 [app-data-build-status-ios-master]:https://build.mobile.azure.com/v0.1/apps/346c8576-7ceb-4b6b-8951-8846b42fdc68/branches/master/badge
