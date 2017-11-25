@@ -62,7 +62,7 @@
     },
     "variables": {
         "appServicePlanName": "[toLower(concat(resourceGroup().name,'-asp'))]",
-        "storageAccountName": "[concat(uniqueString(resourceGroup().id),'storage')]",
+        "storageAccountName": "[concat(uniqueString(resourceGroup().id),'stg')]",
         "storageAccountId": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
         "functionAppName": "[toLower(concat(resourceGroup().name,'-fun'))]",
         "databaseAccountName": "[toLower(concat(resourceGroup().name,'-cos'))]",
