@@ -5,24 +5,6 @@
         "siteLocation": {
             "type": "string"
         },
-        "appServicePlan": {
-            "type": "string",
-            "metadata": {
-                "description": "The name of the app service plan that you wish to create."
-            }
-        },
-        "functionApp": {
-            "type": "string",
-            "metadata": {
-                "description": "The name of the function app that you wish to create."
-            }
-        },
-        "storageAccount": {
-            "type": "string",
-            "metadata": {
-                "description": "The name of the storage account that you wish to create."
-            }
-        },
         "storageAccountType": {
             "type": "string",
             "defaultValue": "Standard_LRS",
@@ -33,12 +15,6 @@
             ],
             "metadata": {
                 "description": "Storage Account type"
-            }
-        },
-        "databaseAccount": {
-            "type": "string",
-            "metadata": {
-                "description": "The DocumentDB database account name."
             }
         },
         "databaseConsistencyLevel": {
@@ -72,24 +48,6 @@
             "description": "Database Max Interval InSeconds."
           }
         },
-        "notificationHubNamespaceName": {
-            "type": "string",
-            "metadata": {
-                "description": "The name of the Notification Hub namespace."
-            }
-        },
-        "notificationHubName": {
-            "type": "string",
-            "metadata": {
-                "description": "The name of the Notification Hub name."
-            }
-        },
-        "faceApiAccountName": {
-            "type": "string",
-            "metadata": {
-              "description": "Display name of Face API account"
-            }
-        },
         "faceApiPricingTier": {
             "type": "string",
             "metadata": {
@@ -103,17 +61,20 @@
         }
     },
     "variables": {
-        "functionApp": "[parameters('functionApp')]",
-        "hostingPlanName": "[parameters('appServicePlan')]",
-        "storageAccount": "[parameters('storageAccount')]",
-        "storageAccountid": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('storageAccount'))]",
+        "appServicePlanName": "[toLower(concat(resourceGroup().name,'-asp'))]",
+        "storageAccountName": "[concat(uniqueString(resourceGroup().id),'storage')]",
+        "storageAccountId": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
+        "functionAppName": "[toLower(concat(resourceGroup().name,'-fun'))]",
+        "databaseAccountName": "[toLower(concat(resourceGroup().name,'-cos'))]",
         "offerType": "Standard",
-        "cognitiveservicesid": "[concat(resourceGroup().id,'/providers/','Microsoft.CognitiveServices/accounts/', parameters('faceApiAccountName'))]"
+        "notificationHubNamespaceName": "[toLower(concat(resourceGroup().name,'-ns'))]", 
+        "notificationHubName": "[toLower(concat(resourceGroup().name,'-hub'))]", 
+        "faceApiAccountName": "[toLower(concat(resourceGroup().name,'-fac'))]"
     },
     "resources": [
         {
             "type": "Microsoft.Storage/storageAccounts",
-            "name": "[variables('storageAccount')]",
+            "name": "[variables('storageAccountName')]",
             "apiVersion": "2016-12-01",
             "location": "[resourceGroup().location]",
             "kind": "Storage",
@@ -124,10 +85,10 @@
         {
             "type": "Microsoft.Web/serverfarms",
             "apiVersion": "2015-04-01",
-            "name": "[variables('hostingPlanName')]",
+            "name": "[variables('appServicePlanName')]",
             "location": "[resourceGroup().location]",
             "properties": {
-                "name": "[variables('hostingPlanName')]",
+                "name": "[variables('appServicePlanName')]",
                 "computeMode": "Dynamic",
                 "sku": "Dynamic"
             }
@@ -135,32 +96,32 @@
         {
             "apiVersion": "2015-08-01",
             "type": "Microsoft.Web/sites",
-            "name": "[variables('functionApp')]",
+            "name": "[variables('functionAppName')]",
             "location": "[resourceGroup().location]",
             "kind": "functionapp",            
             "dependsOn": [
-                "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
-                "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccount'))]"
+                "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]",
+                "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
             ],
             "properties": {
-                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]",
                 "siteConfig": {
                     "appSettings": [
                         {
                             "name": "AzureWebJobsDashboard",
-                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccount'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountId'),'2015-05-01-preview').key1)]"
                         },
                         {
                             "name": "AzureWebJobsStorage",
-                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccount'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountId'),'2015-05-01-preview').key1)]"
                         },
                         {
                             "name": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
-                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccount'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountId'),'2015-05-01-preview').key1)]"
                         },
                         {
                             "name": "WEBSITE_CONTENTSHARE",
-                            "value": "[toLower(variables('functionApp'))]"
+                            "value": "[toLower(variables('functionAppName'))]"
                         },
                         {
                             "name": "FUNCTIONS_EXTENSION_VERSION",
@@ -233,10 +194,10 @@
         {
             "apiVersion": "2015-04-08",
             "type": "Microsoft.DocumentDB/databaseAccounts",
-            "name": "[parameters('databaseAccount')]",
+            "name": "[variables('databaseAccountName')]",
             "location": "[resourceGroup().location]",
             "properties": {
-              "name": "[parameters('databaseAccount')]",
+              "name": "[variables('databaseAccountName')]",
               "databaseAccountOfferType": "[variables('offerType')]",
               "consistencyPolicy": {
                 "defaultConsistencyLevel": "[parameters('databaseConsistencyLevel')]",
@@ -253,19 +214,19 @@
         },
         {
             "apiVersion": "2014-09-01",
-            "name": "[parameters('notificationHubNamespaceName')]",
+            "name": "[variables('notificationHubNamespaceName')]",
             "type": "Microsoft.NotificationHubs/namespaces",
             "location": "[resourceGroup().location]",
             "kind": "NotificationHub",
             "resources": [
                 {
-                    "name": "[concat(parameters('notificationHubNamespaceName'), '/', parameters('notificationHubName'))]",
+                    "name": "[concat(variables('notificationHubNamespaceName'), '/', variables('notificationHubName'))]",
                     "apiVersion": "2014-09-01",
                     "type": "Microsoft.NotificationHubs/namespaces/notificationHubs",
                     "location": "[resourceGroup().location]",
                     "properties": {},
                     "dependsOn": [
-                        "[parameters('notificationHubNamespaceName')]"
+                        "[variables('notificationHubNamespaceName')]"
                     ]
                 }
             ]
@@ -276,7 +237,7 @@
               "name": "[parameters('faceApiPricingTier')]"
             },
             "kind": "Face",
-            "name": "[parameters('faceApiAccountName')]",
+            "name": "[variables('faceApiAccountName')]",
             "apiVersion": "2016-02-01-preview",
             "location": "[resourceGroup().location]",
             "properties": {},
@@ -284,21 +245,5 @@
         }
     ],
     "outputs": {
-        "cognitivekeys": {
-          "type": "object",
-          "value": "[listKeys(variables('cognitiveservicesid'),'2016-02-01-preview')]"
-        },
-        "cognitivekey1": {
-          "type": "string",
-          "value": "[listKeys(variables('cognitiveservicesid'),'2016-02-01-preview').key1]"
-        },
-        "cognitivekey2": {
-          "type": "string",
-          "value": "[listKeys(variables('cognitiveservicesid'),'2016-02-01-preview').key2]"
-        },
-        "endpoint": {
-          "type": "string",
-          "value": "[reference(variables('cognitiveservicesid'),'2016-02-01-preview').endpoint]"
-        }
     }
 }
