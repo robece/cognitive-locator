@@ -132,6 +132,10 @@
                             "value": "6.5.0"
                         },
                         {
+                            "name": "ImageStorageUrl",
+                            "value": "[concat('https://', variables('storageAccountName'),'.blob.core.windows.net/images/')]"
+                        },
+                        {
                             "name": "Vision_API_Subscription_Key",
                             "value": "PENDING_TO_CONFIGURE"
                         },
@@ -181,10 +185,6 @@
                         },
                         {
                             "name": "MobileCenterID_iOS",
-                            "value": "PENDING_TO_CONFIGURE"
-                        },
-                        {
-                            "name": "ImageStorageUrl",
                             "value": "PENDING_TO_CONFIGURE"
                         }
                     ]
