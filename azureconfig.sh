@@ -191,8 +191,6 @@ ConfigureFunctionApp ()
     # configure app center ios
     read -p "Paste your App Center Id for iOS: " appCenteriOS
     az functionapp config appsettings set --resource-group $resourceGroupName --name $functionAppName --settings MobileCenterID_iOS=$appCenteriOS
-
-    # "NotificationHub_Access_Signature": "NOTIFICATION_HUB_CONNECTION_STRING",
     
     echo "Function App configured successfully!"
 }
