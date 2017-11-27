@@ -143,16 +143,16 @@ ConfigureFunctionApp ()
     echo "Function App name: " $functionAppName
 
     # configure face api key
-    az functionapp config appsettings set --resource-group $resourceGroupName --name $functionAppName --settings Vision_API_Subscription_Key=$faceApiKey1
+    az functionapp config appsettings set --resource-group $resourceGroupName --name $functionAppName --settings Face_API_Subscription_Key=$faceApiKey1
 
     # configure person group
-    az functionapp config appsettings set --resource-group $resourceGroupName --name $functionAppName --settings Vision_API_PersonGroupId=missingpeople
+    az functionapp config appsettings set --resource-group $resourceGroupName --name $functionAppName --settings Face_API_PersonGroupId=missingpeople
 
     # configure face list 
-    az functionapp config appsettings set --resource-group $resourceGroupName --name $functionAppName --settings Vision_API_FaceList=list
+    az functionapp config appsettings set --resource-group $resourceGroupName --name $functionAppName --settings Face_API_FaceList=list
 
     # configure face api region
-    az functionapp config appsettings set --resource-group $resourceGroupName --name $functionAppName --settings Vision_API_Zone=$faceApiRegion
+    az functionapp config appsettings set --resource-group $resourceGroupName --name $functionAppName --settings Face_API_Zone=$faceApiRegion
 
     # configure database uri
     databaseUri="https://$databaseAccountName.documents.azure.com:443/"
