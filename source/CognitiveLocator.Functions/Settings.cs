@@ -6,10 +6,10 @@ namespace CognitiveLocator.Functions
     {
         public static string AzureWebJobsStorage = Environment.GetEnvironmentVariable("AzureWebJobsStorage");
 
-        public static string FaceAPIKey = Environment.GetEnvironmentVariable("Vision_API_Subscription_Key");
-        public static string PersonGroupId = Environment.GetEnvironmentVariable("Vision_API_PersonGroupId");
-        public static string Zone = Environment.GetEnvironmentVariable("Vision_API_Zone");
-        public static string FaceListId = Environment.GetEnvironmentVariable("Vision_API_FaceList");
+        public static string FaceAPIKey = Environment.GetEnvironmentVariable("Face_API_Subscription_Key");
+        public static string PersonGroupId = Environment.GetEnvironmentVariable("Face_API_PersonGroupId");
+        public static string Zone = Environment.GetEnvironmentVariable("Face_API_Zone");
+        public static string FaceListId = Environment.GetEnvironmentVariable("Face_API_FaceList");
 
         public static string DocumentDB = Environment.GetEnvironmentVariable("CosmosDB_URI");
         public static string DocumentDBAuthKey = Environment.GetEnvironmentVariable("CosmosDB_AuthKey");
