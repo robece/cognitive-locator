@@ -136,19 +136,19 @@
                             "value": "[concat('https://', variables('storageAccountName'),'.blob.core.windows.net/images/')]"
                         },
                         {
-                            "name": "Vision_API_Subscription_Key",
+                            "name": "Face_API_Subscription_Key",
                             "value": "PENDING_TO_CONFIGURE"
                         },
                         {
-                            "name": "Vision_API_PersonGroupId",
+                            "name": "Face_API_PersonGroupId",
                             "value": "PENDING_TO_CONFIGURE"
                         },
                         {
-                            "name": "Vision_API_Zone",
+                            "name": "Face_API_Zone",
                             "value": "PENDING_TO_CONFIGURE"
                         },
                         {
-                            "name": "Vision_API_FaceList",
+                            "name": "Face_API_FaceList",
                             "value": "PENDING_TO_CONFIGURE"
                         },
                         {
