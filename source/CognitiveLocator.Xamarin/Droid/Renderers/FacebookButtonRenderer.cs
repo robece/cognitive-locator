@@ -6,12 +6,20 @@ using CognitiveLocator.Droid;
 using Xamarin.Facebook.Login;
 using Xamarin.Facebook;
 using Android.App;
+using Android.Content;
 
 [assembly: ExportRenderer(typeof(FacebookLoginNative), typeof(FacebookLoginButtonRenderer))]
 namespace CognitiveLocator.Droid
 {
     public class FacebookLoginButtonRenderer : ButtonRenderer
     {
+        Context context = null;
+
+        public FacebookLoginButtonRenderer(Context context) : base(context)
+        {
+            this.context = context;
+        }
+
         protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.Button> e)
         {
             base.OnElementChanged(e);
@@ -37,7 +45,7 @@ namespace CognitiveLocator.Droid
             else
             {
                 LoginManager.Instance.SetLoginBehavior(LoginBehavior.WebOnly);
-                LoginManager.Instance.LogInWithReadPermissions(Forms.Context as Activity, new string[] { "public_profile" });
+                LoginManager.Instance.LogInWithReadPermissions(context as Activity, new string[] { "public_profile" });
             }
 
         }

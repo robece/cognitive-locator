@@ -1,17 +1,16 @@
-﻿using System.Collections.Generic;
-using Android.Content;
+﻿using Android.Content;
 using CognitiveLocator.Droid.Services;
-using CognitiveLocator.Droid;
-using Plugin.CurrentActivity;
 using Xamarin.Forms;
-using CognitiveLocator.Services;
 using CognitiveLocator.Interfaces;
+using Plugin.CurrentActivity;
 
 [assembly: Dependency(typeof(EmailService))]
 namespace CognitiveLocator.Droid.Services
 {
     public class EmailService : IEmailService
     {
+        Context CurrentContext => CrossCurrentActivity.Current.Activity;
+
         public void SendEmail(string mail, string subject)
         {
             var email = new Intent(Android.Content.Intent.ActionSend);
@@ -22,7 +21,8 @@ namespace CognitiveLocator.Droid.Services
 
             email.PutExtra(Intent.ExtraHtmlText, true);
             email.SetType("message/rfc822");
-            Forms.Context.StartActivity(email);
+
+            CurrentContext.StartActivity(email);
         }
     }
 }
