@@ -114,7 +114,7 @@
         <comment></comment>
     </data>
 	<data name="CreateReport_SectionPhotoMessage" xml:space="preserve">
-        <value>ImHome_Logoutportant: In the photo you should see the full face of the person.</value>
+        <value>Important: In the photo you should see the full face of the person.</value>
         <comment></comment>
     </data>
 	<data name="CreateReport_SectionGeneral" xml:space="preserve">
