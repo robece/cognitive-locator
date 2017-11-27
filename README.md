@@ -73,7 +73,7 @@ After create the resources you can validate it in your portal, e.g.:
 
 <img src="http://rcervantes.me/images/cognitive-locator-resources.png" width="500" />
 
-At this point you have to ways to configure the backend: **manually** or **using a shell script**.
+At this point you have to ways to configure the backend: **using a shell script** or **manually**.
 
 #### Using a shell script
 
