@@ -77,27 +77,33 @@ At this point you have to ways to configure the backend: **using a shell script*
 
 #### Using a shell script
 
-1. open a terminal go to the root of your repository: cognitive-locator, then write: chmod 700 azureconfig.sh, this allow us to run the script.
+To execute the automation there are two prerequisites:
 
-2. run the script: ./azureconfig.sh.
+1. Install [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-3. open a navigation tab and paste the authentication code provided in the url: https://aka.ms/devicelogin.
+2. Install [JQ](https://stedolan.github.io/jq/download/).
 
-4. select the id of the subscription you have previously deployed the resources.
+3. open a terminal go to the root of your repository: cognitive-locator, then write: chmod 700 azureconfig.sh, this allow us to run the script.
 
-5. validate the correct subscription and type yes.
+4. run the script: ./azureconfig.sh.
 
-6. paste the name of the resource group name you did the deploy.
+5. open a navigation tab and paste the authentication code provided in the url: https://aka.ms/devicelogin.
 
-7. now, the database has been configured and will prompt the region for Face API, use the same as you selected in the One-Click-Deploy site location.
+6. select the id of the subscription you have previously deployed the resources.
 
-8. once, the database and face api has been configured you will need to add the cryptography key, the app center key for android and ios and you will finish the automation configuration.
+7. validate the correct subscription and type yes.
 
-9. since notification hub configuration is not available yet in Azure CLI you will manually need to add the missing configuration, go to Azure Function App application settings and configure the NotificationHub_Access_Signature setting.
+8. paste the name of the resource group name you did the deploy.
 
-10. the application uses Facebook Authentication you need to follow the steps provided here: **[Adding Facebook Authentication](#adding-facebook-authentication)** provided in this document.
+9. now, the database has been configured and will prompt the region for Face API, use the same as you selected in the One-Click-Deploy site location.
 
-11. publish the azure function app to the cloud, all the settings needed are already configured.
+10. once, the database and face api has been configured you will need to add the cryptography key, the app center key for android and ios and you will finish the automation configuration.
+
+11. since notification hub configuration is not available yet in Azure CLI you will manually need to add the missing configuration, go to Azure Function App application settings and configure the NotificationHub_Access_Signature setting.
+
+12. the application uses Facebook Authentication you need to follow the steps provided here: **[Adding Facebook Authentication](#adding-facebook-authentication)** provided in this document.
+
+13. publish the azure function app to the cloud, all the settings needed are already configured.
 
 #### Manually
 
