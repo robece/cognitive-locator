@@ -79,9 +79,9 @@ At this point you have to ways to configure the backend: **using a shell script*
 
 To execute the automation there are two prerequisites:
 
-1. Install [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
+1. install [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-2. Install [JQ](https://stedolan.github.io/jq/download/).
+2. install [JQ](https://stedolan.github.io/jq/download/).
 
 3. open a terminal go to the root of your repository: cognitive-locator, then write: chmod 700 azureconfig.sh, this allow us to run the script.
 
