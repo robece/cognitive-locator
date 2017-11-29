@@ -31,7 +31,6 @@
     <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
     <AndroidLinkMode>None</AndroidLinkMode>
     <AndroidSupportedAbis>arm64-v8a;armeabi;armeabi-v7a;x86;x86_64</AndroidSupportedAbis>
-    <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -57,12 +56,6 @@
     <Reference Include="Plugin.Media">
       <HintPath>..\..\Solutions\packages\Xam.Plugin.Media.3.0.1\lib\MonoAndroid10\Plugin.Media.dll</HintPath>
     </Reference>
-    <Reference Include="DevKit.Xamarin.ImageKit.Abstractions">
-      <HintPath>..\CognitiveLocator\BinExternal\libs\DevKit.Xamarin.ImageKit.Droid\DevKit.Xamarin.ImageKit.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="DevKit.Xamarin.ImageKit">
-      <HintPath>..\CognitiveLocator\BinExternal\libs\DevKit.Xamarin.ImageKit.Droid\DevKit.Xamarin.ImageKit.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="Xamarin.GooglePlayServices.Base, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -86,9 +79,6 @@
     </Reference>
     <Reference Include="System.Spatial">
       <HintPath>..\..\Solutions\packages\System.Spatial.5.8.3\lib\netstandard1.1\System.Spatial.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Data.OData">
-      <HintPath>..\..\Solutions\packages\Microsoft.Data.OData.5.8.3\lib\netstandard1.1\Microsoft.Data.OData.dll</HintPath>
     </Reference>
     <Reference Include="Plugin.Permissions.Abstractions">
       <HintPath>..\..\Solutions\packages\Plugin.Permissions.2.1.0\lib\MonoAndroid10\Plugin.Permissions.Abstractions.dll</HintPath>
@@ -264,6 +254,15 @@
     <Reference Include="Plugin.Settings">
       <HintPath>..\..\Solutions\packages\Xam.Plugins.Settings.3.1.1\lib\MonoAndroid10\Plugin.Settings.dll</HintPath>
     </Reference>
+    <Reference Include="DevKit.Xamarin.ImageKit.Abstractions">
+      <HintPath>..\CognitiveLocator\BinExternal\libs\DevKit.Xamarin.ImageKit.Droid\DevKit.Xamarin.ImageKit.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="DevKit.Xamarin.ImageKit">
+      <HintPath>..\CognitiveLocator\BinExternal\libs\DevKit.Xamarin.ImageKit.Droid\DevKit.Xamarin.ImageKit.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData">
+      <HintPath>..\..\Solutions\packages\Microsoft.Data.OData.5.8.3\lib\netstandard1.1\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AboutAssets.txt" />
@@ -294,19 +293,11 @@
     <AndroidResource Include="Resources\drawable\xamarin_logo.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
     <AndroidResource Include="Resources\layout\Tabbar.axml" />
     <AndroidResource Include="Resources\layout\Toolbar.axml" />
     <AndroidResource Include="Resources\values\styles.xml" />
     <AndroidResource Include="Resources\xml\file_paths.xml" />
-    <AndroidResource Include="Resources\drawable-hdpi\ic_launcher.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\ic_launcher.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\ic_launcher.png" />
-    <AndroidResource Include="Resources\drawable\ic_launcher.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_launcher.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\icon.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\values-v24\styles.xml" />
     <AndroidResource Include="Resources\drawable\language.png" />
     <AndroidResource Include="Resources\drawable\facialrecog.jpg" />
@@ -314,7 +305,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Folder Include="Resources\drawable-mdpi\" />
     <Folder Include="Resources\drawable-xxxhdpi\" />
     <Folder Include="Services\" />
     <Folder Include="Renderers\" />
@@ -322,7 +312,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CognitiveLocator\CognitiveLocator.csproj">
-      <Project>{55B3A95E-A4F7-4C0E-B251-A2B2830D66DE}</Project>
+      <Project>{CF696C09-0CBB-4B7F-BCD7-F6DE5EDCA968}</Project>
       <Name>CognitiveLocator</Name>
     </ProjectReference>
   </ItemGroup>

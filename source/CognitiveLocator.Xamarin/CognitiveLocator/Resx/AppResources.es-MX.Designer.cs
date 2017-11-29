@@ -16,7 +16,7 @@ namespace CognitiveLocator.Resx {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class AppResources_es_MX {
+    internal class AppResources_es_MX {
         
         private static System.Resources.ResourceManager resourceMan;
         
@@ -27,10 +27,10 @@ namespace CognitiveLocator.Resx {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static System.Resources.ResourceManager ResourceManager {
+        internal static System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.Equals(null, resourceMan)) {
-                    System.Resources.ResourceManager temp = new System.Resources.ResourceManager("CognitiveLocator.Resx.AppResources.es-MX", typeof(AppResources_es_MX).GetTypeInfo().Assembly);
+                    System.Resources.ResourceManager temp = new System.Resources.ResourceManager("CognitiveLocator.Resx.AppResources.es-MX", typeof(AppResources_es_MX).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -38,7 +38,7 @@ namespace CognitiveLocator.Resx {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static System.Globalization.CultureInfo Culture {
+        internal static System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -47,613 +47,613 @@ namespace CognitiveLocator.Resx {
             }
         }
         
-        public static string Login_Title {
+        internal static string Login_Title {
             get {
                 return ResourceManager.GetString("Login_Title", resourceCulture);
             }
         }
         
-        public static string Login_Proceed {
+        internal static string Login_Proceed {
             get {
                 return ResourceManager.GetString("Login_Proceed", resourceCulture);
             }
         }
         
-        public static string Login_Login {
+        internal static string Login_Login {
             get {
                 return ResourceManager.GetString("Login_Login", resourceCulture);
             }
         }
         
-        public static string Catalogs_LanguageSpanish {
+        internal static string Catalogs_LanguageSpanish {
             get {
                 return ResourceManager.GetString("Catalogs_LanguageSpanish", resourceCulture);
             }
         }
         
-        public static string Catalogs_LanguageEnglish {
+        internal static string Catalogs_LanguageEnglish {
             get {
                 return ResourceManager.GetString("Catalogs_LanguageEnglish", resourceCulture);
             }
         }
         
-        public static string Catalogs_GenreMale {
+        internal static string Catalogs_GenreMale {
             get {
                 return ResourceManager.GetString("Catalogs_GenreMale", resourceCulture);
             }
         }
         
-        public static string Catalogs_GenreFemale {
+        internal static string Catalogs_GenreFemale {
             get {
                 return ResourceManager.GetString("Catalogs_GenreFemale", resourceCulture);
             }
         }
         
-        public static string CreateReport_Title {
+        internal static string CreateReport_Title {
             get {
                 return ResourceManager.GetString("CreateReport_Title", resourceCulture);
             }
         }
         
-        public static string CreateReport_CameraText {
+        internal static string CreateReport_CameraText {
             get {
                 return ResourceManager.GetString("CreateReport_CameraText", resourceCulture);
             }
         }
         
-        public static string CreateReport_GalleryText {
+        internal static string CreateReport_GalleryText {
             get {
                 return ResourceManager.GetString("CreateReport_GalleryText", resourceCulture);
             }
         }
         
-        public static string CreateReport_DisclaimerHeader {
+        internal static string CreateReport_DisclaimerHeader {
             get {
                 return ResourceManager.GetString("CreateReport_DisclaimerHeader", resourceCulture);
             }
         }
         
-        public static string CreateReport_DisclaimerMessage {
+        internal static string CreateReport_DisclaimerMessage {
             get {
                 return ResourceManager.GetString("CreateReport_DisclaimerMessage", resourceCulture);
             }
         }
         
-        public static string CreateReport_DisclaimerYes {
+        internal static string CreateReport_DisclaimerYes {
             get {
                 return ResourceManager.GetString("CreateReport_DisclaimerYes", resourceCulture);
             }
         }
         
-        public static string CreateReport_DisclaimerNo {
+        internal static string CreateReport_DisclaimerNo {
             get {
                 return ResourceManager.GetString("CreateReport_DisclaimerNo", resourceCulture);
             }
         }
         
-        public static string CreateReport_ConnectivityHeader {
+        internal static string CreateReport_ConnectivityHeader {
             get {
                 return ResourceManager.GetString("CreateReport_ConnectivityHeader", resourceCulture);
             }
         }
         
-        public static string CreateReport_ConnectivityMessage {
+        internal static string CreateReport_ConnectivityMessage {
             get {
                 return ResourceManager.GetString("CreateReport_ConnectivityMessage", resourceCulture);
             }
         }
         
-        public static string CreateReport_ConnectivityAccept {
+        internal static string CreateReport_ConnectivityAccept {
             get {
                 return ResourceManager.GetString("CreateReport_ConnectivityAccept", resourceCulture);
             }
         }
         
-        public static string CreateReport_InformationNotAvailable {
+        internal static string CreateReport_InformationNotAvailable {
             get {
                 return ResourceManager.GetString("CreateReport_InformationNotAvailable", resourceCulture);
             }
         }
         
-        public static string CreateReport_ReportErrorHeader {
+        internal static string CreateReport_ReportErrorHeader {
             get {
                 return ResourceManager.GetString("CreateReport_ReportErrorHeader", resourceCulture);
             }
         }
         
-        public static string CreateReport_ReportErrorMessage {
+        internal static string CreateReport_ReportErrorMessage {
             get {
                 return ResourceManager.GetString("CreateReport_ReportErrorMessage", resourceCulture);
             }
         }
         
-        public static string CreateReport_ReportErrorAccept {
+        internal static string CreateReport_ReportErrorAccept {
             get {
                 return ResourceManager.GetString("CreateReport_ReportErrorAccept", resourceCulture);
             }
         }
         
-        public static string CreateReport_ValidationErrorHeader {
+        internal static string CreateReport_ValidationErrorHeader {
             get {
                 return ResourceManager.GetString("CreateReport_ValidationErrorHeader", resourceCulture);
             }
         }
         
-        public static string CreateReport_ValidationErrorMessage {
+        internal static string CreateReport_ValidationErrorMessage {
             get {
                 return ResourceManager.GetString("CreateReport_ValidationErrorMessage", resourceCulture);
             }
         }
         
-        public static string CreateReport_ValidationErrorAccept {
+        internal static string CreateReport_ValidationErrorAccept {
             get {
                 return ResourceManager.GetString("CreateReport_ValidationErrorAccept", resourceCulture);
             }
         }
         
-        public static string CreateReport_SectionPhoto {
+        internal static string CreateReport_SectionPhoto {
             get {
                 return ResourceManager.GetString("CreateReport_SectionPhoto", resourceCulture);
             }
         }
         
-        public static string CreateReport_SectionPhotoMessage {
+        internal static string CreateReport_SectionPhotoMessage {
             get {
                 return ResourceManager.GetString("CreateReport_SectionPhotoMessage", resourceCulture);
             }
         }
         
-        public static string CreateReport_SectionGeneral {
+        internal static string CreateReport_SectionGeneral {
             get {
                 return ResourceManager.GetString("CreateReport_SectionGeneral", resourceCulture);
             }
         }
         
-        public static string CreateReport_Country {
+        internal static string CreateReport_Country {
             get {
                 return ResourceManager.GetString("CreateReport_Country", resourceCulture);
             }
         }
         
-        public static string CreateReport_ReportedBy {
+        internal static string CreateReport_ReportedBy {
             get {
                 return ResourceManager.GetString("CreateReport_ReportedBy", resourceCulture);
             }
         }
         
-        public static string CreateReport_Name {
+        internal static string CreateReport_Name {
             get {
                 return ResourceManager.GetString("CreateReport_Name", resourceCulture);
             }
         }
         
-        public static string CreateReport_Lastname {
+        internal static string CreateReport_Lastname {
             get {
                 return ResourceManager.GetString("CreateReport_Lastname", resourceCulture);
             }
         }
         
-        public static string CreateReport_LocationOfLoss {
+        internal static string CreateReport_LocationOfLoss {
             get {
                 return ResourceManager.GetString("CreateReport_LocationOfLoss", resourceCulture);
             }
         }
         
-        public static string CreateReport_DateOfLoss {
+        internal static string CreateReport_DateOfLoss {
             get {
                 return ResourceManager.GetString("CreateReport_DateOfLoss", resourceCulture);
             }
         }
         
-        public static string CreateReport_ReportId {
+        internal static string CreateReport_ReportId {
             get {
                 return ResourceManager.GetString("CreateReport_ReportId", resourceCulture);
             }
         }
         
-        public static string CreateReport_PhysicalAttributes {
+        internal static string CreateReport_PhysicalAttributes {
             get {
                 return ResourceManager.GetString("CreateReport_PhysicalAttributes", resourceCulture);
             }
         }
         
-        public static string CreateReport_Genre {
+        internal static string CreateReport_Genre {
             get {
                 return ResourceManager.GetString("CreateReport_Genre", resourceCulture);
             }
         }
         
-        public static string CreateReport_Complexion {
+        internal static string CreateReport_Complexion {
             get {
                 return ResourceManager.GetString("CreateReport_Complexion", resourceCulture);
             }
         }
         
-        public static string CreateReport_Skin {
+        internal static string CreateReport_Skin {
             get {
                 return ResourceManager.GetString("CreateReport_Skin", resourceCulture);
             }
         }
         
-        public static string CreateReport_Front {
+        internal static string CreateReport_Front {
             get {
                 return ResourceManager.GetString("CreateReport_Front", resourceCulture);
             }
         }
         
-        public static string CreateReport_Mouth {
+        internal static string CreateReport_Mouth {
             get {
                 return ResourceManager.GetString("CreateReport_Mouth", resourceCulture);
             }
         }
         
-        public static string CreateReport_Eyebrows {
+        internal static string CreateReport_Eyebrows {
             get {
                 return ResourceManager.GetString("CreateReport_Eyebrows", resourceCulture);
             }
         }
         
-        public static string CreateReport_Age {
+        internal static string CreateReport_Age {
             get {
                 return ResourceManager.GetString("CreateReport_Age", resourceCulture);
             }
         }
         
-        public static string CreateReport_Height {
+        internal static string CreateReport_Height {
             get {
                 return ResourceManager.GetString("CreateReport_Height", resourceCulture);
             }
         }
         
-        public static string CreateReport_Face {
+        internal static string CreateReport_Face {
             get {
                 return ResourceManager.GetString("CreateReport_Face", resourceCulture);
             }
         }
         
-        public static string CreateReport_Nose {
+        internal static string CreateReport_Nose {
             get {
                 return ResourceManager.GetString("CreateReport_Nose", resourceCulture);
             }
         }
         
-        public static string CreateReport_Lips {
+        internal static string CreateReport_Lips {
             get {
                 return ResourceManager.GetString("CreateReport_Lips", resourceCulture);
             }
         }
         
-        public static string CreateReport_Chin {
+        internal static string CreateReport_Chin {
             get {
                 return ResourceManager.GetString("CreateReport_Chin", resourceCulture);
             }
         }
         
-        public static string CreateReport_TypeColorEyes {
+        internal static string CreateReport_TypeColorEyes {
             get {
                 return ResourceManager.GetString("CreateReport_TypeColorEyes", resourceCulture);
             }
         }
         
-        public static string CreateReport_TypeColorHair {
+        internal static string CreateReport_TypeColorHair {
             get {
                 return ResourceManager.GetString("CreateReport_TypeColorHair", resourceCulture);
             }
         }
         
-        public static string CreateReport_SectionAditionalInformation {
+        internal static string CreateReport_SectionAditionalInformation {
             get {
                 return ResourceManager.GetString("CreateReport_SectionAditionalInformation", resourceCulture);
             }
         }
         
-        public static string CreateReport_ParticularSigns {
+        internal static string CreateReport_ParticularSigns {
             get {
                 return ResourceManager.GetString("CreateReport_ParticularSigns", resourceCulture);
             }
         }
         
-        public static string CreateReport_Clothes {
+        internal static string CreateReport_Clothes {
             get {
                 return ResourceManager.GetString("CreateReport_Clothes", resourceCulture);
             }
         }
         
-        public static string CreateReport_Next {
+        internal static string CreateReport_Next {
             get {
                 return ResourceManager.GetString("CreateReport_Next", resourceCulture);
             }
         }
         
-        public static string CreateReport_PreviewMessage {
+        internal static string CreateReport_PreviewMessage {
             get {
                 return ResourceManager.GetString("CreateReport_PreviewMessage", resourceCulture);
             }
         }
         
-        public static string CreateReport_SendReport {
+        internal static string CreateReport_SendReport {
             get {
                 return ResourceManager.GetString("CreateReport_SendReport", resourceCulture);
             }
         }
         
-        public static string CreateReportConfirmation_Title {
+        internal static string CreateReportConfirmation_Title {
             get {
                 return ResourceManager.GetString("CreateReportConfirmation_Title", resourceCulture);
             }
         }
         
-        public static string CreateReportConfirmation_P1 {
+        internal static string CreateReportConfirmation_P1 {
             get {
                 return ResourceManager.GetString("CreateReportConfirmation_P1", resourceCulture);
             }
         }
         
-        public static string CreateReportConfirmation_P2 {
+        internal static string CreateReportConfirmation_P2 {
             get {
                 return ResourceManager.GetString("CreateReportConfirmation_P2", resourceCulture);
             }
         }
         
-        public static string CreateReportConfirmation_ButtonHome {
+        internal static string CreateReportConfirmation_ButtonHome {
             get {
                 return ResourceManager.GetString("CreateReportConfirmation_ButtonHome", resourceCulture);
             }
         }
         
-        public static string SearchPerson_Title {
+        internal static string SearchPerson_Title {
             get {
                 return ResourceManager.GetString("SearchPerson_Title", resourceCulture);
             }
         }
         
-        public static string SearchPerson_ValidationHeader {
+        internal static string SearchPerson_ValidationHeader {
             get {
                 return ResourceManager.GetString("SearchPerson_ValidationHeader", resourceCulture);
             }
         }
         
-        public static string SearchPerson_ValidationMessage {
+        internal static string SearchPerson_ValidationMessage {
             get {
                 return ResourceManager.GetString("SearchPerson_ValidationMessage", resourceCulture);
             }
         }
         
-        public static string SearchPerson_ValidationAccept {
+        internal static string SearchPerson_ValidationAccept {
             get {
                 return ResourceManager.GetString("SearchPerson_ValidationAccept", resourceCulture);
             }
         }
         
-        public static string SearchPerson_SectionPhoto {
+        internal static string SearchPerson_SectionPhoto {
             get {
                 return ResourceManager.GetString("SearchPerson_SectionPhoto", resourceCulture);
             }
         }
         
-        public static string SearchPerson_SectionPhotoMessage {
+        internal static string SearchPerson_SectionPhotoMessage {
             get {
                 return ResourceManager.GetString("SearchPerson_SectionPhotoMessage", resourceCulture);
             }
         }
         
-        public static string SearchPerson_CameraText {
+        internal static string SearchPerson_CameraText {
             get {
                 return ResourceManager.GetString("SearchPerson_CameraText", resourceCulture);
             }
         }
         
-        public static string SearchPerson_GalleryText {
+        internal static string SearchPerson_GalleryText {
             get {
                 return ResourceManager.GetString("SearchPerson_GalleryText", resourceCulture);
             }
         }
         
-        public static string SearchPerson_SearchText {
+        internal static string SearchPerson_SearchText {
             get {
                 return ResourceManager.GetString("SearchPerson_SearchText", resourceCulture);
             }
         }
         
-        public static string SearchPerson_SectionPersonData {
+        internal static string SearchPerson_SectionPersonData {
             get {
                 return ResourceManager.GetString("SearchPerson_SectionPersonData", resourceCulture);
             }
         }
         
-        public static string SearchPerson_Name {
+        internal static string SearchPerson_Name {
             get {
                 return ResourceManager.GetString("SearchPerson_Name", resourceCulture);
             }
         }
         
-        public static string SearchPerson_Lastname {
+        internal static string SearchPerson_Lastname {
             get {
                 return ResourceManager.GetString("SearchPerson_Lastname", resourceCulture);
             }
         }
         
-        public static string SearchPersonResult_Title {
+        internal static string SearchPersonResult_Title {
             get {
                 return ResourceManager.GetString("SearchPersonResult_Title", resourceCulture);
             }
         }
         
-        public static string SearchPersonResult_ConnectivityHeader {
+        internal static string SearchPersonResult_ConnectivityHeader {
             get {
                 return ResourceManager.GetString("SearchPersonResult_ConnectivityHeader", resourceCulture);
             }
         }
         
-        public static string SearchPersonResult_ConnectivityMessage {
+        internal static string SearchPersonResult_ConnectivityMessage {
             get {
                 return ResourceManager.GetString("SearchPersonResult_ConnectivityMessage", resourceCulture);
             }
         }
         
-        public static string SearchPersonResult_ConnectivityAccept {
+        internal static string SearchPersonResult_ConnectivityAccept {
             get {
                 return ResourceManager.GetString("SearchPersonResult_ConnectivityAccept", resourceCulture);
             }
         }
         
-        public static string SearchPersonResult_NoResultsHeader {
+        internal static string SearchPersonResult_NoResultsHeader {
             get {
                 return ResourceManager.GetString("SearchPersonResult_NoResultsHeader", resourceCulture);
             }
         }
         
-        public static string SearchPersonResult_NoResultsMessage {
+        internal static string SearchPersonResult_NoResultsMessage {
             get {
                 return ResourceManager.GetString("SearchPersonResult_NoResultsMessage", resourceCulture);
             }
         }
         
-        public static string SearchPersonResult_NoResultsAccept {
+        internal static string SearchPersonResult_NoResultsAccept {
             get {
                 return ResourceManager.GetString("SearchPersonResult_NoResultsAccept", resourceCulture);
             }
         }
         
-        public static string SearchPersonResult_VerificationErrorHeader {
+        internal static string SearchPersonResult_VerificationErrorHeader {
             get {
                 return ResourceManager.GetString("SearchPersonResult_VerificationErrorHeader", resourceCulture);
             }
         }
         
-        public static string SearchPersonResult_VerificationErrorMessage {
+        internal static string SearchPersonResult_VerificationErrorMessage {
             get {
                 return ResourceManager.GetString("SearchPersonResult_VerificationErrorMessage", resourceCulture);
             }
         }
         
-        public static string SearchPersonResult_VerificationErrorAccept {
+        internal static string SearchPersonResult_VerificationErrorAccept {
             get {
                 return ResourceManager.GetString("SearchPersonResult_VerificationErrorAccept", resourceCulture);
             }
         }
         
-        public static string PersonDetail_Title {
+        internal static string PersonDetail_Title {
             get {
                 return ResourceManager.GetString("PersonDetail_Title", resourceCulture);
             }
         }
         
-        public static string Settings_Title {
+        internal static string Settings_Title {
             get {
                 return ResourceManager.GetString("Settings_Title", resourceCulture);
             }
         }
         
-        public static string Settings_GeneralSettings {
+        internal static string Settings_GeneralSettings {
             get {
                 return ResourceManager.GetString("Settings_GeneralSettings", resourceCulture);
             }
         }
         
-        public static string Settings_LanguageTitle {
+        internal static string Settings_LanguageTitle {
             get {
                 return ResourceManager.GetString("Settings_LanguageTitle", resourceCulture);
             }
         }
         
-        public static string Settings_Language {
+        internal static string Settings_Language {
             get {
                 return ResourceManager.GetString("Settings_Language", resourceCulture);
             }
         }
         
-        public static string Settings_LanguageSelect {
+        internal static string Settings_LanguageSelect {
             get {
                 return ResourceManager.GetString("Settings_LanguageSelect", resourceCulture);
             }
         }
         
-        public static string Home_Title {
+        internal static string Home_Title {
             get {
                 return ResourceManager.GetString("Home_Title", resourceCulture);
             }
         }
         
-        public static string Home_ReportPerson {
+        internal static string Home_ReportPerson {
             get {
                 return ResourceManager.GetString("Home_ReportPerson", resourceCulture);
             }
         }
         
-        public static string Home_NameSearch {
+        internal static string Home_NameSearch {
             get {
                 return ResourceManager.GetString("Home_NameSearch", resourceCulture);
             }
         }
         
-        public static string Home_ImageSearch {
+        internal static string Home_ImageSearch {
             get {
                 return ResourceManager.GetString("Home_ImageSearch", resourceCulture);
             }
         }
         
-        public static string Home_Settings {
+        internal static string Home_Settings {
             get {
                 return ResourceManager.GetString("Home_Settings", resourceCulture);
             }
         }
         
-        public static string Home_About {
+        internal static string Home_About {
             get {
                 return ResourceManager.GetString("Home_About", resourceCulture);
             }
         }
         
-        public static string Home_Logout {
+        internal static string Home_Logout {
             get {
                 return ResourceManager.GetString("Home_Logout", resourceCulture);
             }
         }
         
-        public static string About_Title {
+        internal static string About_Title {
             get {
                 return ResourceManager.GetString("About_Title", resourceCulture);
             }
         }
         
-        public static string About_P1 {
+        internal static string About_P1 {
             get {
                 return ResourceManager.GetString("About_P1", resourceCulture);
             }
         }
         
-        public static string About_P2 {
+        internal static string About_P2 {
             get {
                 return ResourceManager.GetString("About_P2", resourceCulture);
             }
         }
         
-        public static string About_P3 {
+        internal static string About_P3 {
             get {
                 return ResourceManager.GetString("About_P3", resourceCulture);
             }
         }
         
-        public static string About_P4 {
+        internal static string About_P4 {
             get {
                 return ResourceManager.GetString("About_P4", resourceCulture);
             }
         }
         
-        public static string About_Team {
+        internal static string About_Team {
             get {
                 return ResourceManager.GetString("About_Team", resourceCulture);
             }
         }
         
-        public static string About_Feedback {
+        internal static string About_Feedback {
             get {
                 return ResourceManager.GetString("About_Feedback", resourceCulture);
             }
         }
         
-        public static string About_Link {
+        internal static string About_Link {
             get {
                 return ResourceManager.GetString("About_Link", resourceCulture);
             }

@@ -291,30 +291,29 @@ namespace CognitiveLocator.ViewModels
                 string NonAvailable = CreateReport_InformationNotAvailable;
                 var person = new Person
                 {
-                    Country = (string.IsNullOrEmpty(this.SelectedCountry)) ? NonAvailable : this.SelectedCountry,
-
-                    ReportedBy = (string.IsNullOrEmpty(this.ReportedBy)) ? NonAvailable : this.ReportedBy,
-                    Name = (string.IsNullOrEmpty(this.Name)) ? NonAvailable : this.Name,
-                    Lastname = (string.IsNullOrEmpty(this.Lastname)) ? NonAvailable : this.Lastname,
-                    LocationOfLoss = (string.IsNullOrEmpty(this.LocationOfLoss)) ? NonAvailable : this.LocationOfLoss,
-                    DateOfLoss = (string.IsNullOrEmpty(this.DateOfLoss)) ? NonAvailable : this.DateOfLoss,
-                    ReportId = (string.IsNullOrEmpty(this.ReportId)) ? NonAvailable : this.ReportId,
-                    Genre = (string.IsNullOrEmpty(this.SelectedGenre)) ? NonAvailable : this.SelectedGenre,
-                    Complexion = (string.IsNullOrEmpty(this.Complexion)) ? NonAvailable : this.Complexion,
-                    Skin = (string.IsNullOrEmpty(this.Skin)) ? NonAvailable : this.Skin,
-                    Front = (string.IsNullOrEmpty(this.Front)) ? NonAvailable : this.Front,
-                    Mouth = (string.IsNullOrEmpty(this.Mouth)) ? NonAvailable : this.Mouth,
-                    Eyebrows = (string.IsNullOrEmpty(this.Eyebrows)) ? NonAvailable : this.Eyebrows,
-                    Age = (string.IsNullOrEmpty(this.Age)) ? NonAvailable : this.Age,
-                    Height = (string.IsNullOrEmpty(this.Height)) ? NonAvailable : this.Height,
-                    Face = (string.IsNullOrEmpty(this.Face)) ? NonAvailable : this.Face,
-                    Nose = (string.IsNullOrEmpty(this.Nose)) ? NonAvailable : this.Nose,
-                    Lips = (string.IsNullOrEmpty(this.Lips)) ? NonAvailable : this.Lips,
-                    Chin = (string.IsNullOrEmpty(this.Chin)) ? NonAvailable : this.Chin,
-                    TypeColorEyes = (string.IsNullOrEmpty(this.TypeColorEyes)) ? NonAvailable : this.TypeColorEyes,
-                    TypeColorHair = (string.IsNullOrEmpty(this.TypeColorHair)) ? NonAvailable : this.TypeColorHair,
-                    ParticularSigns = (string.IsNullOrEmpty(this.ParticularSigns)) ? NonAvailable : this.ParticularSigns,
-                    Clothes = (string.IsNullOrEmpty(this.Clothes)) ? NonAvailable : this.Clothes
+                    Country = this.SelectedCountry,
+                    ReportedBy = this.reportedBy,
+                    Name = this.Name,
+                    Lastname = this.Lastname,
+                    LocationOfLoss = this.LocationOfLoss,
+                    DateOfLoss = this.DateOfLoss,
+                    ReportId = this.ReportId,
+                    Genre = this.SelectedGenre,
+                    Complexion = this.Complexion,
+                    Skin = this.Skin,
+                    Front = this.Front,
+                    Mouth = this.Mouth,
+                    Eyebrows = this.Eyebrows,
+                    Age = this.Age,
+                    Height = this.Height,
+                    Face = this.Face,
+                    Nose = this.Nose,
+                    Lips = this.Lips,
+                    Chin = this.Chin,
+                    TypeColorEyes = this.TypeColorEyes,
+                    TypeColorHair = this.TypeColorHair,
+                    ParticularSigns = this.ParticularSigns,
+                    Clothes = this.Clothes
                 };
 
                 var pid = Guid.NewGuid().ToString();
