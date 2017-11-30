@@ -3,7 +3,7 @@
 	<uses-sdk android:minSdkVersion="15" />
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-	<application android:label="Locator" android:icon="@drawable/icon">
+	<application android:label="Locator" android:icon="@drawable/icon" android:largeHeap="true">
 		<provider android:name="android.support.v4.content.FileProvider" android:authorities="com.cognitivelocator.app.fileprovider" android:exported="false" android:grantUriPermissions="true">
 			<meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"></meta-data>
 		</provider>
