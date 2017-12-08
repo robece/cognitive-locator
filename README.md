@@ -33,6 +33,8 @@ Cognitive Locator is based on Xamarin Forms and Azure platform: Azure Functions,
 
 <img src="http://rcervantes.me/images/cognitive-locator-architecture.png" width="500" />
 
+By uploading data for this demo, you agree that Microsoft may store it and use it to improve Microsoft services, including this API. To help protect your privacy, we take steps to de-identify your data and keep it secure. We won’t publish your data or let other people use it.
+
 ## Setup project
 
 #### Clone the project from GitHub repo
