@@ -83,7 +83,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb1812003772432184</string>
+				<string>YOUR_FACEBOOK_URLSCHEME</string>
 			</array>
 		</dict>
 	</array>
