@@ -252,8 +252,18 @@ In your CognitiveLocator.Droid project go to Resources\values\strings.xml and se
 </resources>
 ```
 In your CognitiveLocator.iOS project edit your Info.plist and set the following attributes:
+For CFBundleURLSchemes just concatenate: fbXXXXXXXX your facebook app Id.
 
 ```xml
+<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fbYOUR_FACEBOOK_APP_ID</string>
+			</array>
+		</dict>
+	</array>
 <key>FacebookAppID</key>
 <string>YOUR_FACEBOOK_APP_ID</string>
 <key>FacebookDisplayName</key>
