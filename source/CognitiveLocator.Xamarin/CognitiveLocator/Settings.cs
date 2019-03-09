@@ -13,6 +13,7 @@ namespace CognitiveLocator
             }
         }
 
+
         #region Setting Constants
 
         private static readonly string SettingsDefault = string.Empty;
