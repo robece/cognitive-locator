@@ -1,23 +1,7 @@
-# Cognitive Locator
-
-## Build Status
-
-| App        | Status          |
-| ---------- | --------------- |
-| Cognitive Locator (Droid)  | ![Build status][app-data-build-status-droid-master] |
-| Cognitive Locator (iOS)  | ![Build status][app-data-build-status-ios-master] |
-
-[![Deploy to Azure](https://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/)
-
-[app-data-build-status-droid-master]:https://build.mobile.azure.com/v0.1/apps/596b9007-8b42-4325-9a49-0251fa24cc87/branches/master/badge
-
-[app-data-build-status-ios-master]:https://build.mobile.azure.com/v0.1/apps/346c8576-7ceb-4b6b-8951-8846b42fdc68/branches/master/badge
-
-[app-data-build-status-droid-xamarin-development]:https://build.mobile.azure.com/v0.1/apps/596b9007-8b42-4325-9a49-0251fa24cc87/branches/xamarin-development/badge
-
-[app-data-build-status-ios-xamarin-development]:https://build.mobile.azure.com/v0.1/apps/346c8576-7ceb-4b6b-8951-8846b42fdc68/branches/xamarin-development/badge
-
 ## Cognitive Locator
+
+If you want to use the deploy to Azure feature go directly to the GitHub repo and click this button:
+[![Deploy to Azure](https://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/)
 
 The Cognitive Locator project, known publicly as 'Busca.me', is a project dedicated to reporting and finding missing persons. The project was founded due to the disasters related to the earthquake of September 19, 2017, which affected multiple states in Mexico. At first, the project was solely focused on finding or reporting people who went missing as a result of the earthquake. However, now that the project has grown, it not only aims to support the people affected at that time, but to anyone who is going through this devastating situation.
 
@@ -31,19 +15,23 @@ This project is non-profit, seeing how it only supports non-governmental organiz
 
 Cognitive Locator is based on Xamarin Forms and Azure platform: Azure Functions, CosmosDB, Storage, Notification Hub, Cognitive Services (Face API).
 
-<img src="http://rcervantes.me/images/cognitive-locator-architecture.png" width="500" />
+<div style="text-align:center">
+	<img src="https://github.com/robece/cognitive-locator/blob/master/images/cognitive-locator-architecture.png?raw=true" width="500" />
+</div>
 
 By uploading data for this demo, you agree that Microsoft may store it and use it to improve Microsoft services, including this API. To help protect your privacy, we take steps to de-identify your data and keep it secure. We won’t publish your data or let other people use it.
 
 ## Setup project
 
-#### Clone the project from GitHub repo
+**Clone the project from GitHub repo**
 
-`git clone https://github.com/rcervantes/cognitive-locator.git`
+`git clone https://github.com/robece/cognitive-locator.git`
 
-#### Click on the button Deploy to Azure to configure and recreate the Azure resources.
+**Click on the button Deploy to Azure to configure and recreate the Azure resources**
 
-<img src="https://azuredeploy.net/deploybutton.png" />
+<div style="text-align:center">
+	<img src="https://azuredeploy.net/deploybutton.png" />
+</div>
 
 Parameters:
 
@@ -58,9 +46,13 @@ Parameters:
 - **Database Max Interval In Seconds:** 5 is default.
 - **Face Api Pricing Tier:** S0 is default, F0 (20 calls per minute, 30K calls per month) or S0 (10 calls per second).
 
-<img src="http://rcervantes.me/images/cognitive-locator-azure-deploy.png" width="500" />
+<div style="text-align:center">
+	<img src="https://github.com/robece/cognitive-locator/blob/master/images/cognitive-locator-azure-deploy.png?raw=true" width="500" />
+</div>
 
-<img src="http://rcervantes.me/images/cognitive-locator-azure-deploy2.png" width="500" />
+<div style="text-align:center">
+	<img src="https://github.com/robece/cognitive-locator/blob/master/images/cognitive-locator-azure-deploy2.png?raw=true" width="500" />
+</div>
 
 After create the resources you can validate it in your portal, e.g.:
 
@@ -73,23 +65,25 @@ After create the resources you can validate it in your portal, e.g.:
 - **Azure Notification Hub:** cognitive-locatora037-hub
 - **Storage:** (unique-identifier)stg
 
-<img src="http://rcervantes.me/images/cognitive-locator-resources.png" width="500" />
+<div style="text-align:center">
+	<img src="https://github.com/robece/cognitive-locator/blob/master/images/cognitive-locator-resources.png?raw=true" width="500" />
+</div>
 
 At this point you have to ways to configure the backend: **using a shell script** or **manually**.
 
-#### Using a shell script
+**Using a shell script**
 
 To execute the automation there are two prerequisites:
 
-1. install [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
+1. install <a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest" target="_blank">Azure CLI</a>.
 
-2. install [JQ](https://stedolan.github.io/jq/download/).
+2. install <a href="https://stedolan.github.io/jq/download/" target="_blank">JQ</a>.
 
 3. open a terminal go to the root of your repository: cognitive-locator, then write: chmod 700 azureconfig.sh, this allow us to run the script.
 
 4. run the script: ./azureconfig.sh.
 
-5. open a navigation tab and paste the authentication code provided in the url: https://aka.ms/devicelogin.
+5. open a navigation tab and paste the authentication code provided in the url: `https://aka.ms/devicelogin`.
 
 6. select the id of the subscription you have previously deployed the resources.
 
@@ -103,17 +97,17 @@ To execute the automation there are two prerequisites:
 
 11. since notification hub configuration is not available yet in Azure CLI you will manually need to add the missing configuration, go to Azure Function App application settings and configure the NotificationHub_Access_Signature setting.
 
-12. the application uses Facebook Authentication you need to follow the steps provided here: **[Adding Facebook Authentication](#adding-facebook-authentication)** provided in this document.
+12. the application uses Facebook Authentication you need to follow the steps in the Adding Facebook Authentication section provided in this document.
 
 13. publish the azure function app to the cloud, all the settings needed are already configured.
 
-#### Manually
+**Manually**
 
 1. go to your cosmosdb database account and create a database and database collection:
 * database name: CognitiveLocator.
 * database collection: Person.
 
-2. configure the face api settings following the steps provided here: **[Configure Face API](#configure-face-api)**.
+2. configure the face api settings following the steps in the Configure Face API section provided in this document.
 
 3. you need to configure all the application settings required in the azure function app:
 * "AzureWebJobsStorage": "AZURE_STORAGE_CONNECTION_STRING",
@@ -131,13 +125,13 @@ To execute the automation there are two prerequisites:
 * "Cryptography_Key": "CRYPT_KEY",
 * "MobileCenterID_Android": "MOBILECENTER_ANDROID_APP_ID",
 * "MobileCenterID_iOS": "MOBILECENTER_IOS_APP_ID",
-* "ImageStorageUrl": "https://YOUR_STORAGE_ACCOUNT.blob.core.windows.net/images/"
+* "ImageStorageUrl": "`https://YOUR_STORAGE_ACCOUNT.blob.core.windows.net/images/`"
 
-4. the application uses Facebook Authentication you need to follow the steps provided here: **[Adding Facebook Authentication](#adding-facebook-authentication)** provided in this document.
+4. the application uses Facebook Authentication you need to follow the steps in the Adding Facebook Authentication section provided in this document.
 
 5. publish the azure function app to the cloud.
 
-#### Debugging locally
+## Debugging locally
 
 To debug locally the Function App you need to create a local.settings.json file in the Azure Functions project.
 
@@ -165,43 +159,57 @@ To debug locally the Function App you need to create a local.settings.json file 
 }
 ```
 
-#### Adding Facebook Authentication
+## Adding Facebook Authentication
 
 Once we have created our Azure Functions and correctly deployed it's time to configure some settings to enable Facebook authentication, select Authentication/Authorization under Networking.
 
-<img src="http://rcervantes.me/images/cognitive-locator-functions-settings.png" width="800" />
+<div style="text-align:center">
+	<img src="https://github.com/robece/cognitive-locator/blob/master/images/cognitive-locator-functions-settings.png?raw=true" width="800" />
+</div>
 
 Turn on the 'App Service Authentication' feature, then select 'Action to take when request is not authenticated' to Log in with Facebook.
 
-<img src="http://rcervantes.me/images/cognitive-locator-functions-add-facebook.png" width="500" />
+<div style="text-align:center">
+	<img src="https://github.com/robece/cognitive-locator/blob/master/images/cognitive-locator-functions-add-facebook.png?raw=true" width="500" />
+</div>
 
 Click on Facebook option then set the Facebook Application Id, Application Secret and the scope: public_profile and email, then save the configuration. 
 
-<img src="http://rcervantes.me/images/cognitive-locator-functions-add-facebook-settings.png" width="500" />
+<div style="text-align:center">
+	<img src="https://github.com/robece/cognitive-locator/blob/master/images/cognitive-locator-functions-add-facebook-settings.png?raw=true" width="500" />
+</div>
 
-#### Configure Facebook Application
+## Configure Facebook Application
 
-Go to [Facebook Developer Portal](https://developer.facebook.com) with your Facebook account add a new application e.g. Locator. now you will be able to see your Dashboard with your Application Name, Application ID and Application Secret.
+Go to <a href="https://developer.facebook.com" target="_blank">Facebook Developer Portal</a> with your Facebook account add a new application e.g. Locator. now you will be able to see your Dashboard with your Application Name, Application ID and Application Secret.
 
-<img src="http://rcervantes.me/images/cognitive-locator-facebook-dashboard.png" width="500" />
+<div style="text-align:center">
+	<img src="https://github.com/robece/cognitive-locator/blob/master/images/cognitive-locator-facebook-dashboard.png?raw=true" width="500" />
+</div>
 
-Now it's time to configure the login, add the valid OAuth redirect URIs using your Azure Function callback URI previously configured: **https://YOUR_AZURE_FUNCTION.azurewebsites.net/.auth/login/facebook/callback** and verify the reset client OAuth settings.
+Now it's time to configure the login, add the valid OAuth redirect URIs using your Azure Function callback URI previously configured: **`https://YOUR_AZURE_FUNCTION.azurewebsites.net/.auth/login/facebook/callback`** and verify the reset client OAuth settings.
 
-<img src="http://rcervantes.me/images/cognitive-locator-facebook-login-settings.png" width="800" />
+<div style="text-align:center">
+	<img src="https://github.com/robece/cognitive-locator/blob/master/images/cognitive-locator-facebook-login-settings.png?raw=true" width="800" />
+</div>
 
 Now go to Settings -> Basic and configure your Android and iOS App.
 
-For Android. Fill the required fields and verify the rest of the settings, if you need a key hash, you can get it using [this steps](https://blog.xamarin.com/simplified-android-keystore-signature-disovery/).
+For Android. Fill the required fields and verify the rest of the settings, if you need a key hash, you can get it using <a href="https://blog.xamarin.com/simplified-android-keystore-signature-disovery/" target="_blank">this steps</a>.
 
-<img src="http://rcervantes.me/images/cognitive-locator-facebook-android-setting.png" width="500" />
+<div style="text-align:center">
+	<img src="https://github.com/robece/cognitive-locator/blob/master/images/cognitive-locator-facebook-android-setting.png?raw=true" width="500" />
+</div>
 
 For iOS. Fill the required fields and verify the rest of the settings.
 
-<img src="http://rcervantes.me/images/cognitive-locator-facebook-ios-setting.png" width="500" />
+<div style="text-align:center">
+	<img src="https://github.com/robece/cognitive-locator/blob/master/images/cognitive-locator-facebook-ios-setting.png?raw=true" width="500" />
+</div>
 
 At this moment you have successfuly configure your Facebook application to login with your apps.
 
-#### Configure Face API
+## Configure Face API
 
 Now it's time to create our Face API 'Person Group' and 'Face List' in the specific API testing console:
 
@@ -217,7 +225,7 @@ Now it's time to create our Face API 'Person Group' and 'Face List' in the speci
     "userData":"Missing people person group"
 }
 ```
-- Link: [Person Group - Create a Person Group](https://southcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)
+- Link: <a href="https://southcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244" target="_blank">Person Group - Create a Person Group</a>
 
 **Face List Parameters**
 - faceListId: list
@@ -231,9 +239,9 @@ Now it's time to create our Face API 'Person Group' and 'Face List' in the speci
     "userData":"Face List"
 }
 ```
-- Link: [Face List - Create a Face List](https://southcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b)
+- Link: <a href="https://southcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b" target="_blank">Face List - Create a Face List</a>
 
-#### Mobile application (Xamarin)
+## Mobile application (Xamarin)
 
 In your CognitiveLocator\App.xaml.cs file set the following attributes:
 
@@ -272,10 +280,14 @@ For CFBundleURLSchemes just concatenate: fbXXXXXXXX your facebook app Id.
 
 Congrats if you successfully configure the app you can run it now!
 
-<img src="http://rcervantes.me/images/cognitive-locator-app.png" width="300" />
+<div style="text-align:center">
+	<img src="https://github.com/robece/cognitive-locator/blob/master/images/cognitive-locator-app.png?raw=true" width="300" />
+</div>
 
-<img src="http://rcervantes.me/images/cognitive-locator-app2.png" width="300" />
+<div style="text-align:center">
+	<img src="https://github.com/robece/cognitive-locator/blob/master/images/cognitive-locator-app2.png?raw=true" width="300" />
+</div>
 
 ## Credits
 
-I want to thank to [all contributors](https://github.com/rcervantes/cognitive-locator/graphs/contributors) who had participated in this project and those people who still continue participating actively on this project.
+I want to thank to <a href="https://github.com/robece/cognitive-locator/graphs/contributors" target="_blank">all contributors</a> who had participated in this project and those people who still continue participating actively on this project.
