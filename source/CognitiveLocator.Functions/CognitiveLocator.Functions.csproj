@@ -10,7 +10,7 @@
     <PackageReference Include="Microsoft.Azure.NotificationHubs" Version="1.0.9" />    
     <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.DocumentDB" Version="1.1.0-beta4" />    
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.6" />    
-    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CognitiveLocator.Domain\CognitiveLocator.Domain.csproj" />
